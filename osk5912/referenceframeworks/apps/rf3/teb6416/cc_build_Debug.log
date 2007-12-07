@@ -1,0 +1,38 @@
+------------------------------  app.pjt - Debug  ------------------------------
+[app.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" app.cdb
+
+[fir.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "fir.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "ifir.c"
+
+[ivol.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "ivol.c"
+
+[vol.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "vol.c"
+
+[appMain.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "appMain.c"
+
+[appResources.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "appResources.c"
+
+[appThreads.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "appThreads.c"
+
+[thrAudioproc.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "thrAudioproc.c"
+
+[thrControl.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "thrControl.c"
+
+[thrRxSplit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "thrRxSplit.c"
+
+[thrTxJoin.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"../teb6416/Debug.lkf" "thrTxJoin.c"
+
+[appIO.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"Debug.lkf" "appIO.c"
+
+[teb6416_devParams.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"Debug.lkf" "teb6416_devParams.c"
+
+[appcfg.s62] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"Debug.lkf" "appcfg.s62"
+
+[appcfg_c.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/teb6416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_6416" -ml3 -mv6400 -@"Debug.lkf" "appcfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

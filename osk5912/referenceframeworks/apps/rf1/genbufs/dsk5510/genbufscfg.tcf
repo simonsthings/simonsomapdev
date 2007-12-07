@@ -1,0 +1,56 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  This file is used for textual configuration of DSP/BIOS as an alternative
+ *  or in addition to the traditional graphical configuration tool (GCONF).
+ *  For more information on textual configuration and the TCONF utility,
+ *  please refer to the DSP/BIOS TextConf User's Guide (SPRU007).
+ */
+/*
+ *  ======== genbufscfg.tcf ========
+ *
+ *  This script simply sets up the BIOS configuration
+ */
+
+/*
+ *  Load the Platform file for the appropriate board
+ */
+utils.loadPlatform(environment["config.platform"]);
+
+/*
+ *  Create an empty object and call it with the getProgObjs method to
+ *  create global variables for every Module and Instance object.
+ *  For example, instead of
+ *  prog.module("LOG").instance("LOG_system").buflen = <some value>;
+ *  we can simply say
+ *  tibios.LOG_system.buflen = <value>;
+ */
+tibios = {};
+utils.getProgObjs(prog, tibios);
+
+/*  Set Memory Model to Large Model (default: SMALL) */
+tibios.GBL.MEMORYMODEL = "LARGE";
+
+/* LOG configuration for generated C source statements LOG to file */
+utils.importFile("log_config.tci");
+
+/*
+ *  Check if there have been errors and generate the configuration
+ *  database file.
+ *
+ *  WARNING - The config.hasReportedError property will cause
+ *  the Rhino Debugger to fail (SDSsq29900).
+ */
+if (config.hasReportedError == false) {
+    prog.gen();
+} else {
+    throw new Error( "Error in config script -- database not generated." );
+}
+
+

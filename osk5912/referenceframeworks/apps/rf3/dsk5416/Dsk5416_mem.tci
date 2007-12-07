@@ -1,0 +1,80 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5416_mem.tci ========
+ *
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  In internal and external data memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ *  (as not all platforms have IDATA, DARAM47 segments).
+ */
+
+/*
+ *  Call model: use "far" instead of "near"
+ */
+tibios.GBL.CALLMODEL = "far";
+
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+ 
+/* allocate heap named "INTERNALHEAP" of size 0x0C00 in internal memory */
+tibios.IDATA.createHeap      = true;       
+tibios.IDATA.heapSize        = 0x0C00;  /* 3K   */
+tibios.IDATA.enableHeapLabel = true;       
+tibios.IDATA.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* allocate heap named "EXTERNALHEAP" of size 0x2000 in external memory */
+tibios.DARAM47.createHeap      = true;
+tibios.DARAM47.heapSize        = 0x2000;  /* 8K   */
+tibios.DARAM47.enableHeapLabel = true; 
+tibios.DARAM47.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*  
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ */
+tibios.MEM.STACKSIZE = 0x0200; 
+
+/*
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+
+/* General */
+/* Set dynamic heap allocation into IDATA */
+tibios.MEM.BIOSOBJSEG  = tibios.IDATA;    /* Segment for DSP/BIOS Objects */
+tibios.MEM.MALLOCSEG   = tibios.IDATA;    /* Segment for malloc()/free() */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+
+/*
+ *  To assist in changing prog model from far <-> near,
+ *  these sections are placed on the overlay page
+ */
+tibios.MEM.GBLINITSEG = tibios.IPROG;   /* DSP/BIOS Initialization
+                                           Tables (.gblinit) */
+tibios.MEM.TRCDATASEG = tibios.IPROG;   /* TRC Initial value (.trcdata) */
+tibios.MEM.SWITCHSEG  = tibios.IPROG;   /* Switch Jump Table (.switch) */
+tibios.MEM.CINITSEG   = tibios.IPROG;   /* Data Initialization
+                                           Section (.cinit) */
+tibios.MEM.PINITSEG   = tibios.IPROG;   /* C Function Initialization
+                                           (.pinit) */
+

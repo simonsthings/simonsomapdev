@@ -1,0 +1,51 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="$(Install_dir)\boards\osk5912\lib\osk5912bsl\"
+ProjectType=Library
+CPUFamily=TMS470R2X
+Tool="Archiver"
+Tool="Compiler"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="osk5912.c"
+Source="osk5912_aic23_closecodec.c"
+Source="osk5912_aic23_loopback.c"
+Source="osk5912_aic23_mute.c"
+Source="osk5912_aic23_opencodec.c"
+Source="osk5912_aic23_outgain.c"
+Source="osk5912_aic23_powerdown.c"
+Source="osk5912_aic23_read16.c"
+Source="osk5912_aic23_read32.c"
+Source="osk5912_aic23_registers.c"
+Source="osk5912_aic23_setfreq.c"
+Source="osk5912_aic23_write16.c"
+Source="osk5912_aic23_write32.c"
+Source="osk5912_enet.c"
+Source="osk5912_flash.c"
+Source="osk5912_flash_checksum.c"
+Source="osk5912_flash_erase.c"
+Source="osk5912_flash_gettotalpages.c"
+Source="osk5912_flash_read.c"
+Source="osk5912_flash_readburst.c"
+Source="osk5912_flash_write.c"
+Source="osk5912_flash_writeburst.c"
+Source="osk5912_i2c.c"
+Source="osk5912_led.c"
+Source="osk5912_power.c"
+Source="osk5912_uart.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o..\osk5912bsl.lib
+
+["Archiver" Settings: "Release"]
+Options=-r -o..\osk5912bsl.lib
+
+["Compiler" Settings: "Debug"]
+Options=-q -o1 -fr".\Debug\" -i"..\..\include\" -d"_DEBUG" -me
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr".\Release" -i"..\..\include\" -me
+

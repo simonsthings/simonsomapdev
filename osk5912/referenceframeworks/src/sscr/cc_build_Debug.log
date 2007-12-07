@@ -1,0 +1,23 @@
+-----------------------------  sscr64.pjt - Debug  -----------------------------
+[sscr.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr.c"
+
+[sscr_createbuf.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_createbuf.c"
+
+[sscr_deletebuf.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_deletebuf.c"
+
+[sscr_exit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_exit.c"
+
+[sscr_getbuf.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_getbuf.c"
+
+[sscr_init.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_init.c"
+
+[sscr_prime.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_prime.c"
+
+[sscr_setup.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "sscr_setup.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\sscr.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\sscr.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

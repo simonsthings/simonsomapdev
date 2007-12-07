@@ -1,0 +1,24 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\osk5912_dma_aic23_cslv3\"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="osk5912_dma_aic23_cslv3.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o..\..\lib\osk5912_dma_aic23_cslv3.l55l
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo55l -fr".\Debug" -i"." -i"..\..\include\c5912" -i"..\..\include" -d"CSL_CHIP_5912PG1_0=1" -ml
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+

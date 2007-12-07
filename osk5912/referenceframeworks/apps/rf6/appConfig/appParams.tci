@@ -1,0 +1,17 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appParams.tci ========
+ *
+ *  Application parameters that determine properties and number of 
+ *  certain DSP/BIOS objects
+ */
+
+APPSTSTIMECOUNT = 10;        /* number of STS objects for debugging */
+

@@ -1,0 +1,45 @@
+------------------------------  app.pjt - Debug  ------------------------------
+[app.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" app.cdb
+
+[fir.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "fir.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "ifir.c"
+
+[ivol.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "ivol.c"
+
+[vol.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "vol.c"
+
+[appMain.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "appMain.c"
+
+[appResources.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "appResources.c"
+
+[appThreads.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "appThreads.c"
+
+[thrAudioproc.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "thrAudioproc.c"
+
+[thrControl.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "thrControl.c"
+
+[thrRxSplit.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "thrRxSplit.c"
+
+[thrTxJoin.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"../dsk5416/Debug.lkf" "thrTxJoin.c"
+
+[appIO.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"Debug.lkf" "appIO.c"
+"appIO.c", line 34: fatal error: could not open source file "dsk5416.h"
+1 fatal error detected in the compilation of "appIO.c".
+Compilation terminated.
+
+>> Compilation failure
+
+[dsk5416_devParams.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"Debug.lkf" "dsk5416_devParams.c"
+"../../../include/dsk5416_dma_pcm3002.h", line 22: fatal error: could not open source file "dsk5416_pcm3002.h"
+1 fatal error detected in the compilation of "dsk5416_devParams.c".
+Compilation terminated.
+
+>> Compilation failure
+
+[appcfg.s54] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"Debug.lkf" "appcfg.s54"
+
+[appcfg_c.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54f -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5416/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5416" -mf -v548 -@"Debug.lkf" "appcfg_c.c"
+
+Build Complete,
+  2 Errors, 0 Warnings, 0 Remarks.

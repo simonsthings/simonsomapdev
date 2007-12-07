@@ -1,0 +1,6 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\icc.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\icc\Debug\icc_exit.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\icc\Debug\icc_init.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\icc\Debug\icc_linearCreate.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\icc\Debug\icc_linearDelete.o64"

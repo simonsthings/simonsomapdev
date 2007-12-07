@@ -1,0 +1,380 @@
+------------------------------  app.pjt - Debug  ------------------------------
+[app.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" app.cdb
+
+[cellFir.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "cellFir.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "ifir.c"
+
+[cellVol.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "cellVol.c"
+
+[ivol.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "ivol.c"
+
+[thrControl.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "thrControl.c"
+"thrControl.c", line 58: warning: this assembly directive potentially unsafe inside a function
+"thrControl.c", line 91: warning: this assembly directive potentially unsafe inside a function
+"thrControl.c", line 93: warning: this assembly directive potentially unsafe inside a function
+"thrControl.c", line 99: warning: this assembly directive potentially unsafe inside a function
+"thrControl.c", line 108: warning: this assembly directive potentially unsafe inside a function
+"thrControl.c", line 127: warning: this assembly directive potentially unsafe inside a function
+
+[appMain.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "appMain.c"
+
+[appMsgqConfig.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "appMsgqConfig.c"
+
+[appResources.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "appResources.c"
+
+[appThreads.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "appThreads.c"
+
+[thrPostProcess.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "thrPostProcess.c"
+"thrPostProcess.c", line 56: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 70: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 86: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 110: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 114: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 125: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 140: warning: this assembly directive potentially unsafe inside a function
+"thrPostProcess.c", line 171: warning: this assembly directive potentially unsafe inside a function
+
+[thrPreProcess.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "thrPreProcess.c"
+"thrPreProcess.c", line 53: warning: this assembly directive potentially unsafe inside a function
+"thrPreProcess.c", line 67: warning: this assembly directive potentially unsafe inside a function
+"thrPreProcess.c", line 83: warning: this assembly directive potentially unsafe inside a function
+"thrPreProcess.c", line 105: warning: this assembly directive potentially unsafe inside a function
+"thrPreProcess.c", line 122: warning: this assembly directive potentially unsafe inside a function
+"thrPreProcess.c", line 139: warning: this assembly directive potentially unsafe inside a function
+
+[thrProcess0.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "thrProcess0.c"
+"thrProcess0.c", line 145: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 221: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 226: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 251: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 275: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 309: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 334: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 340: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 385: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 387: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 392: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 404: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 413: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 429: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 461: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 468: warning: this assembly directive potentially unsafe inside a function
+"thrProcess0.c", line 473: warning: this assembly directive potentially unsafe inside a function
+
+[thrProcess1.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"../../projects/innovator1510/Debug.lkf" "thrProcess1.c"
+"thrProcess1.c", line 91: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 162: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 167: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 189: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 221: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 266: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 268: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 273: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 285: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 294: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 310: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 340: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 347: warning: this assembly directive potentially unsafe inside a function
+"thrProcess1.c", line 352: warning: this assembly directive potentially unsafe inside a function
+
+[appIO.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"Debug.lkf" "appIO.c"
+
+[appcfg.s55] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"Debug.lkf" "appcfg.s55"
+"appcfg.s55", REMARK   at line 655: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 655: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #1 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 672: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 672: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #2 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 689: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 689: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #3 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 706: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 706: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #4 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 723: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 723: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #5 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 740: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 740: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #6 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 757: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 757: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #7 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 774: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 774: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #8 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 791: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 791: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #9 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 808: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 808: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #10 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 825: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 825: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #11 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 842: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 842: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #12 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 859: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 859: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #13 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 876: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 876: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #14 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 893: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 893: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #15 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 910: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 910: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #16 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 927: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 927: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #17 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 944: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 944: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #18 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 961: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 961: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #19 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 978: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 978: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #20 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 995: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 995: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #21 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1012: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1012: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #22 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1029: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1029: [R0001] After symbol substitution the line
+                                             became:
+	                            @bios_l = #23 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1046: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1046: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #24 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1063: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1063: [R0001] After symbol substitution the line
+                                             became:
+	                            @bios_l = #25 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1080: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1080: [R0001] After symbol substitution the line
+                                             became:
+	                            @bios_l = #26 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1097: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1097: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #27 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1114: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1114: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #28 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1131: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1131: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #29 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1148: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1148: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #30 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1165: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1165: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #31 || mmap()   ; write the interrupt number in
+
+
+[appcfg_c.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf6/projects/innovator1510/Debug" -i"." -i"../../../../include/c5910" -i"../../projects/innovator1510" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -i"../../../../include/omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2 -@"Debug.lkf" "appcfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 51 Warnings, 62 Remarks.

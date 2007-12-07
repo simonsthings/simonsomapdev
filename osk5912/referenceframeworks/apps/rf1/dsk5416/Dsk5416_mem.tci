@@ -1,0 +1,71 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5416_mem.tci ========
+ *
+ *  This script simply sets up the 5416 BIOS MEM memory layout configuration
+ */
+
+// Reduced default internal data memory length from 0x10000 to 0x006000
+tibios.IDATA.base = 0x0080;
+tibios.IDATA.len = 0x006000;
+tibios.IDATA.space = "data";
+
+//  Increased default stack size from 0x0100 to 0x0240
+tibios.MEM.STACKSIZE = 0x0240;
+
+// add Memory section for overlaying data/code IPROGOVL 
+var IPROGOVL = tibios.MEM.create("IPROGOVL");
+IPROGOVL.space = "code";
+IPROGOVL.base =  0x006080;
+IPROGOVL.len =   0x01000;
+
+// add Memory section for overlaying data/code IDATAOVL 
+var IDATAOVL = tibios.MEM.create("IDATAOVL");
+IDATAOVL.space = "data";
+IDATAOVL.base =  0x006080;
+IDATAOVL.len =   0x01000;
+
+/*
+ *  add Memory section for not-loaded, dummy length of 1 shows
+ *  that no real code is loaded, base addr used is not a real
+ *  address in C5416 DSK memory space
+ */
+var PRGDUMMY = tibios.MEM.create("PRGDUMMY");
+PRGDUMMY.space = "code";
+PRGDUMMY.base =  0x017000;
+PRGDUMMY.len =   0x0001;
+
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+/* General */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+
+/*
+ *  To assist in changing prog model from far <-> near,  
+ *  these sections are placed on the overlay page  
+ */
+tibios.MEM.GBLINITSEG = tibios.IPROG;   /* DSP/BIOS Initialization 
+                                           Tables (.gblinit) */
+tibios.MEM.TRCDATASEG = tibios.IPROG;   /* TRC Initial value (.trcdata) */
+tibios.MEM.SWITCHSEG  = tibios.IPROG;   /* Switch Jump Table (.switch) */
+tibios.MEM.CINITSEG   = tibios.IPROG;   /* Data Initialization 
+                                           Section (.cinit) */
+tibios.MEM.PINITSEG   = tibios.IPROG;   /* C Function Initialization
+                                           (.pinit) */
+
+

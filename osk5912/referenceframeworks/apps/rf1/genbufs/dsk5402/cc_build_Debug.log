@@ -1,0 +1,20 @@
+----------------------------  genbufs.pjt - Debug  ----------------------------
+[genbufs.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" genbufs.cdb
+
+[filterCoeffs.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"../genbufs/dsk5402/Debug.lkf" "filterCoeffs.c"
+
+[fir_setParams.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"../genbufs/dsk5402/Debug.lkf" "fir_setParams.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"../genbufs/dsk5402/Debug.lkf" "ifir.c"
+
+[genbufs.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"dsk5402/Debug.lkf" "genbufs.c"
+
+[genbufscfg.s54] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"Debug.lkf" "genbufscfg.s54"
+
+[genbufscfg_c.c] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -g -q -eoo54 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk5402/Debug" -i"." -i"../../../include" -@"Debug.lkf" "genbufscfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C5400\cgtools\bin\cl500" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

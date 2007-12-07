@@ -1,0 +1,20 @@
+----------------------------  genbufs.pjt - Debug  ----------------------------
+[genbufs.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" genbufs.cdb
+
+[filterCoeffs.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"../genbufs/dsk6x11/Debug.lkf" "filterCoeffs.c"
+
+[fir_setParams.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"../genbufs/dsk6x11/Debug.lkf" "fir_setParams.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"../genbufs/dsk6x11/Debug.lkf" "ifir.c"
+
+[genbufs.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"dsk6x11/Debug.lkf" "genbufs.c"
+
+[genbufscfg.s62] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"Debug.lkf" "genbufscfg.s62"
+
+[genbufscfg_c.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo62 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf1/genbufs/dsk6x11/Debug" -i"." -i"../../../include" -ml3 -@"Debug.lkf" "genbufscfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

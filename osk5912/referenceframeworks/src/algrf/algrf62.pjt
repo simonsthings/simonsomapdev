@@ -1,0 +1,34 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="algrf62"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\"
+ProjectType=Library
+CPUFamily=TMS320C62XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="algrf_activate.c"
+Source="algrf_control.c"
+Source="algrf_cre.c"
+Source="algrf_creScratchSupport.c"
+Source="algrf_deactivate.c"
+Source="algrf_del.c"
+Source="algrf_delScratchSupport.c"
+Source="algrf_exit.c"
+Source="algrf_init.c"
+Source="algrf_setup.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o..\..\lib\algrf.l62
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo62 -fr".\Debug" -i"." -i"..\..\include" -ml3
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v6x
+

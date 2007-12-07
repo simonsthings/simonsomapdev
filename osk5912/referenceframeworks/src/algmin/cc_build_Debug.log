@@ -1,0 +1,17 @@
+----------------------------  algmin64.pjt - Debug  ----------------------------
+[algmin_activate.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algmin_activate.c"
+
+[algmin_deactivate.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algmin_deactivate.c"
+
+[algmin_exit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algmin_exit.c"
+
+[algmin_init.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algmin_init.c"
+
+[algmin_new.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algmin_new.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algmin.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algmin.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

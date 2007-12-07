@@ -1,0 +1,38 @@
+------------------------------  app.pjt - Debug  ------------------------------
+[app.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" app.cdb
+
+[cellFir.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "cellFir.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "ifir.c"
+
+[cellVol.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "cellVol.c"
+
+[ivol.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "ivol.c"
+
+[thrControl.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "thrControl.c"
+
+[appMain.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "appMain.c"
+
+[appResources.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "appResources.c"
+
+[appThreads.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "appThreads.c"
+
+[thrProcess.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "thrProcess.c"
+
+[thrRxSplit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "thrRxSplit.c"
+
+[thrTxJoin.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"../../projects/dsk6713/Debug.lkf" "thrTxJoin.c"
+
+[appIO.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"Debug.lkf" "appIO.c"
+
+[dsk6713_devParams.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"Debug.lkf" "dsk6713_devParams.c"
+
+[appcfg.s62] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"Debug.lkf" "appcfg.s62"
+
+[appcfg_c.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo67 -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf5/projects/dsk6713/Debug" -i"." -i"../../projects/dsk6713" -i"../../threads/main" -i"../../threads" -i"../../cells" -i"../../../../include" -d"CHIP_6713" -d"UTL_DBGLEVEL=70" -ml3 -mv6700 -@"Debug.lkf" "appcfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

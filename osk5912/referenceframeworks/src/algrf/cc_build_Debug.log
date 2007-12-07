@@ -1,0 +1,27 @@
+----------------------------  algrf64.pjt - Debug  ----------------------------
+[algrf_activate.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_activate.c"
+
+[algrf_control.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_control.c"
+
+[algrf_cre.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_cre.c"
+
+[algrf_creScratchSupport.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_creScratchSupport.c"
+
+[algrf_deactivate.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_deactivate.c"
+
+[algrf_del.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_del.c"
+
+[algrf_delScratchSupport.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_delScratchSupport.c"
+
+[algrf_exit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_exit.c"
+
+[algrf_init.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_init.c"
+
+[algrf_setup.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "algrf_setup.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algrf.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algrf.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

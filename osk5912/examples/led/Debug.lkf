@@ -1,0 +1,5 @@
+-z -q -c -o"./Debug/led.out" -x -i"C:/CCStudio_v3.1/tms470/rtdx/lib" -i"C:/CCStudio_v3.1/TMS470/cgtools/lib"
+"C:\CCStudio_v3.1\boards\osk5912\examples\led\Debug\led.obj"
+"C:\CCStudio_v3.1\boards\osk5912\lib\osk5912bsl.lib"
+"C:\CCStudio_v3.1\tms470\cgtools\lib\rts32etiabi.lib"
+"C:\CCStudio_v3.1\boards\osk5912\examples\led\led.cmd"

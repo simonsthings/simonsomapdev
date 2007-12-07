@@ -1,0 +1,47 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="app"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf5\projects\teb6416\"
+ProjectType=Executable
+CPUFamily=TMS320C64XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+
+[Source Files]
+Source="..\..\cells\fir\cellFir.c"
+Source="..\..\cells\fir\ifir.c"
+Source="..\..\cells\vol\cellVol.c"
+Source="..\..\cells\vol\ivol.c"
+Source="..\..\threads\control\thrControl.c"
+Source="..\..\threads\main\appMain.c"
+Source="..\..\threads\main\appResources.c"
+Source="..\..\threads\main\appThreads.c"
+Source="..\..\threads\process\thrProcess.c"
+Source="..\..\threads\rxSplit\thrRxSplit.c"
+Source="..\..\threads\txJoin\thrTxJoin.c"
+Source="app.cdb"
+Source="appIO.c"
+Source="teb6416_devParams.c"
+Source="link.cmd"
+
+[Generated Files]
+Source="appcfg.cmd"
+Source="appcfg.s62"
+Source="appcfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo64 -fr"$(Proj_dir)\Debug" -i"." -i"..\..\projects\teb6416" -i"..\..\threads\main" -i"..\..\threads" -i"..\..\cells" -i"..\..\..\..\include" -d"CHIP_6416" -d"UTL_DBGLEVEL=70" -ml3 -mv6400
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v6x
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\app.map" -o".\Debug\app.out" -w -x -i"..\..\..\..\lib"
+
+["appcfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+

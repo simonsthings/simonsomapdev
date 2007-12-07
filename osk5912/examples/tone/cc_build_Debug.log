@@ -1,0 +1,8 @@
+------------------------------  tone.pjt - Debug  ------------------------------
+[tone.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"./Debug/" -i"../../include/" -d"_DEBUG" -me -mv4 --abi=tiabi -@"Debug.lkf" "tone.c"
+
+[Linking...] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

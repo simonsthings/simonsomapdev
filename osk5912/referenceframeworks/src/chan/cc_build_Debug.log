@@ -1,0 +1,31 @@
+-----------------------------  chan64.pjt - Debug  -----------------------------
+[chan.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan.c"
+
+[chan_attrs.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_attrs.c"
+
+[chan_close.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_close.c"
+
+[chan_create.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_create.c"
+
+[chan_delete.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_delete.c"
+
+[chan_execute.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_execute.c"
+
+[chan_exit.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_exit.c"
+
+[chan_init.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_init.c"
+
+[chan_open.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_open.c"
+
+[chan_regcell.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_regcell.c"
+
+[chan_setup.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_setup.c"
+
+[chan_unregcell.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "chan_unregcell.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\chan.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\chan.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

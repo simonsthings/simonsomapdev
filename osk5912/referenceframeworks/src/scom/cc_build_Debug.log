@@ -1,0 +1,9 @@
+-----------------------------  scom64.pjt - Debug  -----------------------------
+[scom.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -eoo64 -fr"./Debug" -i"." -i"../../include" -d"UTL_DBGLEVEL=70" -ml3 -mv6400 -@"Debug.lkf" "scom.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\scom.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\scom.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

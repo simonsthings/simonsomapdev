@@ -1,0 +1,7 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algmin.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\Debug\algmin_activate.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\Debug\algmin_deactivate.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\Debug\algmin_exit.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\Debug\algmin_init.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\Debug\algmin_new.o64"

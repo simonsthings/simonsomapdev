@@ -1,0 +1,32 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="$(Install_dir)\boards\osk5912\examples\cftest\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="$(Install_dir)\TMS470\cgtools\lib\rts32e.lib"
+Source="cftest.c"
+Source="osk5912.c"
+Source="osk5912_i2c.c"
+Source="osk5912_led.c"
+Source="osk5912_power.c"
+Source="cftest.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -fr".\Debug\" -i"..\..\Include" -d"_DEBUG" -me
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr".\Release\" -i"..\..\Include" -me
+
+["Linker" Settings: "Debug"]
+Options=-q -c -o".\Debug\cftest.out" -x
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\cftest.out" -x
+

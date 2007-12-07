@@ -1,0 +1,22 @@
+menuitem "Application Control";
+
+/*
+ *  Slider "volume" goes from 0 to 200, where 100 is the default,
+ *  in increments of 1 and "page increments" of 10.
+ */
+slider Volume(0, 200, 1, 10, volume)
+{
+    externalControl.volGain[0] = volume;
+    externalControl.volGain[1] = volume;
+}
+
+slider Filter1(0, 2, 1, 1, ndx)
+{
+    externalControl.firCoeff[0] = ndx;
+}
+
+slider Filter2(0, 2, 1, 1, ndx)
+{
+    externalControl.firCoeff[1] = ndx;
+}
+

@@ -1,0 +1,6 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\fir_ti.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\fir_ti\Debug\fir_ti.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\fir_ti\Debug\fir_ti_filter.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\fir_ti\Debug\fir_ti_ialg.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\fir_ti\Debug\fir_ti_vt.o64"

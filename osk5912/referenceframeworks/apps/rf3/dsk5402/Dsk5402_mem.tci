@@ -1,0 +1,90 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5402_mem.tci ========
+ *
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  (EPROG is external program memory, IPROG is internal program memory,
+ *   EDATA is external data memory,    IDATA is internal data memory)
+ *  We split the 16K of internal RAM as 12K for data and 4K for code.
+ *  In internal and external data memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ *  (as not all platforms have IDATA, EDATA segments).
+ */
+
+/*
+ *  Call model: use "far" instead of "near"
+ */
+tibios.GBL.CALLMODEL = "far";
+
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+
+/* define base and size of the internal data memory segment */
+tibios.IDATA.base = 0x0080;
+tibios.IDATA.len  = 0x2f80;
+tibios.IDATA.space  = "data";
+
+/* allocate heap named "INTERNALHEAP" of size 0x0C00 in internal memory */
+tibios.IDATA.createHeap      = true;       
+tibios.IDATA.heapSize        = 0x0C00;  /* 3K   */
+tibios.IDATA.enableHeapLabel = true;  
+tibios.IDATA.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* define base and size of the internal program memory segment */
+tibios.IPROG.base = 0x3000;
+tibios.IPROG.len  = 0x1000;
+tibios.IPROG.space = "code";
+
+/* allocate heap named "EXTERNALHEAP" of size 0x2000 in external memory */
+tibios.EDATA.createHeap      = true;
+tibios.EDATA.heapSize        = 0x2000;  /* 8K   */
+tibios.EDATA.enableHeapLabel = true; 
+tibios.EDATA.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*  
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ */
+tibios.MEM.STACKSIZE = 0x0200; 
+
+/*
+ *  Overriding default section placement
+ *  assign listed sections to specified memory segments 
+ */ 
+/* General */
+/* Set dynamic heap allocation into IDATA */
+tibios.MEM.BIOSOBJSEG = tibios.IDATA;  /* Segment for DSP/BIOS Objects */
+tibios.MEM.MALLOCSEG  = tibios.IDATA;  /* Segment for malloc()/free() */
+
+/* BIOS data */
+tibios.MEM.GBLINITSEG = tibios.EPROG;  /* DSP/BIOS Init Tables (.gblinit) */
+tibios.MEM.TRCDATASEG = tibios.EPROG;  /* TRC Initial Value (.trcdata) */
+tibios.MEM.OBJSEG     = tibios.EDATA;  /* DSP/BIOS Conf Sections (.*obj) */
+
+/* BIOS code */
+tibios.MEM.BIOSSEG    = tibios.EPROG;  /* BIOS Code Section (.bios) */
+tibios.MEM.SYSINITSEG = tibios.EPROG;  /* Startup Code Section (.sysinit) */
+tibios.MEM.RTDXTEXTSEG = tibios.IPROG; /* RTDX Text Segment (.rtdx_text) */
+
+/* Compiler Sections */
+tibios.MEM.TEXTSEG    = tibios.EPROG; /* Text Section (.text) */
+tibios.MEM.CINITSEG   = tibios.EPROG; /* Data Initialization Section (.cinit) */
+tibios.MEM.PINITSEG   = tibios.EPROG; /* C Function Initialization (.pinit) */
+tibios.MEM.CONSTSEG   = tibios.EDATA; /* Constant Section (.const) */
+
+

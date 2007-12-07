@@ -1,0 +1,63 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5510_mem.tci ========
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Call model: use "large" instead of "small"
+ */
+tibios.GBL.MEMORYMODEL = "LARGE";
+
+/*  
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ *  55x has 2 stacks. Since default setup is "lock-step" where both XSP
+ *  (Extended Data Stack Ptr) and XSSP (Extended System Stack Ptr) increment 
+ *  in lock-step, must ensure sufficiently large Sys Stack.
+ */
+tibios.MEM.STACKSIZE    = 0x0400; 
+tibios.MEM.SYSSTACKSIZE = 0x0400;
+
+/*  
+ *  Add memory section for not-loaded, dummy 'dead' code
+ *  dummy length of 1 shows that no real code is loaded
+ */
+var PRGDUMMY = tibios.MEM.create("PRGDUMMY");
+PRGDUMMY.base = 0x800000;
+PRGDUMMY.len =   0x0001;
+PRGDUMMY.space = "code/data";
+
+
+/* Shorten the DARAM section before creating the overlay section */
+tibios.DARAM.base = 0x0100;
+tibios.DARAM.len = 0x6f00;
+tibios.DARAM.space = "code/data";
+
+/* Create the overlay section for code and scratch buffer overlay */
+var DARAMOVL = tibios.MEM.create("DARAMOVL");
+DARAMOVL.base = 0x7000;
+DARAMOVL.len = 0x1000; 
+DARAMOVL.space = "code/data";
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+/* General */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+
+

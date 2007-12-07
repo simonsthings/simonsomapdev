@@ -1,0 +1,12 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\algrf.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_activate.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_control.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_cre.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_creScratchSupport.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_deactivate.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_del.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_delScratchSupport.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_exit.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_init.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algrf\Debug\algrf_setup.o64"

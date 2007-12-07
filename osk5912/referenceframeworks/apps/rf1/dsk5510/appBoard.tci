@@ -1,0 +1,31 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appBoard.tci ========
+ *
+ *  Platform-specific portion of the configuration database script
+ */
+
+/*
+ *  Define hardware specific parameters used in determining size of pipe
+ *  frames when pipes are created in appPipes.tci
+ */
+var APPSAMPLESIZE     = 2;     /* sample size in 8-bit bytes (octets) */
+var APPINOUTPIPALIGN  = 2;     /* in/out pipes are 2-word aligned */
+var APPINOUTPIPBUFSEG = tibios.DARAM; /* memory seg where in/out buffers are */
+                                  /* placed, must be placed in DARAM for 5510*/
+                                  /* since IOM driver expects them in DARAM  */
+                                  /* by default                              */ 
+
+/* Import the board specific MEM creation, setup and placement */
+utils.importFile(platformName + "_mem.tci");
+
+/* Import the board specific IOM driver configuration */
+utils.importFile(platformName + "_udevCodec.tci");
+

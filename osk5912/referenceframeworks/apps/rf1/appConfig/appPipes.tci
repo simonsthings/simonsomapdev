@@ -1,0 +1,68 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appPipes.tci ========
+ *
+ *  This script simply sets up the BIOS PIP configuration
+ */
+
+/* 
+ *  Configuration of the input and output pipes.
+ *  - Pipes are placed in data overlay sections instead of default data section.
+ *    This allows them be overlaid with code in program overlay section which 
+ *    executes to completion prior to the PIPs being used (if suported by ISA).
+ *  - PIO Adapter functions are the notifyReader/Writer callback functions.
+ *    On the other end of the PIPs, setFlags is an RF Level 1 function
+ *    which simply sets :-
+ *    -> an inputReadyFlag [0x1] when a full Rx frame is avail to read/get
+ *    -> an outputReadyFlag [0x2] when an empty Tx frame is avail to write/put
+ *  - Resetting PIP 'monitor' field to "none" saves some code and data space.
+ */
+var pipRx = tibios.PIP.create("pipRx");
+pipRx.comment      = "pipe to which input frames are DMA-ed from the codec";
+pipRx.numFrames    = 2;  /* the pipe is double buffered */
+pipRx.bufSeg       = APPINOUTPIPBUFSEG;  /* mem. segment where the frames go */
+pipRx.notifyWriterFxn  = prog.extern("PIO_rxPrime");
+pipRx.notifyWriterArg0 = prog.extern("pioRx");
+pipRx.notifyReaderFxn  = prog.extern("setFlags");
+pipRx.notifyReaderArg0 = 0x1;
+pipRx.monitor = "none";
+
+var pipTx = tibios.PIP.create("pipTx");
+pipTx.comment      = "pipe from which output frames are DMA-ed to the codec";
+pipTx.numFrames    = 2;  /* the pipe is double buffered */
+pipTx.bufSeg       = APPINOUTPIPBUFSEG;  /* mem. segment where the frames go */
+pipTx.notifyWriterFxn  = prog.extern("setFlags");
+pipTx.notifyWriterArg0 = 0x2;
+pipTx.notifyReaderFxn  = prog.extern("PIO_txPrime");
+pipTx.notifyReaderArg0 = prog.extern("pioTx");
+pipTx.monitor = "none";
+
+/* 
+ *  Size is :-
+ *  <pip frame sz> = <framesz in samples> * <sz of a sample> / <sz of a word>
+ */
+pipRx.frameSize = (APPFRAMESIZE * APPSAMPLESIZE) / prog.cpu.attrs.dataWordSize;
+pipTx.frameSize = (APPFRAMESIZE * APPSAMPLESIZE) / prog.cpu.attrs.dataWordSize;
+
+/*  
+ *  Pipe Alignment requirements are platform-dependent.
+ *  On C6x data DMA-ed to a pipe must be 128-bytes (32-words) aligned
+ *  in case PIP placement requires cache considerations since its 'line-size'
+ *  is 128 bytes.
+ *  On 54x & 55x, no such cache restrictions exist but we do align on 2-word
+ *  (32-bit) boundary to enable stereo codecs with 16-bit L, R data.
+ *  The value is defined in board-specific TCI file, with alignment in words.
+ */
+pipRx.bufAlign     = APPINOUTPIPALIGN;
+pipTx.bufAlign     = APPINOUTPIPALIGN;
+
+
+
+

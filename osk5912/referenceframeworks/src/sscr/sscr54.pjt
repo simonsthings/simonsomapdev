@@ -1,0 +1,32 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="sscr54"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\"
+ProjectType=Library
+CPUFamily=TMS320C54XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="sscr.c"
+Source="sscr_createbuf.c"
+Source="sscr_deletebuf.c"
+Source="sscr_exit.c"
+Source="sscr_getbuf.c"
+Source="sscr_init.c"
+Source="sscr_prime.c"
+Source="sscr_setup.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\..\..\lib\sscr.l54
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo54 -fr".\Debug" -i"." -i"..\..\include" -d"UTL_DBGLEVEL=70"
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v54
+

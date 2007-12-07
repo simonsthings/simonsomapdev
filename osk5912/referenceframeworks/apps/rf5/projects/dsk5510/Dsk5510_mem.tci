@@ -1,0 +1,79 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5510_mem.tci ========
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  DARAM is internal program & data memory
+ *  SDRAM is external program & data memory,
+ *
+ *  In internal and external memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ */
+
+/*
+ *  Call model: use "large" instead of "small"
+ */
+tibios.GBL.MEMORYMODEL = "LARGE";
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+
+/* allocate heap named "INTERNALHEAP" of size 0x1000 in internal memory */
+tibios.DARAM.createHeap      = true;
+tibios.DARAM.heapSize        = 0x1000;   /* 4K   */
+tibios.DARAM.enableHeapLabel = true;
+tibios.DARAM.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* allocate heap named "EXTERNALHEAP" of size 0x2000 in external memory */
+tibios.SDRAM.createHeap      = true;
+tibios.SDRAM.heapSize        = 0x2000;   /* 8K  */
+tibios.SDRAM.enableHeapLabel = true;
+tibios.SDRAM.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ *  55x has 2 stacks. Since default setup is "lock-step" where both XSP
+ *  (Extended Data Stack Ptr) and XSSP (Extended System Stack Ptr) increment
+ *  in lock-step, must ensure sufficiently large Sys Stack.
+ */
+tibios.MEM.STACKSIZE = 0x0800;
+tibios.MEM.SYSSTACKSIZE = 0x0400;
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+
+/* General */
+/* Set dynamic heap allocation into DARAM */
+tibios.MEM.BIOSOBJSEG = tibios.DARAM;   /* Segment for DSP/BIOS Objects */
+tibios.MEM.MALLOCSEG = tibios.DARAM;    /* Segment for malloc()/free() */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+/*
+ *  .bss should be in DARAM memory to avoid consistency problems 
+ *  with DMA-ed data since IOM driver expect it in DARAM (it is by default,
+ *  so this is more of a reminder)
+ */
+tibios.MEM.BSSSEG = tibios.DARAM;        /* C variables section (.bss) */
+
+
+

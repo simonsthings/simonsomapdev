@@ -1,0 +1,24 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Innovator1510_udevCodec.tci ========
+ *
+ */
+
+/*
+ * ======== dsplink ========
+ */
+var dsplink = tibios.UDEV.create("dsplink");
+dsplink.fxnTable = prog.extern("DSPLINK_FXNS");
+dsplink.initFxn = prog.extern("DSPLINK_init");
+dsplink.fxnTableType = "IOM_Fxns";
+dsplink.params = prog.extern("DSPLINK_DEV_PARAMS");
+dsplink.deviceId = 0;
+dsplink.deviceGlobalDataPtr = null;
+

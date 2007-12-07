@@ -1,0 +1,28 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="icc54f"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\icc\"
+ProjectType=Library
+CPUFamily=TMS320C54XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="icc_exit.c"
+Source="icc_init.c"
+Source="icc_linearCreate.c"
+Source="icc_linearDelete.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\..\..\lib\icc.l54f
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo54f -fr".\Debug" -i"." -i"..\..\include" -d"UTL_DBGLEVEL=70" -mf -v548
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v54
+

@@ -1,0 +1,36 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="chan55"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\chan\"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="chan.c"
+Source="chan_attrs.c"
+Source="chan_close.c"
+Source="chan_create.c"
+Source="chan_delete.c"
+Source="chan_execute.c"
+Source="chan_exit.c"
+Source="chan_init.c"
+Source="chan_open.c"
+Source="chan_regcell.c"
+Source="chan_setup.c"
+Source="chan_unregcell.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\..\..\lib\chan.l55
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo55 -fr".\Debug" -i"." -i"..\..\include" -d"UTL_DBGLEVEL=70"
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+

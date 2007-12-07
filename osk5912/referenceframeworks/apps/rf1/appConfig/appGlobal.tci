@@ -1,0 +1,31 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appGlobal.tci ========
+ *
+ *  Application global (miscellaneous) properties
+ *
+ */
+
+// SYS Trace size of 0 for data space savings
+tibios.SYS.TRACESIZE = 0;
+
+/*
+ *  We use UTL_halt for all System Abort, Error, Exit functions because
+ *  it is the most compact function in code/data size. UTL_halt is defined 
+ *  in the boot.c file; it loops infinitely with all interrupts disabled.
+ */
+tibios.SYS.ABORTFXN = prog.extern("UTL_halt");
+tibios.SYS.ERRORFXN = prog.extern("UTL_halt");
+tibios.SYS.EXITFXN =  prog.extern("UTL_halt");
+tibios.SYS.PUTCFXN =  prog.extern("FXN_F_nop");
+
+
+
+

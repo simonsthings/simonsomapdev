@@ -1,0 +1,15 @@
+----------------------------  vol_ti64.pjt - Debug  ----------------------------
+[vol_ti.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "vol_ti.c"
+
+[vol_ti_ialg.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "vol_ti_ialg.c"
+
+[vol_ti_ivol.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "vol_ti_ivol.c"
+
+[vol_ti_ivolvt.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "vol_ti_ivolvt.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\vol_ti.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\vol_ti.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

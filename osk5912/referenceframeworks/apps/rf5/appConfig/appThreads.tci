@@ -1,0 +1,55 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appThreads.tci ========
+ *
+ *  Application threads
+ */
+
+
+/* Create a object to hold temporary priority thread variables */
+priThreads = {
+    intPriProcess       :2, /* priority for tskProcess thread */
+    intPriSplitJoin     :2, /* priority for tskRxSplit and tskTxJoin threads */
+    intPriControl       :2  /* priority for tskControl thread */
+}
+
+/*  Enable TSK Manger */
+bios.enableTskManager(prog);
+
+/* create RxSplit thread */
+var tskRxSplit       = tibios.TSK.create( "tskRxSplit" );
+tskRxSplit.comment   = "Rx Split Task";
+tskRxSplit.fxn       = prog.extern( "thrRxSplitRun" );
+tskRxSplit.priority  = priThreads.intPriSplitJoin;
+
+
+/* create TxJoin thread */
+var tskTxJoin        = tibios.TSK.create( "tskTxJoin" );
+tskTxJoin.comment    = "Tx Join Task";
+tskTxJoin.fxn        = prog.extern( "thrTxJoinRun" );
+tskTxJoin.priority   = priThreads.intPriSplitJoin;
+
+
+/* create Process thread */
+var tskProcess        = tibios.TSK.create( "tskProcess" );
+tskProcess.comment    = "Data Processing Task";
+tskProcess.fxn        = prog.extern( "thrProcessRun" );
+tskProcess.priority   = priThreads.intPriProcess;
+
+/* create Control thread */
+var tskControl        = tibios.TSK.create( "tskControl" );
+tskControl.comment    = "Control Task";
+tskControl.fxn        = prog.extern( "thrControlRun" );
+tskControl.priority   = priThreads.intPriControl;
+
+/* Delete priThreads object (to minimize namespace pollution) */
+delete priThreads;
+
+

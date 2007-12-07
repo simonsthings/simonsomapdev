@@ -1,0 +1,102 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appThreads.tci ========
+ *
+ *  Application threads
+ */
+
+
+/* Create a object to hold temporary priority thread variables */
+priThreads = {
+    intPriProcess       :2, /* priority for tskProcess threads */
+    intPriPrePost       :2, /* priority for tskPre(Post)Process threads */
+    intPriControl       :2  /* priority for tskControl thread */
+}
+
+/*  Enable TSK Manger */
+bios.enableTskManager(prog);
+
+/*
+ *  Task Creation
+ *
+ *  Note: 
+ *  The system stack sizes (sysStackSize) can be reduced when using USE_RETA  
+ *  or NO_RETA stack modes
+ */
+/* create Control thread */
+var tskControl        = tibios.TSK.create( "tskControl" );
+tskControl.comment    = "Control Task";
+tskControl.fxn        = prog.extern( "thrControlRun" );
+tskControl.priority   = priThreads.intPriControl;
+tskControl.stackSize = 256;
+tskControl.sysStackSize = 256;
+
+/* create PreProcess threads */
+var tskPreProcessCodec       = tibios.TSK.create( "tskPreProcessCodec" );
+tskPreProcessCodec.comment   = "Pre-Processing Task from codec";
+tskPreProcessCodec.fxn       = prog.extern( "thrPreProcessRun" );
+tskPreProcessCodec.priority  = priThreads.intPriPrePost;
+tskPreProcessCodec.stackSize = 256;
+tskPreProcessCodec.sysStackSize = 256;
+tskPreProcessCodec.arg0      = prog.extern( "thrPreProcessCodec" );
+
+var tskPreProcessLink       = tibios.TSK.create( "tskPreProcessLink" );
+tskPreProcessLink.comment   = "Pre-Processing Task from DSP/BIOS Link";
+tskPreProcessLink.fxn       = prog.extern( "thrPreProcessRun" );
+tskPreProcessLink.priority  = priThreads.intPriPrePost;
+tskPreProcessLink.stackSize = 256;
+tskPreProcessLink.sysStackSize = 256;
+tskPreProcessLink.arg0      = prog.extern( "thrPreProcessLink" );
+
+/* create PostProcess threads */
+var tskPostProcessLink        = tibios.TSK.create( "tskPostProcessLink" );
+tskPostProcessLink.comment    = "Post-Processing Task to DSP/BIOS Link";
+tskPostProcessLink.fxn        = prog.extern( "thrPostProcessRun" );
+tskPostProcessLink.priority   = priThreads.intPriPrePost;
+tskPostProcessLink.stackSize = 256;
+tskPostProcessLink.sysStackSize = 256;
+tskPostProcessLink.arg0      = prog.extern( "thrPostProcessLink" );
+
+var tskPostProcessCodec        = tibios.TSK.create( "tskPostProcessCodec" );
+tskPostProcessCodec.comment    = "Post-Processing Task to codec";
+tskPostProcessCodec.fxn        = prog.extern( "thrPostProcessRun" );
+tskPostProcessCodec.priority   = priThreads.intPriPrePost;
+tskPostProcessCodec.stackSize = 256;
+tskPostProcessCodec.sysStackSize = 256;
+tskPostProcessCodec.arg0      = prog.extern( "thrPostProcessCodec" );
+
+/* create Process0 thread */
+/*  
+ * Note that stack sizes are bigger for this task because this task
+ *  typically executes XDAIS algorithms. 
+ */
+var tskProcess0        = tibios.TSK.create( "tskProcess0" );
+tskProcess0.comment    = "Data Processing Task 0";
+tskProcess0.fxn        = prog.extern( "thrProcess0Run" );
+tskProcess0.priority   = priThreads.intPriProcess;
+tskProcess0.stackSize = 1024;
+tskProcess0.sysStackSize = 1024;
+
+/* create Process1 thread */
+/*  
+ * Note that stack sizes are bigger for this task because this task
+ *  typically executes XDAIS algorithms. 
+ */
+var tskProcess1        = tibios.TSK.create( "tskProcess1" );
+tskProcess1.comment    = "Data Processing Task 1";
+tskProcess1.fxn        = prog.extern( "thrProcess1Run" );
+tskProcess1.priority   = priThreads.intPriProcess;
+tskProcess1.stackSize = 1024;
+tskProcess1.sysStackSize = 1024;
+
+/* Delete priThreads object (to minimize namespace pollution) */
+delete priThreads;
+
+

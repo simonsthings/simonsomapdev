@@ -1,0 +1,102 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  This file is used for textual configuration of DSP/BIOS as an alternative
+ *  or in addition to the traditional graphical configuration tool (GCONF).
+ *  For more information on textual configuration and the TCONF utility,
+ *  please refer to the DSP/BIOS TextConf User's Guide (SPRU007).
+ */
+/*
+ *  ======== appcfg.tcf ========
+ *
+ *  TCF file from which the configuration database is generated.
+ *  It includes individual (TCI) modules in charge of different
+ *  sections of the configuration.
+ */
+
+/*
+ *  Define/Set a platformName variable to be used in the application
+ *  configuration
+ */
+var platformName = environment["config.platform"];
+
+/*
+ *  Load the Platform file for the appropriate board
+ */
+utils.loadPlatform(platformName);
+
+/*
+ *  Create an empty object and call it with the getProgObjs method to
+ *  create global variables for every Module and Instance object.
+ *  For example, instead of
+ *  prog.module("LOG").instance("LOG_system").buflen = <some value>;
+ *  we can simply say
+ *  tibios.LOG_system.buflen = <value>;
+ */
+tibios = {};
+utils.getProgObjs(prog, tibios);
+
+
+/*
+ *  Load the application parameters, based on which number and
+ *  properties of certain DSP/BIOS objects will be determined.
+ *  Those parameters are stored in global-like variables, and
+ *  the other modules can use them. The parameters file must be
+ *  loaded prior to any other TCI file, since any of those modules
+ *  may refer to the application parameters.
+ *  Note that the remaining modules do not implement procedures; 
+ *  rather, they are just cut-down pieces of what would be one long 
+ *  configuration script.
+ */
+utils.importFile( "appParams.tci" );
+ 
+/*
+ *  Load the hardware-specific TCI file.
+ */
+utils.importFile( "appBoard.tci" );
+
+/*
+ *  Now load the TCI file that defines all the software threads.
+ *  This file and all the remaining ones should be hardware-independent.
+ */
+utils.importFile( "appThreads.tci" );
+
+/*
+ *  Load the TCI file that defines (in a generic way) all the devices 
+ *  used in the system.
+ */
+utils.importFile( "appDevices.tci" );
+ 
+/*
+ *  Load the file defining system instrumentation, i.e. LOG and STS
+ *  objects.
+ */ 
+utils.importFile( "appInstrument.tci" );
+
+/* 
+ *  Finally, load the file defining miscellaneous global system
+ *  parameters (but still hardware-independent).
+ */
+utils.importFile( "appGlobal.tci" );
+ 
+/*
+ *  Check if there have been errors and generate the configuration
+ *  database file.
+ *
+ *  WARNING - The config.hasReportedError property will cause
+ *  the Rhino Debugger to fail (SDSsq29900).
+ */
+if (config.hasReportedError == false) {
+    prog.gen();
+} else {
+    throw new Error( "Error in config script -- database not generated." );
+}
+
+
+

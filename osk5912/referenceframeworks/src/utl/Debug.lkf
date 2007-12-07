@@ -1,0 +1,10 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\utl.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_algmem.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_defaultLog.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_error.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_heapusage.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_stsPeriod.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_stsPhase.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_stsReset.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\utl\Debug\utl_stsStartStop.o64"

@@ -1,0 +1,57 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk5402_mem.tci ========
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+// Reduced default internal data memory length from 0x1f80 to 0x0f80
+tibios.IDATA.base = 0x0080;
+tibios.IDATA.len = 0x0f80;
+tibios.IDATA.space = "data"
+
+//  Increased default stack size from 0x0100 to 0x0240
+tibios.MEM.STACKSIZE = 0x0240;
+
+// add Memory section for overlaying data/code IDATAOVL 
+var IDATAOVL = tibios.MEM.create("IDATAOVL");
+IDATAOVL.base =  0x01000;
+IDATAOVL.len =   0x01000;
+IDATAOVL.space =  "data";
+
+// add Memory section for overlaying data/code IPROGOVL 
+var IPROGOVL = tibios.MEM.create("IPROGOVL");
+IPROGOVL.base =  0x01000;
+IPROGOVL.len =   0x01000;
+IPROGOVL.space = "code";
+
+/*  
+ *  add Memory section for not-loaded, dummy length of 1 shows 
+ *  that no real code is loaded, base addr used is not a real
+ *  address in C5402 DSK memory space
+ */
+var PRGDUMMY = tibios.MEM.create("PRGDUMMY");
+PRGDUMMY.base =  0x4000;
+PRGDUMMY.len =   0x0001;
+PRGDUMMY.space = "code";
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+/* General */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+
+

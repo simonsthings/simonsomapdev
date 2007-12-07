@@ -1,0 +1,17 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appGlobal.tci ========
+ *
+ *  Application global (miscellaneous) properties
+ */
+
+/* use FXN_F_nop() for SYS.Putc Function instead of UTL_doPutc() */
+tibios.SYS.PUTCFXN = prog.extern( "FXN_F_nop" );
+

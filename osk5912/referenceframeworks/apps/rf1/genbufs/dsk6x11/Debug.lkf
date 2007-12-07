@@ -1,0 +1,8 @@
+-z -q -c -m"./Debug/genbufs.map" -o"./Debug/genbufs.out" -w -x -i"../../../../lib" -i"C:/CCStudio_v3.1/C6000/rtdx/lib" -i"C:/CCStudio_v3.1/C6000/csl/lib" -i"C:/CCStudio_v3.1/C6000/xdais/lib" -i"C:/CCStudio_v3.1/C6000/bios/lib" -i"C:/CCStudio_v3.1/C6000/cgtools/lib"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\filterCoeffs.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\fir_setParams.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\genbufs.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\genbufscfg.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\genbufscfg_c.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\Debug\ifir.o62"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk6x11\link.cmd"

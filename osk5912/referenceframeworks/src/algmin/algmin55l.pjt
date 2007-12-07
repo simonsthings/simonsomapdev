@@ -1,0 +1,29 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="algrf55l"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\algmin\"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Config="Debug"
+
+[Source Files]
+Source="algmin_activate.c"
+Source="algmin_deactivate.c"
+Source="algmin_exit.c"
+Source="algmin_init.c"
+Source="algmin_new.c"
+
+["Archiver" Settings: "Debug"]
+Options=-r -o..\..\lib\algmin.l55l
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo55l -fr".\Debug" -i"." -i"..\..\include" -ml
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+

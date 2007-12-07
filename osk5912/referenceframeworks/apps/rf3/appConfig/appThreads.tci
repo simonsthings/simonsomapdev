@@ -1,0 +1,63 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appThreads.tci ========
+ *
+ *  Application threads
+ */
+
+/* Create a object to hold temporary priority thread variables */
+priThreads = {
+    intPriAudioproc :1,    /* priority for swiAudioproc* threads */
+    intPriSplitJoin :1,    /* priority for swiRxSplit and swiTxJoin threads */
+    intPriControl   :1     /* priority for swiControl thread */
+}
+
+/* create RxSplit thread */
+var swiRxSplit     = tibios.SWI.create( "swiRxSplit" );
+swiRxSplit.comment = "Splits mixed-channel pipe frame into separate pipes";
+swiRxSplit["fxn"]  = prog.extern( "thrRxSplitRun" );
+swiRxSplit.priority= priThreads.intPriSplitJoin;
+swiRxSplit.arg0    = 0;
+swiRxSplit.mailbox = (1 << (APPNUMCHANNELS + 1)) - 1; 
+                         /* APPNUMCHANNELS one-bits in the mailbox above */
+ 
+/* create a processing SWI for each channel */
+for (i = 0; i < APPNUMCHANNELS; i++) {
+    var swi      = tibios.SWI.create( "swiAudioproc" + i );
+    swi.comment  = "SWI processing channel #" + i;
+    swi["fxn"]   = prog.extern( "thrAudioprocRun" );
+    swi.arg0     = i;
+    swi.priority = priThreads.intPriAudioproc;
+    swi.mailbox  = 3;  /* binary 011, for the thread's two pipes */
+}
+
+/* create TxJoin thread */
+var swiTxJoin      = tibios.SWI.create( "swiTxJoin" );
+swiTxJoin.comment  = "Joins separate pipe frames into one";
+swiTxJoin["fxn"]   = prog.extern( "thrTxJoinRun" );
+swiTxJoin.priority = priThreads.intPriSplitJoin;
+swiTxJoin.arg0     = 0;
+swiTxJoin.mailbox  = (1 << (APPNUMCHANNELS + 1)) - 1; 
+                         /* APPNUMCHANNELS one-bits in the mailbox above */
+
+/* create the control thread */
+var swiControl      = tibios.SWI.create( "swiControl" );
+swiControl.comment  = "Control thread, posted by isrControl";
+swiControl["fxn"]   = prog.extern( "thrControlRun" );
+swiControl.priority = priThreads.intPriControl;
+
+/* create a CLK object that posts the control thread when appropriate */
+var clkControl     = tibios.CLK.create( "clkControl" );
+clkControl.comment = "simulates HWI for button presses and such h/w events";
+clkControl["fxn"]  = prog.extern( "thrControlIsr" );
+
+/* Delete priThreads object (to minimize namespace pollution) */
+delete priThreads;
+

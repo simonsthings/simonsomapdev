@@ -1,0 +1,25 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk6x11_udevCodec.tci ========
+ *
+ */
+
+/*
+ * ======== udevCodec ========
+ */
+var udevCodec = tibios.UDEV.create("udevCodec");
+udevCodec.fxnTable = prog.extern("DSK6X11_EDMA_AD535_FXNS");
+udevCodec.initFxn = prog.extern("DSK6X11_EDMA_AD535_init");
+udevCodec.fxnTableType = "IOM_Fxns";
+udevCodec.params = null;
+udevCodec.deviceId = 0;
+udevCodec.deviceGlobalDataPtr = null;
+
+

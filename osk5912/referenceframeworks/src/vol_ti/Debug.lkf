@@ -1,0 +1,6 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\vol_ti.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\vol_ti\Debug\vol_ti.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\vol_ti\Debug\vol_ti_ialg.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\vol_ti\Debug\vol_ti_ivol.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\vol_ti\Debug\vol_ti_ivolvt.o64"

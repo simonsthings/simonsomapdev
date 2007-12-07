@@ -1,0 +1,9 @@
+---------------------  c5912_dma_mcbsp_cslv3.pjt - Debug  ---------------------
+[c5912_dma_mcbsp_cslv3.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -q -eoo55l -fr"./Debug" -i"." -i"../../include/c5912" -i"../../include" -d"CSL_CHIP_5912PG1_0=1" -ml -@"Debug.lkf" "c5912_dma_mcbsp_cslv3.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C5500\cgtools\bin\ar55" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\c5912_dma_mcbsp_cslv3.l55l'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\c5912_dma_mcbsp_cslv3.l55l'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

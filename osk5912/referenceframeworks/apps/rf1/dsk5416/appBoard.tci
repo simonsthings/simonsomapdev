@@ -1,0 +1,30 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appBoard.tci ========
+ *
+ *  Platform-specific portion of the configuration database script
+ */
+
+/*
+ *  Define hardware specific parameters used in determining size of pipe
+ *  frames when pipes are created 
+ */
+var APPSAMPLESIZE     = 2;     /* sample size in 8-bit bytes (octets) */
+var APPINOUTPIPALIGN  = 2;     /* in/out pipes are 2-word aligned */
+
+/* Import the board specific MEM creation, setup and placement */
+utils.importFile(platformName + "_mem.tci");
+
+/* Pipes are placed in a new MEM section hence depend on MEM creation above */
+APPINOUTPIPBUFSEG = IDATAOVL; /* memory seg where in/out pipes are located */
+
+/* Import the board specific IOM driver configuration */
+utils.importFile(platformName + "_udevCodec.tci");
+

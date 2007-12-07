@@ -1,0 +1,44 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appInstrument.tci ========
+ *
+ *  DSP/BIOS objects for instrumentation and debugging: LOG and STS
+ */
+
+/* 
+ * Create a LOG object logTrace 
+ */
+var logTrace      = tibios.LOG.create( "logTrace" );
+logTrace.comment  = "default LOG object for application messages";
+logTrace.bufLen   = 256;
+
+/* 
+ *  Change the size of the LOG_system object to a value large enough
+ */
+tibios.LOG_system.bufLen = 256;
+
+/* 
+ *  Set CLK timer interrupt to go off at default 1000us / interrupt. 
+ *  Set it higher if your algo disables interrupts for long periods. This 
+ *  ensures STS benchmarks with CLK_gethtime will return correct results.
+ */ 
+tibios.CLK.MICROSECONDS = 1000.0;
+
+/*
+ *  STS objects for use with UTL_sts* functions:
+ *  stsTime0, stsTime1, ... -- a total of appStsTimeCount objects
+ */
+for (i = 0; i < APPSTSTIMECOUNT; i++) {
+    var stsTime       = tibios.STS.create( "stsTime" + i );
+    stsTime.comment   = "STS object " + i + " for execution time measurements";
+    stsTime.unitType  = "High resolution time based";
+    stsTime.operation = "A * x";
+}
+

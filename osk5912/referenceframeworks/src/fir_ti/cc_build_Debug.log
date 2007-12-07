@@ -1,0 +1,15 @@
+----------------------------  fir_ti64.pjt - Debug  ----------------------------
+[fir_ti.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "fir_ti.c"
+
+[fir_ti_filter.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "fir_ti_filter.c"
+
+[fir_ti_ialg.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "fir_ti_ialg.c"
+
+[fir_ti_vt.c] "C:\CCStudio_v3.1\C6000\cgtools\bin\cl6x" -g -q -o2 -eoo64 -fr"./Debug" -i"." -i"../../include" -ml3 -mv6400 -@"Debug.lkf" "fir_ti_vt.c"
+
+[Archiving...] "C:\CCStudio_v3.1\C6000\cgtools\bin\ar6x" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\fir_ti.l64'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\fir_ti.l64'
+
+Build Complete,
+  0 Errors, 0 Warnings, 0 Remarks.

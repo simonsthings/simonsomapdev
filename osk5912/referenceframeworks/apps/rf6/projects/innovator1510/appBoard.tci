@@ -1,0 +1,88 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appBoard.tci ========
+ *
+ *  Platform-specific portion of the configuration database script
+ */
+
+/*
+ *  Define hardware specific parameters that may be needed for various
+ *  calculations
+ */
+APPSAMPLESIZE      = 2;     /* sample size in 8-bit bytes (octets)  */
+APPRTDXAVAILABLE   = true;  /* Define/set RTDX application variable */
+APPUSELINKDEVICEPARAMS = false   /* Take default for DSP/BIOS Link driver */
+APPUSECODECDEVICEPARAMS = false; /* Take default setting for Codec Driver */
+APPSETTOEXTERNALMEM = true; /* Place memory section in external memory */
+
+/* 
+ *  Arm sets the DSP clk and CLKOUT value, this value must match the
+ *  configuration file to correctly display STS objects and CPU load values 
+ */
+tibios.GBL.CLKOUT = 168.0000;
+
+/*
+ *  Call model: use "large" instead of "small"
+ */
+tibios.GBL.MEMORYMODEL = "LARGE";
+
+/*
+ *  Manually make call to CSL, since CSL auto configured in omap cdb
+ */
+tibios.GBL.CALLUSERINITFXN = 1;
+tibios.GBL.USERINITFXN = prog.extern("gblUserInit");
+
+/*
+ *  Allocate chunky arg buffer size to allow us to easily pass params to main
+ */
+tibios.MEM.ARGSSIZE = 0x0100;
+
+/*
+ *  Link in the DSP/BIOS instrumented kernel
+ */
+bios.enableRealTimeAnalysis(prog);
+
+/*
+ *  Link in RTDX only if board supports it.
+ */
+if(APPRTDXAVAILABLE) {
+    bios.enableRtdx(prog);
+}
+
+/*
+ *  Import the board specific MEM creation, setup and placement
+ */
+utils.importFile(platformName + "_mem.tci");
+
+/*
+ *  Import the board specific IOM driver configuration
+ */
+utils.importFile(platformName + "_dsplink.tci");
+
+/*
+ *  Override the default params values for IOM UdevCodec if requested
+ */
+if (APPUSELINKDEVICEPARAMS) {
+   dsplink.params = prog.extern(platformName.toUpperCase() + "_LINKDEVPARAMS");
+}
+
+/*
+ *  Import the board specific IOM driver configuration
+ */
+utils.importFile(platformName + "_udevCodec.tci");
+
+/*
+ *  Override the default params values for IOM UdevCodec
+ */
+if (APPUSECODECDEVICEPARAMS) {
+    udevCodec.params = prog.extern(platformName.toUpperCase() + "_CODECDEVPARAMS");
+}
+
+

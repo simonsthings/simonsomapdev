@@ -1,0 +1,8 @@
+-z -q -c -m"./Debug/genbufs.map" -o"./Debug/genbufs.out" -w -x -i"../../../../lib" -i"C:/CCStudio_v3.1/C5400/xdais/lib" -i"C:/CCStudio_v3.1/C5400/rtdx/lib" -i"C:/CCStudio_v3.1/C5400/csl/lib" -i"C:/CCStudio_v3.1/C5400/bios/lib" -i"C:/CCStudio_v3.1/C5400/cgtools/lib"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\filterCoeffs.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\fir_setParams.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\genbufs.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\genbufscfg.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\genbufscfg_c.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\Debug\ifir.o54"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\genbufs\dsk5402\link.cmd"

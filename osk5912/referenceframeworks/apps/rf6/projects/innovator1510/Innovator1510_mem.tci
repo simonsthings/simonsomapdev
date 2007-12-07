@@ -1,0 +1,109 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Innovator1510_mem.tci ========
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  DARAM is internal program & data memory
+ *  SARAM is external program & data memory,
+ *
+ *  In internal and external memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ */
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+
+/* allocate heap named "INTERNALHEAP" of size 0x1000 in internal memory */
+tibios.DARAM.createHeap      = true;
+tibios.DARAM.heapSize        = 0x1000;   /* 4K   */
+tibios.DARAM.enableHeapLabel = true;
+tibios.DARAM.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* 
+ * allocate heap named "EXTERNALHEAP" of size 0x1000 in internal memory.
+ * Note that we use internal memory here to avoid endianism issues on the
+ * OMAP5910
+ */
+tibios.SARAM.base            = 0x80ff;
+tibios.SARAM.len             = 0xBf01;
+tibios.SARAM.createHeap      = true;
+tibios.SARAM.heapSize        = 0x1000;   /* 4K  */
+tibios.SARAM.enableHeapLabel = true;
+tibios.SARAM.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*  ============================================================================
+ *  MEM : RESET_VECTOR
+ *  ============================================================================
+ */
+var RESET_VECTOR = tibios.MEM.create("RESET_VECTOR");
+RESET_VECTOR.base = 0x8000;
+RESET_VECTOR.createHeap = false;
+RESET_VECTOR.len = 0xff;
+
+/*  ============================================================================
+ *  MEM : SHMMEM
+ *  ============================================================================
+ */
+var SHMMEM = tibios.MEM.create("SHMMEM");
+SHMMEM.base = 0x200000;
+SHMMEM.createHeap = false;
+SHMMEM.len = 0x80000;
+SHMMEM.comment = "SHMMEM";
+
+/*  ============================================================================
+ *  MEM : EXTMEM
+ *  Note that external memory (e.g. its base address) is defined via linkcfg.txt 
+ *  in DSP/BIOS Link
+ *  ============================================================================
+ */
+var EXTMEM = tibios.MEM.create("EXTMEM");
+EXTMEM.base = 0x300000;
+EXTMEM.createHeap = false;
+EXTMEM.len = 0x80000;
+EXTMEM.comment = "EXTMEM";
+
+/*
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ *  55x has 2 stacks. Since default setup is "lock-step" where both XSP
+ *  (Extended Data Stack Ptr) and XSSP (Extended System Stack Ptr) increment
+ *  in lock-step, must ensure sufficiently large Sys Stack.
+ *
+ *  Innovator1510 default stack mode is C54X_STK hence need dual-large stacks
+ */
+tibios.MEM.STACKSIZE = 0x180;
+tibios.MEM.SYSSTACKSIZE = 0x100;
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+
+/* General */
+/* Set dynamic heap allocation into DARAM */
+tibios.MEM.BIOSOBJSEG = tibios.DARAM;   /* Segment for DSP/BIOS Objects */
+tibios.MEM.MALLOCSEG = tibios.DARAM;    /* Segment for malloc()/free() */
+
+/* BIOS data */
+
+/* BIOS code */
+tibios.MEM.RTDXTEXTSEG = EXTMEM;    /* RTDX text segment */
+
+/* Compiler Sections */
+
+
+
+

@@ -1,0 +1,48 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="app"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf6\projects\innovator1510\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+
+[Source Files]
+Source="..\..\cells\fir\cellFir.c"
+Source="..\..\cells\fir\ifir.c"
+Source="..\..\cells\vol\cellVol.c"
+Source="..\..\cells\vol\ivol.c"
+Source="..\..\threads\control\thrControl.c"
+Source="..\..\threads\main\appMain.c"
+Source="..\..\threads\main\appMsgqConfig.c"
+Source="..\..\threads\main\appResources.c"
+Source="..\..\threads\main\appThreads.c"
+Source="..\..\threads\postProcess\thrPostProcess.c"
+Source="..\..\threads\preProcess\thrPreProcess.c"
+Source="..\..\threads\process0\thrProcess0.c"
+Source="..\..\threads\process1\thrProcess1.c"
+Source="app.cdb"
+Source="appIO.c"
+Source="link.cmd"
+
+[Generated Files]
+Source="appcfg.cmd"
+Source="appcfg.s55"
+Source="appcfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -eoo55l -fr"$(Proj_dir)\Debug" -i"." -i"..\..\..\..\include\c5910" -i"..\..\projects\innovator1510" -i"..\..\threads\main" -i"..\..\threads" -i"..\..\cells" -i"..\..\..\..\include" -i"..\..\..\..\include\omap" -d"UTL_DBGLEVEL=70" -d"CSL_CHIP_5910PG1_0" -d"_MSGQ_COMPONENT" -ml -v5510:2
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\app.map" -o".\Debug\app.out" -w -x -i"..\..\..\..\lib" -i"..\..\..\..\lib\Release"
+
+["appcfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+

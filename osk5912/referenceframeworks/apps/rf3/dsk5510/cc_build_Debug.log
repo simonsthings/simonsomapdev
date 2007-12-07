@@ -1,0 +1,337 @@
+------------------------------  app.pjt - Debug  ------------------------------
+[app.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" app.cdb
+
+[fir.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "fir.c"
+
+[ifir.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "ifir.c"
+
+[ivol.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "ivol.c"
+
+[vol.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "vol.c"
+
+[appMain.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "appMain.c"
+
+[appResources.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "appResources.c"
+
+[appThreads.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "appThreads.c"
+
+[thrAudioproc.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "thrAudioproc.c"
+"thrAudioproc.c", line 151: warning: this assembly directive potentially unsafe inside a function
+"thrAudioproc.c", line 163: warning: this assembly directive potentially unsafe inside a function
+"thrAudioproc.c", line 204: warning: this assembly directive potentially unsafe inside a function
+"thrAudioproc.c", line 205: warning: this assembly directive potentially unsafe inside a function
+"thrAudioproc.c", line 248: warning: this assembly directive potentially unsafe inside a function
+
+[thrControl.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "thrControl.c"
+
+[thrRxSplit.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "thrRxSplit.c"
+"thrRxSplit.c", line 100: warning: this assembly directive potentially unsafe inside a function
+"thrRxSplit.c", line 119: warning: this assembly directive potentially unsafe inside a function
+
+[thrTxJoin.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"../dsk5510/Debug.lkf" "thrTxJoin.c"
+"thrTxJoin.c", line 100: warning: this assembly directive potentially unsafe inside a function
+"thrTxJoin.c", line 122: warning: this assembly directive potentially unsafe inside a function
+
+[appIO.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"Debug.lkf" "appIO.c"
+
+[dsk5510_devParams.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"Debug.lkf" "dsk5510_devParams.c"
+
+[appcfg.s55] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"Debug.lkf" "appcfg.s55"
+"appcfg.s55", REMARK   at line 661: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 661: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #1 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 678: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 678: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #2 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 695: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 695: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #3 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 712: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 712: [R0001] After symbol substitution the line
+                                            became:
+	                            @bios_l = #4 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 729: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 729: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #5 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 746: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 746: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #6 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 763: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 763: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #7 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 780: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 780: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #8 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 797: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 797: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #9 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 814: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 814: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #10 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 831: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 831: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #11 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 848: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 848: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #12 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 865: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 865: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #13 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 882: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 882: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #14 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 899: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 899: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #15 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 916: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 916: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #16 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 933: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 933: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #17 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 950: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 950: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #18 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 967: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 967: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #19 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 984: [R5110] Instructions encoded in an interrupt
+                                            vector slot may not be executed as
+                                            part of the interrupt routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 984: [R0001] After symbol substitution the line
+                                            became:
+	                   @bios_l = #20 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1001: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1001: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #21 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1018: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1018: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #22 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1035: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1035: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #23 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1052: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1052: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #24 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1069: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1069: [R0001] After symbol substitution the line
+                                             became:
+	                            @bios_l = #25 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1086: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1086: [R0001] After symbol substitution the line
+                                             became:
+	                            @bios_l = #26 || mmap();write the intr. number in
+
+"appcfg.s55", REMARK   at line 1103: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1103: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #27 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1120: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1120: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #28 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1137: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1137: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #29 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1154: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1154: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #30 || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1171: [R5110] Instructions encoded in an
+                                             interrupt vector slot may not be
+                                             executed as part of the interrupt
+                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"appcfg.s55", REMARK   at line 1171: [R0001] After symbol substitution the line
+                                             became:
+	                   @bios_l = #31 || mmap()   ; write the interrupt number in
+
+
+[appcfg_c.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -eoo55l -fr"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/apps/rf3/dsk5510/Debug" -i"." -i"../appModules" -i"../algFIR" -i"../algVOL" -i"../../../include" -d"UTL_DBGLEVEL=70" -d"CHIP_5510PG2_2" -ml -v5510:2.2 -@"Debug.lkf" "appcfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -@"Debug.lkf"
+<Linking>
+
+Build Complete,
+  0 Errors, 9 Warnings, 62 Remarks.

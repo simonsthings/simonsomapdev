@@ -1,0 +1,30 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="$(Install_dir)\boards\osk5912\examples\tone\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\..\..\tms470\cgtools\lib\rts32etiabi.lib"
+Source="..\..\lib\osk5912bsl.lib"
+Source="tone.c"
+Source="tone.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -fr".\Debug\" -i"..\..\include\" -d"_DEBUG" -me -mv4 --abi=tiabi
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr".\Release\" -i"..\..\include\" -me
+
+["Linker" Settings: "Debug"]
+Options=-q -c -o".\Debug\tone.out" -x
+
+["Linker" Settings: "Release"]
+Options=-q -c -o".\Release\tone.out" -x
+

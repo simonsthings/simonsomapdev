@@ -1,0 +1,1148 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>eXpressDSP Reference Frameworks v3.1 Release Notes</title>
+</head>
+
+<body>
+
+<h3 align="center"><b><font face="Arial" size="3">eXpressDSP Reference 
+Frameworks v3.1 Release Notes</font></b></h3>
+<h3><font face="Arial" size="2">relnotes_rf_v3_10_00_05_previewkit.html</font></h3>
+<p>&nbsp;</p>
+<p><b><font face="Arial" size="2">INSTALLATION</font></b></p>
+<ul>
+  <li><font face="Arial" size="2">Run the Install self extracting executable </font>
+  <li><font face="Arial" size="2">rf_v&lt;version&gt;.zip and 
+  rf_gpp_v&lt;version&gt;.tar.gz will be installed in your CCS IDE installation 
+  directory e.g. c:\ti.&nbsp;</font></li>
+</ul>
+<blockquote>
+  <ul>
+    <li><font face="Arial" size="2">rf_v&lt;version&gt;.zip: DSP-side source code for
+      RF Levels 1, 3, 5, 6 and associated framework modules</font></li>
+    <li><font face="Arial" size="2">rf_gpp_v&lt;version&gt;.tar.gz: GPP-side minimal
+      source code for RF Level 6 application and associated modules.</font></li>
+  </ul>
+</blockquote>
+<ul>
+  <li><font face="Arial" size="2">After installation, extract the
+    rf_v&lt;version&gt;.zip into any directory to obtain the source code.</font></li>
+</ul>
+<blockquote>
+  <p><font size="2" face="Arial">Refer to SPRA79x, (x = framework level number),
+  under Chapter 3 &quot;Installing and Running the RF x Software&quot; for
+  details on how to build and run the application.</font></p>
+</blockquote>
+<ul>
+  <li><font face="Arial" size="2">If using RF6, please refer to the chapter 4, 
+  Installing, Building, and Running the RF6 Base Application in spra796 for 
+  details on how to build and run the application. To extract the tar.gz, on the 
+  Linux workstation: -</font></li>
+</ul>
+<blockquote>
+  <ol>
+    <li><font face="Arial" size="2">Make a directory with name of your choice<br>
+      [&gt;] cd ~/montavista<br>
+      [&gt;] mkdir -p xyzdir</font></li>
+    <li><font face="Arial" size="2">Go into the directory<br>
+      [&gt;] cd xyzdir</font></li>
+    <li><font face="Arial" size="2">Untar the GPP-side code in a directory of
+      your choice:<br>
+      [&gt;] tar xvzf rf_gpp_v&lt;version&gt;.tar.gz</font></li>
+  </ol>
+</blockquote>
+<p><b><font face="Arial" size="2">CCS Update steps (for DSK 6713 and DSK 6416
+only)</font></b></p>
+<blockquote>
+  <font face="Arial" size="2">RF v3.1 content was built with CCS 2.20.18 to
+  leverage the latest emulation, DSP/BIOS etc. for the DSK6416 and DSK6713
+  boards. This may be newer than your DSK-only standalone software. Since DSK-only
+  customers are not presently able to leverage CCS serial updates (such as CCS
+  2.20.18) some additional steps may be required to build and run Target
+  Content. </font>
+  <ul>
+    <li><font face="Arial" size="2">Standalone DSK6416 and DSK6713 customers</font></li>
+  </ul>
+  <blockquote>
+    <ol>
+      <li><font face="Arial" size="2">Open an MS-DOS command prompt and run
+        dosrun.bat from the CCS for your DSK installation (e.g. c:\ti\) </font>
+      <li><font face="Arial" size="2">Run the top-level build configuration
+        script referenceframeworks\buildConfig.bat. This will create DSP/BIOS
+        configuration files (cdb's) compatible with your DSK release, for all RF
+        levels. Alternatively just run makeConfig.bat in the individual RF Level
+        board port of interest (e.g. c:\referenceframeworks\apps\rf3\dsk6416).&nbsp; </font>
+      <li><font face="Arial" size="2">Start CCS, open the RF project for your
+        board (e.g. c:\referenceframeworks\apps\rf3\dsk6416\app.pjt) </font>
+      <li><font face="Arial" size="2">Go to Project -&gt; Build Options. Add the
+        following include path: -i&quot;$(Install_dir)\c6000\xdais\include&quot;
+        (see SDSsq31521) </font>
+      <li><font face="Arial" size="2">Rebuild and run the application</font></li>
+    </ol>
+  </blockquote>
+  <ul>
+    <li><font face="Arial" size="2">DSK6416 and DSK6713 customers with full CCS
+      licenses</font></li>
+  </ul>
+  <blockquote>
+    <ol>
+      <li><font face="Arial" size="2">Install CCS version 2.20 </font>
+      <li><font face="Arial" size="2">Install DSK 6416 update for CCS 2.2 (CD
+        provided with DSK 6416 board) or DSK 6713 update depending on which
+        board you have. If you have both boards install the DSK6416 update
+        first. </font>
+      <li><font face="Arial" size="2">Install CCS version 2.20.18 (available via
+        Update Advisor). </font>
+      <li><font face="Arial" size="2">Rebuild and run the application</font></li>
+    </ol>
+    <p><font face="Arial" size="2">Note:&nbsp; The DSK CD patches will not
+    install on top of CCS version 2.20.18&nbsp;</font></p>
+  </blockquote>
+  <ul>
+    <li><font face="Arial" size="2">All others customers should install CCS
+      v2.20.18 or higher (available via Update Advisor) to build and run RF v2.2
+      applications.&nbsp;&nbsp;</font></li>
+  </ul>
+  <p><font face="Arial" size="2">Note : Customers with CCS 2.21 can directly
+  rebuild and run RF v2.2 applications since CCS 2.21 uses the same DSP/BIOS
+  version as CCS 2.20.18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+</blockquote>
+<ul>
+  <li><font face="Arial" size="2">Open CCS 2.20.18 (or higher) for a supported
+    target. Build and run the application code.</font></li>
+</ul>
+<p>&nbsp;</p>
+<p><b><font face="Arial" size="2">WHAT'S NEW (IN v3.1)</font></b></p>
+<h3><font face="Arial" size="2">KNOWN PROBLEMS (IN v3.1)</font></h3>
+<h3><font face="Arial" size="2">FIXED PROBLEMS (IN v3.1)</font></h3>
+<h3><font face="Arial" size="2">FIXED PROBLEMS (IN v3.01)</font></h3>
+<h3><font face="Arial" size="2">FIXED PROBLEMS (IN v3.0)</font></h3>
+<hr>
+<p><b><font face="Arial" size="2">WHAT'S NEW (IN v3.1)</font></b></p>
+<ul>
+  <li><font face="Arial" size="2">Added support for MSGQ, the new module for 
+  intra-thread and inter-processor Messaging.</font><li>
+  <font face="Arial" size="2">Supports both OMAP Starter Kit 5912 running at 
+  192Mhz, and Innovator 5910 at 168Mhz.</font><li><font face="Arial" size="2">
+  Validated on the GPP-side against Montavista Professional Edition v3.1, and on 
+  the DSP-side with Code Composer Studio 2.20.18 or greater.</font>
+<li><font face="Arial" size="2">
+  Validated on the GPP-side against the Montavista Preview Kit for the OMAP5912 OSK, and on 
+  the DSP-side with Code Composer Studio 2.20.18 or greater.</font><li><font face="Arial" size="2">
+  No other changes to any other Reference Framework. </font>
+</ul>
+<hr>
+<h3><font face="Arial" size="2">KNOWN PROBLEMS (IN v3.1)</font></h3>
+<table height="994" width="601" border="1">
+  <tbody>
+  </tbody>
+  <tbody>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36807</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">Innovator RF6 port 
+      needs MVL driver update for Pro 3.1</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+      <pre><font face="Arial">RF6 v3.1 was validated on the Innovator 5910 with Link v1.10.01 under 
+Montavista Linux Pro 3.1. Audio output was obtained as expected.
+
+However, several changes needed to be made to 1 of the modules ie :-
+- make the codec the I2S master, and the McBSP the I2S slave
+- correctly support more sampling frequencies via selection of the 
+correct clock (USB or !USB), and using e.g. MCLK or MCLK/2 for a given 
+frequency
+- in Pro 3.1 versus Pro 3.1 a constant name changed from 
+OMAP1510_DSP_BASE to OMAP_DSP_BASE.
+
+The change for codec master in particular is required to run RF6. The 
+updated module (omap1510-aic23.o) is not shipped with RF6. 
+
+Montavista will be supplying a patch to fix this issue in the near 
+future.
+
+Note however that full GPP &amp; DSP support for the Innovator5910 is 
+supplied with RF6. The differences versus the OSK port are minor i.e.
+
+DSP side - different IOM codec DMA MCBSP driver (although the same 
+MCBSP 1 hookup to the codec is used on both boards)
+
+DSP side - Innovator5910 was validated at 168Mhz, whilst the OSK was 
+validated at 192Mhz.
+
+GPP-side - no difference in the GPP-side code. Simply need to build 
+the appropriate modules into your OSK-targeted or Innovator-targeted 
+kernel.
+
+When a patch is available from Montavista RF6 v3.1 can be used with 
+Link v1.10.01 on Pro 3.1 by simply rebuilding for an Innovator-
+targeted kernel. No RF6, Link changes should be necessary.
+</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36785</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">How to use an 
+      updated CSL 3.x lib with RF6</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+      <pre><font face="Arial">RF6 v3.10.00.05 (v3.1) was tested against an April deliverable of CSL 
+DSP-side OMAP5912 version. CSL modules DMA, MCBSP, INTC are used in 
+the 2 drivers that comprise the IOM AIC23 DMA MCBSP codec driver used 
+in RF6 on the OSK5912.
+
+A new version of CSL 3.x with e.g. ICACHE DSP support will be 
+available shortly. 
+
+How do users reconfigure RF6 to take advantage of the latest CSL?
+
+(option i) Copy new CSL headers into CSL build path used in RF6 ie
+referenceframeworks/include/c5912/*
+Copy new CSL library into library path used in RF6 ie 
+referenceframeworks/lib
+
+(option ii) Add a new path to both the Compiler Build &amp; Linker. 
+e.g. -i&quot;c:\myNewCsl3x\inc&quot; for Build
+and
+-i&quot;c:\myNewCsl3x\lib&quot; for Link
+
+Be sure to make sure these paths precede the paths used in RF6 to find 
+the existing CSL headers &amp; libraries.</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36175</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">DSP-side AIC23 
+      MCBSP IOM codec driver uses reg-level CSL 3.x calls</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <pre><font face="Arial">RF v3.01's IOM codec driver uses CSL 3.x register level calls for 2 
+things :-</font></pre>
+      <pre><font face="Arial">(i) set the ENDPROG bit via a CSL_FINS call in configDma() to indicate 
+end of programming of next packet address, size.
+(ii) to ping the CSR thus clearing interrupts and making way for 
+additional interrupts. In fact no reg level calls are made here but we 
+need to talk to low level structure members...which are effectively at 
+register level.</font></pre>
+      <pre><font face="Arial">This needs to be fixed in a future release since the RF6 IOM codec 
+driver should only be relying on Functional Layer API calls to shield 
+from lower-level details (which may possibly change)
+
+</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq33302</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">RF 6 provides an
+        additional header to be use with CSL V3.x</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <pre><font face="Arial">An additional header file (stdplus.h) has been provided in the 
+Reference Frameworks release under the public 
+referenceframeworks\include folder.</font></pre>
+      <pre><font face="Arial">This is to temporarily work around the lack of sized types in DSP/BIOS. 
+For example, it is the future intention of DSP/BIOS to use e.g. Uint16 
+instead of MdUns, thus making data size explicit. Additionally we 
+desire that all components (DSP/BIOS, CSL etc) use the same basic 
+types, rather than introduce new ones. </font></pre>
+      <pre><font face="Arial">CSL v3.x therefore includes a file tistdtypes.h which gathers all the 
+primitive &quot;C&quot; data types into one consolidated file. This file is 
+included by csl.h. This file does *not* specify the types
+for aggregate data such as &quot;C&quot; structures or vectored quantities.
+All the types defined in this header are bracketed with _TI_STD_TYPES
+symbol definition scope as a means of protection against multiple 
+definitions. For example :-</font></pre>
+      <pre><font face="Arial">#ifndef _TI_STD_TYPES
+#define _TI_STD_TYPES</font></pre>
+      <pre><font face="Arial">...typedef definitions...</font></pre>
+      <pre><font face="Arial">#endif /* _TI_STD_TYPES */</font></pre>
+      <pre><font face="Arial">However, the version of DSP/BIOS in CCS 2.20.18 does not yet have this 
+data type schema in place. </font></pre>
+      <pre><font face="Arial">Hence an additional file stdplus.h was added to ensure that components 
+(e.g. IOM drivers) could seamlessly use std.h and csl.h, and 
+correspondingly both 'original' DSP/BIOS types and 'new' sized types. </font></pre>
+      <pre><font face="Arial">stdplus.h prevents build warnings. The stdplus.h file needs to be 
+included before std.h and csl.h if using CSL v3.x</font></pre>
+      <pre><font face="Arial">Note that when a new DSP/BIOS std.h with sized types support is 
+released, existing driver code which #include's stdplus.h will still 
+build/run fine. This is ensured because there is agreement on the usage 
+of the multiple inclusion pre-qualifier _TI_STD_TYPES. stdplus.h will 
+simply become redundant at that time.</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq33300</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">RF6 must add
+        source file to change IOM driver's default structures</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">The Reference Framework 6 application
+        uses the default device parameter structure set in the IOM device
+        driver. The device driver default values are DMA channel 4 and 5 and
+        McBsp 1 which is connected to the AIC23 audio codec, on the
+        Innovator5910 platform..<br>
+        <br>
+        There are two ways to change DMA channels:<br>
+        <br>
+        1) Static way:<br>
+        ----------- </font>
+        <p><font face="Arial" size="2">Example: Default parameters and different
+        DMA channels.<br>
+        <br>
+        INNOV5910_DMA_AIC23_DevParams myParams = {<br>
+        &nbsp;&nbsp;&nbsp; INNOV5910_DMA_AIC23_VERSION_2<br>
+        &nbsp;&nbsp;&nbsp;
+        2,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // DMA receive channel<br>
+        &nbsp;&nbsp;&nbsp;
+        3,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        // DMA transmit channel<br>
+        &nbsp;&nbsp;&nbsp; INNOV5910_DMA_AIC23_PORTTYPE_DEFAULT,<br>
+        &nbsp;&nbsp;&nbsp; {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        INNOV5910_DMA_AIC23_IER_MASK_DEFAULT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        INNOV5910_DMA_AIC23_IER_MASK_DEFAULT<br>
+        &nbsp;&nbsp;&nbsp; },<br>
+        &nbsp;&nbsp;&nbsp; {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        INNOV5910_DMA_AIC23_IER_MASK_DEFAULT,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        INNOV5910_DMA_AIC23_IER_MASK_DEFAULT<br>
+        &nbsp;&nbsp;&nbsp; }<br>
+        };<br>
+        <br>
+        Pass &quot;_myParams&quot; to the User-Defined Device parameter.<br>
+        <br>
+        2) Dynamic way:<br>
+        ------------<br>
+        You need to define a function which will just change some particular
+        fields. This function will be implemented in another file called
+        initParams.c which will be added into your application.<br>
+        <br>
+        Example: Default parameters and different DMA channels.<br>
+        <br>
+        INNOV5910_DMA_AIC23_DevParams myParams =<br>
+        &nbsp;&nbsp;&nbsp; INNOV5910_DMA_AIC23_DEVPARAMS_DEFAULT;<br>
+        <br>
+        void initDevParams()<br>
+        {<br>
+        &nbsp;&nbsp;&nbsp; myParams.rxDmaId = 2;<br>
+        &nbsp;&nbsp;&nbsp; myParams.txDmaId = 3;<br>
+        }<br>
+        <br>
+        Within DSP/BIOS Configuration Tools:<br>
+        - Pass &quot;_myParams&quot; to the User-Defined Device parameter.<br>
+        - Pass &quot;_initDevParams&quot; to the User Init Function from the
+        Global<br>
+        Settings.<br>
+        <br>
+        This example shows how to use DMA channel 2 and 3. DMA channel 2 and 3
+        will be plugged into the correct interrupt. </font>
+        <p>&nbsp;</td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq32251</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">Incorrect
+        assertion for SIO_issue in RF5</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 5</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">In RxSplit.c and TxJoin.c, the startup
+        functions use UTL_assert to check the return code rc of SIO_issue: rc =
+        SIO_issue(...); UTL_assert( rc &gt;= 0);</font></p>
+        <p><font face="Arial" size="2">This assertion is incorrect because
+        SIO_issue returns SYS_OK if successful and some constant corresponding
+        to a positive integer for failures. Hence UTL_assert will never assert,
+        even on failed SIO_issue calls.</font></p>
+        <p><font face="Arial" size="2">The above call should be replaced with:
+        UTL_assert (rc == SYS_OK);</font></p>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq31521</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">XDAIS include/,
+        lib/ paths not in registry on DSK6416, 6713 releases</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Developer's Kit</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">C6000</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">XDAIS include\, lib\ paths are not in the
+        registry hence user needs to add&nbsp; </font>
+        <p><font face="Arial" size="2">-i&quot;$(Install_dir)\c6000\xdais\include&quot;&nbsp; </font>
+        <p><font face="Arial" size="2">to their build path in order to 'see'
+        ialg.h.&nbsp; </font>
+        <p><font face="Arial" size="2">This was fixed as SDSsq22782 &quot;need
+        XDAIS include path handled in registry for CCS&quot; in CCS 2.2 however
+        it has reappeared in the DSK releases (DSK6416 == CCS 2.20.04 and
+        DSK6713 == CCS 2.20.05) </font>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq31500</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">C6000 modules and
+        application are shipped/compiled with -o2 option</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">All Ref Frameworks</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">C6000</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">All C6000 modules and applications are
+        shipped with optimization turn on (-o2). The provided project (*.pjt)
+        don't use the -o2 flag. All modules and applications can be re-built
+        using the provided project to remove optimization.</font></p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq31498</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">IOM driver header
+        file needs C++ protection</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Device Drivers</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">Version 1.1 of the Drivers Developers Kit
+        (DDK) interface (header) files are missing C++ protection. This might
+        result in incompatibility when building in C++.</font></p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq31481</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">TIMER_open
+        functions cannot be overlay-ed due to case change</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">CSL</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">C5500</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">The 55x CSL TIMER_open function has
+        changed the case of the CODE_SECTION pragma assignment from TIMER_open
+        to Timer_open (lower-case 'Timer').&nbsp;<br>
+        <br>
+        This change generates a warning when compiling applications that
+        specifically reference this section in their linker command file.<br>
+        <br>
+        RF1 overlays the TIMER_open function and hence explicitly specifies it
+        by section name in rf1\&lt;boardname&gt;\link.cmd. For the 55x RF1 port
+        this has been removed from the overlay list in the RF v2.2 link.cmd as a
+        workaround.</font></p>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq31479</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">DSK 6713 IOM
+        driver missing include files</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Device Drivers</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">C6000</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587" valign="top"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">The dsk6713_edma_aic23.h file is missing
+        an include of csl_edma.h.</font></p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="13" width="89"><font face="Arial" size="2">SDSsq29946</font></td>
+      <td height="13" width="340"><font face="Arial" size="2">Reference
+        Frameworks failed to build with C++ compiler</font></td>
+      <td height="13" width="101"><font face="Arial" size="2">All Ref Frameworks</font></td>
+      <td height="13" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="165" width="587"><font face="Arial" size="2"><H7>
+        <b>Release Note</b></H7>
+        </font>
+        <p><font face="Arial" size="2">When the C++ compiler is enabled, the RFs
+        build with an error for the&nbsp;<br>
+        file *cfg_c.c file, saying &quot;error: badly formed pragma&quot;. This
+        is&nbsp;<br>
+        because the syntax of the CODE_SECTION pragma used in the file for&nbsp;<br>
+        CSL_cfgInit is incompatible with C++. C++ supports a different
+        syntax&nbsp;<br>
+        where the pragma has to be directly located before the function it&nbsp;<br>
+        addresses. The workaround here is to right click on *cfg_c.c in
+        the&nbsp;<br>
+        Generated Files of the project view, select Files Specific Options
+        and&nbsp;<br>
+        uncheck &quot;Treat C files as C++ files&quot; under Parser of the
+        Compiler Tab.</font></p>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="31" width="89"><font face="Arial" size="2">SDSsq29900</font></td>
+      <td height="31" width="340"><font face="Arial" size="2">TCONF Rhino
+        Debugger crashes when calling config.hasReportedError</font></td>
+      <td height="31" width="101"><font face="Arial" size="2">Tconf</font></td>
+      <td height="31" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="235" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">Calling config.hasReportedError in a
+        Tconf Script causes the&nbsp;<br>
+        Rhino Debugger to crash -- e.g. when stepping over the line<br>
+        <br>
+        if (config.hasReportedError == false)<br>
+        <br>
+        The error occurs only within the debugger.&nbsp;<br>
+        <br>
+        However, the config.hasReportedError call still performs the
+        correct&nbsp;<br>
+        function when running Tconf outside of the Rhino debugger shell
+        without&nbsp;<br>
+        the -g flag.&nbsp;<br>
+        <br>
+        So for someone who really wishes to step over this code, simply comment
+        out the above if statement as a workaround. One can then step over the
+        line&nbsp;<br>
+        <br>
+        prog.gen();<br>
+        <br>
+        to generate the cdb file. </font>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="13" width="89"><font face="Arial" size="2">SDSsq27650</font></td>
+      <td height="13" width="340"><font face="Arial" size="2">Referenceframework
+        is not refering &lt;MOD&gt;_&lt;VEND&gt;_init().</font></td>
+      <td height="13" width="101"><font face="Arial" size="2">All Ref Frameworks</font></td>
+      <td height="13" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="20" width="587"><b><font face="Arial" size="2">Release
+        Note</font></b><font face="Arial" size="2"></H7>
+        </font>
+        <p><font face="Arial" size="2"><H7>
+        ReferenceFramework is not calling &lt;MOD&gt;_&lt;VEND&gt;_init()
+        and&nbsp;<br>
+        &lt;MOD&gt;_&lt;VEND&gt;_exit() before instantiating algorithm. The
+        users have to make these calls themselves if so desired.<br>
+        </H7>
+        </font></p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="7" width="89"><font face="Arial" size="2">SDSsq26186</font></td>
+      <td height="7" width="340"><font face="Arial" size="2">RF3 GEL sliders
+        behave differently across board ports</font></td>
+      <td height="7" width="101"><font face="Arial" size="2">Ref Framework 3</font></td>
+      <td height="7" width="43"><font face="Arial" size="2">All</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="20" width="587"><font face="Arial" size="2"><H7>
+        <b>Release Note</b></H7>
+        </font>
+        <p><font face="Arial" size="2">On the Dsk5416 and Teb6416, when the
+        set_active_channel slider is changed from 0 to 1 and vice versa,
+        sometimes the Left/Right output does not toggle. Similar inconsistency
+        problems occur with the gain sliders. Volume increases or decreases, but
+        the audio toggles from one channel to the other.<br>
+        <br>
+        This is an unsolved problem so far on anything using the PCM3002
+        codec.&nbsp;<br>
+        It may not be considered too serious, as it only happens in debug&nbsp;<br>
+        (halt) mode. When the user halts the target, for example by hitting
+        a&nbsp;<br>
+        breakpoint or just halting it manually, if he halts it when the
+        second&nbsp;<br>
+        sample of the two-sample frame (left + right) was being<br>
+        transmitted, that one will complete and everything will be fine. But if<br>
+        the user halts it when the first one was transmitted, the left
+        sample&nbsp;<br>
+        will complete and silence will be sent to the right. But when the
+        user&nbsp;<br>
+        resumes, the remainder of the frame, i.e. the second sample, is
+        now&nbsp;<br>
+        sent to the left channel and from that point on the channels are&nbsp;<br>
+        reversed. Only if the user halts it again at the first word and
+        resume,&nbsp;<br>
+        things will flip back to normal.<br>
+        <br>
+        When changing anything using GEL files, the target is really
+        halted,&nbsp;<br>
+        the memory changed, and the target is resumed. So there is a 50%
+        chance&nbsp;<br>
+        of channels flipping every time the GEL file is used.<br>
+        <br>
+        This problem only applies to the PCM3002 codec.<br>
+        <br>
+        </font></p>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq25479</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">GEL sliders on RF3
+        DSK6711 cause excessive breakpts and halt codec</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 3</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">C6000</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="20" width="587"><font face="Arial" size="2"><H7>
+        <b>Release Note</b></H7>
+        </font>
+        <p><font face="Arial" size="2">GEL sliders on RF3 DSK6711 cause
+        excessive breakpts and halt codec. RF3&nbsp;<br>
+        has a few sliders to do exercise minimal application control.
+        However,&nbsp;<br>
+        CCS stops the target on each increment of a slider - i.e. it does
+        not&nbsp;<br>
+        just halt the target at the end-point - it halts it at every change
+        on&nbsp;<br>
+        the way. Hence the number of breakpoints can be large. The DSK6711
+        codec&nbsp;<br>
+        (AD535) has a known issue that when excessive breakpoints occur
+        the&nbsp;<br>
+        codec LSB can be set erroneously, causing codec to interpret it as
+        a&nbsp;<br>
+        command control word and sending it into the weeds!<br>
+        <br>
+        One workaround for the user is to decrease the granularity of
+        slider&nbsp;<br>
+        movements. The current increment is 10, with range of 0 to 200.
+        The&nbsp;<br>
+        app.gel source is available in RF's to do this.</font></p>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><font face="Arial" size="2">Below are the fixed problems.&nbsp; To get more 
+details please refer to the TI Tools/Software Bug List :-</font><p>
+<font face="Arial" size="2">
+<a href="http://focus.ti.com/general/docs/buglist/bugsearch.tsp?templateId=5121&navigationId=11278">
+http://focus.ti.com/general/docs/buglist/bugsearch.tsp?templateId=5121&amp;navigationId=11278</a></font><p>&nbsp;<div>
+  <hr>
+</div>
+<p>&nbsp;</p>
+<table height="63" width="95%" border="1">
+  <caption>
+    <h3 align="left"><font face="Arial" size="2">FIXED PROBLEMS (IN v3.1)</font></h3>
+  </caption>
+  <tbody>
+  </tbody>
+  <tbody>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36172</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">need RF6 
+      executables for both Innovator5910 &amp; OSK5912</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <pre><font face="Arial">The 5912OSK and the Innovator5910 use 2 different toolchains so it 
+would appear that we'd need 2 different executables for the RF6 GPP 
+side rf6_gpp executable. </font></pre>
+      <pre><font face="Arial">In fact it is not necessary. An rf6_gpp built with MVL Pro 3.0 on the 
+Innovator5910 works fine on the OSK5912 with MVL CEE 3.0 and vice-
+versa. Hence, only 1 executable is supplied with RF6 on the GPP-side --
+ it has been built with the MVL CEE 3.0 toolchain.</font></pre>
+      <pre><font face="Arial">Note however that all combinations of MVL Pro/CEE OS variants on all 
+combinations of Innovator5910 &amp; OSK5912 have not been fully validated -
+- the recommendation is to rebuild the application for your particular 
+toolchain.</font></pre>
+      <pre><font face="Arial">Note however that kernel modules do need to match up with the correct 
+toolchain so the appropriate dsplinkk.o needs to be used for your 
+toolchain.
+</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36173</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">no OSK5912 GEL 
+      files supplied with RF6 v3.01</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">In order to debug the DSP-side on the 
+        OSK5912 an appropriate GEL file <br>
+        is required. Board GEL files are not supplied with RF6. The standard <br>
+        GEL file will be available with the full OSK5912 production release.<br>
+        <br>
+        GEL files for the OSK5912 for e.g. BSL usage, DSP-side debugging, 
+        Arm+DSP in scan chain will be made available with the full OSK5912 
+        release via Spectrum Digital &amp; TI.<br>
+        <br>
+        Presently you can take the c5000_helen2.gel file and make the <br>
+        following changes :-<br>
+        <br>
+        StartUp() :<br>
+        <br>
+        - comment out GEL_Reset() and Trstn_Reset(), since we want the DSP-<br>
+        state preserved when we bring up CCS to Load Symbols...instead of <br>
+        resetting its state.<br>
+        <br>
+        - call watchdog_disable() in StartUp() so that we can effectively debug<br>
+        <br>
+        - call the EnablePeripherals() function in StartUp() to ensure <br>
+        DSP_IDLECT2, and DSP_RSTCT2 register bits are set up correctly.<br>
+        <br>
+        Further technical details regarding eg the additional bits in <br>
+        DSP_IDLECT2, DSP_RSTCT2 can be found in SDSsq36169 &quot;I2C AIC23 GPP-side
+        <br>
+        driver changes for OSK5912&quot;<br>
+        <br>
+        </font>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36170</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">different 
+      procedure for loading I2C, sound modules for RF6 on OSK</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">RF6 v3.0 on the Innovator1510 included a 
+        bash script instSound.bash<br>
+        which loaded various kernel modules for I2C, AIC23, soundcore <br>
+        configuration.<br>
+        <br>
+        With RF v3.01 on the Alpha OSK5912, the procedure is slightly <br>
+        different using the MVL CEE 3.0 toolchain.<br>
+        <br>
+        The following needs to be done when logged on to the OSK itself, via a
+        <br>
+        terminal :-<br>
+        <br>
+        [&gt;] cd /lib/modules/2.4.20_mvlcee30-<br>
+        omap161x_gsm_gprs/kernel/drivers/sound/<br>
+        [&gt;] insmod soundcore.o<br>
+        [&gt;] insmod omap-audio.o<br>
+        [&gt;] insmod omap1610-aic23.o<br>
+        [&gt;] cd /dev<br>
+        [&gt;] MAKEDEV audio<br>
+        <br>
+        Note that this procedure is not necessary in the production MVL Pro <br>
+        3.1 release. Usage of sound modules, I2C, AIC23 is easier since these
+        <br>
+        options can simply be built into the MVL Kernel configuration instead.<br>
+        <br>
+&nbsp;</font></td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36168</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">issues putting 
+      .bios in external memory with Link &amp; RF6 on 5912</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <pre><font face="Arial">RF v3.01 DSP-side is shipped by default with :-
+.text:init
+.text:create
+.text:delete
+.text:exit
+.rtdx_text
+in EXTMEM (external memory...SDRAM). ie non-critical code 
+in external memory. All runtime .text is still in fast onchip
+SARAM</font></pre>
+      <pre><font face="Arial">.bios 
+in SARAM (internal memory...single-access RAM)</font></pre>
+      <pre><font face="Arial">It has been observed that with .bios in EXTMEM, the DSPLink loopgpp
+example fails on 5912. This issue is still being investigated.</font></pre>
+      <pre><font face="Arial">However, users can safely put .text in EXTMEM thus opening up 
+a large memory map for users.</font></pre>
+      <pre><font face="Arial">Users should keep .bios in internal memory until this issue has been 
+resolved.
+</font></pre>
+      <p><b><font face="Arial" size="2">Fix Description</font></b></p>
+      <pre><font face="Arial">Root cause was as noted in DDTS 36205.
+
+Erroneous setting of GBL.CLKOUT on DSP-side of 12Mhz (instead of 
+192Mhz) was causing CLK timer interrupts to go off at a very high 
+rate. When .bios was moved to external memory, there was not enough 
+MIPS to run the DSP.
+
+Simple fix was to ensure GBL.CLKOUT = 192.0 in the Tconf script.
+</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36155</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">changes made in 
+      Link v1.02 for RF6 v3.01 on OSK5912</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <pre><font face="Arial">RF v3.01 has support for the OMAP Starter Kit (OSK) 5912 board and has 
+been validated against Montavista Linux Consumer Edition (CEE) 3.0 
+using the 2.4.20 cross-compile toolchain. The following are the 
+changes that were made to Link v1.02 to do this :-</font></pre>
+      <pre><font face="Arial">DSP-side : 
+- none</font></pre>
+      <pre><font face="Arial">GPP-side :
+1. build :
+- osdefs.mk :
+changed to use MVL CEE and v4t_le target instead of 920t_le
+BASE_GPPOS      := /usr/mvlcee/kernel/linux</font></pre>
+      <pre><font face="Arial">BASE_OSLIB      := /opt/mvlcee/devkit/arm/v4t_le</font></pre>
+      <pre><font face="Arial">- gppenv (or gppenv.bash if using BASH shell)
+point PROJROOT to updated DSPLink v1.02 for OSK Linux toolchain 
+setenv PROJROOT    /db/ztree/library/trees/swatgpp-
+a13/dsplink_v1_02_mvlcee30/gpp
+ </font></pre>
+      <pre><font face="Arial">- compile.mk
+point the compiler to new v4t_le toolchain
+COMPILER    := $(DIRSEP)opt$(DIRSEP)mvlcee$(DIRSEP)devkit$(DIRSEP)
+arm$(DIRSEP)v4t_le$(DIRSEP)bin$(DIRSEP)arm_v4t_le-gcc</font></pre>
+      <pre><font face="Arial">- link.mk
+point ARCHIVER to new v4t_le toolchain
+ARCHIVER    := $(DIRSEP)opt$(DIRSEP)mvlcee$(DIRSEP)devkit$(DIRSEP)
+arm$(DIRSEP)v4t_le$(DIRSEP)bin$(DIRSEP)arm_v4t_le-ar</font></pre>
+      <pre><font face="Arial">point LINKER to new v4t_le toolchain to build a driver module
+LINKER      := $(DIRSEP)opt$(DIRSEP)mvlcee$(DIRSEP)devkit$(DIRSEP)
+arm$(DIRSEP)v4t_le$(DIRSEP)bin$(DIRSEP)arm_v4t_le-ld</font></pre>
+      <pre><font face="Arial">point LINKER to new v4t_le toolchain to build an executable
+LINKER      := $(DIRSEP)opt$(DIRSEP)mvlcee$(DIRSEP)devkit$(DIRSEP)
+arm$(DIRSEP)v4t_le$(DIRSEP)bin$(DIRSEP)arm_v4t_le-gcc</font></pre>
+      <pre><font face="Arial">- gpp\src\osal\Linux\prcs.c :
+set priorityOfProcess to 0 instead of current-&gt;nice to avoid build 
+errors, since this
+structure member does not exist in MVL CEE 3.0</font></pre>
+      <pre><font face="Arial">            (*prcsObj)-&gt;priorityOfProcess = 0; // current-&gt;nice</font></pre>
+      <pre><font face="Arial">Note that this is not best practice! The 'nice' command is used to 
+alter an initial job priority: the lower the nice command the higher 
+the priority. The range on a Linux system is -20 (being the highest) 
+to 19 (the lowest). Hard-coding the priority of the process to 0 lends 
+to possible problems if there is increased activity on the Arm-side 
+(e.g. running top or vmstat with 1 second updates). This issue is 
+fixed in later versions of Link.
+</font></pre>
+      <pre><b><font face="Arial" size="2">Fix Description</font></b></pre>
+      <pre><font face="Arial">Move to MVL Pro 3.1 &amp; Link 1.10.01 (built for OSK5912 on MVL Pro 3.1) 
+fixes these issues.
+
+Link documents how to set paths etc to your MVL Install.
+
+</font></pre>
+      </td>
+    </tr>
+    <tr>
+      <th height="16" width="89"><font face="Arial" size="2">Identifier</font></th>
+      <th height="16" width="340"><font face="Arial" size="2">Headline</font></th>
+      <th height="16" width="101"><font face="Arial" size="2">Component</font></th>
+      <th height="16" width="43"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq33450</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">RF6 does not ship
+        release flavor of DSP-side Link library</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td align="left" colSpan="4" height="147" width="587"><font size="2"><b><font face="Arial">Release
+        Note</font></b><font face="Arial"></H7>
+        </font></font>
+        <p><font face="Arial" size="2">The DSP/BIOS Link DSP-side library is not
+        shipped with Reference Framework v3.00. The release version of the
+        library causes the RF6 application to generate the following error
+        message on the GPP-side:&nbsp;<br>
+        &nbsp;&nbsp;&nbsp; usb-ohci.c: OHCI Unrecoverable Error, controller
+        usb-omap1510 disabled </font>
+        <p><font face="Arial" size="2">The problem is not apparent when the
+        DSP/BIOS Link DSP-side release library is complied with -o0 or -o1
+        option. Problem occurs when library is complied with -o2 and -o3. </font>
+        <p>&nbsp;<p><b><font face="Arial" size="2">Fix Description</font></b><p>
+      <font face="Arial" size="2">Problem no longer exists with Link 1.10.01 
+      (OSK5912 support) on MVL <br>
+      Pro 3.1. RF6 ships with Release flavor of DSP Link on DSP-side for <br>
+      better performance, footprint.<br>
+&nbsp;</font><p>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;<hr>
+<table height="63" width="95%" border="1">
+  <caption>
+    <h3 align="left"><font face="Arial" size="2">FIXED PROBLEMS (IN v3.01)</font></h3>
+  </caption>
+  <tbody>
+  </tbody>
+  <tbody>
+    <tr align="left">
+      <th width="98" height="1"><font face="Arial" size="2">Identifier</font></th>
+      <th width="553" height="1"><font face="Arial" size="2">Headline</font></th>
+      <th width="125" height="1"><font face="Arial" size="2">Component</font></th>
+      <th width="54" height="1"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36176</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">data structures 
+      should be 'const' in driver</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq36174</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">RF6 stdplus.h file 
+      has data types (e.g. Uint16) wrong</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="19"><font face="Arial" size="2">SDSsq36169</font></td>
+      <td height="19"><font face="Arial" size="2">I2C AIC23 GPP-side 
+      driver changes for OSK5912</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="19"><font face="Arial" size="2">SDSsq36171</font></td>
+      <td height="19"><font face="Arial" size="2">DSP-side AIC23 MCBSP IOM codec 
+      driver needs to use DMA autoinit</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><font face="Arial" size="2">&nbsp; </font>
+<hr>
+<table height="63" width="95%" border="1">
+  <caption>
+    <h3 align="left"><font face="Arial" size="2">FIXED PROBLEMS (IN v3.0)</font></h3>
+  </caption>
+  <tbody>
+  </tbody>
+  <tbody>
+    <tr align="left">
+      <th width="98" height="1"><font face="Arial" size="2">Identifier</font></th>
+      <th width="553" height="1"><font face="Arial" size="2">Headline</font></th>
+      <th width="125" height="1"><font face="Arial" size="2">Component</font></th>
+      <th width="54" height="1"><font face="Arial" size="2">Target</font></th>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq33456</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">RF6 V3.00.00 Alpha
+        2 Fixes</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="16" width="89"><font face="Arial" size="2">SDSsq33458</font></td>
+      <td height="16" width="340"><font face="Arial" size="2">Miscellaneous
+        non-critical issues in rf6 innovator5910 port</font></td>
+      <td height="16" width="101"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="16" width="43"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="19"><font face="Arial" size="2">SDSsq33410</font></td>
+      <td height="19"><font face="Arial" size="2">Control Messages need to use 
+      16-bit members</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="19"><font face="Arial" size="2">SDSsq33408</font></td>
+      <td height="19"><font face="Arial" size="2">RF6 Innovator IOM drivers need 
+      updating to CSL v3.x</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+    <tr>
+      <td height="19"><font face="Arial" size="2">SDSsq33406</font></td>
+      <td height="19"><font face="Arial" size="2">DSP memory size has incorrect 
+      value in the Innovator Tconf file</font></td>
+      <td height="19"><font face="Arial" size="2">Ref Framework 6</font></td>
+      <td height="19"><font face="Arial" size="2">OMAP</font></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+
+</html>

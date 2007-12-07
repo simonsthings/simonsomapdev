@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="rf1"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf1\dsk5510\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+
+[Source Files]
+Source="..\firapp\filterCoeffs.c"
+Source="..\firapp\fir_setParams.c"
+Source="..\firapp\firapp.c"
+Source="..\firapp\ifir.c"
+Source="..\genbufs\fir_staticBufs55.c"
+Source="appIO.c"
+Source="appMain.c"
+Source="rf1.cdb"
+Source="link.cmd"
+
+[Generated Files]
+Source="rf1cfg.cmd"
+Source="rf1cfg.s55"
+Source="rf1cfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -eoo55l -fr"$(Proj_dir)\Debug" -i"." -i"..\firapp" -i"..\..\..\include" -d"CHIP_5510PG2_2" -d"UTL_DBGLEVEL=60" -ml -v5510:2.2
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\rf1.map" -o".\Debug\rf1.out" -w -x -i"..\..\..\lib"
+
+["rf1cfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+

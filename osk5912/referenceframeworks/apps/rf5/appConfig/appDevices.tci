@@ -1,0 +1,24 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appDevices.tci ========
+ *
+ *  Creation of the devices used in data communication
+ */
+
+/* 
+ *  Add instance of DIO object to use the configured codec. This is the device
+ *  SIO streams read from/write to.
+ */
+var dioCodec = tibios.DIO.create("dioCodec");
+dioCodec.comment = "DIO Adapter for IOM Codec driver" ;
+dioCodec.deviceName = prog.get("udevCodec");
+dioCodec.useCallBackFxn = false;
+dioCodec.chanParams = null;
+

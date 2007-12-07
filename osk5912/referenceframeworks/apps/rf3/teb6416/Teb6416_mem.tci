@@ -1,0 +1,87 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Teb6416_mem.tci ========
+ *
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  (SDRAM is external program memory, ISRAM is internal memory)
+ *  In internal and external data memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ *  (as not all platforms have ISRAM, SDRAM segments).
+ */
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+
+tibios.GBL.C641XCONFIGUREL2 = true;  /* Enable L2 configuration */
+tibios.GBL.C641XCCFGL2MODE = "4-way cache (0k)";
+
+/* define comments of the data memory segments (Temporary fix for SDSsq28652) */
+tibios.SDRAM.comment ="This object defines space for the DSP's off-chip memory";
+
+/*
+ *  Memory heaps, and heap sizes
+ *  ISRAM is internal program & data memory
+ *  SDRAM is external program & data memory,
+ *
+ *  In internal and external memory, we create heaps with names
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ */
+
+/* allocate heap named "INTERNALHEAP" of size 0x02000 in internal memory */
+tibios.ISRAM.createHeap      = true;
+tibios.ISRAM.heapSize        = 0x02000;  /* 8K   */
+tibios.ISRAM.enableHeapLabel = true;
+tibios.ISRAM.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* allocate heap named "EXTERNALHEAP" of size 0x08000 in external memory */
+tibios.SDRAM.createHeap      = true;
+tibios.SDRAM.heapSize        = 0x08000;  /* 32K  */
+tibios.SDRAM.enableHeapLabel = true;
+tibios.SDRAM.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ */
+tibios.MEM.STACKSIZE = 0x0800;
+
+
+/* 
+ *  Overriding default section placement
+ *  Assign listed sections to specified memory segments.
+ */
+
+/* General */
+tibios.MEM.BIOSOBJSEG  = tibios.ISRAM;    /* Segment for DSP/BIOS Objects */
+tibios.MEM.MALLOCSEG   = tibios.ISRAM;    /* Segment for malloc()/free() */
+
+/* BIOS data */
+
+/* BIOS code */
+
+/* Compiler Sections */
+/*
+ *  .bss and .far segments should be in internal memory to avoid cache
+ *  consistency problems with EDMA-ed data (it is by default,
+ *  so this is more of a reminder)
+ */
+tibios.MEM.BSSSEG = tibios.ISRAM;        /* C variables section (.bss) */
+tibios.MEM.FARSEG = tibios.ISRAM;        /* C Variables Section (.far) */
+
+

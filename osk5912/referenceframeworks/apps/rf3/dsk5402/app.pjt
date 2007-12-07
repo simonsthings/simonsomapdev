@@ -1,0 +1,47 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectName="App"
+ProjectDir="C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\apps\rf3\dsk5402\"
+ProjectType=Executable
+CPUFamily=TMS320C54XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+
+[Source Files]
+Source="..\algFIR\fir.c"
+Source="..\algFIR\ifir.c"
+Source="..\algVOL\ivol.c"
+Source="..\algVOL\vol.c"
+Source="..\appModules\appMain.c"
+Source="..\appModules\appResources.c"
+Source="..\appModules\appThreads.c"
+Source="..\appModules\thrAudioproc.c"
+Source="..\appModules\thrControl.c"
+Source="..\appModules\thrRxSplit.c"
+Source="..\appModules\thrTxJoin.c"
+Source="app.cdb"
+Source="appIO.c"
+Source="dsk5402_devParams.c"
+Source="link.cmd"
+
+[Generated Files]
+Source="appcfg.cmd"
+Source="appcfg.s54"
+Source="appcfg_c.c"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -eoo54f -fr"$(Proj_dir)\Debug" -i"." -i"..\appModules" -i"..\algFIR" -i"..\algVOL" -i"..\..\..\include" -d"UTL_DBGLEVEL=70" -d"APPMONOCODEC" -d"CHIP_5402" -mf -v548
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v54
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\app.map" -o".\Debug\app.out" -w -x -i"..\..\..\lib"
+
+["appcfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+

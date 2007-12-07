@@ -1,0 +1,51 @@
+/*
+ *  This GEL script simulates user input/output; there is one switch
+ *  (selection of which channel will be output), and two sliders 
+ *  (volume gain for each channel). A "switch" is implemented as a
+ *  slider that goes from 0 to 1 in steps of 1. On the target, a procedure
+ *  periodically runs that checks these values, which simulate a part
+ *  of the I/O space.
+ *
+ *  Each control writes a value in the simulated device controls' IO area,
+ *  i.e. in the target's array called deviceControlsIOArea[1 + 1 + NUMCHANNELS].
+ *  Element[0] indicates whether there has been any user input 
+ *  Element[1] is the number of the channel that should be used for the
+ *  output, and [2 + i] is the volume for channel i.
+ *  When the script changes any of the values, it also sets element [0]
+ *  to non-zero, and indication for the thread on the target that there
+ *  has been new user input.
+ */
+
+menuitem "Application control";
+
+/* 
+ *  Slider "set active channel" is a switch that goes from 0 to 1
+ *  in increments of 1 and "page increments" of 1. 
+ */
+slider Set_active_channel(0, 1, 1, 1, value)
+{
+    deviceControlsIOArea[1] = value;  /* set the new active channel */
+    deviceControlsIOArea[0] = 1;      /* indicate new user input */
+}
+
+/* 
+ *  Slider "set channel 0 gain" goes from 0 to 200, where 100 is the default,
+ *  in increments of 1 and "page increments" of 10. 
+ */
+slider Set_channel_0_gain(0, 200, 1, 10, c0gain)
+{
+    deviceControlsIOArea[2] = c0gain; /* set gain for channel 0 */
+    deviceControlsIOArea[0] = 1;      /* indicate new user input */
+}
+
+/* 
+ *  Slider "set channel 1 gain" goes from 0 to 200, where 100 is the default,
+ *  in increments of 1 and "page increments" of 10. 
+ */
+slider Set_channel_1_gain(0, 200, 1, 10, c1gain)
+{
+    deviceControlsIOArea[3] = c1gain; /* set gain for channel 1 */
+    deviceControlsIOArea[0] = 1;      /* indicate new user input */
+}
+
+

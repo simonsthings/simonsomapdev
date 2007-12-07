@@ -1,0 +1,10 @@
+-r
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\lib\sscr.l64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_createbuf.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_deletebuf.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_exit.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_getbuf.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_init.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_prime.o64"
+"C:\CCStudio_v3.1\boards\osk5912\referenceframeworks\src\sscr\Debug\sscr_setup.o64"

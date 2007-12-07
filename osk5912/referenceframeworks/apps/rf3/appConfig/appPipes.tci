@@ -1,0 +1,150 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appPipes.tci ========
+ *
+ *  Creation of pipes used in the application:
+ *  pipRx - main input pipe
+ *  pipRx0, pipRx1, ... - input  pipes for appNumChannels processing threads
+ *  pipTx0, pipTx1, ... - output pipes for appNumChannels processing threads
+ *  pipTx - main output pipe 
+ */
+
+/*  
+ *  Get/Set variable for CPU word size 
+ */
+var appWordSize = prog.cpu.attrs.dataWordSize;
+
+/*
+ *  pipRx - main input pipe: 
+ *  connected to PIO on the writer side,
+ *  connected to the RxSplit thread on the reader side
+ */
+var pipRx       = tibios.PIP.create( "pipRx" );
+pipRx.comment   = "pipe to which input frames are DMA-ed from the codec";
+pipRx.numFrames = 2;  /* the pipe is double buffered */
+pipRx.bufSeg    = APPINOUTPIPBUFSEG; /* mem. segment where the frames go */
+
+/* 
+ *  Size for the master receive pipe is 
+ *  <pipRx frame size> = <number of channels> *
+ *     <framesize in samples> * <size of a sample> / <size of a word>
+ *  unless we are simulating stereo or N-channel codec with a mono one 
+ *  (as is the case with the bare dsk5402 its ad50 codec), in which case 
+ *  we do not include <number of channels> in the equation.
+ */
+if (APPMONOCODEC == false) {
+    pipRx.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize *
+                         APPNUMCHANNELS;
+} else {                         
+    pipRx.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize;
+}
+
+/*  
+ *  Pipe Alignment requirements are platform-dependent.
+ *  On C6x data DMA-ed to a pipe must be 128-bytes (32-words) aligned
+ *  in case PIP placement requires cache considerations since its 'line-size'
+ *  is 128 bytes.
+ *  On 54x and 55x, no such cache restrictions exist but we do align on 2-word
+ *  (32-bit) boundary to enable stereo codecs with 16-bit L, R data.
+ *  The value is defined in board-specific TCI file, with alignment in words.
+ */
+pipRx.bufAlign     = APPINOUTPIPALIGN;
+
+/* notifyWriter calls PIO module's rx priming function */
+pipRx.notifyWriterFxn  = prog.extern( "PIO_rxPrime" );
+pipRx.notifyWriterArg0 = prog.extern( "pioRx" );
+
+/* notifyReader resets the first bit of the RxSplit thread's mailbox */
+pipRx.notifyReaderFxn  = prog.extern( "SWI_andnHook" );
+pipRx.notifyReaderArg0 = prog.extern( "swiRxSplit" );
+pipRx.notifyReaderArg1 = 1;  /* binary 001 */
+
+/* 
+ *  Create channel input and output pipes in a loop, using
+ *  appNumChannels variable for the loop count
+ *
+ *  pipRx0, pipRx1, ... - input  pipes for appNumChannels processing threads
+ *    each connected to the rxSplit thread on the writer side, 
+ *         connected to its Audioproc thread on the reader side
+ *  pipTx0, pipTx1, ... - output pipes for appNumChannels processing threads
+ *    each connected to its Audioproc thread on the writer side
+ *         connected to the txJoin thread on the reader side
+ */
+for (i = 0; i < APPNUMCHANNELS; i++) {
+    /* create channel's input pipe, pipRx[i] */
+    var pip          = tibios.PIP.create( "pipRx" + i );
+    pip.comment      = "channel #" + i + "'s input pipe"
+    pip.numFrames    = 1;  /* single frame for this pipe */
+    pip.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize;
+
+    /* pipRx[i]'s notifyWriter resets i+1-th bit of RxSplit thread's mailbox */
+    pip.notifyWriterFxn  = prog.extern( "SWI_andnHook" );
+    pip.notifyWriterArg0 = prog.extern( "swiRxSplit" );
+    pip.notifyWriterArg1 = 1 << (i+1);
+
+    /* notifyReader resets the first bit of Audioproc[i] thread's mailbox */
+    pip.notifyReaderFxn  = prog.extern( "SWI_andnHook" );
+    pip.notifyReaderArg0 = prog.extern( "swiAudioproc" + i );
+    pip.notifyReaderArg1 = 1;    /* binary 001 */
+
+    /* create channel's output pipe, pipTx[i] */
+    var pip          = tibios.PIP.create( "pipTx" + i );
+    pip.comment      = "channel #" + i + "'s output pipe"
+    pip.numFrames    = 1;
+    pip.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize;
+
+    /* pipTx[i]'s notifyWriter resets the 2nd bit of Audioproc[i]'s mailbox */
+    pip.notifyWriterFxn  = prog.extern( "SWI_andnHook" );
+    pip.notifyWriterArg0 = prog.extern( "swiAudioproc" + i );
+    pip.notifyWriterArg1 = 2;   /* binary 010 */
+
+    /* notifyReader resets i+1-th bit of TxJoin's thread's mailbox */
+    pip.notifyReaderFxn  = prog.extern( "SWI_andnHook" );
+    pip.notifyReaderArg0 = prog.extern( "swiTxJoin" );
+    pip.notifyReaderArg1 = 1 << (i+1);
+}
+
+/*
+ *  pipTx - main output pipe: 
+ *  connected to the TxJoin thread on the writer side
+ *  connected to PIO on the reader side,
+ */
+var pipTx      = tibios.PIP.create( "pipTx" );
+pipTx.comment  = "pipe from which output frames are DMA-ed to the codec";
+pipTx.numFrames= 2;  /* the pipe is double buffered */
+pipTx.bufSeg   = APPINOUTPIPBUFSEG;  /* mem. segment where the frames go */
+
+/* 
+ *  Size for the master transmit pipe is 
+ *  <pipTx frame size> = <number of channels> *
+ *     <framesize in samples> * <size of a sample> / <size of a word>
+ *  unless we are simulating stereo or N-channel codec with a mono one 
+ *  (as is the case with the bare dsk5402 its ad50 codec), in which case 
+ *  we do not include <number of channels> in the equation.
+ */
+if (APPMONOCODEC == false) {
+    pipTx.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize *
+                         APPNUMCHANNELS;
+} else {                         
+    pipTx.frameSize    = APPFRAMESIZE * APPSAMPLESIZE / appWordSize;
+}
+
+/* Similarly to pipRx, the output pipe may need a non-default alignment. */
+pipTx.bufAlign     = APPINOUTPIPALIGN;
+
+/* notifyWriter resets the first bit of the RxSplit thread's mailbox */
+pipTx.notifyWriterFxn  = prog.extern( "SWI_andnHook" );
+pipTx.notifyWriterArg0 = prog.extern( "swiTxJoin" );
+pipTx.notifyWriterArg1 = 1;
+
+/* notifyReader calls PIO module's tx priming function */
+pipTx.notifyReaderFxn  = prog.extern( "PIO_txPrime" );
+pipTx.notifyReaderArg0 = prog.extern( "pioTx" );
+

@@ -1,0 +1,76 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== Dsk6713_mem.tci ========
+ *
+ *
+ *  This script simply sets up the BIOS MEM memory layout configuration
+ */
+
+/*
+ *  Memory segments, their sizes, heaps, and heap sizes
+ *  (SDRAM is external program memory, IRAM is internal memory)
+ *  We split the 256K of internal RAM as 192K for code/data and 64K for cache.
+ *  In internal and external data memory, we create heaps with names 
+ *  INTERNALHEAP and EXTERNALHEAP, respectively, and platform-independent
+ *  portions of the application refer to these heaps by their names
+ *  rather than the names of memory segments they are created in
+ *  (as not all platforms have IRAM, SDRAM segments).
+ */
+
+/* Enable heap creation */
+bios.enableMemoryHeaps(prog);
+
+tibios.GBL.C621XCONFIGUREL2 = true;  /* Enable L2 configuration */
+tibios.GBL.C621XCCFGL2MODE = "4-way cache";
+
+
+/* shorten the length of the IRAM section to allow 4-way cache */
+tibios.IRAM.base            = 0x00000;
+tibios.IRAM.len             = 0x30000;               /* 192K */
+tibios.IRAM.space           = "code/data";
+
+/* allocate heap named "INTERNALHEAP" of size 0x02000 in internal memory */
+tibios.IRAM.createHeap      = true;
+tibios.IRAM.heapSize        = 0x02000;  /* 8K   */
+tibios.IRAM.enableHeapLabel = true;
+tibios.IRAM.heapLabel       = prog.extern( "INTERNALHEAP" );
+
+/* allocate heap named "EXTERNALHEAP" of size 0x08000 in external memory */
+tibios.SDRAM.createHeap      = true;
+tibios.SDRAM.heapSize        = 0x08000; /* 32K   */
+tibios.SDRAM.enableHeapLabel = true;
+tibios.SDRAM.heapLabel       = prog.extern( "EXTERNALHEAP" );
+
+/*
+ *  Set the size of the application stack. Must be large
+ *  enough to accomodate worst-case of nested priorities, if any.
+ */
+tibios.MEM.STACKSIZE = 0x0400;
+
+/*
+ *  Overriding default section placement
+ *  assign listed sections to specified memory segments 
+ */ 
+
+/* General */
+
+/* BIOS code */
+
+/* Compiler Sections */
+
+/*
+ *  .bss and .far segments should be in internal memory to avoid cache
+ *  consistency problems with EDMA-ed data (it is by default,
+ *  so this is more of a reminder)
+ */
+tibios.MEM.BSSSEG = tibios.IRAM;          /* C variables section (.bss) */
+tibios.MEM.FARSEG = tibios.IRAM;          /* C Variables Section (.far) */
+
+

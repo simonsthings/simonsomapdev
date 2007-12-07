@@ -1,0 +1,32 @@
+/*
+ *  Copyright 2003 by Texas Instruments Incorporated.
+ *  All rights reserved. Property of Texas Instruments Incorporated.
+ *  Restricted rights to use, duplicate or disclose this code are
+ *  granted through contract.
+ *  
+ */
+/* "@(#) ReferenceFrameworks 3.10.00.05 04-29-04 (swat-g05)" */
+/*
+ *  ======== appThreads.tci ========
+ *
+ *  This script simply sets up the BIOS IDL configuration
+ */
+
+/*
+ *  Ensuring we dont use the CLK manager to drive PRD eliminates dead-code.
+ */
+tibios.PRD.USECLK = false;
+
+/*
+ *  audioIdl is a created IDL object. It calls a function checkFlags
+ *  which checks the status of input and output Flags. When both 
+ *  are satisfied it triggers the main Processing function (containing the
+ *  XDAIS algorithm(s). Small and efficient!
+ */
+var audioIdl = tibios.IDL.create("audioIdl");
+audioIdl.comment = "This is the audio processing thread";
+audioIdl.fxn = prog.extern("checkFlags");
+
+
+
+
