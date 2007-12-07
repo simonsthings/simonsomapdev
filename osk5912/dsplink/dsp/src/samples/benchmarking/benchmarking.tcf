@@ -1,0 +1,108 @@
+//  ============================================================================
+//  @file   benchmarking.tcf
+//
+//  @path   \dsplink\dsp\src\samples\benchmarking
+//
+//  @desc   This file defines configuration for the benchmarking application.
+//
+//  @ver    00.01
+//  ============================================================================
+//  Copyright (c) Texas Instruments Incorporated 2002-2004
+//
+//  Use of this software is controlled by the terms and conditions found in the
+//  license agreement under which this software has been supplied or provided.
+//  ============================================================================
+
+
+//  ============================================================================
+//  Load assert support
+//  ============================================================================
+load(utils.findFile('assert.tci'));
+
+//  ============================================================================
+//  Load generic DSP/BIOS Link configuration
+//  ============================================================================
+load(utils.findFile('dsplink-omap-base.tci'));
+load(utils.findFile('dsplink-omap-dio.tci'));
+
+//  ============================================================================
+//  Global Settings
+//  ============================================================================
+prog.module("GBL").ENABLEINST = 1;              // Enable Real Time Analysis
+prog.module("GBL").ENABLEALLTRC = 1;
+prog.module("GBL").CLKOUT = 168;                  // Setting the DSP Clock
+prog.module("MEM").ARGSSIZE = 0x50 ;
+
+//  ============================================================================
+//  MEM : Global
+//  ============================================================================
+prog.module("MEM").BIOSSEG = SARAM;
+prog.module("MEM").TEXTSEG = SARAM;
+
+//  ============================================================================
+//  MEM : DARAM
+//  ============================================================================
+prog.module("MEM").instance("DARAM").base = 256
+prog.module("MEM").instance("DARAM").len = 32512
+prog.module("MEM").instance("DARAM").createHeap = 1
+prog.module("MEM").instance("DARAM").heapSize = 21504
+prog.module("MEM").instance("DARAM").comment = "DARAM";
+
+//  ============================================================================
+//  MEM : SARAM
+//  ============================================================================
+prog.module("MEM").instance("SARAM").base = 33023
+prog.module("MEM").instance("SARAM").len = 48896
+prog.module("MEM").instance("SARAM").comment = "SARAM";
+
+//  ============================================================================
+//  LOG : Default LOG Objects
+//  ============================================================================
+idlLog0 = prog.module("LOG").create("idlLog0");
+prdLog0 = prog.module("LOG").create("prdLog0");
+prdLog1 = prog.module("LOG").create("prdLog1");
+tskLog0 = prog.module("LOG").create("tskLog0");
+tskLog1 = prog.module("LOG").create("tskLog1");
+
+prog.module("LOG").instance("idlLog0").bufLen = 64
+prog.module("LOG").instance("prdLog0").bufLen = 64
+prog.module("LOG").instance("prdLog1").bufLen = 64
+prog.module("LOG").instance("tskLog0").bufLen = 64
+prog.module("LOG").instance("tskLog1").bufLen = 64
+
+prog.module("LOG").instance("LOG_system").bufLen = 64
+
+//  ============================================================================
+//  LOG : Trace Object
+//  ============================================================================
+var trace = prog.module("LOG").create("trace");
+prog.module("LOG").instance("trace").bufLen = 32
+
+//  ============================================================================
+//  STS : Add statistic object as conter.
+//  ============================================================================
+STScounter = prog.module("STS").create("STScounter");
+
+STScounter.comment   = "Count number of times a task is called";
+STScounter.unitType  = "High resolution time based";
+STScounter.operation = "A * x";
+
+assert.add('STScounter.numA == 4');
+
+//  ============================================================================
+//  PRD : Add periodic object.
+//  ============================================================================
+PRDobject = prog.module("PRD").create("PRDobject");
+PRDobject.comment   = "This prd object maintains the required frame rate" ;
+PRDobject.period    = 32  ;
+PRDobject.fxn       = prog.extern("PrdSemPost") ;
+
+//  ============================================================================
+//  Generate cdb file...
+//  ============================================================================
+prog.gen("benchmarking.cdb");
+
+//  ============================================================================
+//  Check assertions
+//  ============================================================================
+assert.check();

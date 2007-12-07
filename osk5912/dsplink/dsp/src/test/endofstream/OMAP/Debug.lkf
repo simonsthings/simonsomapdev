@@ -1,0 +1,5 @@
+-z -q -c -m"./Debug/endofstream_text.map" -o"./Debug/endofstream_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\endofstream\OMAP\Debug\endofstream.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\endofstream\OMAP\Debug\endofstream_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\endofstream\OMAP\Debug\endofstream_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\endofstream\OMAP\endofstream_text.cmd"

@@ -1,0 +1,75 @@
+//  ============================================================================
+//  @file   siodeletetest_bios.tcf
+//
+//  @path   $(PROJROOT)\dsp\src\test\siodeletetest\OMAP
+//
+//  @desc   This file defines configuration for the siodeletetest_bios test.
+//
+//  @desc   This file defines configuration for the siodeletetest_bios test
+//          with bios section in 'EXTERNAL' and text section in
+//          'INTERNAL' memory.
+//
+//  @ver    01.10.01
+//  ============================================================================
+//  Copyright (c) Texas Instruments Incorporated 2002-2004
+//
+//  Use of this software is controlled by the terms and conditions found in the
+//  license agreement under which this software has been supplied or provided.
+//  ============================================================================
+
+
+//  ============================================================================
+//  Load assert support
+//  ============================================================================
+load(utils.findFile('assert.tci'));
+
+//  ============================================================================
+//  Load generic DSP/BIOS Link configuration
+//  ============================================================================
+load(utils.findFile('dsplink-omap-base.tci'));
+load(utils.findFile('dsplink-omap-dio.tci'));
+
+//  ============================================================================
+//  Global Settings
+//  ============================================================================
+prog.module("GBL").ENABLEINST   = 0;    // Enable Real Time Analysis
+prog.module("GBL").ENABLEALLTRC = 0;    // Enable All TRC Trace Event Classes
+
+//  ============================================================================
+//  MEM : Global
+//  ============================================================================
+prog.module("MEM").BIOSSEG  = EXTMEM;
+prog.module("MEM").TEXTSEG  = SARAM;
+prog.module("MEM").ARGSSIZE = 0x80;
+
+//  ============================================================================
+//  MEM : DARAM
+//  ============================================================================
+prog.module("MEM").instance("DARAM").base       = 0x100
+prog.module("MEM").instance("DARAM").len        = 0x7F00
+prog.module("MEM").instance("DARAM").createHeap = 1
+prog.module("MEM").instance("DARAM").heapSize   = 0x5400
+prog.module("MEM").instance("DARAM").comment    = "DARAM";
+
+//  ============================================================================
+//  MEM : SARAM
+//  ============================================================================
+prog.module("MEM").instance("SARAM").base       = 0x80FF
+prog.module("MEM").instance("SARAM").len        = 0xBF00
+prog.module("MEM").instance("SARAM").comment    = "SARAM";
+
+//  ============================================================================
+//  LOG : Trace Object
+//  ============================================================================
+var trace = prog.module("LOG").create("trace");
+prog.module("LOG").instance("trace").bufLen = 32
+
+//  ============================================================================
+//  Generate cdb file...
+//  ============================================================================
+prog.gen("siodeletetest_bios.cdb");
+
+//  ============================================================================
+//  Check assertions
+//  ============================================================================
+assert.check();

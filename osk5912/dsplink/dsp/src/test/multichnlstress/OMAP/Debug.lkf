@@ -1,0 +1,5 @@
+-z -q -c -m"./Debug/multichnlstress_text.map" -o"./Debug/multichnlstress_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\Debug\multichnlstress.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\Debug\multichnlstress_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\Debug\multichnlstress_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\multichnlstress_text.cmd"

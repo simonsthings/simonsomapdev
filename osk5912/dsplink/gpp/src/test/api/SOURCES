@@ -1,0 +1,53 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\test\api
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+SOURCES :=                      \
+    testsuiteAPI.c              \
+    API_ChnlControl.c           \
+    API_ChnlCreate.c            \
+    API_ChnlDelete.c            \
+    API_ChnlFlush.c             \
+    API_ChnlFreeBuffer.c        \
+    API_ChnlIdle.c              \
+    API_ChnlIssue.c             \
+    API_ChnlReclaim.c           \
+    API_ChnlAllocateBuffer.c    \
+    API_ProcAttach.c            \
+    API_ProcControl.c           \
+    API_ProcDetach.c            \
+    API_ProcGetstate.c          \
+    API_ProcLoad.c              \
+    API_ProcStart.c             \
+    API_ProcStop.c              \
+    API_ProcInstrument.c        \
+    API_PostProcess.c
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES      +=                 \
+    API_MsgqAllocatorOpen.c     \
+    API_MsgqAllocatorClose.c    \
+    API_MsgqAlloc.c             \
+    API_MsgqFree.c              \
+    API_MsgqTransportOpen.c     \
+    API_MsgqTransportClose.c    \
+    API_MsgqCreate.c            \
+    API_MsgqDelete.c            \
+    API_MsgqLocate.c            \
+    API_MsgqRelease.c           \
+    API_MsgqPut.c               \
+    API_MsgqGet.c               \
+    API_MsgqGetReplyId.c
+endif

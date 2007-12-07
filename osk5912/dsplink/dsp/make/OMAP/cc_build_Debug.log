@@ -1,0 +1,308 @@
+---------------------------  dsplinkmsg.pjt - Debug  ---------------------------
+[mqabuf.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -pdr -pdv -pden -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/Debug" -i"C:/CCStudio_v3.1/messaging/include" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/src/mqa" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/src/mqt" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/inc/OMAP" -d"_DEBUG" -d"_MSGQ_COMPONENT" -d"USE_CCS_BREAKPOINT" -ml -mn -vcore:2.1 -@"../../make/OMAP/Debug.lkf" "mqabuf.c"
+"mqabuf.c", line 277: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqaHandle != NULL) ;
+      ^
+
+"mqabuf.c", line 367: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    ((status == MSGQ_SUCCESS) && (mqaHandle->mqaInfo != NULL))
+      ^
+
+"mqabuf.c", line 369: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    ((status != MSGQ_SUCCESS) && (mqaHandle->mqaInfo == NULL))
+      ^
+
+"mqabuf.c", line 396: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqaHandle != NULL) ;
+      ^
+
+"mqabuf.c", line 399: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_assert (mqaState != NULL) ;
+      ^
+
+"mqabuf.c", line 425: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (mqaHandle->mqaInfo == NULL) ;
+      ^
+
+"mqabuf.c", line 449: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqaHandle != NULL) ;
+      ^
+
+"mqabuf.c", line 450: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (size != NULL) ;
+      ^
+
+"mqabuf.c", line 453: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_assert (mqaState != NULL) ;
+      ^
+
+"mqabuf.c", line 467: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    ((msg != NULL) && (*size > 0))
+      ^
+
+"mqabuf.c", line 491: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqaHandle != NULL) ;
+      ^
+
+"mqabuf.c", line 492: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (msg != NULL) ;
+      ^
+
+"mqabuf.c", line 495: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_assert (mqaState != NULL) ;
+      ^
+
+
+[mqtdsplink.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -pdr -pdv -pden -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/Debug" -i"C:/CCStudio_v3.1/messaging/include" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/src/mqa" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/src/mqt" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/make/OMAP/../../../dsp/inc/OMAP" -d"_DEBUG" -d"_MSGQ_COMPONENT" -d"USE_CCS_BREAKPOINT" -ml -mn -vcore:2.1 -@"../../make/OMAP/Debug.lkf" "mqtdsplink.c"
+"mqtdsplink.c", line 599: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqtHandle      != NULL) ;
+      ^
+
+"mqtdsplink.c", line 600: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (localMsgQueues != NULL) ;
+      ^
+
+"mqtdsplink.c", line 711: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    ((status == MSGQ_SUCCESS) && (mqtHandle->mqtInfo != NULL))
+      ^
+
+"mqtdsplink.c", line 713: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    ((status != MSGQ_SUCCESS) && (mqtHandle->mqtInfo == NULL))
+      ^
+
+"mqtdsplink.c", line 741: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqtHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 744: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_assert (mqtState != NULL) ;
+      ^
+
+"mqtdsplink.c", line 832: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (mqtHandle->mqtInfo == NULL) ;
+      ^
+
+"mqtdsplink.c", line 865: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (mqtHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 866: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (queueName != NULL) ;
+      ^
+
+"mqtdsplink.c", line 867: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (   (   (attrs != NULL)                       /* sync */  \
+      ^
+
+"mqtdsplink.c", line 875: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_assert (mqtState != NULL) ;
+      ^
+
+"mqtdsplink.c", line 956: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    (sync == FALSE)
+      ^
+
+"mqtdsplink.c", line 962: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (    (sync == FALSE)
+      ^
+
+"mqtdsplink.c", line 985: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_require (msgqHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 989: warning #1119-D: this assembly directive potentially
+          unsafe inside a function
+      DBC_ensure (msgqHandle->status == MSGQ_EMPTY) ;
+      ^
+
+"mqtdsplink.c", line 1009: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msgqHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1010: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msg        != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1013: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_assert (msgqHandle->status == MSGQ_INUSE) ;
+      ^
+
+"mqtdsplink.c", line 1037: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (mqtHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1038: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msg       != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1041: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_assert (mqtState != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1048: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_ensure (    (   (msg->srcId != MSGQ_INVALIDMSGQID)
+      ^
+
+"mqtdsplink.c", line 1076: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (arg    != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1077: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (bufPtr != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1083: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+          DBC_assert ((QUE_Handle) msg != queHandle) ;
+          ^
+
+"mqtdsplink.c", line 1084: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+          DBC_assert (msg == (MSGQ_Msg) bufPtr) ;
+          ^
+
+"mqtdsplink.c", line 1100: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+              DBC_assert (iomStatus == IOM_PENDING) ;
+              ^
+
+"mqtdsplink.c", line 1068: remark #880-D: parameter "size" was never referenced
+  MQTDSPLINK_putCallback (Ptr arg, Int status, Ptr bufPtr, Uns size)
+                                                               ^
+
+"mqtdsplink.c", line 1138: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (arg    != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1139: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (bufPtr != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1164: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+                  DBC_assert (newMsg != NULL) ;
+                  ^
+
+"mqtdsplink.c", line 1185: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+                      DBC_assert (status == MSGQ_SUCCESS) ;
+                      ^
+
+"mqtdsplink.c", line 1222: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+                          DBC_assert (status == MSGQ_SUCCESS) ;
+                          ^
+
+"mqtdsplink.c", line 1259: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+                          DBC_assert (newMsg != NULL) ;
+                          ^
+
+"mqtdsplink.c", line 1269: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+                              DBC_assert (status == MSGQ_SUCCESS) ;
+                              ^
+
+"mqtdsplink.c", line 1289: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+          DBC_assert (iomStatus == IOM_PENDING) ;
+          ^
+
+"mqtdsplink.c", line 1125: remark #880-D: parameter "size" was never referenced
+  MQTDSPLINK_getCallback (Ptr arg, Int bufStatus, Ptr bufPtr, Uns size)
+                                                                  ^
+
+"mqtdsplink.c", line 1313: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (mqtHandle != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1314: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msgqId    != MSGQ_INVALIDMSGQID) ;
+      ^
+
+"mqtdsplink.c", line 1318: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_assert (msgqId < mqtState->numRemoteMsgq) ;
+      ^
+
+"mqtdsplink.c", line 1380: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (mqtState != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1381: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msgqId   != MSGQ_INVALIDMSGQID) ;
+      ^
+
+"mqtdsplink.c", line 1382: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msgqId < mqtState->numRemoteMsgq) ;
+      ^
+
+"mqtdsplink.c", line 1428: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (mqtState != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1429: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (msg      != NULL) ;
+      ^
+
+"mqtdsplink.c", line 1471: warning #1119-D: this assembly directive
+          potentially unsafe inside a function
+      DBC_require (strNum != NULL) ;
+      ^
+
+
+[Archiving...] "C:\CCStudio_v3.1\C5500\cgtools\bin\ar55" @"Debug.lkf"
+  ==>  new archive 'C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\make\OMAP\Debug\dsplinkmsg.l55l'
+  ==>  building archive 'C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\make\OMAP\Debug\dsplinkmsg.l55l'
+
+copy .\Debug\dsplinkmsg.l55l ..\..\lib\OMAP\Debug\
+        1 Datei(en) kopiert.
+
+Build Complete,
+  0 Errors, 57 Warnings, 2 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

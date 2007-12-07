@@ -1,0 +1,30 @@
+!   ============================================================================
+!   @file   chnl.tsc
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data
+!
+!   @desc   This file contains list of tests to be executed.
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   This script contains all api chnl testcases
+!   ============================================================================
+
+
+LinkApiTest         API_ChnlAllocateBuffer  /opt/dsplink/test/api/api_chnlallocatebuffer.dat
+LinkApiTest         API_ChnlCreate          /opt/dsplink/test/api/api_chnlcreate.dat
+LinkApiTest         API_ChnlControl         /opt/dsplink/test/api/api_chnlcontrol.dat
+LinkApiTest         API_ChnlFreeBuffer      /opt/dsplink/test/api/api_chnlfreebuffer.dat
+LinkApiTest         API_ChnlDelete          /opt/dsplink/test/api/api_chnldelete.dat
+LinkApiTest         API_ChnlIssue           /opt/dsplink/test/api/api_chnlissue.dat
+LinkApiTest         API_ChnlReclaim         /opt/dsplink/test/api/api_chnlreclaim.dat
+LinkApiTest         API_ChnlIdle            /opt/dsplink/test/api/api_chnlidle.dat
+LinkApiTest        API_ChnlFlush           /opt/dsplink/test/api/api_chnlflush.dat

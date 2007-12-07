@@ -1,0 +1,103 @@
+!   ============================================================================
+!   @file   bvr_reclaimtimeout.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_reclaimtimeout
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1    : expected_status_of_setup_phase
+!   arg 2    : expected_status
+!   arg 3    : expected status of first reclaim
+!   arg 4    : expected status of second reclaim
+!   arg 5    : dspid
+!   arg 6    : image_filename
+!   arg 7    : Data Channel Id
+!   arg 8    : First timeout for reclaim (in Milliseconds)
+!   arg 9    : Second timeout for reclaim (in Milliseconds)
+!   arg 10   : Delay for DSP Issue Reclaim (in Milliseconds)
+!   arg 11   : Buffer size for data transfer
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  200  400  500    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  2000 4000 5000   16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  200  500  590    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  20   100  50     16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  2000 5000 5990   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  0    6000 4000   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  0    6000 6050   16384
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  200  400  500    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  2000 4000 5000   8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  200  500  590    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  20   100  50     8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  2000 5000 5990   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  0    6000 4000   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout.out   0  0    4000 6050   8
+
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  200  400  500    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  2000 4000 5000   16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  200  500  590    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  20   100  50     16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  2000 5000 5990   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  0    6000 4000   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  0    6000 6050   16384
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  200  400  500    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  2000 4000 5000   8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  200  500  590    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  20   100  50     8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  2000 5000 5990   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  0    6000 4000   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_bios.out   0  0    4000 6050   8
+
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  200  400  500    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  2000 4000 5000   16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  200  500  590    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  20   100  50     16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  2000 5000 5990   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  0    6000 4000   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  0    6000 6050   16384
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  200  400  500    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  2000 4000 5000   8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  200  500  590    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  20   100  50     8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  2000 5000 5990   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  0    6000 4000   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_text.out   0  0    4000 6050   8
+
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  200  400  500    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  2000 4000 5000   16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  200  500  590    16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  20   100  50     16384
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  2000 5000 5990   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  0    6000 4000   16384
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  0    6000 6050   16384
+
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  200  400  500    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  2000 4000 5000   8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  200  500  590    8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  20   100  50     8
+DSP_SOK DSP_SOK DSP_ETIMEOUT DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  2000 5000 5990   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_SOK      0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  0    6000 4000   8
+DSP_SOK DSP_SOK CHNL_E_NOIOC DSP_ETIMEOUT 0 /opt/dsplink/test/behavior/reclaimtimeout_bios_text.out   0  0    4000 6050   8

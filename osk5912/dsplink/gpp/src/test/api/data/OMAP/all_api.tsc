@@ -1,0 +1,52 @@
+!   ============================================================================
+!   @file   all_api.tsc
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data\OMAP
+!
+!   @desc   This file contains list of tests to be executed.
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   This script contains all api testcases
+!   ============================================================================
+
+
+LinkApiTest         API_MsgqAllocatorOpen   /opt/dsplink/test/api/api_msgqallocatoropen.dat
+LinkApiTest         API_MsgqAllocatorClose  /opt/dsplink/test/api/api_msgqallocatorclose.dat
+LinkApiTest         API_MsgqAlloc           /opt/dsplink/test/api/api_msgqalloc.dat
+LinkApiTest         API_MsgqFree            /opt/dsplink/test/api/api_msgqfree.dat
+LinkApiTest         API_MsgqTransportOpen   /opt/dsplink/test/api/api_msgqtransportopen.dat
+LinkApiTest         API_MsgqTransportClose  /opt/dsplink/test/api/api_msgqtransportclose.dat
+LinkApiTest         API_MsgqCreate          /opt/dsplink/test/api/api_msgqcreate.dat
+LinkApiTest         API_MsgqDelete          /opt/dsplink/test/api/api_msgqdelete.dat
+LinkApiTest         API_MsgqLocate          /opt/dsplink/test/api/api_msgqlocate.dat
+LinkApiTest         API_MsgqRelease         /opt/dsplink/test/api/api_msgqrelease.dat
+LinkApiTest         API_MsgqPut             /opt/dsplink/test/api/api_msgqput.dat
+LinkApiTest         API_MsgqGet             /opt/dsplink/test/api/api_msgqget.dat
+LinkApiTest         API_MsgqGetReplyId      /opt/dsplink/test/api/api_msgqgetreplyid.dat
+
+LinkApiTest         API_ChnlAllocateBuffer  /opt/dsplink/test/api/api_chnlallocatebuffer.dat
+LinkApiTest         API_ChnlFlush           /opt/dsplink/test/api/api_chnlflush.dat
+LinkApiTest         API_ChnlCreate          /opt/dsplink/test/api/api_chnlcreate.dat
+LinkApiTest         API_ChnlControl         /opt/dsplink/test/api/api_chnlcontrol.dat
+LinkApiTest         API_ChnlFreeBuffer      /opt/dsplink/test/api/api_chnlfreebuffer.dat
+LinkApiTest         API_ChnlDelete          /opt/dsplink/test/api/api_chnldelete.dat
+LinkApiTest         API_ChnlIssue           /opt/dsplink/test/api/api_chnlissue.dat
+LinkApiTest         API_ChnlReclaim         /opt/dsplink/test/api/api_chnlreclaim.dat
+LinkApiTest         API_ChnlIdle            /opt/dsplink/test/api/api_chnlidle.dat
+
+LinkApiTest         API_PROCAttach          /opt/dsplink/test/api/api_procattach.dat
+LinkApiTest         API_PROCControl         /opt/dsplink/test/api/api_proccontrol.dat
+LinkApiTest         API_PROCLoad            /opt/dsplink/test/api/api_procload.dat
+LinkApiTest         API_PROCDetach          /opt/dsplink/test/api/api_procdetach.dat
+LinkApiTest         API_PROCGetstate        /opt/dsplink/test/api/api_procgetstate.dat
+LinkApiTest         API_PROCStart           /opt/dsplink/test/api/api_procstart.dat
+LinkApiTest         API_PROCStop            /opt/dsplink/test/api/api_procstop.dat

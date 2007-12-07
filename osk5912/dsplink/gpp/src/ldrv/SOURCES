@@ -1,0 +1,41 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\ldrv
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+SOURCES :=  ldrv.c
+
+ifeq ($(USE_PROC), 1)
+SOURCES +=  ldrv_proc.c
+endif
+
+ifeq ($(USE_CHNL), 1)
+SOURCES +=  ldrv_chnl.c    \
+            ldrv_io.c
+
+ifeq ($(PLATFORM), OMAP)
+SOURCES += shm.c
+endif
+
+ifeq ($(PLATFORM), DM310_DM642)
+SOURCES += hpi_driver.c
+endif
+endif
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES +=  ldrv_msgq.c  \
+            mqabuf.c     \
+            lmqt.c       \
+            rmqt.c
+endif

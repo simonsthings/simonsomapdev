@@ -1,0 +1,41 @@
+!   ============================================================================
+!   @file   api_msgqlocate.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data\OMAP
+!
+!   @desc   This file provides arguments to the test: API_MsgqLocate
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : Transport Id to be opened
+!   arg 5   : MSGQ Id to be located
+!   arg 6   : MSGQ Id to be created on the DSP
+!   arg 7   : Processor Id on which to locate the queue
+!   arg 8   : Specifies the pointer to pass for MsgqLocateAttrs
+!             0 -> NULL pointer
+!             1 -> valid pointer to valid MsgqLocateAttrs structure
+!   arg 9   : DSP executable to be used.
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK     DSP_SOK          0  1  0  0  0  1   /opt/dsplink/test/api/receivemsg.out
+DSP_SOK     DSP_EINVALIDARG  0  1  0  0  0  0   /opt/dsplink/test/api/receivemsg.out
+DSP_SOK     DSP_EINVALIDARG  0  1  0  0  1  1   /opt/dsplink/test/api/receivemsg.out
+DSP_SOK     DSP_ENOTFOUND    0  1  1  0  0  1   /opt/dsplink/test/api/receivemsg.out
+DSP_SOK     DSP_ENOTFOUND    0  1  0  1  0  1   /opt/dsplink/test/api/receivemsg.out
+DSP_SOK     DSP_EFAIL        0  0  0  0  0  1   /opt/dsplink/test/api/receivemsg.out

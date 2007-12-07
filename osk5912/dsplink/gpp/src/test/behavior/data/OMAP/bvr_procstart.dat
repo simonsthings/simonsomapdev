@@ -1,0 +1,35 @@
+!   ============================================================================
+!   @file   bvr_procstart.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\bvr\data
+!
+!   @desc   This file provides arguments to the test: bvr_procstart
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : File to be loaded onto the DSP
+!   arg 5   : argument to be specified to Proc_Load
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/sendbuf.out 0
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/sendbuf_bios_text.out 0
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/sendbuf_bios.out 0
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/sendbuf_text.out 0

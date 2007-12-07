@@ -1,0 +1,55 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\CCSTUD~1.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\multichnlstress.c"
+Source="multichnlstress_bios_text.cdb"
+Source="multichnlstress_bios_text.cmd"
+
+[Generated Files]
+Source="multichnlstress_bios_textcfg.cmd"
+Source="multichnlstress_bios_textcfg.s55"
+Source="multichnlstress_bios_textcfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf multichnlstress_bios_text.tcf
+FinalBuildCmd=copy $(Proj_dir)\Debug\multichnlstress_bios_text.out .\..\..\..\..\bin\test\OMAP\Debug
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf multichnlstress_bios_text.tcf
+FinalBuildCmd=copy $(Proj_dir)\Release\multichnlstress_bios_text.out .\..\..\..\..\bin\test\OMAP\Release
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\multichnlstress_bios_text.map" -o".\Debug\multichnlstress_bios_text.out" -x -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\multichnlstress_bios_text.map" -o".\Release\multichnlstress_bios_text.out" -x -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l"
+
+["multichnlstress_bios_textcfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["multichnlstress_bios_textcfg.cmd" Settings: "Release"]
+ExcludeFromBuild=true
+

@@ -1,0 +1,8 @@
+-z -q -c -m"./Debug/message_text.map" -o"./Debug/message_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/msgq.l55l" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/mqtbiosque.l55l" -l"./../../../../lib/OMAP/Debug/dsplinkmsg.l55l" -l"./../../../../lib/OMAP/Debug/dsplink.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\Debug\main.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\Debug\message_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\Debug\message_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\Debug\swiMessage.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\Debug\tskMessage.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\message_textcfg.cmd"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\message\OMAP\message_text.cmd"

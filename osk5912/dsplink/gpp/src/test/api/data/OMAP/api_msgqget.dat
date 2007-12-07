@@ -1,0 +1,35 @@
+!   ============================================================================
+!   @file   api_msgqget.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data\OMAP
+!
+!   @desc   This file provides arguments to the test: API_MsgqGet
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : MSGQ Id to be Created
+!   arg 5   : MSGQ Id to be used for MSGQ_Get.
+!   arg 6   : Specifies the what to pass for MsgqMsg
+!             0 -> NULL pointer
+!             1 -> Valid pointer pointer
+!   arg 7   : DSP side executable.
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK     DSP_SOK           0  0  0  1  /opt/dsplink/test/api/sendmsg.out
+DSP_SOK     DSP_EINVALIDARG   0  0  0  0  /opt/dsplink/test/api/sendmsg.out

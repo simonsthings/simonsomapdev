@@ -1,0 +1,43 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\test\behavior
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+
+SOURCES :=   \
+    testsuiteBVR.c              \
+    BVR_DataRead.c              \
+    BVR_DataWrite.c             \
+    BVR_DoubleLoadImage.c       \
+    BVR_Flush.c                 \
+    BVR_Idle.c                  \
+    BVR_SeqOpenClose.c          \
+    BVR_StateTransition.c       \
+    BVR_PostProcess.c           \
+    BVR_EndOfStream.c           \
+    BVR_ProcStart.c             \
+    BVR_XferAfterIdle.c         \
+    BVR_ReclaimTimeout.c        \
+    BVR_DspSioDelete.c
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES      +=                 \
+    BVR_MsgqGetTimeout.c        \
+    BVR_MsgqLocateTimeout.c     \
+    BVR_MsgqPriority.c          \
+    BVR_MsgqReceive.c           \
+    BVR_MsgqSend.c              \
+    BVR_MsgqStateTest.c
+endif
+

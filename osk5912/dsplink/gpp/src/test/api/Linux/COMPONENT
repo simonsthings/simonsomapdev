@@ -1,0 +1,100 @@
+#   ============================================================================
+#   @file   COMPONENT
+#
+#   @path   $(DSPLINK)\gpp\src\test\api\Linux
+#
+#   @desc   This file contains information to build a component.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+#   ============================================================================
+#   Generic information about the component
+#   ============================================================================
+
+COMP_NAME       := TSTAPI
+COMP_PATH       := $(GPPROOT)$(DIRSEP)src$(DIRSEP)test$(DIRSEP)api
+COMP_TYPE       := LIB
+COMP_TARGET     := TSTAPI.LIB
+
+
+#   ============================================================================
+#   Header file(s) exported from this component
+#   ============================================================================
+
+EXP_HEADERS     :=              \
+    testsuiteAPI.h              \
+    API_ChnlControl.h           \
+    API_ChnlCreate.h            \
+    API_ChnlDelete.h            \
+    API_ChnlFlush.h             \
+    API_ChnlFreeBuffer.h        \
+    API_ChnlIdle.h              \
+    API_ChnlIssue.h             \
+    API_ChnlReclaim.h           \
+    API_ProcAttach.h            \
+    API_ProcControl.h           \
+    API_ProcDetach.h            \
+    API_ProcGetstate.h          \
+    API_ProcLoad.h              \
+    API_ProcStart.h             \
+    API_ProcStop.h              \
+    API_ChnlAllocateBuffer.h    \
+    API_ProcInstrument.h        \
+    API_PostProcess.h           \
+    API_MsgqAllocatorOpen.h     \
+    API_MsgqAllocatorClose.h    \
+    API_MsgqAlloc.h             \
+    API_MsgqFree.h              \
+    API_MsgqTransportOpen.h     \
+    API_MsgqTransportClose.h    \
+    API_MsgqCreate.h            \
+    API_MsgqDelete.h            \
+    API_MsgqLocate.h            \
+    API_MsgqRelease.h           \
+    API_MsgqPut.h               \
+    API_MsgqGet.h               \
+    API_MsgqGetReplyId.h        \
+    API_MsgqUtils.h
+
+#   ============================================================================
+#   User specified additional command line options for the compiler
+#   ============================================================================
+
+USR_CC_FLAGS    :=
+
+USR_CC_DEFNS    :=
+
+
+#   ============================================================================
+#   User specified additional command line options for the linker
+#   ============================================================================
+
+USR_LD_FLAGS    :=
+
+
+#   ============================================================================
+#   Standard libraries of GPP OS required during linking
+#   ============================================================================
+
+STD_LIBS        :=
+
+
+#   ============================================================================
+#   User specified libraries required during linking
+#   ============================================================================
+
+USR_LIBS        :=
+
+
+#   ============================================================================
+#   Target file(s) exported from this module
+#   ============================================================================
+
+EXP_TARGETS     := TSTAPI.LIB

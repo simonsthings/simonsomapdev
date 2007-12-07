@@ -1,0 +1,54 @@
+!   ============================================================================
+!   @file   osal_isrcreate.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\osal\data
+!
+!   @desc   This file provides arguments to the test: osal_isrcreate
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : No. of ISR's to be created
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK 0
+DSP_SOK DSP_SOK 1
+DSP_SOK DSP_SOK 2
+DSP_SOK DSP_SOK 3
+DSP_SOK DSP_SOK 4
+DSP_SOK DSP_SOK 5
+DSP_SOK DSP_SOK 6
+DSP_SOK DSP_SOK 7
+DSP_SOK DSP_SOK 8
+DSP_SOK DSP_SOK 9
+DSP_SOK DSP_SOK 10
+DSP_SOK DSP_SOK 11
+DSP_SOK DSP_SOK 12
+DSP_SOK DSP_SOK 13
+DSP_SOK DSP_SOK 14
+DSP_SOK DSP_SOK 15
+
+! CASE 1 WHERE MORE THAN SUPPORTED  ISR'S ARE CREATED
+DSP_SOK DSP_EINVALIDARG 65
+
+
+! This special case tests the ISR_Create for wrong arguments
+DSP_SOK DSP_EINVALIDARG -1
+
+! DATA FILE ENDS

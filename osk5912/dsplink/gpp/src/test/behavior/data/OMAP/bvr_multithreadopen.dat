@@ -1,0 +1,47 @@
+!   ============================================================================
+!   @file   bvr_multithreadopen.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_multithreadopen
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : expected_status_of_setup_phase
+!   arg 2   : expected_status
+!   arg 3   : dspid
+!   arg 4   : number of threads
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK     DSP_SOK     0   0
+DSP_SOK     DSP_SOK     0   1
+DSP_SOK     DSP_SOK     0   2
+DSP_SOK     DSP_SOK     0   3
+DSP_SOK     DSP_SOK     0   4
+DSP_SOK     DSP_SOK     0   5
+DSP_SOK     DSP_SOK     0   6
+DSP_SOK     DSP_SOK     0   7
+DSP_SOK     DSP_SOK     0   8
+DSP_SOK     DSP_SOK     0   9
+DSP_SOK     DSP_SOK     0   10
+DSP_SOK     DSP_SOK     0   11
+DSP_SOK     DSP_SOK     0   12
+DSP_SOK     DSP_SOK     0   13
+DSP_SOK     DSP_SOK     0   14
+DSP_SOK     DSP_SOK     0   15
+DSP_SOK     DSP_SOK     0   16

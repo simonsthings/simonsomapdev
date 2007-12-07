@@ -1,0 +1,89 @@
+#   ============================================================================
+#   @file   COMPONENT
+#
+#   @path   $(DSPLINK)\gpp\src\test\osal\kernel\Linux
+#
+#   @desc   This file contains information to build a component.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+#   ============================================================================
+#   Generic information about the component
+#   ============================================================================
+
+COMP_NAME       := OSALKERN
+COMP_PATH       := $(GPPROOT)$(DIRSEP)src$(DIRSEP)test$(DIRSEP)osal$(DIRSEP)kernel
+COMP_TYPE       := DRV
+COMP_TARGET     := osaldriver.o
+
+
+#   ============================================================================
+#   Header file(s) exported from this component
+#   ============================================================================
+
+EXP_HEADERS     :=      \
+    .$(DIRSEP)$(GPPOS)$(DIRSEP)OsalDriver.h    \
+    .$(DIRSEP)OSAL_IsrInstall.h            \
+    .$(DIRSEP)OSAL_DpcCreate.h             \
+    .$(DIRSEP)OSAL_DpcDelete.h             \
+    .$(DIRSEP)OSAL_DpcFinalize.h           \
+    .$(DIRSEP)OSAL_DpcInitialize.h         \
+    .$(DIRSEP)OSAL_DpcSchedule.h           \
+    .$(DIRSEP)OSAL_IsrCreate.h             \
+    .$(DIRSEP)OSAL_IsrDelete.h             \
+    .$(DIRSEP)OSAL_IsrFinalize.h           \
+    .$(DIRSEP)OSAL_IsrInitialize.h         \
+    .$(DIRSEP)OSAL_IsrUninstall.h          \
+    .$(DIRSEP)OSAL_SyncCloseEvent.h        \
+    .$(DIRSEP)OSAL_SyncCreateCS.h          \
+    .$(DIRSEP)OSAL_SyncDeleteCS.h          \
+    .$(DIRSEP)OSAL_SyncEnterCS.h           \
+    .$(DIRSEP)OSAL_SyncFinalize.h          \
+    .$(DIRSEP)OSAL_SyncInitialize.h        \
+    .$(DIRSEP)OSAL_SyncLeaveCS.h           \
+    .$(DIRSEP)OSAL_SyncOpenEvent.h         \
+    .$(DIRSEP)OSAL_SyncResetEvent.h        \
+    .$(DIRSEP)OSAL_SyncSetEvent.h          \
+    .$(DIRSEP)OSAL_SyncWaitOnEvent.h       \
+    .$(DIRSEP)OSAL_PostProcess.h           \
+    .$(DIRSEP)OSAL_PostProcess.c
+
+#   ============================================================================
+#   User specified additional command line options for the compiler
+#   ============================================================================
+
+USR_CC_FLAGS    := -D__KERNEL__ -DMODULE -DUTILS_KERNEL
+
+#   ============================================================================
+#   User specified additional command line options for the linker
+#   ============================================================================
+
+USR_LD_FLAGS    :=
+
+
+#   ============================================================================
+#   Standard libraries of GPP OS required during linking
+#   ============================================================================
+
+STD_LIBS        :=
+
+
+#   ============================================================================
+#   User specified libraries required during linking
+#   ============================================================================
+
+USR_LIBS        :=
+
+
+#   ============================================================================
+#   Target file(s) exported from this module
+#   ============================================================================
+
+EXP_TARGETS     := osaldriver.o

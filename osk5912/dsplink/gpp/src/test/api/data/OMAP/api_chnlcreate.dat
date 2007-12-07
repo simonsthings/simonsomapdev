@@ -1,0 +1,58 @@
+!   ============================================================================
+!   @file   api_chnlcreate.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data
+!
+!   @desc   This file provides arguments to the test: api_chnlcreate
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : Channel Id
+!   arg 5   : Name of the file to be loaded onto the DSP
+!   arg 6   : Mode in which Channel is to be opened
+!   arg 7   : Endianism in which Channel is to be opened
+!   arg 8   : Size of the Channel to be opened
+!           1: ChannelDataSize_16bits
+!           2: ChannelDataSize_32bits
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK         DSP_SOK         0  0 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  1 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  2 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  3 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  4 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  5 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  6 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  7 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  8 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0  9 /opt/dsplink/test/api/receivebuf.out 1 1 1
+DSP_SOK         DSP_SOK         0 10 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 11 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 12 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 13 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 14 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 15 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 15 /opt/dsplink/test/api/receivebuf.out 1 2 1
+DSP_SOK         DSP_SOK         0 15 /opt/dsplink/test/api/receivebuf.out 2 2 1
+DSP_SOK         DSP_SOK         0 15 /opt/dsplink/test/api/receivebuf.out 2 3 1
+DSP_EINVALIDARG DSP_EINVALIDARG 1  0 /opt/dsplink/test/api/receivebuf.out 2 3 1
+DSP_SOK         DSP_EINVALIDARG 0  0 /opt/dsplink/test/api/receivebuf.out 1 0 1
+DSP_SOK         DSP_EINVALIDARG 0  0 /opt/dsplink/test/api/receivebuf.out 2 4 1

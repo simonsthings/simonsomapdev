@@ -1,0 +1,37 @@
+-----------------------------  loop.pjt - Release  -----------------------------
+C:\CCStudio_v3.1\bin\utilities\tconf\tconf loop.tcf
+js: "loop.tcf", line 130: Couldn't open file "null".
+    "./loop.tcf", line 25
+js: "loop.tcf", line 130: Couldn't open file "null".
+    "./loop.tcf", line 26
+js: "loop.tcf", line 31: The undefined value has no properties.
+    "./loop.tcf", line 31
+
+[loop.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" loop.cdb
+"loop.cdb", line 1: error: Version  is not compatible with this version of BIOS
+
+[main.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -q -pdr -pdv -pden -o3 -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/Release" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/.." -d"_MSGQ_COMPONENT" -ml -vcore:2.1 -@"OMAP/Release.lkf" "main.c"
+
+[swiLoop.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -q -pdr -pdv -pden -o3 -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/Release" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/.." -d"_MSGQ_COMPONENT" -ml -vcore:2.1 -@"OMAP/Release.lkf" "swiLoop.c"
+"swiLoop.c", line 321: remark #880-D: parameter "bufp" was never referenced
+  static Void readFinishCb(Ptr arg, Int status, Ptr bufp, Uns size)
+                                                    ^
+
+"swiLoop.c", line 342: remark #880-D: parameter "bufp" was never referenced
+  static Void writeFinishCb(Ptr arg, Int status, Ptr bufp, Uns size)
+                                                     ^
+
+"swiLoop.c", line 342: remark #880-D: parameter "size" was never referenced
+  static Void writeFinishCb(Ptr arg, Int status, Ptr bufp, Uns size)
+                                                               ^
+
+"swiLoop.c", line 363: remark #880-D: parameter "arg1" was never referenced
+  static Void loopbackSWI(Arg arg0, Arg arg1)
+                                        ^
+
+
+[tskLoop.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -q -pdr -pdv -pden -o3 -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/Release" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/../../../../inc/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/samples/loop/OMAP/.." -d"_MSGQ_COMPONENT" -ml -vcore:2.1 -@"OMAP/Release.lkf" "tskLoop.c"
+
+Build Complete,
+  1 Errors, 0 Warnings, 4 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

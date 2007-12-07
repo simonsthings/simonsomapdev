@@ -1,0 +1,48 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="\dsplink\final\dsp\src\samples\message\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\main.c"
+Source="..\swiMessage.c"
+Source="..\tskMessage.c"
+
+[Generated Files]
+Source="messagecfg.s55"
+Source="messagecfg_c.c"
+Source="message.cdb"
+Source="messagecfg.cmd"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf message.tcf
+FinalBuildCmd=copy $(Proj_dir)\Debug\message.out .\..\..\..\..\bin\samples\OMAP\Debug
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf message.tcf
+FinalBuildCmd=copy $(Proj_dir)\Release\message.out .\..\..\..\..\bin\samples\OMAP\Release
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Proj_dir)" -d"_DEBUG" -d"USE_CCS_BREAKPOINT" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Proj_dir)" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\message.map" -o".\Debug\message.out" -x -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l" -l".\..\..\..\..\lib\OMAP\Debug\dsplinkmsg.l55l" -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\message.map" -o".\Release\message.out" -x -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l" -l".\..\..\..\..\lib\OMAP\Release\dsplinkmsg.l55l" -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l"

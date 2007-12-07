@@ -1,0 +1,234 @@
+#!/usr/bin/perl
+#   ============================================================================
+#   @file   dsplinkcfg.opt
+#
+#   @path   $(DSPLINK)\config\bin
+#
+#   @desc   Contains different configuration options for for DSP/BIOS LINK.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+package DsplinkCfgOpt ;
+
+use strict ;
+
+#   ============================================================================
+#   PRE-DECLARE GLOBAL VARIABLES TO AVOID WARNINGS UNDER 'use strict'
+#   ============================================================================
+
+#   ----------------------------------------------------------------------------
+#   GENERIC ARRAYS.
+#   Do not change the forward declarations in this section.
+#   ----------------------------------------------------------------------------
+use vars qw (
+                @OPT_BUILDCFG
+                @OPT_GPPOS
+                @OPT_PLATFORM
+            ) ;
+
+
+#   ----------------------------------------------------------------------------
+#   CUSTOMIZABLE ARRAYS.
+#   When a platform has set of variants, add a forward
+#   declaration for the array in the section below.
+#   ----------------------------------------------------------------------------
+use vars qw (
+                @OPT_VARIANT_NONE
+                @OPT_VARIANT_SAMPLE
+                @OPT_VARIANT_OMAP
+            ) ;
+
+
+#   ****************************************************************************
+#   ACTUAL DEFINITION BEGINS HERE...
+#   ****************************************************************************
+
+#   ============================================================================
+#   OPT_BUILDCFG
+#
+#   List the build configurations.
+#
+#   Each line in this array is displayed in the menu for selecting the build
+#   configuration. Unless user has added a new module into DSP/BIOS LINK,
+#   no modifications are necessary in the definition below.
+#
+#   NOTE: First element is not used.
+#   ============================================================================
+
+@OPT_BUILDCFG   = (
+        "",
+        "PROC + CHNL + MSGQ",
+        "PROC + CHNL",
+        "PROC",
+        "DSP  (Minimal interface for DSP Control)"
+) ;
+
+
+#   ============================================================================
+#   OPT_GPPOS
+#
+#   List operating systems running on GPP OS.
+#
+#   Each element in this list is an array of length 3.
+#       - 1st element is the value assigned to the build variable: GPPOS.
+#       - 2nd element is the value assigned to the build variable: DISTRIBUTION.
+#       - 3rd element is the name of the OS for display on the menu for
+#         selecting the GPP OS.
+#
+#   NOTE: First element is not used.
+#   ============================================================================
+
+@OPT_GPPOS      = (
+    [
+        "",
+        "",
+        ""
+    ],
+    [
+        "Linux",
+        "montavista",
+        "Montavista Linux Preview Kit Edition",
+    ],
+    [
+        "Linux",
+        "innovator5910_mvlpro3.0",
+        "Montavista Linux Pro 3.0",
+    ],
+    [
+        "Linux",
+        "monterey",
+        "Monterey Linux",
+    ],
+    [
+        "Nucleus",
+        "",
+        "Nucleus",
+    ]
+) ;
+
+
+#   ============================================================================
+#   OPT_PLATFORM
+#
+#   List the platforms supported by DSP/BIOS LINK
+#
+#   Each element in this list is an array of length 3.
+#       - 1st element is the value assigned to the build variable: PLATFORM.
+#       - 2nd element is the name of the platform for display on the menu for
+#         selecting the platform.
+#       - 3rd element is the address of array containing list of variants.
+#         If the platform does not have and/or does not support any variant
+#         use the default value "\@OPT_VARIANT_NONE".
+#
+#   NOTE: First element is not used.
+#   ============================================================================
+
+@OPT_PLATFORM   = (
+    [
+        "",
+        "",
+        \@OPT_VARIANT_NONE
+    ],
+    [
+        "OMAP",
+        "OMAP5912 OSK",
+        \@OPT_VARIANT_NONE
+    ],
+    [
+        "OMAP",
+        "Innovator(TM) using OMAP5910",
+        \@OPT_VARIANT_NONE
+    ],
+    [
+        "DM310_DM642",
+        "DM310 with DM642 using HPI Interface",
+        \@OPT_VARIANT_NONE
+    ]
+) ;
+
+
+#   ============================================================================
+#   OPT_VARIANT_NONE
+#
+#   Default array used by the platforms that do not have/ do not support any
+#   of their variants.
+#   ============================================================================
+
+@OPT_VARIANT_NONE   = () ;
+
+
+#   ============================================================================
+#   OPT_VARIANT_SAMPLE
+#
+#   Lists the variants of platform 'SAMPLE'
+#   This array is defined only for illustration purposes.
+#
+#   Each element in this list is an array of length 2.
+#       - 1st element is the value assigned to the build variable 'VARIANT'.
+#       - 2nd element is the name of the variant for display on the menu for
+#         selecting the variant.
+#
+#
+#   The variants are usually tied to the platform. Hence following naming
+#   convention is recommended.
+#       OPT_VARIANT_<Value assigned to build variable PLATFORM>
+#
+#   A variant is needed for a platform if atleast one of following is true:
+#   - Change is necessary in the build infrastructure (e.g. compiler/ linker/
+#     libraries/ etc.) between two platforms.
+#
+#   - Change is necessary in the source code (e.g. boot up procedure, address
+#     ranges, ...)
+#
+#   NOTE: First element is not used.
+#   ============================================================================
+
+@OPT_VARIANT_SAMPLE = (
+    [
+        "",
+        ""
+    ],
+    [
+        "",
+        "SAMPLE VARIANT 1"
+    ],
+    [
+        "SAMPVAR2",
+        "SAMPLE VARIANT 2"
+    ],
+    [
+        "SAMPVAR3",
+        "SAMPLE VARIANT 3"
+    ]
+) ;
+
+
+#   ============================================================================
+#   OPT_VARIANT_OMAP
+#
+#   Lists the variants of the platform 'OMAP'
+#
+#   NOTE: First element is not used.
+#   ============================================================================
+
+@OPT_VARIANT_OMAP   = (
+    [
+        "",
+        ""
+    ],
+    [
+        "",
+        "5910"
+    ],
+    [
+        "",
+        "5912"
+    ]
+) ;

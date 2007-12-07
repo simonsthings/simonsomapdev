@@ -1,0 +1,6 @@
+-z -q -c -m"./Debug/receivemsg_text.map" -o"./Debug/receivemsg_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l" -l"./../../../../lib/OMAP/Debug/dsplinkmsg.l55l" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/msgq.l55l" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/mqtbiosque.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\Debug\MsgqUtils.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\Debug\ReceiveMsg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\Debug\ReceiveMsg_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\Debug\ReceiveMsg_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\ReceiveMsg_text.cmd"

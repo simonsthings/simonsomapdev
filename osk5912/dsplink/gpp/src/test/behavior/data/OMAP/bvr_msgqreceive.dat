@@ -1,0 +1,47 @@
+!   ============================================================================
+!   @file   bvr_msgqreceive.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data\OMAP
+!
+!   @desc   This file provides arguments to the test: BVR_MsgqReceive
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id from which to receive.
+!   arg 4   : Number of messages per allocator pool.
+!   arg 5   : GPP receive queue id
+!   arg 6   : Number of messages to be received.
+!   arg 7   : DSP executable to be used.
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK       DSP_SOK   0    5   1    5     /opt/dsplink/test/behavior/sendmsg.out
+DSP_SOK       DSP_SOK   0    5   0    5     /opt/dsplink/test/behavior/sendmsg.out
+DSP_SOK       DSP_SOK   0   15   1   15     /opt/dsplink/test/behavior/sendmsg.out
+
+DSP_SOK       DSP_SOK   0    5   1    5     /opt/dsplink/test/behavior/sendmsg_bios.out
+DSP_SOK       DSP_SOK   0    5   0    5     /opt/dsplink/test/behavior/sendmsg_bios.out
+DSP_SOK       DSP_SOK   0   15   1   15     /opt/dsplink/test/behavior/sendmsg_bios.out
+
+DSP_SOK       DSP_SOK   0    5   1    5     /opt/dsplink/test/behavior/sendmsg_text.out
+DSP_SOK       DSP_SOK   0    5   0    5     /opt/dsplink/test/behavior/sendmsg_text.out
+DSP_SOK       DSP_SOK   0   15   1   15     /opt/dsplink/test/behavior/sendmsg_text.out
+
+DSP_SOK       DSP_SOK   0    5   1    5     /opt/dsplink/test/behavior/sendmsg_bios_text.out
+DSP_SOK       DSP_SOK   0    5   0    5     /opt/dsplink/test/behavior/sendmsg_bios_text.out
+DSP_SOK       DSP_SOK   0   15   1   15     /opt/dsplink/test/behavior/sendmsg_bios_text.out
+

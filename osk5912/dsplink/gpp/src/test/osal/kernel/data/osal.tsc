@@ -1,0 +1,43 @@
+!   ============================================================================
+!   @file   osal.tsc
+!
+!   @path   $(DSPLINK)\gpp\src\test\osal\data
+!
+!   @desc   This file contains list of tests to be executed.
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   This script contains all osal osal testcases
+!   ============================================================================
+
+
+LinkOsalTest  OSAL_DpcCreate       /opt/dsplink/test/osal/kernel/osal_dpccreate.dat
+LinkOsalTest  OSAL_DpcDelete       /opt/dsplink/test/osal/kernel/osal_dpcdelete.dat
+LinkOsalTest  OSAL_DpcFinalize     /opt/dsplink/test/osal/kernel/osal_dpcfinalize.dat
+LinkOsalTest  OSAL_DpcInitialize   /opt/dsplink/test/osal/kernel/osal_dpcinitialize.dat
+LinkOsalTest  OSAL_IsrCreate       /opt/dsplink/test/osal/kernel/osal_isrcreate.dat
+LinkOsalTest  OSAL_IsrDelete       /opt/dsplink/test/osal/kernel/osal_isrdelete.dat
+LinkOsalTest  OSAL_IsrInitialize   /opt/dsplink/test/osal/kernel/osal_isrinitialize.dat
+LinkOsalTest  OSAL_IsrFinalize     /opt/dsplink/test/osal/kernel/osal_isrfinalize.dat
+LinkOsalTest  OSAL_SyncInitialize  /opt/dsplink/test/osal/kernel/osal_syncinitialize.dat
+LinkOsalTest  OSAL_SyncFinalize    /opt/dsplink/test/osal/kernel/osal_syncfinalize.dat
+LinkOsalTest  OSAL_SyncOpenEvent   /opt/dsplink/test/osal/kernel/osal_syncopenevent.dat
+LinkOsalTest  OSAL_SyncSetEvent    /opt/dsplink/test/osal/kernel/osal_syncsetevent.dat
+LinkOsalTest  OSAL_SyncResetEvent  /opt/dsplink/test/osal/kernel/osal_syncresetevent.dat
+LinkOsalTest  OSAL_SyncWaitOnEvent /opt/dsplink/test/osal/kernel/osal_syncwaitonevent.dat
+LinkOsalTest  OSAL_SyncCloseEvent  /opt/dsplink/test/osal/kernel/osal_synccloseevent.dat
+LinkOsalTest  OSAL_SyncCreateCS    /opt/dsplink/test/osal/kernel/osal_synccreatecs.dat
+LinkOsalTest  OSAL_SyncDeleteCS    /opt/dsplink/test/osal/kernel/osal_syncdeletecs.dat
+LinkOsalTest  OSAL_SyncEnterCS     /opt/dsplink/test/osal/kernel/osal_syncentercs.dat
+LinkOsalTest  OSAL_SyncLeaveCS     /opt/dsplink/test/osal/kernel/osal_syncleavecs.dat
+LinkOsalTest  OSAL_DpcSchedule     /opt/dsplink/test/osal/kernel/osal_dpcschedule.dat
+LinkOsalTest OSAL_IsrInstall       /opt/dsplink/test/osal/kernel/osal_isrinstall.dat
+LinkOsalTest OSAL_IsrUninstall     /opt/dsplink/test/osal/kernel/osal_isruninstall.dat

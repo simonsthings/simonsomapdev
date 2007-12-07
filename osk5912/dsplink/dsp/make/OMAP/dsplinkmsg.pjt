@@ -1,0 +1,41 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="\CCSTUD~1.1\boards\osk5912\dsplink\dsp\make\OMAP"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\src\mqa\mqabuf.c"
+Source="..\..\src\mqt\mqtdsplink.c"
+
+[Generated Files]
+
+["Debug" Settings]
+FinalBuildCmd=copy .\Debug\dsplinkmsg.l55l ..\..\lib\OMAP\Debug\
+
+["Release" Settings]
+FinalBuildCmd=copy .\Release\dsplinkmsg.l55l ..\..\lib\OMAP\Release\
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\Debug\dsplinkmsg.l55l
+
+["Archiver" Settings: "Release"]
+Options=-r -o.\Release\dsplinkmsg.l55l
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\..\dsp\src\mqa" -i"$(Proj_dir)\..\..\..\dsp\src\mqt" -i"$(Proj_dir)\..\..\..\dsp\inc" -i"$(Proj_dir)\..\..\..\dsp\inc\OMAP" -d"_DEBUG" -d"_MSGQ_COMPONENT" -d"USE_CCS_BREAKPOINT" -ml -mn -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-o3 -q -pdr -pdv -pden  -fr"$(Proj_dir)\Release" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\..\dsp\src\mqa" -i"$(Proj_dir)\..\..\..\dsp\src\mqt" -i"$(Proj_dir)\..\..\..\dsp\inc" -i"$(Proj_dir)\..\..\..\dsp\inc\OMAP" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55

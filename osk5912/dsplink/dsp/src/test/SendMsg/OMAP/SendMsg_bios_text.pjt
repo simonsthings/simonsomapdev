@@ -1,0 +1,56 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\CCSTUD~1.1\boards\osk5912\dsplink\dsp\src\test\SendMsg\OMAP\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\generic\MsgqUtils.c"
+Source="..\SendMsg.c"
+Source="SendMsg_bios_text.cdb"
+Source="SendMsg_bios_text.cmd"
+
+[Generated Files]
+Source="SendMsg_bios_textcfg.cmd"
+Source="SendMsg_bios_textcfg.s55"
+Source="SendMsg_bios_textcfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf SendMsg_bios_text.tcf
+FinalBuildCmd=copy $(Proj_dir)\Debug\sendmsg_bios_text.out .\..\..\..\..\bin\test\OMAP\Debug
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf SendMsg_bios_text.tcf
+FinalBuildCmd=copy $(Proj_dir)\Release\sendmsg_bios_text.out .\..\..\..\..\bin\test\OMAP\Release
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\generic" -i"$(Proj_dir)\.." -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\generic" -i"$(Proj_dir)\.." -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\sendmsg_bios_text.map" -o".\Debug\sendmsg_bios_text.out" -x -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l" -l".\..\..\..\..\lib\OMAP\Debug\dsplinkmsg.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\sendmsg_bios_text.map" -o".\Release\sendmsg_bios_text.out" -x -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l" -l".\..\..\..\..\lib\OMAP\Release\dsplinkmsg.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l"
+
+["SendMsg_bios_textcfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["SendMsg_bios_textcfg.cmd" Settings: "Release"]
+ExcludeFromBuild=true
+

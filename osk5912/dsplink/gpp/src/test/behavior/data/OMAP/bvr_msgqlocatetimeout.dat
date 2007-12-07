@@ -1,0 +1,44 @@
+!   ============================================================================
+!   @file   bvr_msgqlocatetimeout.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data\OMAP
+!
+!   @desc   This file provides arguments to the test: BVR_MsgqLocateTimeout
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2  : Expected status of test
+!   arg 3  : Processor Id
+!   arg 4  : Test MSGQ id
+!   arg 5  : DSP side Executable
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK  DSP_SOK  0  1   /opt/dsplink/test/behavior/locatetimeoutmsg.out
+DSP_SOK  DSP_SOK  0  2   /opt/dsplink/test/behavior/locatetimeoutmsg.out
+DSP_SOK  DSP_SOK  0  16  /opt/dsplink/test/behavior/locatetimeoutmsg.out
+
+DSP_SOK  DSP_SOK  0  1   /opt/dsplink/test/behavior/locatetimeoutmsg_bios.out
+DSP_SOK  DSP_SOK  0  2   /opt/dsplink/test/behavior/locatetimeoutmsg_bios.out
+DSP_SOK  DSP_SOK  0  16  /opt/dsplink/test/behavior/locatetimeoutmsg_bios.out
+
+DSP_SOK  DSP_SOK  0  1   /opt/dsplink/test/behavior/locatetimeoutmsg_text.out
+DSP_SOK  DSP_SOK  0  2   /opt/dsplink/test/behavior/locatetimeoutmsg_text.out
+DSP_SOK  DSP_SOK  0  16  /opt/dsplink/test/behavior/locatetimeoutmsg_text.out
+
+DSP_SOK  DSP_SOK  0  1   /opt/dsplink/test/behavior/locatetimeoutmsg_bios_text.out
+DSP_SOK  DSP_SOK  0  2   /opt/dsplink/test/behavior/locatetimeoutmsg_bios_text.out
+DSP_SOK  DSP_SOK  0  16  /opt/dsplink/test/behavior/locatetimeoutmsg_bios_text.out

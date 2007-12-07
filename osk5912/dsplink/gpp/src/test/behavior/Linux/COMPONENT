@@ -1,0 +1,94 @@
+#   ============================================================================
+#   @file   COMPONENT
+#
+#   @path   $(DSPLINK)\gpp\src\test\behavior\Linux
+#
+#   @desc   This file contains information to build a component.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+#   ============================================================================
+#   Generic information about the component
+#   ============================================================================
+
+COMP_NAME       := TSTBVR
+COMP_PATH       := $(GPPROOT)$(DIRSEP)src$(DIRSEP)test$(DIRSEP)behavior
+COMP_TYPE       := LIB
+COMP_TARGET     := TSTBEHAVIOR.LIB
+
+
+#   ============================================================================
+#   Header file(s) exported from this component
+#   ============================================================================
+
+EXP_HEADERS     :=               \
+    testsuiteBVR.h               \
+    BVR_DataRead.h               \
+    BVR_DataWrite.h              \
+    BVR_DoubleLoadImage.h        \
+    BVR_Flush.h                  \
+    BVR_Idle.h                   \
+    BVR_MultiProcessOpen.h       \
+    BVR_PostProcess.h            \
+    BVR_SeqOpenClose.h           \
+    BVR_ProcStart.h              \
+    BVR_XferAfterIdle.h          \
+    BVR_EndOfStream.h            \
+    BVR_MultiProcessAttach.h     \
+    BVR_MultiThreadOpen.h        \
+    BVR_ReclaimTimeout.h         \
+    BVR_StateTransition.h        \
+    BVR_DspSioDelete.h           \
+    BVR_MsgqDeleteOwner.h        \
+    BVR_MsgqGetTimeout.h         \
+    BVR_MsgqLocateTimeout.h      \
+    BVR_MsgqPriority.h           \
+    BVR_MsgqReceive.h            \
+    BVR_MsgqReceiveMultiThread.h \
+    BVR_MsgqSend.h               \
+    BVR_MsgqSendMultiThread.h    \
+    BVR_MsgqStateTest.h          \
+    BVR_MsgqUtils.h
+
+#   ============================================================================
+#   User specified additional command line options for the compiler
+#   ============================================================================
+
+USR_CC_FLAGS    :=
+
+USR_CC_DEFNS    :=
+
+
+#   ============================================================================
+#   User specified additional command line options for the linker
+#   ============================================================================
+
+USR_LD_FLAGS    := -lpthread
+
+
+#   ============================================================================
+#   Standard libraries of GPP OS required during linking
+#   ============================================================================
+
+STD_LIBS        :=
+
+
+#   ============================================================================
+#   User specified libraries required during linking
+#   ============================================================================
+
+USR_LIBS        :=
+
+
+#   ============================================================================
+#   Target file(s) exported from this module
+#   ============================================================================
+
+EXP_TARGETS     := TSTBEHAVIOR.LIB

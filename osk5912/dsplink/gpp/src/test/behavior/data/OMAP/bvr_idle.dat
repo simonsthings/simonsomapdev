@@ -1,0 +1,168 @@
+!   ============================================================================
+!   @file   bvr_idle.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_idle
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : expected_status_of_setup_phase
+!   arg 2   : expected_status
+!   arg 3   : dspid
+!   arg 4   : image_filename
+!   arg 5   : channel identifier
+!           NOTE : Do not use channel 13 and channel 14 as data channel as they
+!                  are reserved for control operations.
+!   arg 6   : Mode in which channel is to be opened
+!             Mode = 1 (Input Channel)
+!             Mode = 0 (output Channel)
+!   arg 7   : number of times the issue and reclaims are called.
+!   arg 8   : buffer size used for data transfer
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     0   0  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     0   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     1   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     2   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     3   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     4   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     5   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     6   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     7   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     8   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     9   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     10  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     11  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     12  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     15  0  16 100
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     0   1  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     0   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     1   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     2   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     3   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     4   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     5   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     6   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     7   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     8   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     9   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     10  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     11  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     12  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest.out     15  1  16 100
+
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     0   0  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     0   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     1   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     2   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     3   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     4   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     5   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     6   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     7   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     8   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     9   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     10  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     11  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     12  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     15  0  16 100
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     0   1  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     0   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     1   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     2   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     3   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     4   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     5   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     6   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     7   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     8   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     9   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     10  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     11  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     12  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios.out     15  1  16 100
+
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     0   0  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     0   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     1   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     2   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     3   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     4   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     5   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     6   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     7   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     8   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     9   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     10  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     11  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     12  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     15  0  16 100
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     0   1  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     0   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     1   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     2   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     3   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     4   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     5   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     6   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     7   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     8   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     9   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     10  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     11  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     12  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_text.out     15  1  16 100
+
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     0   0  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     0   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     1   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     2   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     3   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     4   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     5   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     6   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     7   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     8   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     9   0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     10  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     11  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     12  0  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     15  0  16 100
+
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     0   1  0  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     0   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     1   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     2   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     3   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     4   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     5   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     6   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     7   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     8   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     9   1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     10  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     11  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     12  1  1  100
+DSP_SOK  DSP_SOK  0   /opt/dsplink/test/behavior/idletest_bios_text.out     15  1  16 100

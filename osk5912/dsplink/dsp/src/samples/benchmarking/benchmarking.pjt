@@ -1,0 +1,45 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="\dsplink\dsp\src\samples\benchmarking\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="benchmarking.c"
+Source="benchmarking.cdb"
+Source="benchmarkingcfg.cmd"
+
+[Generated Files]
+Source="benchmarkingcfg.s55"
+Source="benchmarkingcfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf benchmarking.tcf
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf benchmarking.tcf
+
+["Compiler" Settings: "Debug"]
+Options=-g -mn -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\inc" -i"$(Proj_dir)\..\..\..\inc\OMAP" -i"$(Proj_dir)" -d"_DEBUG" -d"USE_CCS_BREAKPOINT" -ml -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-o3 -q -pdr -pdv -pden -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\inc" -i"$(Proj_dir)\..\..\..\inc\OMAP" -i"$(Proj_dir)" -d"USE_CCS_BREAKPOINT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\benchmarking.map" -o".\Debug\benchmarking.out" -x -l".\..\..\..\lib\OMAP\Debug\dsplink.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\benchmarking.map" -o".\Release\benchmarking.out" -x -l".\..\..\..\lib\OMAP\Release\dsplink.l55l"
+

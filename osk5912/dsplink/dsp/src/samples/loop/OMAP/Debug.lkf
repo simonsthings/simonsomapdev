@@ -1,0 +1,7 @@
+-z -q -c -m"./Debug/loop_text.map" -o"./Debug/loop_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\Debug\loop_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\Debug\loop_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\Debug\main.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\Debug\swiLoop.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\Debug\tskLoop.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\samples\loop\OMAP\loop_text.cmd"

@@ -1,0 +1,46 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="\dsplink\dsp\src\test\application\OMAP"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="codec.lib"
+Source="..\application.c"
+Source="application.cdb"
+Source="applicationcfg.cmd"
+
+[Generated Files]
+Source="applicationcfg.s55"
+Source="applicationcfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf application.tcf
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf application.tcf
+
+["Compiler" Settings: "Debug"]
+Options=-g -mn -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -d"_DEBUG" -ml -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-o3 -q -pdr -pdv -pden -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\application.map" -o".\Debug\application.out" -x -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\application.map" -o".\Release\application.out" -x -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l"
+

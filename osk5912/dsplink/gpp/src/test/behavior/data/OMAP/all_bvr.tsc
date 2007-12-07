@@ -1,0 +1,46 @@
+!   ============================================================================
+!   @file   all_bvr.tsc
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data\OMAP
+!
+!   @desc   This file contains list of tests to be executed.
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   This script contains all behavior testcases
+!   ============================================================================
+
+LinkBehaviorTest BVR_DataRead           /opt/dsplink/test/behavior/bvr_dataread.dat
+LinkBehaviorTest BVR_DataWrite          /opt/dsplink/test/behavior/bvr_datawrite.dat
+LinkBehaviorTest BVR_XferAfterIdle      /opt/dsplink/test/behavior/bvr_xferafteridle.dat
+LinkBehaviorTest BVR_EndOfStream        /opt/dsplink/test/behavior/bvr_endofstream.dat
+LinkBehaviorTest BVR_Flush              /opt/dsplink/test/behavior/bvr_flush.dat
+LinkBehaviorTest BVR_Idle               /opt/dsplink/test/behavior/bvr_idle.dat
+LinkBehaviorTest BVR_DspSioDelete       /opt/dsplink/test/behavior/bvr_dspsiodelete.dat
+LinkBehaviorTest BVR_ReclaimTimeout     /opt/dsplink/test/behavior/bvr_reclaimtimeout.dat
+
+LinkBehaviorTest BVR_PROCStart          /opt/dsplink/test/behavior/bvr_procstart.dat
+LinkBehaviorTest BVR_StateTransition    /opt/dsplink/test/behavior/bvr_statetransition.dat
+LinkBehaviorTest BVR_SeqOpenClose       /opt/dsplink/test/behavior/bvr_seqopenclose.dat
+LinkBehaviorTest BVR_DoubleLoadImage    /opt/dsplink/test/behavior/bvr_doubleloadimage.dat
+LinkBehaviorTest BVR_MultiProcessAttach /opt/dsplink/test/behavior/bvr_multiprocessattach.dat
+LinkBehaviorTest BVR_MultiProcessOpen   /opt/dsplink/test/behavior/bvr_multiprocessopen.dat
+LinkBehaviorTest BVR_MultithreadOpen    /opt/dsplink/test/behavior/bvr_multithreadopen.dat
+
+LinkBehaviorTest BVR_MsgqReceive            /opt/dsplink/test/behavior/bvr_msgqreceive.dat
+LinkBehaviorTest BVR_MsgqSend               /opt/dsplink/test/behavior/bvr_msgqsend.dat
+LinkBehaviorTest BVR_MsgqGetTimeout         /opt/dsplink/test/behavior/bvr_msgqgettimeout.dat
+LinkBehaviorTest BVR_MsgqPriority           /opt/dsplink/test/behavior/bvr_msgqpriority.dat
+LinkBehaviorTest BVR_MsgqLocateTimeout      /opt/dsplink/test/behavior/bvr_msgqlocatetimeout.dat
+LinkBehaviorTest BVR_MsgqDeleteOwner        /opt/dsplink/test/behavior/bvr_msgqdeleteowner.dat
+LinkBehaviorTest BVR_MsgqReceiveMultiThread /opt/dsplink/test/behavior/bvr_msgqreceivemultithread.dat
+LinkBehaviorTest BVR_MsgqStateTest          /opt/dsplink/test/behavior/bvr_msgqstatetest.dat
+LinkBehaviorTest BVR_MsgqSendMultiThread    /opt/dsplink/test/behavior/bvr_msgqsendmultithread.dat

@@ -1,0 +1,44 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="\dsplink\dsp\make\OMAP\"
+ProjectType=Library
+CPUFamily=TMS320C55XX
+Tool="Archiver"
+Tool="Compiler"
+Tool="DspBiosBuilder"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\src\gen\failure.c"
+Source="..\..\src\ldrv\OMAP\emif.c"
+Source="..\..\src\ldrv\OMAP\hal.c"
+Source="..\..\src\ldrv\OMAP\interrupt.c"
+Source="..\..\src\ldrv\OMAP\shm.c"
+Source="..\..\src\ldrv\OMAP\shm_driver.c"
+
+["Debug" Settings]
+FinalBuildCmd=copy .\Debug\dsplink.l55l ..\..\lib\OMAP\Debug\
+
+["Release" Settings]
+FinalBuildCmd=copy .\Release\dsplink.l55l ..\..\lib\OMAP\Release\
+
+["Archiver" Settings: "Debug"]
+Options=-r -o.\Debug\dsplink.l55l
+
+["Archiver" Settings: "Release"]
+Options=-r -o.\Release\dsplink.l55l
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\dsp\src\ldrv" -i"$(Proj_dir)\..\..\..\dsp\src\ldrv\OMAP" -i"$(Proj_dir)\..\..\..\dsp\src\gen" -i"$(Proj_dir)\..\..\..\dsp\inc" -i"$(Proj_dir)\..\..\..\dsp\inc\OMAP" -d"_DEBUG" -d"_MSGQ_COMPONENT" -d"USE_CCS_BREAKPOINT" -ml -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\dsp\src\ldrv" -i"$(Proj_dir)\..\..\..\dsp\src\ldrv\OMAP" -i"$(Proj_dir)\..\..\..\dsp\src\gen" -i"$(Proj_dir)\..\..\..\dsp\inc" -i"$(Proj_dir)\..\..\..\dsp\inc\OMAP" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+

@@ -1,0 +1,149 @@
+!   ============================================================================
+!   @file   sts_multithread.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\stress\data\OMAP
+!
+!   @desc   This file provides arguments to the test: sts_multithread
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Test
+!   arg 2   : No of iterations each channel will do issue-reclaim
+!             For Infinite Test use 0
+!   arg 3   : Buffersize for each transfer
+!   arg 4   : Number of buffers which are issued simultaneously
+!   arg 5   : Delay introduced between each issue and reclaim
+!   arg 6   : Full path of the Dsp binary file
+!   arg 7   : Number of threads created
+!             (maximum supported value is 16)
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK 100     8 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100    16 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100    56 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100   128 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100   256 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100   512 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100  1024 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100  2048 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100  4096 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100  8192 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+DSP_SOK 100 16384 16 0 /opt/dsplink/test/stress/multichnlstress.out       16
+
+DSP_SOK 1000    8 16 0 /opt/dsplink/test/stress/multitaskchnlstress.out   16
+
+DSP_SOK 100     8 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100    16 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100    56 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100   128 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100   256 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100   512 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100  1024 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100  2048 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100  4096 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100  8192 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+DSP_SOK 100 16384 16 50 /opt/dsplink/test/stress/multichnlstress.out      16
+
+DSP_SOK 1000    8 16 50 /opt/dsplink/test/stress/multitaskchnlstress.out  16
+
+
+DSP_SOK 100     8 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100    16 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100    56 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100   128 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100   256 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100   512 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100  1024 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100  2048 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100  4096 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100  8192 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+DSP_SOK 100 16384 16 0 /opt/dsplink/test/stress/multichnlstress_bios.out       16
+
+DSP_SOK 1000    8 16 0 /opt/dsplink/test/stress/multitaskchnlstress_bios.out   16
+
+DSP_SOK 100     8 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100    16 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100    56 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100   128 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100   256 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100   512 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100  1024 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100  2048 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100  4096 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100  8192 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+DSP_SOK 100 16384 16 50 /opt/dsplink/test/stress/multichnlstress_bios.out      16
+
+DSP_SOK 1000    8 16 50 /opt/dsplink/test/stress/multitaskchnlstress_bios.out  16
+
+
+DSP_SOK 100     8 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100    16 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100    56 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100   128 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100   256 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100   512 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100  1024 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100  2048 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100  4096 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100  8192 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+DSP_SOK 100 16384 16 0 /opt/dsplink/test/stress/multichnlstress_text.out       16
+
+DSP_SOK 1000    8 16 0 /opt/dsplink/test/stress/multitaskchnlstress_text.out   16
+
+DSP_SOK 100     8 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100    16 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100    56 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100   128 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100   256 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100   512 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100  1024 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100  2048 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100  4096 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100  8192 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+DSP_SOK 100 16384 16 50 /opt/dsplink/test/stress/multichnlstress_text.out      16
+
+DSP_SOK 1000    8 16 50 /opt/dsplink/test/stress/multitaskchnlstress_text.out  16
+
+
+DSP_SOK 100     8 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100    16 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100    56 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100   128 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100   256 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100   512 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100  1024 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100  2048 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100  4096 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100  8192 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+DSP_SOK 100 16384 16 0 /opt/dsplink/test/stress/multichnlstress_bios_text.out       16
+
+DSP_SOK 1000    8 16 0 /opt/dsplink/test/stress/multitaskchnlstress_bios_text.out   16
+
+DSP_SOK 100     8 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100    16 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100    56 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100   128 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100   256 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100   512 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100  1024 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100  2048 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100  4096 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100  8192 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+DSP_SOK 100 16384 16 50 /opt/dsplink/test/stress/multichnlstress_bios_text.out      16
+
+DSP_SOK 1000    8 16 50 /opt/dsplink/test/stress/multitaskchnlstress_bios_text.out  16

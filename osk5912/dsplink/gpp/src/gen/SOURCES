@@ -1,0 +1,25 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\gen
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+SOURCES  := gen_utils.c     \
+            list.c          \
+            buf.c
+
+ifeq ($(USE_PROC), 1)
+SOURCES  += coff.c
+SOURCES  += coff_64x.c
+SOURCES  += coff_55x.c
+SOURCES  += coff_int.c
+endif

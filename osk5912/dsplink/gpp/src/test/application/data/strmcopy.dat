@@ -1,0 +1,37 @@
+!   ============================================================================
+!   @file   strmcopy.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\application\data
+!
+!   @desc   This file provides arguments to the test: strmcopy
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Processor Id
+!   arg 2   : Inuput Channel Id
+!   arg 3   : Output Channel Id
+!   arg 4   : File to be loaded onto the DSP
+!   arg 5   : Size of the buffers to be transferred
+!   arg 6   : No of times forwhich the test has to run
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+
+
+0 1 0  /opt/dsplink/test/application/loop.out 10      16384
+0 1 0  /opt/dsplink/test/application/loop.out 100     16384
+0 1 0  /opt/dsplink/test/application/loop.out 1000    16384

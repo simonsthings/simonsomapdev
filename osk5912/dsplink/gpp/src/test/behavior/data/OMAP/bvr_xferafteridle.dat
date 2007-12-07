@@ -1,0 +1,46 @@
+!   ============================================================================
+!   @file   bvr_xferafteridle.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\bvr\data
+!
+!   @desc   This file provides arguments to the test: bvr_xferafteridle
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : Channel Id
+!   arg 5   : Name of the file to be loaded onto the DSP
+!   arg 6   : Mode in which Channel is to be opened
+!   arg 7   : Endianism in which Channel is to be opened
+!   arg 8   : Size of the Channel to be opened
+!           1: ChannelDataSize_16bits
+!           2: ChannelDataSize_32bits
+!   arg 9   : Size of the buffer
+!   arg 10  : Size of the I/O buffer to be used for data communication
+!   arg 11  : Attributes of channel the channel (Presently not used)
+!   arg 12  : Timeout value
+!               0 - NO_WAIT
+!               1 - WAIT_FOR_EVER
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK 0 1 /opt/dsplink/test/behavior/sendbuf.out           1 1 1 10 10 0 1
+DSP_SOK DSP_SOK 0 1 /opt/dsplink/test/behavior/sendbuf_bios_text.out       1 1 1 10 10 0 1
+DSP_SOK DSP_SOK 0 1 /opt/dsplink/test/behavior/sendbuf_bios.out 1 1 1 10 10 0 1
+DSP_SOK DSP_SOK 0 1 /opt/dsplink/test/behavior/sendbuf_text.out 1 1 1 10 10 0 1

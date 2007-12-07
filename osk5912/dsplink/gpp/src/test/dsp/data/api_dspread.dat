@@ -1,0 +1,36 @@
+!   ============================================================================
+!   @file   api_dspread.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\dsp\data
+!
+!   @desc   This file provides arguments to the test: api_dspread
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : Dsp Address on which data has to be written
+!   arg 5   : Endianism Info.
+!   arg 6   : No. of bytes to write
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK 0 1234 1 50
+DSP_SOK DSP_SOK 0 1234 1 11150
+DSP_EINVALIDARG DSP_EINVALIDARG 1 1234  1 10
+DSP_SOK DSP_EINVALIDARG 0 1234 5 10

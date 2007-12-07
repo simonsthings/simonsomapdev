@@ -1,0 +1,36 @@
+!   ============================================================================
+!   @file   api_procstop.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data
+!
+!   @desc   This file provides arguments to the test: api_procstop
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Processor Id
+!   arg 4   : File to be loaded onto the DSP
+!   arg 5   : argument to be specified to Proc_Load
+!   arg 6   : If zero then do double stop test
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/api/receivebuf.out 0 1
+DSP_EFILE DSP_EWRONGSTATE 0 /opt/dsplink/test/api/ERROR.OUT 0 1
+DSP_EINVALIDARG DSP_EINVALIDARG 1 /opt/dsplink/test/api/receivebuf.out 0 1
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/api/receivebuf.out 0 0

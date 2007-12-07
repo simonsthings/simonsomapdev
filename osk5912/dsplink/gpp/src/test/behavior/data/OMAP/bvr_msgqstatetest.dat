@@ -1,0 +1,76 @@
+!   ============================================================================
+!   @file   bvr_msgqstatetest.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data\OMAP
+!
+!   @desc   This file provides arguments to the test: BVR_MsgqStateTest
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : expected_status_of_setup_phase
+!   arg 2   : expected_status
+!   arg 3   : Processor Id
+!   arg 4   : image_filename
+!   arg 5   : transition_string
+!                   Valid characters in transition string are:
+!               '1' : PROC_Attach
+!               '2' : PROC_Detach
+!               '3' : PROC_Load
+!               '4' : PROC_Start
+!               '5' : PROC_Stop
+!               '6' : MSGQ_AllocatorOpen
+!               '7' : MSGQ_AllocatorClose
+!               '8' : MSGQ_TransportOpen   (lmqt)
+!               '9' : MSGQ_TransportClose  (lmqt)
+!               'A' : MSGQ_TransportOpen   (rmqt)
+!               'B' : MSGQ_TransportClose  (rmqt)
+!               'C' : MSGQ_Locate
+!               'D' : MSGQ_Release
+!               'E' : MSGQ_Create
+!               'F' : MSGQ_Delete
+!               'G' : MSGQ_Alloc
+!               'H' : MSGQ_Free
+!               'I' : MSGQ_Put
+!               'J' : MSGQ_Get
+!               'K' : MSGQ_GetReplyId
+!               '\\': Ignore status of next call
+!   arg 6   : Number of messages to be transferred.
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg.out   1634ACGIDB572   1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg.out   1634AG\IB572    1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg.out   1634ACGD\IB572  1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg.out   167\G2          0
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg.out   1634A7\CB52     1
+
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios.out   1634ACGIDB572   1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios.out   1634AG\IB572    1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios.out   1634ACGD\IB572  1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios.out   167\G2          0
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios.out   1634A7\CB52     1
+
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_text.out   1634ACGIDB572   1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_text.out   1634AG\IB572    1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_text.out   1634ACGD\IB572  1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_text.out   167\G2          0
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_text.out   1634A7\CB52     1
+
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios_text.out   1634ACGIDB572   1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios_text.out   1634AG\IB572    1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios_text.out   1634ACGD\IB572  1
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios_text.out   167\G2          0
+DSP_SOK     DSP_SOK  0   /opt/dsplink/test/behavior/receivemsg_bios_text.out   1634A7\CB52     1

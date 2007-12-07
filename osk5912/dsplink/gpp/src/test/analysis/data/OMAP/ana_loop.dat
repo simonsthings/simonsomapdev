@@ -1,0 +1,85 @@
+!   ============================================================================
+!   @file   ana_loop.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\analysis\data
+!
+!   @desc   This file provides arguments to the test: ANA_Loop
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Processor Id
+!   arg 2   : Inuput Channel Id
+!   arg 3   : Output Channel Id
+!   arg 4   : File to be loaded onto the DSP
+!   arg 5   : Size of the buffers to be transferred
+!   arg 6   : No of times forwhich the test has to run
+!   arg 7   :  modeOfOperation defines which mode the test is running in.
+!              1 - Receive  Buffers.
+!              2 - Send Buffers.
+!              3 - Send and then Receive Buffers.
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out      8  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out     16  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out     56  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out    128  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out    256  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out    512  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out   1024  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out   2048  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out   4096  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out   8192  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf.out  16384  10000 3
+
+
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out      8  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out     16  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out     56  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out    128  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out    256  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out    512  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out   1024  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out   2048  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out   4096  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out   8192  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios.out  16384  10000 3
+
+
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out      8  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out     16  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out     56  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out    128  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out    256  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out    512  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out   1024  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out   2048  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out   4096  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out   8192  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_text.out  16384  10000 3
+
+
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out      8  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out     16  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out     56  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out    128  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out    256  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out    512  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out   1024  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out   2048  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out   4096  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out   8192  10000 3
+0 1 0  /opt/dsplink/test/analysis/receivesendbuf_bios_text.out  16384  10000 3

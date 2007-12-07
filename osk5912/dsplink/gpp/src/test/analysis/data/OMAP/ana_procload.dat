@@ -1,0 +1,33 @@
+!   ============================================================================
+!   @file   ana_procload.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\analysis\data
+!
+!   @desc   This file provides arguments to the test: ana_procload
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Processor Id
+!   arg 2   : Name of the file to be loaded onto DSP
+!   arg 3   : No. of times the test will be run
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+0 /opt/dsplink/test/analysis/sendbuf.out 1000
+0 /opt/dsplink/test/analysis/sendbuf_bios.out 1000
+0 /opt/dsplink/test/analysis/sendbuf_text.out 1000
+0 /opt/dsplink/test/analysis/sendbuf_bios_text.out 1000

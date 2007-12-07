@@ -1,0 +1,5 @@
+-z -q -c -m"./Debug/reclaimtimeout_text.map" -o"./Debug/reclaimtimeout_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReclaimTimeout\OMAP\Debug\reclaimtimeout.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReclaimTimeout\OMAP\Debug\reclaimtimeout_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReclaimTimeout\OMAP\Debug\reclaimtimeout_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\ReclaimTimeout\OMAP\reclaimtimeout_text.cmd"

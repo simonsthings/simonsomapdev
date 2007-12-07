@@ -1,0 +1,106 @@
+!   ============================================================================
+!   @file   ana_msgqputget.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\analysis\data\OMAP
+!
+!   @desc   This file provides arguments to the test: ANA_MsgqPutGet
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Processor Id
+!   arg 2   : Inuput msgq Id (Created on GPP side)
+!   arg 3   : Output msgq Id  (Created on DSP side)
+!   arg 4   : File to be loaded onto the DSP
+!   arg 5   : Size of the messages to be transferred
+!             Size must be greater than RMQT_CTRLMSG_SIZE.
+!   arg 6   : No of times for which the test has to run
+!   arg 7   :  modeOfOperation defines which mode the test is running in.
+!              1 - Receive messages.
+!              2 - Send messages.
+!              3 - Send and then receive messages.
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    70   60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    128  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    256  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    512  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out   1024  60000 1
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    70   60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    128  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    256  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    512  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out   1024  60000 2
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    70   60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    128  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    256  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out    512  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg.out   1024  60000 3
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    70   60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    128  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    256  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    512  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out   1024  60000 1
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    70   60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    128  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    256  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    512  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out   1024  60000 2
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    70   60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    128  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    256  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out    512  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios.out   1024  60000 3
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    70   60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    128  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    256  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    512  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out   1024  60000 1
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    70   60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    128  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    256  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    512  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out   1024  60000 2
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    70   60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    128  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    256  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out    512  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_text.out   1024  60000 3
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    70   60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    128  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    256  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    512  60000 1
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out   1024  60000 1
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    70   60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    128  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    256  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    512  60000 2
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out   1024  60000 2
+
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    70   60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    128  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    256  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out    512  60000 3
+0 0 0  /opt/dsplink/test/analysis/getputmsg_bios_text.out   1024  60000 3

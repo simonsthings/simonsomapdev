@@ -1,0 +1,28 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\test\behavior\Linux
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+SOURCES :=                       \
+    BVR_MultiProcessOpen.c       \
+    BVR_MultiProcessAttach.c     \
+    BVR_MultiThreadOpen.c
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES      +=                  \
+    BVR_MsgqDeleteOwner.c        \
+    BVR_MsgqReceiveMultiThread.c \
+    BVR_MsgqSendMultiThread.c    \
+    BVR_MsgqUtils.c
+endif

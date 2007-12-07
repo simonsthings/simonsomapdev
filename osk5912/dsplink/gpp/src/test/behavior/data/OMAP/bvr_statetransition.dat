@@ -1,0 +1,64 @@
+!   ============================================================================
+!   @file   bvr_statetransition.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_statetransition
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : expected_status_of_setup_phase
+!   arg 2   : expected_status
+!   arg 3   : dspid
+!   arg 4   : image_filename
+!   arg 5   : transition_string
+!                   Valid characters in transition string are:
+!               '1': PROC_RESET
+!               '2': PROC_IDLE
+!               '3': PROC_LOADED
+!               '4': PROC_STARTED
+!               '5': PROC_STOPPED
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK     DSP_EWRONGSTATE     0   /opt/dsplink/test/behavior/sendbuf.out   1432
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf.out   1
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf.out   12
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf.out   13
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf.out   134
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf.out   1345
+
+DSP_SOK     DSP_EWRONGSTATE     0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   1432
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   1
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   12
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   13
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   134
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios_text.out   1345
+
+DSP_SOK     DSP_EWRONGSTATE     0   /opt/dsplink/test/behavior/sendbuf_bios.out   1432
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios.out   1
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios.out   12
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios.out   13
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios.out   134
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_bios.out   1345
+
+DSP_SOK     DSP_EWRONGSTATE     0   /opt/dsplink/test/behavior/sendbuf_text.out   1432
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_text.out   1
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_text.out   12
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_text.out   13
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_text.out   134
+DSP_SOK     DSP_SOK             0   /opt/dsplink/test/behavior/sendbuf_text.out   1345

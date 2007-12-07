@@ -1,0 +1,32 @@
+!   ============================================================================
+!   @file   api_msgqfree.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\api\data\OMAP
+!
+!   @desc   This file provides arguments to the test: API_MsgqFree
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+!   arg 3   : Valid or invalid MsgqMsg
+!                 0 -> NULL
+!                 1 -> Valid ptr
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK     DSP_SOK           1
+DSP_SOK     DSP_EINVALIDARG   0

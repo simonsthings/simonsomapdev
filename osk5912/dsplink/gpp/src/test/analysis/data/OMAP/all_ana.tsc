@@ -1,0 +1,26 @@
+!   ============================================================================
+!   @file   all_ana.tsc
+!
+!   @path   $(DSPLINK)\gpp\src\test\analysis\data
+!
+!   @desc   This file contains list of tests to be executed.
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   This script contains all analysis testcases
+!   ============================================================================
+
+
+LinkAnalysisTest         ANA_SyncChnlIssueReclaim  /opt/dsplink/test/analysis/ana_syncchnlissuereclaim.dat
+LinkAnalysisTest         ANA_AsyncChnlIssueReclaim /opt/dsplink/test/analysis/ana_asyncchnlissuereclaim.dat
+LinkAnalysisTest         ANA_Loop                  /opt/dsplink/test/analysis/ana_loop.dat
+LinkAnalysisTest         ANA_ProcLoad              /opt/dsplink/test/analysis/ana_procload.dat
+LinkAnalysisTest         ANA_MsgqPutGet            /opt/dsplink/test/analysis/ana_msgqputget.dat

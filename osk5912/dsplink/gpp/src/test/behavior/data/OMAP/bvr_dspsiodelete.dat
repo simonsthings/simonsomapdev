@@ -1,0 +1,156 @@
+!   ============================================================================
+!   @file   bvr_dspsiodelete.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_dspsiodelete
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1    : expected_status_of_setup_phase
+!   arg 2    : expected_status
+!   arg 3    : dspid
+!   arg 4    : image_filename
+!   arg 5    : Queuing length.
+!   arg 6    : Channel identifier on which test has to execute.
+!              Do not use channel id 13 and 14 as they are reserved as control
+!              channels
+!   arg 7    : Mode of the channel to be opened.
+!              Mode = 1 (Input Channel)
+!              Mode = 0 (output Channel)
+!   arg 8    : Size of the buffers to be used on dsp side data channel
+!   arg 9    : FLUSH flag on data channel on DSP side.
+!              1 : set Flush to TRUE
+!              0 : set Flush to FALSE
+!   arg 10   : Timeout value for the reclaim when buffers are discarded on dsp
+!              side.(Do not specify 0 as timeout as the value)
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 0  0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 0  1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 15 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 15 0 16  1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 0  0 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 0  1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 15 1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 15 0 16 1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2  0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2  0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2  15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2  15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  1 8 0 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest.out  2 8 0 16  0 100
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 0  0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 0  1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 15 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 15 0 16  1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 0  0 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 0  1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 15 1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 15 0 16 1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2  0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2  0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2  15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2  15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  1 8 0 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios.out  2 8 0 16  0 100
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 0  0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 0  1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 15 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 15 0 16  1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 0  0 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 0  1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 15 1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 15 0 16 1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2  0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2  0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2  15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2  15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  1 8 0 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_text.out  2 8 0 16  0 100
+
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 0  0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 0  1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 15 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 15 0 16  1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 0  0 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 0  1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 15 1 16 1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 15 0 16 1 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2  0  0 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2  0  1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2  15 1 16 0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2  15 0 16 0 100
+
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  1 8 0 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 8 1 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 8 0 16  1 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 8 1 16  0 100
+DSP_SOK DSP_SOK 0 /opt/dsplink/test/behavior/siodeletetest_bios_text.out  2 8 0 16  0 100

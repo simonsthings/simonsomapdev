@@ -1,0 +1,55 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\CCSTUD~1.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\multichnlstress.c"
+Source="multichnlstress_bios.cdb"
+Source="multichnlstress_bios.cmd"
+
+[Generated Files]
+Source="multichnlstress_bioscfg.cmd"
+Source="multichnlstress_bioscfg.s55"
+Source="multichnlstress_bioscfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf multichnlstress_bios.tcf
+FinalBuildCmd=copy $(Proj_dir)\Debug\multichnlstress_bios.out .\..\..\..\..\bin\test\OMAP\Debug
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf multichnlstress_bios.tcf
+FinalBuildCmd=copy $(Proj_dir)\Release\multichnlstress_bios.out .\..\..\..\..\bin\test\OMAP\Release
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)" -i"$(Proj_dir)\.." -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\multichnlstress_bios.map" -o".\Debug\multichnlstress_bios.out" -x -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\multichnlstress_bios.map" -o".\Release\multichnlstress_bios.out" -x -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l"
+
+["multichnlstress_bioscfg.cmd" Settings: "Debug"]
+ExcludeFromBuild=true
+
+["multichnlstress_bioscfg.cmd" Settings: "Release"]
+ExcludeFromBuild=true
+

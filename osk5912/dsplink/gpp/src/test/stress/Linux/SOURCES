@@ -1,0 +1,25 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\test\stress\Linux
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+SOURCES :=   \
+     STS_SingleThread.c \
+     STS_MultiThread.c
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES      +=         \
+     STS_MsgqLocate.c   \
+     STS_MsgqUtils.c
+endif

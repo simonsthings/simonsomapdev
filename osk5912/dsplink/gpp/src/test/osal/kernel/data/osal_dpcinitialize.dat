@@ -1,0 +1,31 @@
+!   ============================================================================
+!   @file   osal_dpcinitialize.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\osal\data
+!
+!   @desc   This file provides arguments to the test: osal_dpcdelete
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : Expected status of Setup
+!   arg 2   : Expected status of Test
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+
+DSP_SOK DSP_SOK
+
+! DATA FILE ENDS

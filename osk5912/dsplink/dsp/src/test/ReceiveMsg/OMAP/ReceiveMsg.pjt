@@ -1,0 +1,49 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\CCSTUD~1.1\boards\osk5912\dsplink\dsp\src\test\ReceiveMsg\OMAP\"
+ProjectType=Executable
+CPUFamily=TMS320C55XX
+Tool="Compiler"
+Tool="CustomBuilder"
+Tool="DspBiosBuilder"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\generic\MsgqUtils.c"
+Source="..\ReceiveMsg.c"
+Source="ReceiveMsg.cdb"
+
+[Generated Files]
+Source="ReceiveMsgcfg.cmd"
+Source="ReceiveMsgcfg.s55"
+Source="ReceiveMsgcfg_c.c"
+
+["Debug" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf ReceiveMsg.tcf
+FinalBuildCmd=copy $(Proj_dir)\Debug\receivemsg.out .\..\..\..\..\bin\test\OMAP\Debug
+
+["Release" Settings]
+InitialBuildCmd=$(Install_dir)\bin\utilities\tconf\tconf ReceiveMsg.tcf
+FinalBuildCmd=copy $(Proj_dir)\Release\receivemsg.out .\..\..\..\..\bin\test\OMAP\Release
+
+["Compiler" Settings: "Debug"]
+Options=-g -mg -q -pdr -pdv -pden -fr"$(Proj_dir)\Debug" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\generic" -i"$(Proj_dir)\.." -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1
+
+["Compiler" Settings: "Release"]
+Options=-q -pdr -pdv -pden -o3 -fr"$(Proj_dir)\Release" -i"$(Proj_dir)\..\..\..\..\inc" -i"$(Proj_dir)\..\..\..\..\inc\OMAP" -i"$(Install_dir)\messaging\include" -i"$(Proj_dir)\..\..\generic" -i"$(Proj_dir)\.." -d"_MSGQ_COMPONENT" -ml -vcore:2.1
+
+["DspBiosBuilder" Settings: "Debug"]
+Options=-v55
+
+["DspBiosBuilder" Settings: "Release"]
+Options=-v55
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\receivemsg.map" -o".\Debug\receivemsg.out" -x -l".\..\..\..\..\lib\OMAP\Debug\dsplink.l55l" -l".\..\..\..\..\lib\OMAP\Debug\dsplinkmsg.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l"
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\receivemsg.map" -o".\Release\receivemsg.out" -x -l".\..\..\..\..\lib\OMAP\Release\dsplink.l55l" -l".\..\..\..\..\lib\OMAP\Release\dsplinkmsg.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\msgq.l55l" -l"$(Install_dir)\boards\osk5912\referenceframeworks\lib\mqtbiosque.l55l"
+

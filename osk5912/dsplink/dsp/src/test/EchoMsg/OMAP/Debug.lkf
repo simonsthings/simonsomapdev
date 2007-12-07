@@ -1,0 +1,6 @@
+-z -q -c -m"./Debug/echomsg_bios_text.map" -o"./Debug/echomsg_bios_text.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"./../../../../lib/OMAP/Debug/dsplink.l55l" -l"./../../../../lib/OMAP/Debug/dsplinkmsg.l55l" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/msgq.l55l" -l"C:/CCStudio_v3.1/boards/osk5912/referenceframeworks/lib/mqtbiosque.l55l"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\EchoMsg\OMAP\Debug\EchoMsg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\EchoMsg\OMAP\Debug\EchoMsg_bios_textcfg.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\EchoMsg\OMAP\Debug\EchoMsg_bios_textcfg_c.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\EchoMsg\OMAP\Debug\MsgqUtils.obj"
+"C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\EchoMsg\OMAP\EchoMsg_bios_text.cmd"

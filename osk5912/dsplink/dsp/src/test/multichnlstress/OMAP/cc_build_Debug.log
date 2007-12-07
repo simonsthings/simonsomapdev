@@ -1,0 +1,462 @@
+----------------------  multichnlstress_text.pjt - Debug  ----------------------
+C:\CCStudio_v3.1\bin\utilities\tconf\tconf multichnlstress_text.tcf
+
+[multichnlstress_text.cdb] "C:\CCStudio_v3.1\plugins\bios\gconfgen" multichnlstress_text.cdb
+
+[multichnlstress.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -pdr -pdv -pden -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/Debug" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/.." -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc/OMAP" -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1 -@"OMAP/Debug.lkf" "multichnlstress.c"
+"multichnlstress.c", line 247: remark #225-D: function declared implicitly
+          strcat (channels [i], chnlName) ;
+          ^
+
+"multichnlstress.c", line 402: remark #225-D: function declared implicitly
+      iterations  = atoi (argv[0]) ;
+                    ^
+
+
+[multichnlstress_textcfg.s55] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -pdr -pdv -pden -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/Debug" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/.." -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc/OMAP" -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1 -@"Debug.lkf" "multichnlstress_textcfg.s55"
+"multichnlstress_textcfg.s55", REMARK   at line 597: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 597: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #1 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 614: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 614: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #2 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 631: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 631: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #3 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 648: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 648: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #4 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 665: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 665: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #5 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 682: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 682: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #6 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 699: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 699: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #7 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 716: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 716: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #8 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 733: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 733: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #9 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 750: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 750: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #10 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 767: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 767: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #11 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 784: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 784: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #12 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 801: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 801: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #13 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 818: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 818: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #14 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 835: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 835: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #15 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 852: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 852: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #16 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 869: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 869: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #17 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 886: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 886: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #18 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 903: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 903: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #19 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 920: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 920: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #20 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 937: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 937: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #21 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 954: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 954: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #22 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 971: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 971: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                            @bios_l = #23 || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 988: [R5110] Instructions
+                                                             encoded in an
+                                                             interrupt vector
+                                                             slot may not be
+                                                             executed as part
+                                                             of the interrupt
+                                                             routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 988: [R0001] After symbol
+                                                             substitution the
+                                                             line became:
+	                   @bios_l = #24 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1005: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1005: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                            @bios_l = #25 || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1022: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                            BIOS_MMR = #:id: || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1022: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                            @bios_l = #26 || mmap();write the intr. number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1039: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1039: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                   @bios_l = #27 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1056: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1056: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                   @bios_l = #28 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1073: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1073: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                   @bios_l = #29 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1090: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1090: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                   @bios_l = #30 || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1107: [R5110] Instructions
+                                                              encoded in an
+                                                              interrupt vector
+                                                              slot may not be
+                                                              executed as part
+                                                              of the interrupt
+                                                              routine
+	                   BIOS_MMR = #:id: || mmap()   ; write the interrupt number in
+
+"multichnlstress_textcfg.s55", REMARK   at line 1107: [R0001] After symbol
+                                                              substitution the
+                                                              line became:
+	                   @bios_l = #31 || mmap()   ; write the interrupt number in
+
+
+[multichnlstress_textcfg_c.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -mg -q -pdr -pdv -pden -fr"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/Debug" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/.." -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc" -i"C:/CCStudio_v3.1/boards/osk5912/dsplink/dsp/src/test/multichnlstress/OMAP/../../../../inc/OMAP" -d"_MSGQ_COMPONENT" -d"_DEBUG" -ml -mn -vcore:2.1 -@"Debug.lkf" "multichnlstress_textcfg_c.c"
+
+[Linking...] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -@"Debug.lkf"
+<Linking>
+
+copy C:\CCStudio_v3.1\boards\osk5912\dsplink\dsp\src\test\multichnlstress\OMAP\Debug\multichnlstress_text.out .\..\..\..\..\bin\test\OMAP\Debug
+        1 Datei(en) kopiert.
+
+Build Complete,
+  0 Errors, 0 Warnings, 64 Remarks.
+  Please view the build output for errors and warnings for any custom steps.

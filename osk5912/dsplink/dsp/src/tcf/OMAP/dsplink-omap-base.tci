@@ -1,0 +1,76 @@
+//  ============================================================================
+//  @file   dsplink-omap-base.tci
+//
+//  @path   <CCS-INSTALL-DRIVE>\ti\bin\utilities\tconf\include
+//
+//  @desc   This file defines base configuration for DSP/BIOS LINK,
+//          specific for Shared Memory Driver on OMAP5910.
+//
+//  @ver    01.10.01
+//  ============================================================================
+//  Copyright (c) Texas Instruments Incorporated 2002-2004
+//
+//  Use of this software is controlled by the terms and conditions found in the
+//  license agreement under which this software has been supplied or provided.
+//  ============================================================================
+
+
+//  ============================================================================
+//  Load assert support
+//  ============================================================================
+load(utils.findFile('assert.tci'));
+
+//  ============================================================================
+//  Load base CDB
+//  ============================================================================
+utils.loadSeed("c55omap1510.cdb");
+
+//  ============================================================================
+//  Global Settings
+//  ============================================================================
+prog.module("GBL").MEMORYMODEL = "LARGE"        // Large Memory Model
+prog.module("GBL").CLKOUT      = 192;           // Setting the DSP Clock
+
+//  ============================================================================
+//  MEM : RESET_VECTOR
+//  ============================================================================
+RESET_VECTOR = prog.module("MEM").create("RESET_VECTOR");
+
+prog.module("MEM").instance("RESET_VECTOR").base = 32768
+prog.module("MEM").instance("RESET_VECTOR").len = 255
+prog.module("MEM").instance("RESET_VECTOR").createHeap = 0
+
+//  ============================================================================
+//  MEM : SHMMEM
+//  ============================================================================
+SHMMEM = prog.module("MEM").create("SHMMEM");
+
+prog.module("MEM").instance("SHMMEM").base = 2097152
+prog.module("MEM").instance("SHMMEM").len = 524288
+prog.module("MEM").instance("SHMMEM").createHeap = 0
+prog.module("MEM").instance("SHMMEM").comment = "SHMMEM";
+
+//  ============================================================================
+//  MEM : EXTMEM
+//  ============================================================================
+EXTMEM = prog.module("MEM").create("EXTMEM");
+
+prog.module("MEM").instance("EXTMEM").base = 3145728
+prog.module("MEM").instance("EXTMEM").len = 524288
+prog.module("MEM").instance("EXTMEM").createHeap = 0
+prog.module("MEM").instance("EXTMEM").comment = "EXTMEM";
+
+//  ============================================================================
+//  UDEV : DSP/BIOS LINK
+//  ============================================================================
+dsplink = prog.module("UDEV").create("dsplink");
+
+prog.module("UDEV").instance("dsplink").params = prog.decl("DSPLINK_DEV_PARAMS")
+prog.module("UDEV").instance("dsplink").initFxn = prog.decl("DSPLINK_init")
+prog.module("UDEV").instance("dsplink").fxnTable = prog.decl("DSPLINK_FXNS")
+prog.module("UDEV").instance("dsplink").fxnTableType = "IOM_Fxns"
+
+//  ============================================================================
+//  Add to assertions
+//  ============================================================================
+assert.add('prog.module("GBL").DSPSUBTYPE == 1510')

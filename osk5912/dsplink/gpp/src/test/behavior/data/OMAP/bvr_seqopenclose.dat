@@ -1,0 +1,30 @@
+!   ============================================================================
+!   @file   bvr_seqopenclose.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data
+!
+!   @desc   This file provides arguments to the test: bvr_seqopenclose
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg 1   : expected_status
+!   arg 2   : dspid
+!   arg 3   : Number of times the attach and detach are done in the test.
+
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK     0    1
+DSP_SOK     0    5

@@ -1,0 +1,144 @@
+#   ============================================================================
+#   @file   CFG_OMAP.TXT
+#
+#   @path   $(DSPLINK)\config\all
+#
+#   @desc   This file contains the configuration databse for DSP/BIOS LINK
+#           on OMAP platform.
+#
+#           Any change in this file must be reflected in the perl script:
+#               cfg2c.pl
+#
+#           --------------------------------------------------------------------
+#           Format of this file:
+#           --------------------------------------------------------------------
+#
+#           [<section>]                             <-- Start of section
+#           [<index>]                               <-- Start of sub-section
+#           <name>     | <type> |   <value>         <-- Configuration data
+#           [/<index>]                              <-- End of sub-section
+#           [/<section>]                            <-- End of section
+#
+#           <section>   specifies the name of a section.
+#                       It can optionally have an ID associated as well.
+#                       See 'DSP' section below...
+#
+#           <index>     An sub-section that indicates an entry in a table.
+#
+#           <name>      Name of the configuration item.
+#
+#           <type>      Type of the configuration item.
+#                       It can take following values:
+#                       N : Decimal     value
+#                       H : Hexadecimal value
+#                       S : String      value
+#                       B : Boolean     value
+#                       A : Address of a variable
+#
+#           <value>     Value of the configuration item.
+#           --------------------------------------------------------------------
+#
+#           The set of possible value for a configuration item depends upon
+#           the meaning of the item itself. See the definitions in related
+#           header files.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+[DRIVER]
+NAME            | S |   DSP/BIOS LINK
+COMPONENTS      | N |   2
+QUEUE           | N |   16
+LINKTABLES      | N |   1
+MMUTABLES       | N |   1
+NUMMQAS         | N |   1
+NUMMQTS         | N |   2
+LOCALMQT        | N |   0
+[/DRIVER]
+
+
+[GPP]
+NAME            | S |   ARM925
+NUMDSPS         | N |   1
+[/GPP]
+
+
+[DSP0]
+NAME            | S |   C5510
+ARCHITECTURE    | E |   DspArch_C55x
+EXECUTABLE      | S |   DEFAULT.OUT
+LOADER          | A |   COFF_Interface
+LINKTABLE       | N |   0
+NUMLINKS        | N |   1
+AUTOSTART       | B |   TRUE
+RESETVECTOR     | H |   0x00100000
+WORDSIZE        | N |   2
+ENDIAN          | N |   2
+MMUFLAG         | N |   1
+MMUTABLE        | N |   0
+MMUENTRIES      | N |   2
+INTERFACE       | A |   OMAP5910_Interface
+MQTID           | N |   1
+[/DSP0]
+
+
+[LINKTABLE0]
+
+[0]
+NAME            | S |   SHARED MEMORY DRIVER
+ABBR            | S |   SHM
+NUMCHANNELS     | N |   16
+BASECHANNELID   | N |   0
+MAXBUFSIZE      | N |   16384
+INTERFACE       | A |   SHM_Interface
+ARGUMENT1       | H |   0x11F00000
+ARGUMENT2       | H |   0x0
+[/0]
+
+[/LINKTABLE0]
+
+
+[MMUTABLE0]
+
+[0]
+ADDRVIRTUAL     | H |   0x00400000
+ADDRPHYSICAL    | H |   0x11F00000
+SIZE            | H |   0
+ACCESS          | H |   0x3
+PRESERVE        | H |   0x1
+MAPINGPP        | B |   FALSE
+[/0]
+
+[1]
+ADDRVIRTUAL     | H |   0x00600000
+ADDRPHYSICAL    | H |   0x11E00000
+SIZE            | H |   0
+ACCESS          | H |   0x3
+PRESERVE        | H |   0x1
+MAPINGPP        | B |   TRUE
+[/1]
+
+[/MMUTABLE0]
+
+[MQA0]
+NAME            | S |   BUFMQA
+INTERFACE       | A |   MQABUF_Interface
+[/MQA0]
+
+[MQT0]
+NAME            | S |   LOCALMQT
+INTERFACE       | A |   LMQT_Interface
+LINKID          | N |   0
+[/MQT0]
+
+[MQT1]
+NAME            | S |   REMOTEMQT
+INTERFACE       | A |   RMQT_Interface
+LINKID          | N |   0
+[/MQT1]

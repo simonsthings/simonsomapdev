@@ -1,0 +1,56 @@
+!   ============================================================================
+!   @file   bvr_msgqgettimeout.dat
+!
+!   @path   $(DSPLINK)\gpp\src\test\behavior\data\OMAP
+!
+!   @desc   This file provides arguments to the test: BVR_MsgqGetTimeout
+!
+!   @ver    01.10.01
+!   ============================================================================
+!   Copyright (c) Texas Instruments Incorporated 2002-2004
+!
+!   Use of this software is controlled by the terms and conditions found in the
+!   license agreement under which this software has been supplied or provided.
+!   ============================================================================
+
+
+!   ============================================================================
+!   Description of argument(s)
+!   ============================================================================
+!   arg  1   : Expected status of Setup
+!   arg  2   : Expected status of first Get
+!   arg  3   : Expected status of second Get
+!              Note: Both the arg 2 and arg 3 cannot be specified as DSP_SOK for
+!                    the same scenario.
+!   arg  4   : Processor Id
+!   arg  5   : Number of messages per allocator pool.
+!   arg  6   : GPP send queue id
+!   arg  7   : GPP receive queue id
+!   arg  8   : First timeout on GPP
+!   arg  9   : Second timeout on GPP
+!   arg 10   : Delay on the DSP
+!   arg 11   : DSP side Executable
+
+!   ============================================================================
+!   Arguments for the test
+!   ============================================================================
+
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK       0    5  0  0  200    200    210   /opt/dsplink/test/behavior/echomsg.out
+DSP_SOK    DSP_SOK         DSP_ETIMEOUT  0    5  0  0  400    100    150   /opt/dsplink/test/behavior/echomsg.out
+DSP_SOK    DSP_ETIMEOUT    DSP_ETIMEOUT  0    5  0  0   40     40    120   /opt/dsplink/test/behavior/echomsg.out
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK       0    5  1  2  200    200    220   /opt/dsplink/test/behavior/echomsg.out
+
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  0  0  200    200    220   /opt/dsplink/test/behavior/echomsg_bios.out
+DSP_SOK    DSP_SOK         DSP_ETIMEOUT 0    5  0  0  400    100    150   /opt/dsplink/test/behavior/echomsg_bios.out
+DSP_SOK    DSP_ETIMEOUT    DSP_ETIMEOUT 0    5  0  0   40     40    120   /opt/dsplink/test/behavior/echomsg_bios.out
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  1  2  200    200    220   /opt/dsplink/test/behavior/echomsg_bios.out
+
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  0  1  200    200    210   /opt/dsplink/test/behavior/echomsg_text.out
+DSP_SOK    DSP_SOK         DSP_ETIMEOUT 0    5  0  0  400    100    150   /opt/dsplink/test/behavior/echomsg_text.out
+DSP_SOK    DSP_ETIMEOUT    DSP_ETIMEOUT 0    5  0  0   40     40    120   /opt/dsplink/test/behavior/echomsg_text.out
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  1  0  200    200    220   /opt/dsplink/test/behavior/echomsg_text.out
+
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  0  0  200    200    210   /opt/dsplink/test/behavior/echomsg_bios_text.out
+DSP_SOK    DSP_SOK         DSP_ETIMEOUT 0    5  0  0  400    100    150   /opt/dsplink/test/behavior/echomsg_bios_text.out
+DSP_SOK    DSP_ETIMEOUT    DSP_ETIMEOUT 0    5  0  0   40     40    120   /opt/dsplink/test/behavior/echomsg_bios_text.out
+DSP_SOK    DSP_ETIMEOUT    DSP_SOK      0    5  1  2  200    200    220   /opt/dsplink/test/behavior/echomsg_bios_text.out

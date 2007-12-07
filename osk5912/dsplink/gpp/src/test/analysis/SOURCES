@@ -1,0 +1,27 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\test\analysis
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+SOURCES :=   \
+    testsuiteANA.c                  \
+    ANA_AsyncChnlIssueReclaim.c     \
+    ANA_ProcLoad.c                  \
+    ANA_SyncChnlIssueReclaim.c      \
+    ANA_Loop.c
+
+ifeq ($(USE_MSGQ), 1)
+SOURCES      +=                     \
+    ANA_MsgqPutGet.c
+endif

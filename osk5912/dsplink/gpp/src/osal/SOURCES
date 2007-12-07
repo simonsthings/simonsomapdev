@@ -1,0 +1,26 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)\gpp\src\osal
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+ifeq ($(USE_CHNL), 1)
+CFG_CC_DEFNS += -DCHNL_COMPONENT
+endif
+
+ifeq ($(USE_MSGQ), 1)
+CFG_CC_DEFNS += -DMSGQ_COMPONENT
+endif
+
+
+SOURCES := \
+    osal.c

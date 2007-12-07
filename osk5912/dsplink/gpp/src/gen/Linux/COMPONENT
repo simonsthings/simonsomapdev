@@ -1,0 +1,75 @@
+#   ============================================================================
+#   @file   COMPONENT
+#
+#   @path   $(DSPLINK)\gpp\src\gen\Linux
+#
+#   @desc   This file contains information to build a component.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+#   ============================================================================
+#   Generic information about the component
+#   ============================================================================
+
+COMP_NAME       := GEN
+COMP_PATH       := $(GPPROOT)$(DIRSEP)src$(DIRSEP)gen
+COMP_TYPE       := LIB
+COMP_TARGET     := gen.o
+
+
+#   ============================================================================
+#   Header file(s) exported from this component
+#   ============================================================================
+
+EXP_HEADERS     :=  \
+    coff.h          \
+    coff_55x.h      \
+    coff_64x.h      \
+    coff_int.h      \
+    gen_utils.h     \
+    list.h          \
+    buf.h
+
+
+#   ============================================================================
+#   User specified additional command line options for the compiler
+#   ============================================================================
+
+USR_CC_FLAGS    :=
+
+USR_CC_DEFNS    := -D__KERNEL__ -DMODULE -DTRACE_KERNEL
+
+
+#   ============================================================================
+#   User specified additional command line options for the linker
+#   ============================================================================
+
+USR_LD_FLAGS    :=
+
+
+#   ============================================================================
+#   Standard libraries of GPP OS required during linking
+#   ============================================================================
+
+STD_LIBS        :=
+
+
+#   ============================================================================
+#   User specified libraries required during linking
+#   ============================================================================
+
+USR_LIBS        :=
+
+
+#   ============================================================================
+#   Target file(s) exported from this module
+#   ============================================================================
+
+EXP_TARGETS     :=

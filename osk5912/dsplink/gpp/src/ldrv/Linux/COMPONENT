@@ -1,0 +1,94 @@
+#   ============================================================================
+#   @file   COMPONENT
+#
+#   @path   $(DSPLINK)\gpp\src\ldrv\Linux
+#
+#   @desc   This file contains information to build a component.
+#
+#   @ver    01.10.01
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2004
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+
+#   ============================================================================
+#   Generic information about the component
+#   ============================================================================
+
+COMP_NAME       := LDRV
+COMP_PATH       := $(GPPROOT)$(DIRSEP)src$(DIRSEP)ldrv
+COMP_TYPE       := LIB
+COMP_TARGET     := ldrv.o
+
+
+#   ============================================================================
+#   Header file(s) exported from this component
+#   ============================================================================
+
+EXP_HEADERS     :=                                                 \
+            ldrv.h                                                 \
+            dsp.h                                                  \
+            ldrv_io.h                                              \
+            ldrv_proc.h                                            \
+            ldrv_chnl.h                                            \
+            ldrv_msgq.h                                            \
+            ldrv_mqt.h                                             \
+            ldrv_mqa.h                                             \
+            mqabuf.h                                               \
+            lmqt.h                                                 \
+            rmqt.h                                                 \
+            $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_object.h
+
+ifeq ($(PLATFORM), OMAP)
+EXP_HEADERS += shm.h                                                \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_mpui.h      \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_clkrst.h    \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_inth.h      \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_mailbox.h   \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_mmu.h       \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_io.h
+endif
+
+ifeq ($(PLATFORM), DM310_DM642)
+EXP_HEADERS += hpi_driver.h                                         \
+               $(GPPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)hal_hpi.h
+endif
+
+#   ============================================================================
+#   User specified additional command line options for the compiler
+#   ============================================================================
+
+USR_CC_FLAGS    :=
+
+USR_CC_DEFNS    := -D__KERNEL__ -DMODULE -DTRACE_KERNEL
+
+
+#   ============================================================================
+#   User specified additional command line options for the linker
+#   ============================================================================
+
+USR_LD_FLAGS    :=
+
+
+#   ============================================================================
+#   Standard libraries of GPP OS required during linking
+#   ============================================================================
+
+STD_LIBS        :=
+
+
+#   ============================================================================
+#   User specified libraries required during linking
+#   ============================================================================
+
+USR_LIBS        :=
+
+
+#   ============================================================================
+#   Target file(s) exported from this module
+#   ============================================================================
+
+EXP_TARGETS     :=
