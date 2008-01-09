@@ -1,0 +1,398 @@
+******************************************************************************
+         TMS320C55x COFF Linker PC v3.2.2                      
+******************************************************************************
+>> Linked Fri Aug 17 12:34:00 2007
+
+OUTPUT FILE NAME:   <./Debug/mcbsp2_2codecs.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000200
+
+
+MEMORY CONFIGURATION
+
+                  name            origin    length      used    attr    fill
+                                 (bytes)   (bytes)    (bytes)
+         ----------------------  --------  ---------  --------  ----  --------
+         PROG                    00000200   00006e00  000025c6  RWIX
+         DATA                    00007000   00003000  00001566  RWI 
+         VECT                    0000d000   00000100  000000c0  RWIX
+
+
+SECTION ALLOCATION MAP
+(Addresses surrounded by []'s are displayed for convenience only!)
+
+output                                                          attributes/
+section   page  orgn(bytes) orgn(words) len(bytes) len(words)   input sections
+--------  ----  ----------- ----------- ---------- ----------   --------------
+.data        0   [ 00000000 ]  00000000          *   00000000   UNINITIALIZED
+
+.trcinit     0   [ 00000200 ]  00000100          *   00000000   UNINITIALIZED
+
+.gblinit     0   [ 00000200 ]  00000100          *   00000000   UNINITIALIZED
+
+frt          0   [ 00000200 ]  00000100          *   00000000   UNINITIALIZED
+
+.pinit       0   [ 00000200 ]  00000100          *   00000000   UNINITIALIZED
+
+.sysinit     0   [ 00000200 ]  00000100          *   00000000   UNINITIALIZED
+
+.text        0     00000200  [ 00000100 ] 00002128          *   
+                   00000200  [ 00000100 ] 00000039          *   rts55x.lib : boot.obj (.text)
+                   00000239  [ 0000011c+] 000000b6          *              : exit.obj (.text)
+                   000002ef  [ 00000177+] 00000007          *              : exit.obj (.text:CIO_breakpoint)
+                   000002f6  [ 0000017b ] 00000012          *              : _lock.obj (.text)
+                   00000308  [ 00000184 ] 0000003c          *              : args_main.obj (.text)
+                   00000344  [ 000001a2 ] 00000062          *              : autoinit.obj (.text)
+                   000003a6  [ 000001d3 ] 0000051d          *   main.obj (.text)
+                   000008c3  [ 00000461+] 00000070          *   csl_OMAP5912.lib : csl_dmaGetChipCtxt.o (.text:csl_section:dma)
+                   00000933  [ 00000499+] 00000084          *                    : csl_dmaGetHwStatus.o (.text:csl_section:dma)
+                   000009b7  [ 000004db+] 00000021          *                    : csl_dmaHwControl.o (.text)
+                   000009d8  [ 000004ec ] 000000b5          *                    : csl_dmaHwControl.o (.text:csl_section:dma)
+                   00000a8d  [ 00000546+] 0000025f          *                    : csl_dmaHwSetup.o (.text:csl_section:dma)
+                   00000cec  [ 00000676 ] 00000004          *                    : csl_dmaInit.o (.text:csl_section:dma)
+                   00000cf0  [ 00000678 ] 00000073          *                    : csl_dmaOpen.o (.text:csl_section:dma)
+                   00000d63  [ 000006b1+] 00000060          *                    : csl_chipWriteReg.o (.text:csl_section:chip)
+                   00000dc3  [ 000006e1+] 00000056          *                    : csl_sswHwControl.o (.text:csl_section:ssw)
+                   00000e19  [ 0000070c+] 0000005e          *                    : csl_sswOpen.o (.text:csl_section:ssw)
+                   00000e77  [ 0000073b+] 00000028          *                    : _csl_writeMMR.o (.text)
+                   00000e9f  [ 0000074f+] 000000fe          *                    : csl_intcDispatcherInit.o (.text:csl_section:intc)
+                   00000f9d  [ 000007ce+] 000000df          *                    : csl_intcEventEnable.o (.text:csl_section:intc)
+                   0000107c  [ 0000083e ] 00000016          *                    : csl_intcGlobalDisable.o (.text:csl_section:intc)
+                   00001092  [ 00000849 ] 00000016          *                    : csl_intcGlobalEnable.o (.text:csl_section:intc)
+                   000010a8  [ 00000854 ] 00000010          *                    : csl_intcGlobalRestore.o (.text:csl_section:intc)
+                   000010b8  [ 0000085c ] 00000089          *                    : csl_intcHwSetup.o (.text:csl_section:intc)
+                   00001141  [ 000008a0+] 00000025          *                    : csl_intcInit.o (.text:csl_section:intc)
+                   00001166  [ 000008b3 ] 00000055          *                    : csl_intcOpen.o (.text:csl_section:intc)
+                   000011bb  [ 000008dd+] 00000099          *                    : csl_intcPlugEventHandler.o (.text:csl_section:intc)
+                   00001254  [ 0000092a ] 00000084          *                    : csl_mcbspHwControl.o (.text:csl_section:mcbsp)
+                   000012d8  [ 0000096c ] 000002ec          *                    : csl_mcbspHwSetup.o (.text:csl_section:mcbsp)
+                   000015c4  [ 00000ae2 ] 00000004          *                    : csl_mcbspInit.o (.text:csl_section:mcbsp)
+                   000015c8  [ 00000ae4 ] 0000005e          *                    : csl_mcbspOpen.o (.text:csl_section:mcbsp)
+                   00001626  [ 00000b13 ] 00000018          *                    : csl_dmaGetBaseAddress.o (.text:csl_section:dma)
+                   0000163e  [ 00000b1f ] 00000019          *                    : _csl_chipST1_55.o (.text)
+                   00001657  [ 00000b2b+] 00000011          *                    : csl_sswGetBaseAddress.o (.text:csl_section:ssw)
+                   00001668  [ 00000b34 ] 00000007          *                    : _csl_beginCriticalSection.o (.text)
+                   0000166f  [ 00000b37+] 0000000a          *                    : _csl_endCriticalSection.o (.text)
+                   00001679  [ 00000b3c+] 0000007f          *                    : _csl_intcEventAlloc.o (.text:csl_section:intc)
+                   000016f8  [ 00000b7c ] 00000140          *                    : _csl_intcIsrDispatch.o (.text)
+                   00001838  [ 00000c1c ] 00000030          *                    : csl_intcClose.o (.text:csl_section:intc)
+                   00001868  [ 00000c34 ] 0000007b          *                    : csl_intcHookIsr.o (.text:csl_section:intc)
+                   000018e3  [ 00000c71+] 000000c8          *                    : _csl_mcbspBlockAssign.o (.text:csl_section:mcbsp)
+                   000019ab  [ 00000cd5+] 000003e8          *                    : _csl_mcbspChannelControl.o (.text:csl_section:mcbsp)
+                   00001d93  [ 00000ec9+] 00000048          *                    : _csl_mcbspClearFrmSyncErr.o (.text:csl_section:mcbsp)
+                   00001ddb  [ 00000eed+] 000000ac          *                    : _csl_mcbspIoModeCtrl.o (.text:csl_section:mcbsp)
+                   00001e87  [ 00000f43+] 000000e7          *                    : _csl_mcbspRegReset.o (.text:csl_section:mcbsp)
+                   00001f6e  [ 00000fb7 ] 00000086          *                    : _csl_mcbspResetCtrl.o (.text:csl_section:mcbsp)
+                   00001ff4  [ 00000ffa ] 00000031          *                    : csl_mcbspGetBaseAddress.o (.text:csl_section:mcbsp)
+                   00002025  [ 00001012+] 000000a0          *                    : csl_mcbspGetHwStatus.o (.text:csl_section:mcbsp)
+                   000020c5  [ 00001062+] 0000001b          *                    : csl_chipReadReg.o (.text:csl_section:chip)
+                   000020e0  [ 00001070 ] 00000024          *                    : _csl_readMMR.o (.text)
+                   00002104  [ 00001082 ] 00000223          *                    : _csl_intcDispatcher.o (.text:csl_section:intc)
+                   00002327  [ 00001193+] 00000001          *   --HOLE-- [fill = 20]
+
+.cinit       0   [ 00002328 ]  00001194          *   0000024f   
+                 [ 00002328 ]  00001194          *   0000022c   main.obj (.cinit)
+                 [ 00002780 ]  000013c0          *   0000000e   rts55x.lib : exit.obj (.cinit)
+                 [ 0000279c ]  000013ce          *   0000000a              : _lock.obj (.cinit)
+                 [ 000027b0 ]  000013d8          *   00000005   csl_OMAP5912.lib : _csl_intcEventAlloc.o (.cinit)
+                 [ 000027ba ]  000013dd          *   00000005                    : csl_intcDispatcherInit.o (.cinit)
+                 [ 000027c4 ]  000013e2          *   00000001   --HOLE-- [fill = 0]
+
+.far         0   [ 00007000 ]  00003800          *   00000000   UNINITIALIZED
+
+.sysmem      0   [ 00007000 ]  00003800          *   00000000   UNINITIALIZED
+
+.cio         0   [ 00007000 ]  00003800          *   00000000   UNINITIALIZED
+
+.MEM$obj     0   [ 00007000 ]  00003800          *   00000000   UNINITIALIZED
+
+.sysheap     0   [ 00007000 ]  00003800          *   00000000   UNINITIALIZED
+
+.bss         0   [ 00007000 ]  00003800          *   0000066c   UNINITIALIZED
+                 [ 00007000 ]  00003800          *   0000061c   main.obj (.bss)
+                 [ 00007c38 ]  00003e1c          *   00000046   rts55x.lib : exit.obj (.bss)
+                 [ 00007cc4 ]  00003e62          *   00000004              : _lock.obj (.bss)
+                 [ 00007ccc ]  00003e66          *   00000002   csl_OMAP5912.lib : csl_intcDispatcherInit.o (.bss:csl_section:intc)
+                 [ 00007cd0 ]  00003e68          *   00000002                    : _csl_intcEventAlloc.o (.bss:csl_section:intc)
+                 [ 00007cd4 ]  00003e6a          *   00000001                    : csl_intcInit.o (.bss:csl_section:intc)
+                 [ 00007cd6 ]  00003e6b          *   00000001                    : _csl_intcDispatcher.o (.bss:csl_section:intc)
+
+.sysstack 
+*            0   [ 00007cd8 ]  00003e6c          *   000001f4   UNINITIALIZED
+
+.stack       0   [ 000080c0 ]  00004060          *   000001f4   UNINITIALIZED
+
+.const       0   [ 000084a8 ]  00004254          *   0000003f   
+                 [ 000084a8 ]  00004254          *   0000003f   main.obj (.const)
+
+.switch      0   [ 00008528 ]  00004294          *   00000020   
+                 [ 00008528 ]  00004294          *   00000010   csl_OMAP5912.lib : _csl_mcbspChannelControl.o (.switch)
+                 [ 00008548 ]  000042a4          *   00000010                    : csl_dmaHwControl.o (.switch)
+
+.vectors     0     0000d000  [ 00006800 ] 000000c0          *   
+                   0000d000  [ 00006800 ] 000000c0          *   cvectors.obj (.vectors)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+abs. value/
+byte addr   word addr   name
+---------   ---------   ----
+00000001                $TI_capability_requires_rev2
+            00003800    .bss
+            00000000    .data
+00000200                .text
+000002f0                C$$EXIT
+000020c5                _CSL_chipReadReg
+00000d63                _CSL_chipWriteReg
+00001626                _CSL_dmaGetBaseAddress
+000008c3                _CSL_dmaGetChipCtxt
+00000933                _CSL_dmaGetHwStatus
+000009d8                _CSL_dmaHwControl
+00000a8d                _CSL_dmaHwSetup
+00000cec                _CSL_dmaInit
+00000cf0                _CSL_dmaOpen
+00001838                _CSL_intcClose
+00000e9f                _CSL_intcDispatcherInit
+00000f9d                _CSL_intcEventEnable
+0000107c                _CSL_intcGlobalDisable
+00001092                _CSL_intcGlobalEnable
+000010a8                _CSL_intcGlobalRestore
+00001868                _CSL_intcHookIsr
+000010b8                _CSL_intcHwSetup
+00001141                _CSL_intcInit
+00001166                _CSL_intcOpen
+000011bb                _CSL_intcPlugEventHandler
+000018e3                _CSL_mcbspBlockAssign
+000019ab                _CSL_mcbspChannelControl
+00001d93                _CSL_mcbspClearFrmSyncErr
+00001ff4                _CSL_mcbspGetBaseAddress
+00002025                _CSL_mcbspGetHwStatus
+00001254                _CSL_mcbspHwControl
+000012d8                _CSL_mcbspHwSetup
+000015c4                _CSL_mcbspInit
+00001ddb                _CSL_mcbspIoModeCtrl
+000015c8                _CSL_mcbspOpen
+00001e87                _CSL_mcbspRegReset
+00001f6e                _CSL_mcbspResetCtrl
+00001657                _CSL_sswGetBaseAddress
+00000dc3                _CSL_sswHwControl
+00000e19                _CSL_sswOpen
+00001668                __CSL_beginCriticalSection
+0000163e                __CSL_chipReadST1_55
+00001649                __CSL_chipWriteA_ST1_55
+00001650                __CSL_chipWriteB_ST1_55
+00001643                __CSL_chipWriteST1_55
+0000166f                __CSL_endCriticalSection
+            00003e6a    __CSL_intcContextFlags
+            00003e6b    __CSL_intcCurrentEvtNum
+00002104                __CSL_intcDispatcherCore
+00001679                __CSL_intcEventAlloc
+            00003e68    __CSL_intcEventAllocMask
+            00003e66    __CSL_intcEventHandlerRecord
+000016c1                __CSL_intcEventRelease
+000016f8                __CSL_intcIsr0
+00001702                __CSL_intcIsr1
+000020e0                __CSL_readMMR
+00000e77                __CSL_writeMMR
+000003e8                __STACK_SIZE
+000003e8                __SYSSTACK_SIZE
+ffffffff                ___binit__
+            00003800    ___bss__
+ffffffff                ___c_args__
+            00001194    ___cinit__
+            00000000    ___data__
+            00000000    ___edata__
+            00003e6c    ___end__
+00002328                ___etext__
+ffffffff                ___pinit__
+00000200                ___text__
+00000308                __args_main
+            00003e5e    __cleanup_ptr
+            00003e60    __dtors_ptr
+            00003e62    __lock
+000002f6                __nop
+000002f8                __register_lock
+00000300                __register_unlock
+            00004060    __stack
+            00003e6c    __sysstack
+            00003e64    __unlock
+000002ef                _abort
+00000299                _atexit
+00000344                _auto_init
+00000200                _c_int00
+            00003817    _clkCfg
+000007dd                _configIntHandler
+            00003c54    _context
+            00003c5c    _dispatchContext
+            00003c4e    _dmaEventId_rcv
+            00003c4d    _dmaEventId_xmit
+            00003a46    _dst_ping
+            00003b46    _dst_pong
+            00003c4a    _end_prog_status
+            00003c4c    _error_count
+00000239                _exit
+            00003800    _gblCfg
+            00003c52    _hDma_rcv
+            00003c50    _hDma_xmit
+            0000383e    _hMcbsp
+            00003844    _hSsw
+            00003c47    _isIsrHit_rcv
+            00003c46    _isIsrHit_xmit
+            00003c4b    _isrHitCount
+0000072d                _isr_rcv
+000006e6                _isr_xmit
+000003a6                _main
+            00003826    _mulChCfg
+            0000382e    _myHwCfg
+            00003840    _myMcbspObj
+            00003c49    _ping_rcv
+            00003c48    _ping_xmit
+            00003803    _rcvDataCfg
+0000d000                _rsv
+            0000383d    _sharedPer
+            00003846    _src_ping
+            00003946    _src_pong
+            00003842    _sswObj
+0000086e                _ssw_acquire
+            0000383c    _status
+            0000380d    _xmtDataCfg
+ffffffff                binit
+            00001194    cinit
+            00000000    edata
+            00003e6c    end
+00002328                etext
+ffffffff                pinit
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+abs. value/
+byte addr   word addr   name
+---------   ---------   ----
+            00000000    ___edata__
+            00000000    edata
+            00000000    .data
+            00000000    ___data__
+00000001                $TI_capability_requires_rev2
+00000200                _c_int00
+00000200                ___text__
+00000200                .text
+00000239                _exit
+00000299                _atexit
+000002ef                _abort
+000002f0                C$$EXIT
+000002f6                __nop
+000002f8                __register_lock
+00000300                __register_unlock
+00000308                __args_main
+00000344                _auto_init
+000003a6                _main
+000003e8                __SYSSTACK_SIZE
+000003e8                __STACK_SIZE
+000006e6                _isr_xmit
+0000072d                _isr_rcv
+000007dd                _configIntHandler
+0000086e                _ssw_acquire
+000008c3                _CSL_dmaGetChipCtxt
+00000933                _CSL_dmaGetHwStatus
+000009d8                _CSL_dmaHwControl
+00000a8d                _CSL_dmaHwSetup
+00000cec                _CSL_dmaInit
+00000cf0                _CSL_dmaOpen
+00000d63                _CSL_chipWriteReg
+00000dc3                _CSL_sswHwControl
+00000e19                _CSL_sswOpen
+00000e77                __CSL_writeMMR
+00000e9f                _CSL_intcDispatcherInit
+00000f9d                _CSL_intcEventEnable
+0000107c                _CSL_intcGlobalDisable
+00001092                _CSL_intcGlobalEnable
+000010a8                _CSL_intcGlobalRestore
+000010b8                _CSL_intcHwSetup
+00001141                _CSL_intcInit
+00001166                _CSL_intcOpen
+000011bb                _CSL_intcPlugEventHandler
+00001254                _CSL_mcbspHwControl
+000012d8                _CSL_mcbspHwSetup
+000015c4                _CSL_mcbspInit
+000015c8                _CSL_mcbspOpen
+00001626                _CSL_dmaGetBaseAddress
+0000163e                __CSL_chipReadST1_55
+00001643                __CSL_chipWriteST1_55
+00001649                __CSL_chipWriteA_ST1_55
+00001650                __CSL_chipWriteB_ST1_55
+00001657                _CSL_sswGetBaseAddress
+00001668                __CSL_beginCriticalSection
+0000166f                __CSL_endCriticalSection
+00001679                __CSL_intcEventAlloc
+000016c1                __CSL_intcEventRelease
+000016f8                __CSL_intcIsr0
+00001702                __CSL_intcIsr1
+00001838                _CSL_intcClose
+00001868                _CSL_intcHookIsr
+000018e3                _CSL_mcbspBlockAssign
+000019ab                _CSL_mcbspChannelControl
+00001d93                _CSL_mcbspClearFrmSyncErr
+00001ddb                _CSL_mcbspIoModeCtrl
+00001e87                _CSL_mcbspRegReset
+00001f6e                _CSL_mcbspResetCtrl
+00001ff4                _CSL_mcbspGetBaseAddress
+00002025                _CSL_mcbspGetHwStatus
+000020c5                _CSL_chipReadReg
+000020e0                __CSL_readMMR
+00002104                __CSL_intcDispatcherCore
+00002328                etext
+            00001194    cinit
+00002328                ___etext__
+            00001194    ___cinit__
+            00003800    _gblCfg
+            00003800    ___bss__
+            00003800    .bss
+            00003803    _rcvDataCfg
+            0000380d    _xmtDataCfg
+            00003817    _clkCfg
+            00003826    _mulChCfg
+            0000382e    _myHwCfg
+            0000383c    _status
+            0000383d    _sharedPer
+            0000383e    _hMcbsp
+            00003840    _myMcbspObj
+            00003842    _sswObj
+            00003844    _hSsw
+            00003846    _src_ping
+            00003946    _src_pong
+            00003a46    _dst_ping
+            00003b46    _dst_pong
+            00003c46    _isIsrHit_xmit
+            00003c47    _isIsrHit_rcv
+            00003c48    _ping_xmit
+            00003c49    _ping_rcv
+            00003c4a    _end_prog_status
+            00003c4b    _isrHitCount
+            00003c4c    _error_count
+            00003c4d    _dmaEventId_xmit
+            00003c4e    _dmaEventId_rcv
+            00003c50    _hDma_xmit
+            00003c52    _hDma_rcv
+            00003c54    _context
+            00003c5c    _dispatchContext
+            00003e5e    __cleanup_ptr
+            00003e60    __dtors_ptr
+            00003e62    __lock
+            00003e64    __unlock
+            00003e66    __CSL_intcEventHandlerRecord
+            00003e68    __CSL_intcEventAllocMask
+            00003e6a    __CSL_intcContextFlags
+            00003e6b    __CSL_intcCurrentEvtNum
+            00003e6c    end
+            00003e6c    ___end__
+            00003e6c    __sysstack
+            00004060    __stack
+0000d000                _rsv
+ffffffff                ___c_args__
+ffffffff                pinit
+ffffffff                ___binit__
+ffffffff                binit
+ffffffff                ___pinit__
+
+[125 symbols]

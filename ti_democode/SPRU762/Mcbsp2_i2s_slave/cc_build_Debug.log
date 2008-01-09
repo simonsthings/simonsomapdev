@@ -1,0 +1,35 @@
+-------------------------  arm_mcbsp2_i2s.pjt - Debug  -------------------------
+[intc_init.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "intc_init.c"
+
+[intc_setup.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "intc_setup.c"
+
+[main.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "main.c"
+
+[mcbsp_ints.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "mcbsp_ints.c"
+
+[sdma_init.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "sdma_init.c"
+
+[sdma_setup.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"Debug.lkf" "sdma_setup.c"
+
+[boot.asm] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "boot.asm"
+
+[init.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "init.c"
+
+[stack.asm] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "stack.asm"
+
+[swi.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "swi.c"
+"swi.c", line 6: warning: this assembly directive potentially unsafe inside a function
+
+[swi_.asm] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "swi_.asm"
+
+[sys.c] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -g -q -fr"W:/Work/project data/Inomed/OMAP5912 Infos/OMAP5912 McBSP Reference - spru762c/SPRU762/Mcbsp2_i2s_slave/Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/arm/inc" -i"../utils/" -d"_DEBUG" -me -mf -@"../Debug.lkf" "sys.c"
+
+[Linking...] "C:\CCStudio_v3.1\tms470\cgtools\bin\cl470" -@"Debug.lkf"
+<Linking>
+>>   error: library 'C:\CCStudio_v3.1\csl_OMAP5912\dsp\lib\csl_OMAP5912.lib',
+            member 'csl_dmaGetHwStatus.o' is of unknown type
+
+>> Compilation failure
+
+Build Complete,
+  2 Errors, 1 Warnings, 0 Remarks.

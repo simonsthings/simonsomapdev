@@ -1,0 +1,8 @@
+-z -q -c -m"./Debug/mcbsp_multichannel.map" -o"./Debug/mcbsp_multichannel.out" -x -i"C:/CCStudio_v3.1/C5500/rtdx/lib" -i"C:/CCStudio_v3.1/C5500/csl/lib" -i"C:/CCStudio_v3.1/C5500/xdais/lib" -i"C:/CCStudio_v3.1/C5500/bios/lib" -i"C:/CCStudio_v3.1/C5500/cgtools/lib" -l"rts55x.lib"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\Debug\cvectors.obj"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\Debug\dma_setup.obj"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\Debug\int_setup.obj"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\Debug\main.obj"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\Debug\mcbsp_setup.obj"
+"C:\CCStudio_v3.1\csl_OMAP5912\dsp\lib\csl_OMAP5912.lib"
+"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp1_multichannel\lnk.cmd"
