@@ -128,53 +128,57 @@ int main (void)
 
     /* Initialize CSL library, this step is required */
     CSL_mcbspInit(NULL);
-    
-  /* Open MCBSP Port, this will return a MCBSP handle that will */
-  /* be used in calls to other CSL functions                    */
-  hMcbsp3 = CSL_mcbspOpen(&myMcbspObj, CSL_MCBSP_3,
-                         NULL, &status);
 
-  if ((hMcbsp3 == NULL) || (status != CSL_SOK)) {
-      printf ("\nError opening CSL_MCBSP_3");
-      exit(1);
-  }
+	/* Open MCBSP Port, this will return a MCBSP handle that will */
+	/* be used in calls to other CSL functions                    */
+	hMcbsp3 = CSL_mcbspOpen(&myMcbspObj, CSL_MCBSP_3,
+	                     NULL, &status);
 
-  /* Put SRG, Frame-sync, XMT and RCV in reset */
-  ctrlMask =   CSL_MCBSP_CTRL_SRG_DISABLE
-             | CSL_MCBSP_CTRL_FSYNC_DISABLE
-             | CSL_MCBSP_CTRL_TX_DISABLE
-             | CSL_MCBSP_CTRL_RX_DISABLE;
-  CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
+	if ((hMcbsp3 == NULL) || (status != CSL_SOK)) {
+	  printf ("\nError opening CSL_MCBSP_3");
+	  exit(1);
+	}
 
-  /* Program MCBSP control registers and wait for 2 clock cycles */
-  CSL_mcbspHwSetup(hMcbsp3, &myHwCfg);
-  WAIT_FOR_2_CLK;
+	/* Put SRG, Frame-sync, XMT and RCV in reset */
+	ctrlMask =   CSL_MCBSP_CTRL_SRG_DISABLE
+	         | CSL_MCBSP_CTRL_FSYNC_DISABLE
+	         | CSL_MCBSP_CTRL_TX_DISABLE
+	         | CSL_MCBSP_CTRL_RX_DISABLE;
+	CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
 
-  /* Start Sample Rate Generator and wait for 2 clock cycles */
-  ctrlMask = CSL_MCBSP_CTRL_SRG_ENABLE | CSL_MCBSP_CTRL_FSYNC_ENABLE;
-  CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
-  WAIT_FOR_2_CLK;
+	/* Program MCBSP control registers and wait for 2 clock cycles */
+	CSL_mcbspHwSetup(hMcbsp3, &myHwCfg);
+	WAIT_FOR_2_CLK;
+
+	/* Start Sample Rate Generator and wait for 2 clock cycles */
+	ctrlMask = CSL_MCBSP_CTRL_SRG_ENABLE | CSL_MCBSP_CTRL_FSYNC_ENABLE;
+	CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
+	WAIT_FOR_2_CLK;
 		
-	        for(k=0; k < N*2; k++)   
-	        {    
-	        	src[k] = ~(2*k+1); 
-	        	dst[k] = 0xDEAD;
-	        }
+	for(k=0; k < N*2; k++)   
+	{    
+		src[k] = ~(2*k+1); 
+		dst[k] = 0xDEAD;
+	}
 
-  		/* Enable MCBSP transmit and receive */
-  		ctrlMask = CSL_MCBSP_CTRL_TX_ENABLE | CSL_MCBSP_CTRL_RX_ENABLE;
-  		CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
-  		
+	//putf("hello McBSP world put!");
+	printf("hello McBSP world!\n");
 
-do{
+	/* Enable MCBSP transmit and receive */
+	ctrlMask = CSL_MCBSP_CTRL_TX_ENABLE | CSL_MCBSP_CTRL_RX_ENABLE;
+	CSL_mcbspHwControl(hMcbsp3, CSL_MCBSP_CMD_RESET_CONTROL, &ctrlMask);
+
+
+	do {
 		data_write(7, 0x8A);	// write 0x8A to register 7
 		dst[7] = data_read(7);	// read back the value of register 7
-}while(dst[7] != 0x8A);			// check that value is written correctly
-		
+		printf("dst[7] contains '%i' !\n",dst[7]);
+	} while(dst[7] != 0x8A);			// check that value is written correctly
+			
 
-		// We are done with MCBSP, so close it
-        CSL_mcbspClose(hMcbsp3);
-	
+	// We are done with MCBSP, so close it
+    CSL_mcbspClose(hMcbsp3);
+
     return 0;
 }
 
@@ -190,7 +194,12 @@ void data_write(int address, char write_value){
     /* Wait for XRDY signal before writing data to DXR */
     while (!(response & CSL_MCBSP_XRDY)) {
         CSL_mcbspGetHwStatus(hMcbsp3, CSL_MCBSP_QUERY_DEV_STATUS, &response);
+		printf("waiting for McBSP to be ready for transmit... Response=%i \n",response);
     }
+    
+
+	printf("now writing the data to McBSP!...\n");
+
     /* Write 8 bit data value to DXR */
     CSL_mcbspWrite (hMcbsp3, CSL_MCBSP_WORDLEN_16, &address);
 
@@ -200,8 +209,11 @@ void data_write(int address, char write_value){
     response = 0;
     while (!(response & CSL_MCBSP_RRDY)) {
         CSL_mcbspGetHwStatus(hMcbsp3, CSL_MCBSP_QUERY_DEV_STATUS, &response);
+		printf("waiting for McBSP; Hardwarestatus of McBSP3... Response=%i \n",response);
     }
     CSL_mcbspRead (hMcbsp3, CSL_MCBSP_WORDLEN_16, &dummy_data);
+
+	printf("The dummy data read was '%i'. \n",dummy_data);
 
 
 }
@@ -210,7 +222,7 @@ void data_write(int address, char write_value){
 char data_read(int address){
     
     int value_read = 0x0BAD;
-    Uint16 response = 0;
+    Uint16 response = 3;
     
     address = (int)((address << 1) | (address << 9));
     address |= (int)0x0101;	// byte-LSB R/W bit is cleared for a read
@@ -219,7 +231,10 @@ char data_read(int address){
     /* Wait for XRDY signal before writing data to DXR */
     while (!(response & CSL_MCBSP_XRDY)) {
         CSL_mcbspGetHwStatus(hMcbsp3, CSL_MCBSP_QUERY_DEV_STATUS, &response);
+		printf("waiting for McBSP to be ready for reading... Response=%i \n",response);
     }
+
+	printf("now writing length config data to McBSP for aic33!...\n");
     /* Write 8 bit data value to DXR */
     CSL_mcbspWrite (hMcbsp3, CSL_MCBSP_WORDLEN_16, &address);
 
@@ -228,8 +243,10 @@ char data_read(int address){
     response = 0;
     while (!(response & CSL_MCBSP_RRDY)) {
         CSL_mcbspGetHwStatus(hMcbsp3, CSL_MCBSP_QUERY_DEV_STATUS, &response);
+		printf("waiting for McBSP; Hardwarestatus of McBSP3... Response=%i \n",response);
     }
     CSL_mcbspRead (hMcbsp3, CSL_MCBSP_WORDLEN_16, &value_read);
+	printf("The actual data read was '%i'. \n",value_read);
 
     return ((char)value_read & (char)(0x00FF));
 }

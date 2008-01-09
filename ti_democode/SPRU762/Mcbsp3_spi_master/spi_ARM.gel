@@ -108,8 +108,8 @@ hotmenu configure_nmp_muxes() {
    */
   *(int*)0xFFFE1014 = 0x09200180;	// Reg4 modified for McBSP1 DX
   *(int*)0xFFFE1024 = 0x00000028;	// Reg8 modified for McBSP3 DXZ on R15
-  *(int*)0xFFFE1028 = 0x04000008;	// Reg9 modified for McBSP3 DX on P11
-  *(int*)0xFFFE102C = 0x00000820;	// RegA modified for McBSP3, minimal mod from default
+  *(int*)0xFFFE1028 = 0x04000008;	// Reg9 modified for McBSP3 DX on P11 (and CLKX on U14 as shown in spru715c)
+  *(int*)0xFFFE102C = 0x00000820;	// RegA modified for McBSP3, minimal mod from default (i.e.: FSX on pin AA17(=N10) and DR on pin V15(=P12))
   
 
   /*
