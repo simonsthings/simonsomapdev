@@ -1,0 +1,238 @@
+/* 
+ * This GEL file is loaded on the command line of Code Composer 
+ * The StartUp() function is called every time you start
+ * Code Composer.  You can customize this function to
+ * initialize wait states or to perform other initialization.
+ * 
+ * TMS470 GEL file is used for ARM9 emulation only:
+ *		Tap Helen : bypass
+ *		Tap MGS3  : bypass
+ *		Tap ARM9  : enable
+ * 
+ */
+
+StartUp()
+{ 
+  
+  /* disable ARM watchdog */
+  disableWatchdog();
+
+  /* enable DDR */
+  DDR_enable();
+  
+  /* release DSP from reset */
+  release_dsp_reset();
+
+  /* set DPLL to 192MHz and ARMPER to 48MHz */
+  set_DPLL_192MHz_ARMPER_48MHz();
+
+  /* initialize MMU */
+  init_mmu();
+ 
+  /* Set up pin muxing */
+  configure_nmp_muxes();
+  
+  /* configure McBSP3 to 4-pin mode/DSPPER_CK | McBSP1 to DSPPER_CK/CK_DPLL1OUT */
+  *(int*)0xFFFE1080 = (*(int*)0xFFFE1080) | 0x00080000 | 0x00044000;
+  
+  /* configure DSPPER_CK to run at 96MHz */
+  *(unsigned short int*)0xE1008000 = (*(unsigned short int*)0xE1008000) | 0x0001;	// CK_GEN2/2
+}
+
+OnReset()
+{
+  disableWatchdog();
+}
+
+
+MMU_Section(inAddr, inVal, inCount)
+{
+  int lvCounter;
+
+  for (lvCounter = 0;
+       lvCounter < inCount;
+       lvCounter++)
+  {
+    ((int *)inAddr)[lvCounter] = inVal | (0x100000 * lvCounter);
+  }
+}
+
+
+menuitem "Helen2"
+
+hotmenu init_mmu()
+{
+  // VA = 0x000x:xxxx => PA = 0x100x:xxxx
+  MMU_Section(0x10110000, 0x10000C0E, 16);
+
+  // VA = 0x040x:xxxx => PA = 0x040x:xxxx
+  MMU_Section(0x10110100, 0x04000C02, 32);
+
+  // VA = 0x080x:xxxx => PA = 0x080x:xxxx
+  MMU_Section(0x10110200, 0x08000C02, 32);
+
+  // VA = 0x0C0x:xxxx => PA = 0x0C0x:xxxx
+  MMU_Section(0x10110300, 0x0C000C02, 16);
+
+  // VA = 0x100x:xxxx => PA = 0x100x:xxxx
+  MMU_Section(0x10110400, 0x10000C0E, 64);
+
+  // VA = 0x200x:xxxx => PA = 0x200x:xxxx
+  MMU_Section(0x10110800, 0x20000C02, 64);
+
+  // VA = 0x300x:xxxx => PA = 0x300x:xxxx
+  MMU_Section(0x10110C00, 0x30000C02,  1);
+
+  // VA = 0x700x:xxxx => PA = 0x000x:xxxx
+  MMU_Section(0x10111C00, 0x00000C02, 32);
+
+  // VA = 0xE00x:xxxx => PA = 0xE00x:xxxx
+  MMU_Section(0x10113800, 0xE0000C02, 32);
+
+  // VA = 0xfffx:xxxx => PA = 0xfffx:xxxx
+  MMU_Section(0x10113FFC, 0xFFF00C02,  1);
+
+
+  REG_CP15_TT_BASE = 0x10110000;
+  REG_CP15_DACR = 0xFFFFFFFF;
+  REG_CP15_MMU = 1;
+
+  if(REG_CP15_MMU)
+  {
+    GEL_TextOut("\nMMU is ON\n","result");
+  }
+  else
+  {
+    GEL_TextOut("\n**FAILED**\n","result");
+    GEL_TextOut("\nMMU is OFF\n","result");
+  }
+
+  GEL_MapAddStr(0x00000000, 0, 0x01000000, "R|W|AS4", 0);  /* CS4 - SDRAM mapped at 0x0 - 16MB */
+}
+
+
+hotmenu set_DPLL_192MHz_ARMPER_48MHz(){
+   
+    #define DPLL1_CTL_REG           *( unsigned short* )0xFFFECF00
+    #define ARM_CKCTL               *( unsigned short* )0xFFFECE00
+    #define ARM_IDLECT1             *( unsigned short* )0xFFFECE04
+    #define ARM_IDLECT2             *( unsigned short* )0xFFFECE08
+    #define ARM_RSTCT1              *( unsigned short* )0xFFFECE10
+    #define ARM_RSTCT2              *( unsigned short* )0xFFFECE14
+    #define ARM_SYSST               *( unsigned short* )0xFFFECE18
+    
+   /* Set clocking mode */ 
+  ARM_SYSST = 0x00001000;     // Synchronous Scalable  
+  
+  
+  /* Set the clock divisor
+  * Values must NOT violate the clocking mode selected eariler.
+  * values range from [n = 0..3] and correspond to divisors [.5 ^ n] */ 
+//  ARM_CKCTL = 0x110C	// ARMPER_CK at max frequency
+//	ARM_CKCTL = 0x110D	// ARMPER_CK at max/2 frequency
+	ARM_CKCTL = 0x110E	// ARMPER_CK at max/4 frequency
+                | ( ARM_CKCTL & ( 1 << 13 ) ) // retain previous 
+				;      
+				
+  DPLL1_CTL_REG = 0x2813;	
+  
+  /* Poll DPLL until frequency is locked */ 
+  while ( ! ( DPLL1_CTL_REG & 0x0001 ) );
+}
+
+release_dsp_reset()
+{
+	// enable mpui clock in the ARM_IDLECT2 register
+	*(unsigned short *)(0xFFFECE08) |= 0x0040; 
+
+	// set priority registers to allow for reprogramming in the ARM_RSTCT1 register
+	*(unsigned short *)(0xFFFECE10) = 0x0004;
+    	
+	// disable byte swapping in mpui from the MPUI_CONTROL register
+	*(unsigned int *)(0xFFFEC900) &= 0xFFFCFFFF; 
+	
+	// set SARAM to be shared by dsp and arm in the DSP_MPUI_CONFIG register
+	*(unsigned short *)(0xFFFEC91c) = 0; 
+
+	 //  set the DSP boot address to [0x010000], mapped to ARM [0xE0010000]
+	 // in the DSP_BOOT_CONFIG regsiter
+	*(unsigned short *)(0xFFFEC918) = 0x0005; 
+
+	// insert an idle loop at DSP [0x10000], mapped to ARM [0xE0010000] 
+    // The loop will continuously branch to itself  
+	*(unsigned int *)0xE0010000 = 0x20204A7E;
+	*(unsigned int *)0xE0010004 = 0x20202020;
+
+	// release DSP from reset in the ARM_RSTCT1 register
+	*(unsigned short *)(0xFFFECE10) = 0x0006;
+}
+
+
+disableWatchdog( )
+{
+    /* Disable OMAP Watchdog Timer */ 
+    #define WD_CNTL_TIMER           *( unsigned short* )0xFFFEC800
+    #define WD_LOAD_TIM             *( unsigned short* )0xFFFEC804
+    #define WD_TIMER_MODE           *( unsigned short* )0xFFFEC808
+
+    /* Sequence to convert Watchdog Timer into General-Purpose timer */ 
+    WD_TIMER_MODE = 0x00F5;
+    WD_TIMER_MODE = 0x00A0;
+
+
+    /* Disable 32KHz Watchdog */ 
+    #define WDT_WWPS                *( unsigned int* )0xFFFEB034
+    #define WDT_WSPR                *( unsigned int* )0xFFFEB048
+
+    /* Sequence to disable 32KHz Watchdog timer */ 
+    WDT_WSPR = 0xAAAA;
+    while ( WDT_WWPS & 0x00000010 );
+    WDT_WSPR = 0x5555;
+    while ( WDT_WWPS & 0x00000010 );
+
+  GEL_TextOut("watchdog_disable\n","result");
+}
+
+
+
+hotmenu configure_nmp_muxes() {
+  /*
+   * Configure muxes
+   */
+  *(int*)0xFFFE1024 = 0x00000028;	// Reg8 modified for McBSP3, minimal mod from default
+  *(int*)0xFFFE1028 = 0x04000008;	// Reg9 modified for McBSP3, minimal mod from default
+  *(int*)0xFFFE102C = 0x00000820;	// RegA modified for McBSP3, minimal mod from default
+
+  /*
+   * Switch to the new config
+   */
+  *(int*)0xFFFE100C = 0x0000EAEF;
+
+  GEL_TextOut("Multiplexing configured for NMP mode\n","result");
+
+  /* Turn mux on OMAP5912 OSK for McBSP2 pins using MPUIO3=1 */
+  *((short *) 0xFFFB5004) = 0x0008; // as an output
+  *((short *) 0xFFFB5008) = 0xFFF7; // output a 1
+
+}
+
+DDR_enable()
+{
+int i;
+ /* DDR setup */
+ (*(int*)0xFFFECC80) = 0x07; /* DDR Operation addr Mobile DDR, HPHB mode */
+// (*(int*)0xFFFECC20) = 0x1200F6; /* SDRAM Config 0x1200F6 b4*/
+ (*(int*)0xFFFECC20) = 0x1200B4; /* SDRAM Config 0x1200F6 b4--WRONG???*/
+ (*(int*)0xFFFECC84) = 0x07;  /* Manual CMD Addr, CKE high */
+ (*(int*)0xFFFECC84) = 0x00; /* Manual CMD Addr NOP command */
+ for (i = 0; i< 5; i++);   /* Delay Loop */
+ (*(int*)0xFFFECC84) = 0x01; /* Precharge Command */
+ (*(int*)0xFFFECC84) = 0x02; /* Auto-refresh command */
+ (*(int*)0xFFFECC70) = 0x33;
+ (*(int*)0xFFFECC78) = 0x00; /* EMRS1 self refresh all banks */
+ (*(int*)0xFFFECCC0) = 0x06;
+ (*(int*)0xFFFECCCC) = 0x06;
+ (*(int*)0xFFFECC64) = 0x06;
+ GEL_TextOut("DDR interface enable\n","result");
+
+}

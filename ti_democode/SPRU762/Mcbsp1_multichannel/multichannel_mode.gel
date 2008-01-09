@@ -1,0 +1,208 @@
+/* 
+ * This GEL file is loaded on the command line of Code Composer 
+ * The StartUp() function is called every time you start
+ * Code Composer.  You can customize this function to
+ * initialize wait states or to perform other initialization.
+ * 
+ * TMS470 GEL file is used for ARM9 emulation only
+ * 
+ */
+
+StartUp()
+{ 
+
+  /* disable ARM watchdog */
+  disableWatchdog();
+  
+  /* release DSP from reset */
+  release_dsp_reset();
+
+  /* set DPLL to 192MHz and ARMPER to 48MHz */
+  set_DPLL_192MHz_ARMPER_48MHz();
+  
+  /* Set up pin muxing */
+  configure_nmp_muxes();
+  
+  /* configure static switch for mcbsp2 */
+  /* such that dsp can access peripheral */
+  set_mcbsp2_static_switch();
+  	
+  /* map mcbsp2 dma request to the dsp dma */
+  map_mcbsp2_dma_request_18_7();
+
+  /* configure McBSP3 to 4-pin mode/DSPPER_CK | McBSP1 to DSPPER_CK/CK_DPLL1OUT */
+  *(int*)0xFFFE1080 = (*(int*)0xFFFE1080) | 0x00080000 | 0x00044000;
+  
+  /* configure DSPPER_CK to run at 96MHz */
+  *(unsigned short int*)0xE1008000 = (*(unsigned short int*)0xE1008000) | 0x0001;	// CK_GEN2/2
+}
+
+OnReset()
+{
+  watchdog_disable();
+}
+
+
+hotmenu set_DPLL_192MHz_ARMPER_96MHz(){
+   
+    #define DPLL1_CTL_REG           *( unsigned short* )0xFFFECF00
+    #define ARM_CKCTL               *( unsigned short* )0xFFFECE00
+    #define ARM_IDLECT1             *( unsigned short* )0xFFFECE04
+    #define ARM_IDLECT2             *( unsigned short* )0xFFFECE08
+    #define ARM_RSTCT1              *( unsigned short* )0xFFFECE10
+    #define ARM_RSTCT2              *( unsigned short* )0xFFFECE14
+    #define ARM_SYSST               *( unsigned short* )0xFFFECE18
+    
+   /* Set clocking mode */ 
+  ARM_SYSST = 0x00001000;     // Synchronous Scalable  
+  
+  
+  /* Set the clock divisor
+  * Values must NOT violate the clocking mode selected eariler.
+  * values range from [n = 0..3] and correspond to divisors [.5 ^ n] */ 
+//  ARM_CKCTL = 0x110C	// ARMPER_CK at max frequency
+	ARM_CKCTL = 0x110D	// ARMPER_CK at max/2 frequency
+//  ARM_CKCTL = 0x110E	// ARMPER_CK at max/4 frequency
+                | ( ARM_CKCTL & ( 1 << 13 ) ) // retain previous 
+				;      
+				
+  DPLL1_CTL_REG = 0x2813;	
+  
+  /* Poll DPLL until frequency is locked */ 
+  while ( ! ( DPLL1_CTL_REG & 0x0001 ) );
+}
+
+hotmenu set_DPLL_192MHz_ARMPER_48MHz(){
+   
+    #define DPLL1_CTL_REG           *( unsigned short* )0xFFFECF00
+    #define ARM_CKCTL               *( unsigned short* )0xFFFECE00
+    #define ARM_IDLECT1             *( unsigned short* )0xFFFECE04
+    #define ARM_IDLECT2             *( unsigned short* )0xFFFECE08
+    #define ARM_RSTCT1              *( unsigned short* )0xFFFECE10
+    #define ARM_RSTCT2              *( unsigned short* )0xFFFECE14
+    #define ARM_SYSST               *( unsigned short* )0xFFFECE18
+    
+   /* Set clocking mode */ 
+  ARM_SYSST = 0x00001000;     // Synchronous Scalable  
+  
+  
+  /* Set the clock divisor
+  * Values must NOT violate the clocking mode selected eariler.
+  * values range from [n = 0..3] and correspond to divisors [.5 ^ n] */ 
+//  ARM_CKCTL = 0x110C	// ARMPER_CK at max frequency
+//	ARM_CKCTL = 0x110D	// ARMPER_CK at max/2 frequency
+	ARM_CKCTL = 0x110E	// ARMPER_CK at max/4 frequency
+                | ( ARM_CKCTL & ( 1 << 13 ) ) // retain previous 
+				;      
+				
+  DPLL1_CTL_REG = 0x2813;	
+  
+  /* Poll DPLL until frequency is locked */ 
+  while ( ! ( DPLL1_CTL_REG & 0x0001 ) );
+}
+
+
+hotmenu configure_nmp_muxes() {
+  /*
+   * Configure muxes
+   */
+  *(int*)0xFFFE1014 = 0x09210180;	// Reg4 modified for McBSP1 DXZ
+  *(int*)0xFFFE1024 = 0x00000028;	// Reg8 modified for McBSP3 DXZ on R15
+  *(int*)0xFFFE1028 = 0x04000008;	// Reg9 modified for McBSP3 DX on P11
+  *(int*)0xFFFE102C = 0x00000820;	// RegA modified for McBSP3, minimal mod from default
+  
+
+  /*
+   * Switch to the new config
+   */
+  *(int*)0xFFFE100C = 0x0000EAEF;
+
+  GEL_TextOut("Multiplexing configured for NMP mode\n","result");
+
+  /* Turn mux on OMAP5912 OSK for McBSP2 pins using MPUIO3=1 */
+  *((short *) 0xFFFB5004) = 0x0008; // as an output
+  *((short *) 0xFFFB5008) = 0xFFF7; // output a 1
+
+}
+
+map_mcbsp2_dma_request_18_7() 
+{
+	int regVal;
+
+	// read the FUNC_MUX_DSP_DMA_C register 
+	regVal = *(unsigned int *)(0xFFFE10D8);
+
+	// clear bit that map dma request18 (bits 29:25)
+	// note bits 31:30 are not used in this register (ie. don't cares)
+	regVal &= 0x01FFFFFF;
+	
+	// map dma request for mcbsp2 tx (request27) to dma request18 
+	// left shift 27-1 (0x1A) by 25 spaces to set bits 29:25
+	regVal |=0x1A<<25;
+	
+	// store new value in FUNC_MUX_DSP_DMA_C
+	*(unsigned int *)(0xFFFE10D8)=regVal;
+
+	// map dma request for mcbsp2 rx (request28) to dma request7. 
+	// dma request7 occupies bits 4:0 of the FUNC_MUX_DSP_DMA_B register.
+	// store 28-1 (0x1B) in FUNC_MUX_DSP_DMA_B[4:0]
+	*(unsigned int *)(0xFFFE10D4)=*(unsigned int *)(0xFFFE10D4) & 0xFFFFFFE0; // clear bits 4:0
+	*(unsigned int *)(0xFFFE10D4)=*(unsigned int *)(0xFFFE10D4) | 0x0000001B; // set bits 4:0
+}
+
+set_mcbsp2_static_switch()//JH,AN 05/24/04
+{
+	// clear static switch register for mcbsp2 (MCBSP_SSW_MPU_CONF)
+	// so that dsp can access peripheral
+  	*(unsigned int *)(0xFFFBC890) = 0;
+}
+
+release_dsp_reset()
+{
+	// enable mpui clock in the ARM_IDLECT2 register
+	*(unsigned short *)(0xFFFECE08) |= 0x0040; 
+
+	// set priority registers to allow for reprogramming in the ARM_RSTCT1 register
+	*(unsigned short *)(0xFFFECE10) = 0x0004;
+    	
+	// disable byte swapping in mpui from the MPUI_CONTROL register
+	*(unsigned int *)(0xFFFEC900) &= 0xFFFCFFFF; 
+	
+	// set SARAM to be shared by dsp and arm in the DSP_MPUI_CONFIG register
+	*(unsigned short *)(0xFFFEC91c) = 0; 
+
+	 //  set the DSP boot address to [0x010000], mapped to ARM [0xE0010000]
+	 // in the DSP_BOOT_CONFIG regsiter
+	*(unsigned short *)(0xFFFEC918) = 0x0005; 
+
+	// insert an idle loop at DSP [0x10000], mapped to ARM [0xE0010000] 
+    // The loop will continuously branch to itself  
+	*(unsigned int *)0xE0010000 = 0x20204A7E;
+	*(unsigned int *)0xE0010004 = 0x20202020;
+
+	// release DSP from reset in the ARM_RSTCT1 register
+	*(unsigned short *)(0xFFFECE10) = 0x0006;
+}
+
+disableWatchdog( )
+{
+    /* Disable OMAP Watchdog Timer */ 
+    #define WD_CNTL_TIMER           *( unsigned short* )0xFFFEC800
+    #define WD_LOAD_TIM             *( unsigned short* )0xFFFEC804
+    #define WD_TIMER_MODE           *( unsigned short* )0xFFFEC808
+
+    /* Sequence to convert Watchdog Timer into General-Purpose timer */ 
+    WD_TIMER_MODE = 0x00F5;
+    WD_TIMER_MODE = 0x00A0;
+
+
+    /* Disable 32KHz Watchdog */ 
+    #define WDT_WWPS                *( unsigned int* )0xFFFEB034
+    #define WDT_WSPR                *( unsigned int* )0xFFFEB048
+
+    /* Sequence to disable 32KHz Watchdog timer */ 
+    WDT_WSPR = 0xAAAA;
+    while ( WDT_WWPS & 0x00000010 );
+    WDT_WSPR = 0x5555;
+    while ( WDT_WWPS & 0x00000010 );
+}

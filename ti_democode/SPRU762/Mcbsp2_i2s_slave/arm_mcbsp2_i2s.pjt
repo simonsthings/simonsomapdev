@@ -1,0 +1,40 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+
+[Project Settings]
+ProjectDir="C:\OMAP5912\DOCUMENT FILES\USAGE EXAMPLES\SPRU762\Mcbsp2_i2s_slave\"
+ProjectType=Executable
+CPUFamily=TMS470R2X
+Tool="Compiler"
+Tool="Linker"
+Config="Debug"
+Config="Release"
+
+[Source Files]
+Source="..\..\..\..\..\ti_OMAP\TMS470\cgtools\lib\rts32e.lib"
+Source="..\..\..\..\EXTERNAL_LATEST_CSL\csl_OMAP5912_v3_00_13_00\arm\lib\csl_OMAP5912.lib"
+Source="intc_init.c"
+Source="intc_setup.c"
+Source="main.c"
+Source="mcbsp_ints.c"
+Source="sdma_init.c"
+Source="sdma_setup.c"
+Source="utils\boot.asm"
+Source="utils\init.c"
+Source="utils\stack.asm"
+Source="utils\swi.c"
+Source="utils\swi_.asm"
+Source="utils\sys.c"
+Source="lnk.cmd"
+
+["Compiler" Settings: "Debug"]
+Options=-g -q -fr"C:\OMAP5912\DOCUMENT FILES\USAGE EXAMPLES\SPRU762\Mcbsp2_i2s_slave\Debug" -i"C:\OMAP5912\EXTERNAL_LATEST_CSL\csl_OMAP5912_v3_00_13_00\arm\inc" -i"..\utils\" -d"_DEBUG" -me -mf
+
+["Compiler" Settings: "Release"]
+Options=-q -o3 -fr"C:\OMAP5912\DOCUMENT FILES\USAGE EXAMPLES\SPRU762\Mcbsp2_i2s_slave\Release"
+
+["Linker" Settings: "Debug"]
+Options=-q -c -m".\Debug\arm_mcbsp2.map" -o".\Debug\arm_mcbsp2.out" -w -x
+
+["Linker" Settings: "Release"]
+Options=-q -c -m".\Release\arm_mcbsp2_dlb.map" -o".\Release\arm_mcbsp2_dlb.out" -w -x
+
