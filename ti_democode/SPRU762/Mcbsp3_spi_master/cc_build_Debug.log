@@ -1,7 +1,7 @@
 ---------------------------  MCBSP3_SPI.pjt - Debug  ---------------------------
-[cvectors.asm] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -as -fr"./Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/dsp/inc" -d"_DEBUG" -d"CSL_CHIP_5905PG1_0" -d"CSL_CHIP_5912PG1_0" -ml -v5510:2 -@"Debug.lkf" "cvectors.asm"
+[cvectors.asm] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -as -fr"./Debug" -i"C:/CCStudio_v3.1/sprc199zip_CSL3.0/csl_OMAP5912/dsp/inc" -d"_DEBUG" -d"CSL_CHIP_5905PG1_0" -d"CSL_CHIP_5912PG1_0" -ml -v5510:2 -@"Debug.lkf" "cvectors.asm"
 
-[mcbsp3_spi.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -as -fr"./Debug" -i"C:/CCStudio_v3.1/csl_OMAP5912/dsp/inc" -d"_DEBUG" -d"CSL_CHIP_5905PG1_0" -d"CSL_CHIP_5912PG1_0" -ml -v5510:2 -@"Debug.lkf" "mcbsp3_spi.c"
+[mcbsp3_spi.c] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -g -as -fr"./Debug" -i"C:/CCStudio_v3.1/sprc199zip_CSL3.0/csl_OMAP5912/dsp/inc" -d"_DEBUG" -d"CSL_CHIP_5905PG1_0" -d"CSL_CHIP_5912PG1_0" -ml -v5510:2 -@"Debug.lkf" "mcbsp3_spi.c"
 
 [Linking...] "C:\CCStudio_v3.1\C5500\cgtools\bin\cl55" -@"Debug.lkf"
 <Linking>
