@@ -35,6 +35,51 @@ StartUp()
   
   /* configure DSPPER_CK to run at 96MHz */
   *(unsigned short int*)0xE1008000 = (*(unsigned short int*)0xE1008000) | 0x0001;	// CK_GEN2/2
+
+  simons_stuff();
+}
+
+simons_stuff()
+{
+    #define MY_REG1					*(int*)0xFFFE1000
+
+    #define GPIO_DATAIN				*(int*)0xFFFBE42C	// Data in register
+    #define GPIO_DIRECTION			*(int*)0xFFFBE434	// Direction Control register for GPIO block 1
+    #define GPIO_DATAOUT			*(int*)0xFFFBE430	// Data Output register
+    #define GPIO_SET_DATAOUT		*(int*)0xFFFBE4F0	// Set Data Output Register (GPIO_Set_dataout)
+    
+	GEL_TextOut("Writing GPIO pin status...\n","result");
+
+
+	GEL_TextOut("GPIO Revision reg: %x . \n",,,,,*(int*)0xFFFBE400 );
+	GEL_TextOut("GPIO System Config reg: %x . \n",,,,,*(int*)0xFFFBE410 );
+	GEL_TextOut("GPIO System Status reg: %x . \n",,,,,*(int*)0xFFFBE414 );
+
+
+	GEL_TextOut("\nData In reg: %x . \n",,,,,GPIO_DATAIN );
+
+
+	GEL_TextOut("Direction control reg: %x . \n",,,,,GPIO_DIRECTION );
+//	GPIO_DIRECTION = 0xffffFEFF;
+	GPIO_DIRECTION = 0x00000000;
+	GEL_TextOut("Direction control reg: %x . \n",,,,,GPIO_DIRECTION );
+
+
+
+	GEL_TextOut("Data Output reg: %x . \n",,,,,GPIO_SET_DATAOUT );
+	GEL_TextOut("Set Data Output reg: %x . \n",,,,,GPIO_SET_DATAOUT );
+//	GPIO_SET_DATAOUT = 0x00000100;    
+	GPIO_SET_DATAOUT = 0xffffffff;    
+	GEL_TextOut("Set Data Output reg: %x . \n",,,,,GPIO_SET_DATAOUT );
+	GEL_TextOut("Data Output reg: %x . \n",,,,,GPIO_SET_DATAOUT );
+
+
+	GEL_TextOut("Data In reg: %x . \n",,,,,GPIO_DATAIN );
+
+
+	GEL_TextOut("Pin status written!\n","result");
+
+
 }
 
 OnReset()
@@ -111,6 +156,11 @@ hotmenu configure_nmp_muxes() {
   *(int*)0xFFFE1028 = 0x04000008;	// Reg9 modified for McBSP3 DX on P11 (and CLKX on U14 as shown in spru715c)
   *(int*)0xFFFE102C = 0x00000820;	// RegA modified for McBSP3, minimal mod from default (i.e.: FSX on pin AA17(=N10) and DR on pin V15(=P12))
   
+    
+  GEL_TextOut("\nFUNC_MUX_CTRL_B: %x . \n",,,,,*(int*)0xFFFE1030 );
+  *(int*)0xFFFE1030 =  0x00000003;	// RegB updated to default.
+  GEL_TextOut("FUNC_MUX_CTRL_B: %x . \n",,,,,*(int*)0xFFFE1030 );
+
 
   /*
    * Switch to the new config
@@ -205,4 +255,24 @@ disableWatchdog( )
     while ( WDT_WWPS & 0x00000010 );
     WDT_WSPR = 0x5555;
     while ( WDT_WWPS & 0x00000010 );
+}
+
+
+
+menuitem "Simon's LED Menu";
+
+hotmenu TurnLEDOn()
+{
+	#define GPIO_SET_DATAOUT		*(int*)0xFFFBE4F0	// Set Data Output Register (GPIO_Set_dataout)
+	GPIO_SET_DATAOUT = 0x00000100;	// Change only bit 8 of 15 in GPIO block 1, for setting GPIO8 high. (SET)
+		//0x00000100 for just GPIO8 or 0xffffFFFF for all 16 GPIO pins of GPIO block 1 (the lowercase ff's are ignored)
+
+    GEL_TextOut("LED should now be ON.\n");
+}
+hotmenu TurnLEDOff()
+{
+	#define GPIO_CLEAR_DATAOUT		*(int*)0xFFFBE4B0	// Set Data Output Register (GPIO_Set_dataout)
+	GPIO_CLEAR_DATAOUT = 0x00000100;    // Change only bit 8 of 15 in GPIO block 1, for setting GPIO8 low. (CLEAR)
+
+    GEL_TextOut("LED should now be OFF.\n");
 }
