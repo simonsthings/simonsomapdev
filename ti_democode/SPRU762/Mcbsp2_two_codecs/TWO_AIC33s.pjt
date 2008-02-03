@@ -1,7 +1,7 @@
 ; Code Composer Project File, Version 2.0 (do not modify or remove this line)
 
 [Project Settings]
-ProjectDir="W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp2_two_codecs\"
+ProjectDir="C:\SPRU762\Mcbsp2_two_codecs\"
 ProjectType=Executable
 CPUFamily=TMS320C55XX
 Tool="Compiler"
@@ -12,7 +12,7 @@ Config="Debug"
 Config="Release"
 
 [Source Files]
-Source="C:\CCStudio_v3.1\csl_OMAP5912\dsp\lib\csl_OMAP5912.lib"
+Source="..\..\CCStudio_v3.1\sprc199zip_CSL3.0\csl_OMAP5912\dsp\lib\csl_OMAP5912.lib"
 Source="cvectors.asm"
 Source="main.c"
 Source="lnk.cmd"
@@ -21,7 +21,7 @@ Source="lnk.cmd"
 Options=-g -as -fr".\Debug" -i"C:\CCStudio_v3.1\csl_OMAP5912\dsp\inc" -d"_DEBUG" -d"CSL_CHIP_5905PG1_0" -d"CSL_CHIP_5912PG1_0" -ml -v5510:2
 
 ["Compiler" Settings: "Release"]
-Options=-q -o2 -fr"W:\Work\project data\Inomed\OMAP5912 Infos\OMAP5912 McBSP Reference - spru762c\SPRU762\Mcbsp2_two_codecs\Release"
+Options=-q -o2 -fr"C:\SPRU762\Mcbsp2_two_codecs\Release"
 
 ["DspBiosBuilder" Settings: "Debug"]
 Options=-v55
