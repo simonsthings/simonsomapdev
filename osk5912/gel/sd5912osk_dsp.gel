@@ -34,8 +34,10 @@ StartUp()
 OnTargetConnect()
 {
     disable_watchdog_timer( );      // Stop the Watchdog timer
-    init_test_mode( );              // Configure Test Mode
-    init_peripherals( );            // Configure Peripherals
+    //init_test_mode( );              // Configure Test Mode
+    //init_peripherals( );            // Configure Peripherals
+
+	// the two lines above have been deactivated by Simon Vogt as a test.
 
     GEL_TextOut( "GEL StartUp Complete.\n" );
 }
@@ -66,7 +68,7 @@ OnReset( int nErrorCode )
 OnPreFileLoaded( )
 {
     // Deactivated by Simon V. as done in the dsplink/rf6 userguide.pdf page 20 (SPRA796A 2004 version).
-    //GEL_Reset( );
+    GEL_Reset( );
 }
 
 /*--------------------------------------------------------------*/
@@ -519,4 +521,57 @@ hotmenu SetMemoryMap()
 hotmenu ClearMemoryMap()
 {
     clear_memory_map();
+}
+
+
+
+
+menuitem "Simon's Menu";
+hotmenu ShowGPIORev()
+{
+	// The Base register for GPIO1 from the DSP side is 0x00F200, as mentioned in 
+	// SPRS231E (omap5912.pdf), page 145. (Or search the pdf for "F200".)
+	// The same line mentions FFFB:E400 as the GPIO1 address from the MPU side (=ARM core).
+	GEL_TextOut("GPIO Revision reg: %x . \n",,,,,*(int*)0xF200 );
+
+
+}
+
+hotmenu TestWriteToROReg()
+{
+	GEL_TextOut("GPIO DATAIN reg: %x . \n",,,,,*(int*)0xF216 );
+	GEL_TextOut("Writing Data %x. \n",,,,,0xff00 );
+	*(int*)0xF216 = 0xff00;
+	GEL_TextOut("GPIO DATAIN reg: %x . \n",,,,,*(int*)0xF216 );
+
+}
+
+hotmenu tryToGetGPIOAccess()
+{
+	
+	TestWriteToROReg();
+}
+
+
+
+
+
+
+
+menuitem "Simon's LED Menu (doesn't work from DSP side yet)";
+
+hotmenu TurnLEDOn()
+{
+	#define GPIO_SET_DATAOUT		*(int*)0xF2F0	// Set Data Output Register (GPIO_Set_dataout)
+	GPIO_SET_DATAOUT = 0x00000100;	// Change only bit 8 of 15 in GPIO block 1, for setting GPIO8 high. (SET)
+		//0x00000100 for just GPIO8 or 0xffffFFFF for all 16 GPIO pins of GPIO block 1 (the lowercase ff's are ignored)
+
+    GEL_TextOut("LED should now be ON.\n");
+}
+hotmenu TurnLEDOff()
+{
+	#define GPIO_CLEAR_DATAOUT		*(int*)0xF2B0	// Set Data Output Register (GPIO_Set_dataout)
+	GPIO_CLEAR_DATAOUT = 0x00000100;    // Change only bit 8 of 15 in GPIO block 1, for setting GPIO8 low. (CLEAR)
+
+    GEL_TextOut("LED should now be OFF.\n");
 }
