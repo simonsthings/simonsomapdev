@@ -287,30 +287,6 @@ LOOP_1Print (Char8 * str, Uint32 arg) ;
 /*==============================================the functions start==================================================*/
 
 
-
-/*int prog_main()*/
-
-/**
- * This Main function is probably not being used at all anymore.
- * Instead, the functions LOOP_Create(..),  LOOP_Execute(..)
- * and LOOP_Delete(..) are called directly from the GUI code.
- *
- * This function may need to be deleted for compiling the
- * full program (with GUI code, which has its own main function).
- */
-int main(int argc, char argv[])  // Leaving the function signature unchanged for now...
-{
-	// Declaring some quick variables for use only in this function:
-    Char8 * dspExecutable    = "wav_rec_rf6_dsp.out" ;
-    Char8 * strBufferSize    = 7168 ;
-    Char8 * strNumIterations = 1 ;
-
-    LOOP_Main (dspExecutable, strNumIterations, strBufferSize) ;
-
-    return 0 ;
-}
-
-
 /** ============================================================================
  *  @func   LOOP_Create
  *
@@ -424,6 +400,29 @@ Void LOOP_Delete (Void) ;
 NORMAL_API
 Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize, IN Char8 * strNumIterations);
 
+
+
+/**
+ * This Main function is probably not being used at all anymore.
+ * Instead, the functions LOOP_Create(..),  LOOP_Execute(..)
+ * and LOOP_Delete(..) are called directly from the GUI code.
+ *
+ * This function may need to be deleted for compiling the
+ * full program (with GUI code, which has its own main function).
+ *
+ * If used, this function needs to be behind the function declarations seen above.
+ */
+int main(int argc, char argv[])  // Leaving the function signature unchanged for now...
+{
+	// Declaring some quick variables for use only in this function:
+    Char8 * dspExecutable    = "wav_rec_rf6_dsp.out" ;
+    Char8 * strBufferSize    = 7168 ;
+    Char8 * strNumIterations = 1 ;
+
+    LOOP_Main (dspExecutable, strNumIterations, strBufferSize) ;
+
+    return 0 ;
+}
 
 
 
