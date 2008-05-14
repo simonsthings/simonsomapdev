@@ -10,7 +10,7 @@
 #include <sys/ioctl.h>
 
 /*--------------------------------------------- Linux specific include */
-//#include <linux/soundcard.h> bla
+//#include <linux/soundcard.h> blaaa
 
 /*  ----------------------------------- DSP/BIOS Link                   */
 #include <gpptypes.h>
