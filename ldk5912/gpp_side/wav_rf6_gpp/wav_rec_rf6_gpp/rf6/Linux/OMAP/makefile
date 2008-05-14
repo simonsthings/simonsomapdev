@@ -22,7 +22,7 @@ BASE_CC_FLAGS  = -DOS_LINUX			\
 		-I$(RF_INC_DIR)/Linux/OMAP \
 		-Wall
 
-DEB_CC_FLAGS  = $(BASE_CC_FLAGS) -g -DDSP_DEBUG
+DEB_CC_FLAGS  = $(BASE_CC_FLAGS) -g 
 
 REL_CC_FLAGS  = $(BASE_CC_FLAGS)
 
@@ -36,32 +36,32 @@ all: debug release
 debug:
 	@mkdir -p debug
 	@mkdir -p $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug
-	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug/wav_rec_rf6_gpp
+	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug/mainprog
 
 	@echo "-------- Building rf6 debug application --------"
-	$(CC) $(DEB_CC_FLAGS) -o debug/wav_rec_rf6_gpp wav_rec_rf6_gpp.c \
+	$(CC) $(DEB_CC_FLAGS) -o debug/mainprog mainprog.c \
 	    $(LDFLAGS) \
 	    $(RF_LIB_DIR)/dsplink.lib
 	@echo The build was successful
 
-	@cp -rf debug/wav_rec_rf6_gpp $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug/.
+	@cp -rf debug/mainprog $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug/.
 	@echo Copied application to $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/debug dir
 
 release:
 	@mkdir -p release
 	@mkdir -p $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release
-	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release/wav_rec_rf6_gpp
+	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release/mainprog
 
 	@echo "-------- Building rf6 release application --------"
-	$(CC) $(REL_CC_FLAGS) -o release/wav_rec_rf6_gpp wav_rec_rf6_gpp.c \
+	$(CC) $(REL_CC_FLAGS) -o release/mainprog mainprog.c \
 	    $(LDFLAGS) \
 	    $(RF_LIB_DIR)/dsplink.lib
 	@echo The build was successful
 
-	@cp -rf release/wav_rec_rf6_gpp $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release/.
+	@cp -rf release/mainprog $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release/.
 	@echo Copied application to $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/release dir
 
 clean:
 	rm -f */*.o 
 	rm -rf debug release
-	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/*/wav_rec_rf6_gpp
+	@rm -rf $(RF_ROOT_DIR)/bin/rf6/Linux/OMAP/*/mainprog
