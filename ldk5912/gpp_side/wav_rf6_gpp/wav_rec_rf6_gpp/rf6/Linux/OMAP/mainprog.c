@@ -394,18 +394,13 @@ Void LOOP_Delete (Void) ;
  *  @see    LOOP_Create, LOOP_Execute, LOOP_Delete
  *  ============================================================================
  */
-
- /************************ Do we require this LOOP_Main again ???************************************/
-
-NORMAL_API
-Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize, IN Char8 * strNumIterations);
-
+NORMAL_API Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize, IN Char8 * strNumIterations);
 
 
 /**
- * This Main function is probably not being used at all anymore.
- * Instead, the functions LOOP_Create(..),  LOOP_Execute(..)
- * and LOOP_Delete(..) are called directly from the GUI code.
+ * This Main function and the LOOP_Main(..) function are probably not needed
+ * at all anymore. Instead, the functions LOOP_Create(..),  LOOP_Execute(..)
+ * and LOOP_Delete(..) could be called directly from the GUI code.
  *
  * This function may need to be deleted for compiling the
  * full program (with GUI code, which has its own main function).
