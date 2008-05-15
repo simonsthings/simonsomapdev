@@ -29,15 +29,15 @@ all: debug release
 debug:
 	@mkdir -p debug
 	@mkdir -p ../../../../bin/rf6/Linux/OMAP/debug
-	@rm -rf ../../../../bin/rf6/Linux/OMAP/debug/prog1c
+	@rm -rf ../../../../bin/rf6/Linux/OMAP/debug/daqGUI
 
 	@echo "-------- Building rf6 debug application --------"
-	arm-linux-gcc -I/home/LinuxDA/sdk/LinuxDA/include -c /home/aritra/Desktop/wav_rf6_gpp-in_subversion/wav_rec_rf6_gpp/rf6/Linux/OMAP/prog1c.c
-	arm-linux-gcc -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall -g -o debug/prog1c mainprog.c prog1c.o -L/home/LinuxDA/sdk/LinuxDA/lib -lgui -lminidb -lsqlite3 -lc -lpthread /home/aritra/Desktop/wav_rf6_gpp-in_subversion/lib/dsplink.lib
+	arm-linux-gcc -I/home/LinuxDA/sdk/LinuxDA/include -c /home/aritra/Desktop/wav_rf6_gpp-in_subversion/wav_rec_rf6_gpp/rf6/Linux/OMAP/daqGUI.c
+	arm-linux-gcc -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall -g -o debug/daqGUI mainprog.c daqGUI.o -L/home/LinuxDA/sdk/LinuxDA/lib -lgui -lminidb -lsqlite3 -lc -lpthread /home/aritra/Desktop/wav_rf6_gpp-in_subversion/lib/dsplink.lib
 
 	@echo The build was successful
 
-	@cp -rf debug/prog1c ../../../../bin/rf6/Linux/OMAP/debug/.
+	@cp -rf debug/daqGUI ../../../../bin/rf6/Linux/OMAP/debug/.
 	@echo Copied application to ../../../../bin/rf6/Linux/OMAP/debug dir
 
 #release:
@@ -57,4 +57,4 @@ debug:
 clean:
 	rm -f */*.o 
 	rm -rf debug release
-	@rm -rf /home/aritra/Desktop/wav_rf6_gpp-in_subversion/bin/rf6/Linux/OMAP/*/prog1c
+	@rm -rf /home/aritra/Desktop/wav_rf6_gpp-in_subversion/bin/rf6/Linux/OMAP/*/daqGUI
