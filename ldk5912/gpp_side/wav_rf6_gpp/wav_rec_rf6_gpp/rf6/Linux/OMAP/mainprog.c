@@ -182,7 +182,7 @@ STATIC Uint32  LOOP_BufferSize ;
  *          A value of 0 in LOOP_NumIterations implies infinite iterations.
  *  ============================================================================
  */
-STATIC Uint32  LOOP_NumIterations ;
+ // STATIC Uint32  LOOP_NumIterations ;
 
 /** ============================================================================
  *  @name   LOOP_Buffers
@@ -287,6 +287,57 @@ LOOP_1Print (Char8 * str, Uint32 arg) ;
 /*==============================================the functions start==================================================*/
 
 
+
+/*int prog_main()
+{
+    LOOP_Main ("mainprog", 7168, 1) ;
+
+}*/
+
+
+/*int main(int argc, char argv[])
+{
+    int argc;
+    char *argv[4];
+    Char8 * dspExecutable    = NULL ;
+    Char8 * strBufferSize    = NULL ;
+   // Char8 * strNumIterations = NULL ;
+
+
+    
+    argc = 4;
+    argv[0] = "mainprog";
+    //argv[1] = "wav_rec_rf6_dsp.out";
+    //argv[2] = "ISIP.wav";
+    //argv[3] = "1"; 
+
+    printf("\n Hello waverec World\n");
+    
+    if ( argc < 2 ) {
+       printf ("Usage : %s <absolute path of DSP executable> "
+           "<Buffer Size> \n"
+           "For infinite transfers, use value of 0 for <number of transfers>\n",
+           argv [0]) ;
+    }
+   
+   else {
+        dspExecutable    = argv [1] ;
+        strBufferSize    = argv [2] ;
+        //strNumIterations = argv [3] ;
+        LOOP_Main (dspExecutable, strBufferSize) ;
+
+	//Correct:
+       // LOOP_Main ("mainprog", (7168)) ;
+
+	//Wrong:
+       // LOOP_Main (dspExecutable,strNumIterations, strBufferSize ) ;
+    }
+
+    return 0 ;
+}
+    */
+
+
 /** ============================================================================
  *  @func   LOOP_Create
  *
@@ -317,8 +368,7 @@ LOOP_1Print (Char8 * str, Uint32 arg) ;
 NORMAL_API
 DSP_STATUS LOOP_Create (IN Char8 * dspExecutable, IN Char8 * strBufferSize) ;
 
-
-
+//LOOP_Create("mainprog",(7168));
 /** ============================================================================
  *  @func   LOOP_Execute
  *
@@ -341,8 +391,7 @@ DSP_STATUS LOOP_Create (IN Char8 * dspExecutable, IN Char8 * strBufferSize) ;
  *  ============================================================================
  */
 NORMAL_API
-DSP_STATUS LOOP_Execute (Void) ;
-//LOOP_Execute (IN Uint32 numIterations) ;
+DSP_STATUS LOOP_Execute (OUT int* gOneDataArray, OUT int * gOneDataSizePtr);
 
 
 /** ============================================================================
@@ -394,9 +443,8 @@ Void LOOP_Delete (Void) ;
  *  @see    LOOP_Create, LOOP_Execute, LOOP_Delete
  *  ============================================================================
  */
-NORMAL_API Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize, IN Char8 * strNumIterations);
-
-
+NORMAL_API Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize) ;
+            
 /**
  * This Main function and the LOOP_Main(..) function are probably not needed
  * at all anymore. Instead, the functions LOOP_Create(..),  LOOP_Execute(..)
@@ -407,19 +455,18 @@ NORMAL_API Void LOOP_Main (IN Char8 * dspExecutable, IN Char8 * strBuffersize, I
  *
  * If used, this function needs to be behind the function declarations seen above.
  */
-int main(int argc, char argv[])  // Leaving the function signature unchanged for now...
+/*int main(int argc, char argv[])  // Leaving the function signature unchanged for now...
 {
 	// Declaring some quick variables for use only in this function:
     Char8 * dspExecutable    = "wav_rec_rf6_dsp.out" ;
     Char8 * strBufferSize    = 7168 ;
     Char8 * strNumIterations = 1 ;
 
-    LOOP_Main (dspExecutable, strNumIterations, strBufferSize) ;
+    LOOP_Main (dspExecutable, strBufferSize) ;
 
     return 0 ;
 }
-
-
+*/
 
 /*===============================================================================
 */
@@ -433,9 +480,8 @@ int main(int argc, char argv[])  // Leaving the function signature unchanged for
  *  ============================================================================
  */
 NORMAL_API
-DSP_STATUS
-LOOP_Create (IN Char8 * dspExecutable,
-             IN Char8 * strBufferSize)
+DSP_STATUS LOOP_Create (IN Char8 *dspExecutable,IN Char8 *strBufferSize)
+             
             // IN Char8 * strNumIterations)
 {
     DSP_STATUS    status                    = DSP_SOK   ;
@@ -582,11 +628,11 @@ LOOP_Create (IN Char8 * dspExecutable,
  *  @modif  None
  *  ============================================================================
  */
-NORMAL_API
-DSP_STATUS LOOP_Execute (Void)
+NORMAL_API 
+DSP_STATUS LOOP_Execute (OUT int *gOneDataArray, OUT int * gOneDataSizePtr)
 {
     DSP_STATUS status = DSP_SOK ;
-    //Uint32     i      ;
+    Uint32 i;
 
     LOOP_0Print ("Entered LOOP_Execute ()\n") ;
 
@@ -660,6 +706,14 @@ DSP_STATUS LOOP_Execute (Void)
                              status) ;
             }
         }
+
+	// 
+	*gOneDataSizePtr = (int)LOOP_IOReq.size;
+	for (i = 0; i < *gOneDataSizePtr ; i++)
+	{
+	    gOneDataArray[i] = (int)LOOP_IOReq.buffer[i];
+	}
+
 
     // }  /* for loop ends */
 
@@ -745,7 +799,7 @@ Void LOOP_Delete (Void)
     LOOP_0Print ("Leaving LOOP_Delete ()\n") ;
 }
 
-
+/*============================ This LOOP_Main() is also of no use in future application?? -yes.=========================================*/
 /** ============================================================================
  *  @func   LOOP_Main
  *
@@ -755,18 +809,20 @@ Void LOOP_Delete (Void)
  *  ============================================================================
  */
 NORMAL_API
-Void
-LOOP_Main (IN Char8 * dspExecutable,
-           IN Char8 * strBufferSize,
-           IN Char8 * strNumIterations)
+Void LOOP_Main (IN Char8 * dspExecutable,IN Char8 * strBufferSize)
+           
+           
 {
     DSP_STATUS status = DSP_SOK ;
+
+    int *gOneData;
+    int gOneDataSize;
 
     LOOP_0Print ("=============== Sample Application : LOOP ==========\n") ;
 
     if (   (dspExecutable != NULL)
         && (strBufferSize != NULL)
-        && (strNumIterations != NULL)) {
+        ) {
 
         /*
          *  Validate the buffer size and number of iterations specified.
@@ -776,20 +832,22 @@ LOOP_Main (IN Char8 * dspExecutable,
             status = DSP_ESIZE ;
         }
 
-        LOOP_NumIterations = LOOP_Atoi (strNumIterations) ;
+     //   LOOP_NumIterations = LOOP_Atoi (strNumIterations) ; //not needed as no iterations are to be done
 
         /*
          *  Specify the dsp executable file name and the buffer size for
          *  loop creation phase.
          */
-        status = LOOP_Create (dspExecutable, strBufferSize, strNumIterations) ;
+        status = LOOP_Create (dspExecutable, strBufferSize) ;
 
         /*
          *  Execute the data transfer loop.
          */
         if (DSP_SUCCEEDED (status)) {
-            status = LOOP_Execute (LOOP_NumIterations) ;
+            status = LOOP_Execute(gOneData,&gOneDataSize) ;
+	    printf("The 1st buffer entry is %d and the data size is %d \n",gOneData[0],gOneDataSize);
         }
+
 
         /*
          *  Perform cleanup operation.
@@ -833,6 +891,7 @@ DSP_STATUS LOOP_VerifyData (IN Char8 * buf)
 
     return status ;
 }
+#endif
 
 /*===========================================================================================================
 */
@@ -873,8 +932,7 @@ extern int atoi (const char * str) ;
  *  ============================================================================
  */
 NORMAL_API
-Void
-LOOP_0Print (Char8 * str)
+Void LOOP_0Print (Char8 * str)
 {
     printf (str) ;
     fflush (stdout) ;
@@ -890,8 +948,7 @@ LOOP_0Print (Char8 * str)
  *  ============================================================================
  */
 NORMAL_API
-Void
-LOOP_1Print (Char8 * str, Uint32 arg)
+Void LOOP_1Print (Char8 * str, Uint32 arg)
 {
     printf (str, arg) ;
     fflush (stdout) ;
