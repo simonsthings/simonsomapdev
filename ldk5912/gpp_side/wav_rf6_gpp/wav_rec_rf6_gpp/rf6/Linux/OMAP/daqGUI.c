@@ -101,7 +101,9 @@ void wait_loop(void)
 	U8 Flag=1;
         //int argc;
         //char *argv[4];
-	
+	int *gOneData;
+        int gOneDataSize;
+
 	while (Flag) {
 		GetMessage(frmSample,&msg);
 		switch (msg.event) {
@@ -140,7 +142,10 @@ void wait_loop(void)
                                        case REC:
                                                printf("\nEXE button Pressed\n");
                                             // vol_Control_Msg();
-                                             LOOP_Execute () ;
+                                             //LOOP_Execute () ;
+					     LOOP_Execute(gOneData,&gOneDataSize) ;
+					     printf("The 1st buffer entry is %d and the data size is %d \n",gOneData[0],gOneDataSize);
+
                                                //sendControlMsg( MSGNEWVOL, 1, val );
                                               
                                                //Draw_Graph();
