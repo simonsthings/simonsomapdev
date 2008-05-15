@@ -31,7 +31,7 @@
 #include <unistd.h>
 #include "linux/gui.h"
 #include <pthread.h>
-#include "prog1c.rsrc"
+#include "daqGUI.rsrc"
 //#include "wave_recorder.h"
 
 
