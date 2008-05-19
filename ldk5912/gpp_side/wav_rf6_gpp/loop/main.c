@@ -48,6 +48,13 @@
  */
 #define FILEID              FID_APP_C
 
+/**=============================================================================
+
+  Configuration for the DSP side is TSK Mode
+================================================================================
+*/
+#define APPLICATION_MODE TSK_MODE
+
 
 /** ============================================================================
  *  @name   xferBufSize
@@ -64,7 +71,7 @@ Uint32 xferBufSize ;
  *          A value of 0 in numTransfers implies infinite iterations.
  *  ============================================================================
  */
-Uint16 numTransfers ;
+//Uint16 numTransfers ;
 
 /** ============================================================================
  *  @name   trace
@@ -147,7 +154,7 @@ Void main(Int argc, Char *argv[])
 #endif /* defined (CHNL_PCPY_LINK) */
 
     /* Get the number of transfers to be done by the application */
-    numTransfers = atoi (argv[1]) ;
+   // numTransfers = atoi (argv[1]) ;
 
     /* Transfer size for loopback given by GPP side */
     xferBufSize  = atoi (argv[0]) / DSP_MAUSIZE ;

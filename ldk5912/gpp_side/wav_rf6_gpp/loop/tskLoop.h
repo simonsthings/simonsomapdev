@@ -52,7 +52,7 @@ extern "C" {
  *  @field  outputStream
  *              Handle to output stream.
  *  @field  numTransfers
- *              Number of transfers to be done.
+ *              Number of transfers to be done. (Not required as data flow is ponly one sided)
  *  @field  bufferSize
  *              Buffer size information.
  *  @field  receivedSize
@@ -66,7 +66,7 @@ extern "C" {
 typedef struct TSKLOOP_TransferInfo_tag {
     SIO_Handle inputStream;
     SIO_Handle outputStream;
-    Uint16     numTransfers;
+    //Uint16     numTransfers;
     Uint32     bufferSize;
     Uint16     receivedSize;
     Uint16     numBuffers;

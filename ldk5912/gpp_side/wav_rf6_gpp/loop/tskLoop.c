@@ -68,7 +68,7 @@ extern Uint32 xferBufSize ;
  *          A value of 0 in numTransfers implies infinite iterations.
  *  ============================================================================
  */
-extern Uint16 numTransfers ;
+//extern Uint16 numTransfers ;
 
 
 /** ============================================================================
@@ -104,7 +104,7 @@ Int TSKLOOP_create (TSKLOOP_TransferInfo ** infoPtr)
 
     if (status == SYS_OK) {
         /* Filling up the transfer info structure */
-        info->numTransfers =  numTransfers ;
+        //info->numTransfers =  numTransfers ;
         info->bufferSize   =  xferBufSize ;
         info->numBuffers   =  TSK_NUM_BUFFERS ;
 
@@ -169,18 +169,37 @@ Int TSKLOOP_execute(TSKLOOP_TransferInfo * info)
     Int         status  = SYS_OK ;
     Char *      buffer  = info->buffers [0] ;
     Arg         arg     = 0 ;
-    Uint32      i ;
+    //Uint32      i ;
     Int         nmadus ;
+    buffers = {1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,
+               1, 10, 20, 1,1, 10, 20, 1,};
 
+/* Do not require the for loop for iteration and also the code for receiving data buffer from GPP as we are sending    the data buffer to the GPP */ 
     /* Execute the loop for configured number of transfers
      * A value of 0 in numTransfers implies infinite iterations
      */
-    for (i = 0 ;
+   /* for (i = 0 ;
          (   ((info->numTransfers == 0) || (i < info->numTransfers))
           && (status == SYS_OK)) ;
-         i++) {
-        /* Receive a data buffer from GPP */
-        status = SIO_issue(info->inputStream,
+         i++) {  */
+        /*================== Receive a data buffer from GPP======================================= */
+      /*  status = SIO_issue(info->inputStream,
                            buffer,
                            info->bufferSize,
                            arg) ;
@@ -198,13 +217,14 @@ Int TSKLOOP_execute(TSKLOOP_TransferInfo * info)
         }
         else {
             SET_FAILURE_REASON(status);
-        }
+        } */
 
         /* Do processing on this buffer */
-        if (status == SYS_OK) {
+       // if (status == SYS_OK) {
             /* Add code to process the buffer here*/
-        }
+       // } 
 
+ /*=================Sending Data Buffer to GPP======================================*/ 
         /* Send the processed buffer back to GPP */
         if (status == SYS_OK) {
             status = SIO_issue(info->outputStream,
@@ -225,7 +245,7 @@ Int TSKLOOP_execute(TSKLOOP_TransferInfo * info)
                 SET_FAILURE_REASON (status) ;
             }
         }
-    }
+   // } /* end of 'for' loop */ 
     return status ;
 }
 
