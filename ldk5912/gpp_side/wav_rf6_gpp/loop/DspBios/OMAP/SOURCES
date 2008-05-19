@@ -1,0 +1,36 @@
+#   ============================================================================
+#   @file   SOURCES
+#
+#   @path   $(DSPLINK)/dsp/src/samples/loop/DspBios/OMAP/
+#
+#   @desc   This file contains list of source files to be compiled.
+#
+#   @ver    01.30.06
+#   ============================================================================
+#   Copyright (c) Texas Instruments Incorporated 2002-2005
+#
+#   Use of this software is controlled by the terms and conditions found in the
+#   license agreement under which this software has been supplied or provided.
+#   ============================================================================
+
+#   ============================================================================
+#   TCONF configuration file (from component base path)
+#   ============================================================================
+
+TCF_FILE := $(DSPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)loop.tcf
+
+
+#   ============================================================================
+#   Linker command file (from component base path)
+#   ============================================================================
+
+CMD_FILE := $(DSPOS)$(DIRSEP)$(PLATFORM)$(DIRSEP)loop.cmd
+
+
+#   ============================================================================
+#   Source files to be built
+#   ============================================================================
+
+SOURCES  :=               \
+            loopcfg_c.c   \
+            loopcfg.s55

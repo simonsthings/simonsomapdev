@@ -1,0 +1,84 @@
+/** ============================================================================
+ *  @file   loop.tcf
+ *
+ *  @path   $(DSPLINK)/dsp/src/samples/loop/DspBios/OMAP/
+ *
+ *  @desc   Configuration file for the LOOP sample.
+ *          This file defines platform-specific configuration details.
+ *
+ *  @ver    01.30.06
+ *  ============================================================================
+ *  Copyright (c) Texas Instruments Incorporated 2002-2005
+ *
+ *  Use of this software is controlled by the terms and conditions found in the
+ *  license agreement under which this software has been supplied or provided.
+ *  ============================================================================
+ */
+
+
+/*  ============================================================================
+ *  Load generic DSP/BIOS Link configuration
+ *  ============================================================================
+ */
+utils.importFile("dsplink-omap-base.tci");
+utils.importFile("dsplink-omap-iom.tci");
+utils.importFile("dsplink-omap-dio.tci");
+utils.importFile("loop.tci");
+
+/*  ============================================================================
+ *  MEM : DARAM
+ *  ============================================================================
+ */
+var DARAM = prog.module("MEM").instance("DARAM");
+DARAM.createHeap        = true;
+DARAM.heapSize          = 0x5400;
+
+/*  ============================================================================
+ *  MEM : SARAM
+ *  ============================================================================
+ */
+var SARAM = prog.module("MEM").instance("SARAM");
+SARAM.base              = 0x80FF;
+SARAM.len               = 0xBE80;
+
+/*  ============================================================================
+ *  MEM : Global
+ *  ============================================================================
+ */
+prog.module("MEM").BIOSOBJSEG = DARAM;
+prog.module("MEM").MALLOCSEG  = DARAM;
+
+/*  ============================================================================
+ *  MEM : Set the application specification for .bios & .text sections
+ *  ============================================================================
+ */
+prog.module("MEM").BIOSSEG    = SARAM;
+prog.module("MEM").TEXTSEG    = SARAM;
+
+if (arguments.length == 1) {
+    var memplacement = arguments[0];
+    if (memplacement == "biosext") {
+        prog.module("MEM").BIOSSEG    = prog.get("EXTMEM");
+    }
+    else if (memplacement == "textext") {
+        prog.module("MEM").TEXTSEG    = prog.get("EXTMEM");
+    }
+    else if (memplacement == "ext") {
+        prog.module("MEM").BIOSSEG    = prog.get("EXTMEM");
+        prog.module("MEM").TEXTSEG    = prog.get("EXTMEM");
+    }
+}
+
+/*  ============================================================================
+ *  TSK : Global
+ *  ============================================================================
+ */
+prog.module("TSK").STACKSEG = DARAM;
+
+/*  ============================================================================
+ *  Generate cdb file...
+ *  ============================================================================
+ */
+if (config.hasReportedError == false) {
+    prog.gen();
+}
