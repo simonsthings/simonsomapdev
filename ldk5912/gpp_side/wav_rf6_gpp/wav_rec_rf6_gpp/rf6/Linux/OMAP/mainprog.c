@@ -486,7 +486,7 @@ DSP_STATUS LOOP_Create (IN Char8 *dspExecutable,IN Char8 *strBufferSize)
 {
     DSP_STATUS    status                    = DSP_SOK   ;
     Char8 *       temp                      = NULL      ;
-    Uint32        numArgs                   = 0         ;
+   // Uint32        numArgs                   = 0         ;
     Uint32        numBufs [NUMBUFFERPOOLS]  = {NUMBUFS} ;
 
     ChannelAttrs  chnlAttrInput            ;
@@ -507,7 +507,7 @@ DSP_STATUS LOOP_Create (IN Char8 *dspExecutable,IN Char8 *strBufferSize)
      *  Create and initialize the proc object.
      */
 
-    LOOP_BufferSize = (7168);
+    LOOP_BufferSize = (7168); //is it required????
     status = PROC_Setup () ;
 
     /*
@@ -545,11 +545,12 @@ DSP_STATUS LOOP_Create (IN Char8 *dspExecutable,IN Char8 *strBufferSize)
      *  Load the executable on the DSP.
      */
     if (DSP_SUCCEEDED (status)) {
-        numArgs  = NUM_ARGS         ;
+        printf("POOL_Open() success !!!!!!!!!!!!!!!!!!!!\n\n");
+       // numArgs  = NUM_ARGS         ;
         args [0] = strBufferSize    ;
         //args [1] = strNumIterations ;
 
-        status = PROC_Load (ID_PROCESSOR, dspExecutable, numArgs, args) ;
+        status = PROC_Load (ID_PROCESSOR, dspExecutable, 1 ,args);
         if (DSP_FAILED (status)) {
             LOOP_1Print ("PROC_Load failed. Status = [0x%x]\n", status) ;
         }

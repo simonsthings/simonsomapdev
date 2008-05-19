@@ -129,15 +129,15 @@ void wait_loop(void)
 					 case START:
                                                 printf("\nINIT button Pressed\n");
                                                // wave_rec_main();
-                                                LOOP_Create ("DSP.out",7168) ;
+                                                LOOP_Create ("wav_rec_rf6_dsp.out",7168) ;
 
                                     /*   //gui_about("I am a test value","1.0.01");
                                                printf("START button Pressed\n");
                                                //UART(); // nirs
                                                //UART3();        // eeg data
                                                CallApp("/sound/start.sh");
-                                               printf("START DONE! \n");
-                                       break;  */
+                                               printf("START DONE! \n");*/
+                                       break;  
 
                                        case REC:
                                                printf("\nEXE button Pressed\n");
