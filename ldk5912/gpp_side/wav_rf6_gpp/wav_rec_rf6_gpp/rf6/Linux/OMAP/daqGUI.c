@@ -164,12 +164,6 @@ void wait_loop(void) {
 				stopDSP();
 				stopStreamThread();
 
-
-				// stop_Appl();
-				//terminateAppl( "Clean-up completed.", 7 ) ;
-				//LOOP_Delete();
-
-
 				//CallApp("/sound/stop.sh");
 				//printf("RECORDING STOPPED!\n");
 				break;
