@@ -6,18 +6,18 @@
 #
 # RF6 root directory with include and lib directories
 #
-#RF_ROOT_DIR     := ../../../..
+#RF_ROOT_DIR     := /home/aritra/Desktop/wav_rf6_gpp-in_subversion
 
 #
 # Include the system configurations
 #
-#include ../../../../Rules.make
+#include /home/aritra/Desktop/wav_rf6_gpp-in_subversion/Rules.make
 
-#BASE_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I../../../../include -I../../../../include/Linux/OMAP -Wall
+#BASE_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall
 
-#DEB_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I../../../../include -I../../../../include/Linux/OMAP -Wall -g -DDSP_DEBUG
+#DEB_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall -g -DDSP_DEBUG
 
-#REL_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I../../../../include -I../../../../include/Linux/OMAP -Wall
+#REL_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall
 
 #LDFLAGS       = -lc -lpthread
 
@@ -28,17 +28,17 @@ all: debug release
 
 debug:
 	@mkdir -p debug
-	@mkdir -p ../../../../bin/rf6/Linux/OMAP/debug
-	@rm -rf ../../../../bin/rf6/Linux/OMAP/debug/daqGUI
+#	@mkdir -p /home/aritra/Desktop/wav_rf6_gpp-in_subversion/bin/rf6/Linux/OMAP/debug
+#	@rm -rf debug/daqGUI
 
 	@echo "-------- Building rf6 debug application --------"
-	arm-linux-gcc -I/home/LinuxDA/sdk/LinuxDA/include -c /home/aritra/Desktop/wav_rf6_gpp-in_subversion/wav_rec_rf6_gpp/rf6/Linux/OMAP/daqGUI.c
-	arm-linux-gcc -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall -g -o debug/daqGUI mainprog.c daqGUI.o -L/home/LinuxDA/sdk/LinuxDA/lib -lgui -lminidb -lsqlite3 -lc -lpthread /home/aritra/Desktop/wav_rf6_gpp-in_subversion/lib/dsplink.lib
+	/opt/arm-linux/bin/arm-linux-gcc -I/home/LinuxDA/sdk/LinuxDA/include -c daqGUI.c
+	/opt/arm-linux/bin/arm-linux-gcc -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/LinuxDA/wav_rf6_gpp/include -I/home/LinuxDA/wav_rf6_gpp/include/Linux/OMAP -Wall -g -o debug/daqGUI wav_rec_rf6_gpp.c daqGUI.o -L/home/LinuxDA/sdk/LinuxDA/lib -lgui -lminidb -lsqlite3 -lc -lpthread /home/LinuxDA/wav_rf6_gpp/lib/dsplink.lib
 
 	@echo The build was successful
 
-	@cp -rf debug/daqGUI ../../../../bin/rf6/Linux/OMAP/debug/.
-	@echo Copied application to ../../../../bin/rf6/Linux/OMAP/debug dir
+	@cp -rf debug/daqGUI /data/target/xbin/.
+	@echo Copied application to "/data/target/xbin" directory.
 
 #release:
 #	@mkdir -p release

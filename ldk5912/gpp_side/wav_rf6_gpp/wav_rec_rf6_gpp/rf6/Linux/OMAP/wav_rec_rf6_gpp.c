@@ -26,7 +26,7 @@
 /*  ----------------------------------- Profiling                       */
 #include <profile.h>
 
-#define DDSP_DEBUG 
+#define DDSP_DEBUG
 
 
 /* ----------------------------- DSPLINK 1.30 Related PreProcessor Definitions             */
@@ -160,7 +160,7 @@ STATIC MsgqQueue SampleDspMsgq = (Uint32) MSGQ_INVALIDMSGQ ;
 //#define APP_MSG_SIZE  ALIGN (sizeof (CtrlMsg), DSPLINK_BUF_ALIGN)
 #define APP_MSG_SIZE  sizeof (CtrlMsg)
 
-/* 1024 * 7 is the size used due to accomodate a sampling rate of upto 88KHz   */ 
+/* 1024 * 7 is the size used due to accomodate a sampling rate of upto 88KHz   */
 /* Minimum possible multiple is 1024*1                                         */
 #define BUFFERSIZE             1024*7
 #define NUMOUTBUFS             1
@@ -202,7 +202,7 @@ typedef struct {
     long        Length;         /* data length in bytes (filelength - 44)  */
 }WAVEHDR ;
 
-FILE *OpenWaveWrite(char *pName, WAVEHDR *pHdr)    
+FILE *OpenWaveWrite(char *pName, WAVEHDR *pHdr)
 {
     FILE *pFile;
 
@@ -223,18 +223,25 @@ FILE *OpenWaveWrite(char *pName, WAVEHDR *pHdr)
     return pFile;
 }
 
-void CloseWaveWrite(FILE *pFile,long nBytes)      
+void CloseWaveWrite(FILE *pFile,long nBytes)
 {
     long Bytes;
-    
+
     Bytes = nBytes;
-    
+
     fseek(pFile,40,SEEK_SET);
+    /*
+     * int fseek(File *stream,long offset,int origin)
+     * The function fseek sets the file position data for the given stream.
+     * The "origin" value should have one of the following values:
+     * SEEK_SET -> Seek from the start of the file
+     * SEEK_CUR -> Seek from the current position
+     * SSEK_END -> Seek from the end of the file*/
     fwrite(&Bytes,4,1,pFile);
 
     Bytes = Bytes + 44;
 
-    fseek(pFile,4,SEEK_SET); 
+    fseek(pFile,4,SEEK_SET);
     fwrite(&Bytes,4,1,pFile);
 
     fclose(pFile);
@@ -243,19 +250,19 @@ void CloseWaveWrite(FILE *pFile,long nBytes)
 int WriteWaveData(FILE *pFile, BYTE *pBuffer, int Len)
 {
     int rtn;
-    
-    rtn = fwrite(pBuffer, sizeof(*pBuffer), Len, pFile);  
-    
-    return rtn;
-  
-}  
 
-void MakeWaveHdr(WAVEHDR *pHdr, int SampRate, int nCh, int nBit)      
+    rtn = fwrite(pBuffer, sizeof(*pBuffer), Len, pFile);
+
+    return rtn;
+
+}
+
+void MakeWaveHdr(WAVEHDR *pHdr, int SampRate, int nCh, int nBit)
 {
     WAVEHDR DefaultHdr       = { "RIF", 0, "WAV", "fmt", 16, 1, 1,
                                  SampRate, 0, 2, 16, "dat", 0 };
     DefaultHdr.SampRate      = SampRate;
-    DefaultHdr.nCh           = nCh;         
+    DefaultHdr.nCh           = nCh;
     DefaultHdr.BitsPerSamp   = nBit;
     DefaultHdr.BytesPerSamp  = nCh*nBit/8;
     DefaultHdr.BytesPerSec   = SampRate * DefaultHdr.BytesPerSamp;
@@ -304,7 +311,8 @@ enum {
 
 
 /* flag used in shutdown */
-static int flag = 1;
+static int running = 1;
+static int shutdownongoing = 0;
 
 int codecFd = 0;
 
@@ -322,7 +330,7 @@ unsigned long   TotalWavSize = 0;
  *  @field  msgHeader
  *              Required first field of a message.
  *  @field  cmd
- *              Used to change volume 
+ *              Used to change volume
  *                      change coefficient
  *      		quit   application
  *  @field  arg1 0-mute 1-valid value
@@ -367,6 +375,7 @@ static void *streamThr( void *arg );
 static void sendControlMsg( unsigned short int cmd,
                             unsigned short int arg1,
                             unsigned short int arg2 );
+void inputLoop();
 
 /* Streaming thread handle */
 pthread_t streamThread;
@@ -385,17 +394,19 @@ void usage(){
 	exit(0);
 }
 
-/*******************Wavplayer data*****************************************************************/
-
-
-
-int main(int argc, char *argv[])
+/**
+ * This function does 3 things:
+ * 1.) It creates and opens (OpenWaveWrite) a .wav-file
+ * with correct header (MakeWaveHdr) for writing the sound data to disk.
+ * 2.) Then, it uses the DSPLink functions to load the DSP executable onto the
+ * DSP (PROC_Setup, PROC_Attach and PROC_Load) and start it (PROC_Start).
+ * 3.) After that, it opens a message queue for communication with the DSP side program.
+ * (using MSGQ_TransportOpen and MSGQ_Locate).
+ * */
+DSP_STATUS setupDSP(int sampleFreq, char* dspfilename, char* wavefilename)
 {
-    char inbuf[USERINPUTMAXNUMCHARS];
-    char *ptr;
-    int val;    
-    int sampleFreq = 44100;
-    DSP_STATUS    status                  = DSP_SOK ;
+    DSP_STATUS status = DSP_SOK;
+
     Uint32        size    [NUM_BUF_SIZES] = {APP_MSG_SIZE,  SAMPLE_CTRLMSG_SIZE,
                                              ALIGN (sizeof (MsgqAsyncLocateMsg),
                                              DSPLINK_BUF_ALIGN)} ;
@@ -405,64 +416,36 @@ int main(int argc, char *argv[])
                                              NUM_BUF_POOL2,
                                              NUM_BUF_POOL3} ;
 
-    if ( argc < 3 ) {
-       usage();
-    }
-
-    if (argc > 3){
-      sampleFreq = atoi(argv[3]);
-      if (sampleFreq >= 96000) sampleFreq = 96000; 
-      else if (sampleFreq >= 88200) sampleFreq = 88200; 
-      else if (sampleFreq >= 48000) sampleFreq = 48000;
-      else if (sampleFreq >= 44100) sampleFreq = 44100;
-      else if (sampleFreq >= 32000) sampleFreq = 32000;
-      else if (sampleFreq >= 24000) sampleFreq = 24000;
-	    else if (sampleFreq >= 22050) sampleFreq = 22050;
-      else if (sampleFreq >= 16000) sampleFreq = 16000;
-      else if (sampleFreq >= 8000)  sampleFreq = 8000; // doesn't always work well
-   }else{
-      sampleFreq = 44100;
-  }
-    
-#if defined (ZCPY_LINK)
-    SmaPoolAttrs  poolAttrs ;
-    ZcpyMqtAttrs  mqtAttrs ;
-#endif /* if defined (ZCPY_LINK) */
-
-
-    MsgqLocateAttrs syncLocateAttrs ;
-
-    printf( "\nReference Framework 6 audio application started\n\n" );
-    
-    strcpy(g_path,argv[2]);
-
-    MakeWaveHdr(&Hdr, sampleFreq, 2, 16);	
-
-    fp = OpenWaveWrite(g_path, &Hdr);
-    TotalWavSize = 0;     
-
-	  // we need to configure the codec before setting up the DSP
+    SmaPoolAttrs poolAttrs;
+    ZcpyMqtAttrs mqtAttrs;
+    MsgqLocateAttrs syncLocateAttrs;
+    printf("\nReference Framework 6 audio application started\n\n");
+    MakeWaveHdr(&Hdr, sampleFreq, 2, 16);
+    fp = OpenWaveWrite(wavefilename, &Hdr);
+    TotalWavSize = 0;
+    // we need to configure the codec before setting up the DSP
     configureCodec(sampleFreq);
-    
     WAV_BufferSize = BUFFERSIZE;
     /*
      *  Create and initialize the proc object.
      */
-    status = PROC_Setup () ;
+    status = PROC_Setup();
     /*
      *  Attach the Dsp with which the transfers have to be done.
      */
-    if (DSP_SUCCEEDED (status)) {
-        printf ("PROC_Setup () success!!!!!!!!!!!!!\n\n");
-        status = PROC_Attach (ID_PROCESSOR, NULL) ;
-        
-        if (DSP_FAILED (status)) {
-            terminateAppl( "Error: Failed PROC_Attach()", APPLSTATE2 );
-        }
-    }else {
-         terminateAppl( "Error: Failed PROC_Setup()", APPLSTATE0 );
-    }
+	if (DSP_SUCCEEDED(status))
+	{
+		printf("PROC_Setup () success!!!!!!!!!!!!!\n\n");
+		status = PROC_Attach(ID_PROCESSOR, NULL);
 
+		if (DSP_FAILED(status))
+		{
+			terminateAppl("Error: Failed PROC_Attach()", APPLSTATE2);
+		}
+	} else
+	{
+		terminateAppl("Error: Failed PROC_Setup()", APPLSTATE0);
+	}
     /*
      *  Open the pool.
      */
@@ -481,20 +464,17 @@ int main(int argc, char *argv[])
            terminateAppl( "Error: Failed POOL_Open()", APPLSTATE3 );
         }
     }
-
     /*
      *  Load the executable on the DSP.
      */
     if (DSP_SUCCEEDED (status)) {
         printf ("POOL_Open () success!!!!!!!!!!!!!\n\n");
-        printf("*****File Name******* %s\n", argv[1]);
-        status = PROC_Load(ID_PROCESSOR, argv[1], 0, NULL);
+        printf("*****File Name******* %s\n", dspfilename);
+        status = PROC_Load(ID_PROCESSOR, dspfilename, 0, NULL);
         if (DSP_FAILED (status)) {
             terminateAppl( "Error: Failed to load executable to DSP, terminating application...", APPLSTATE4 );
         }
     }
- 
-
     /*
      *  Start execution on DSP.
      */
@@ -505,18 +485,22 @@ int main(int argc, char *argv[])
             terminateAppl( "Error: Failed to start the DSP,terminating application...", APPLSTATE4 );
         }
     }
-    
-    printf ("PROC_Start () success!!!!!!!!!!!!!\n\n");
-#ifdef DDSP_DEBUG  
+    printf("PROC_Start () success!!!!!!!!!!!!!\n\n");
     printf("Attach emulator and run DSP, then press return to continue: \n");
-    getchar();
-    printf("Continuing\n");
+    getchar(); // TODO: deactivate this for the final version! (maybe just wait 1 second instead..?)
+#ifdef DSP_DEBUG
+    //print out dots to show the file is being read, and sent to the dsp
+       printf(".");
+       fflush(stdout);
+       d++;
+       if (d == 60){
+          d = 0;
+          printf("\n");
+       }
 #endif
-
-
+    printf("Continuing\n");
     /*
      *  Open the remote transport.*/
-     
     if (DSP_SUCCEEDED (status)) {
         mqtAttrs.poolId = SAMPLE_POOL_ID ;
         status = MSGQ_TransportOpen (ID_PROCESSOR, &mqtAttrs) ;
@@ -524,12 +508,10 @@ int main(int argc, char *argv[])
            terminateAppl( "Error: Failed to Open the Transport to DSP,terminating application...", APPLSTATE3 );
         }
     }
-
-     /*
+    /*
      *  Locate the DSP's message queue*/
-     
     if (DSP_SUCCEEDED (status)) {
-        printf ("MSGQ_TransportOpen of DSP message queue done successfully!!!!!!!!!!!!\n\n") ; 
+        printf ("MSGQ_TransportOpen of DSP message queue done successfully!!!!!!!!!!!!\n\n") ;
         syncLocateAttrs.timeout = WAIT_FOREVER;
         status = DSP_ENOTFOUND ;
         while (status == DSP_ENOTFOUND) {
@@ -541,28 +523,131 @@ int main(int argc, char *argv[])
             }
         }
     }
-    printf ("MSGQ_Locate of DSP message queue done successfully!!!!!!!!!!!!\n\n") ; 
-    
-    
-    /* Create and start the thread handling the streaming of data
-     * to and from the DSP.
-     */
+    printf("MSGQ_Locate of DSP message queue done successfully!!!!!!!!!!!!\n\n");
+
+    return status;
+}
+
+/**
+ * Tells the DSP to finish its program.
+ */
+void stopDSP()
+{
+	sendControlMsg( MSGQUIT, 0, 0 );
+}
+
+/**
+ * Create and start the thread handling the
+ * streaming of data to and from the DSP.
+ */
+void startStreamThread(int sampleFreq)
+{
     printf("Initializing the data streaming thread\n");
     if (pthread_create(&streamThread, NULL, streamThr, (void *) sampleFreq)) {
-      printf( "Error: Failed to create stream thread\n\n");        
+      printf( "Error: Failed to create stream thread\n\n");
     }
+    printf("\n Thread created using function streamThr(..) ! \n");
+}
+
+/**
+ * Sets the flag variable to zero so that the stream thread ends.
+ * Specifically, the function runDataStreaming(..) contains a
+ * "while( flag == 1 )" loop.
+ */
+void stopStreamThread()
+{
+	shutdownongoing = 1;
+	running = 0;
+
+	// just loop until the other thread has finished.
+//	printf("Waiting for the streamThread to finish:\n");
+//	while (shutdownongoing)
+//	{
+//		printf(". ");
+//		sleep(100);
+//	}
+//	printf("streamThread has finished!\n");
+}
+
+/*******************Wavplayer data*****************************************************************/
+
+
+/**
+ *
+ * Arguments:
+ * 0. filename of this executable
+ * 1. The filename of the dsp executable (e.g. wav_rec_dsp.out)
+ * 2. The filename for the new wave file (e.g. example.wav)
+ * 3. The sampling rate (e.g. 32000)
+ *
+ * These values are stored as strings in the argv[] vector.
+ * The number of arguments is stored in argc.
+ */
+int main_old(int argc, char *argv[])
+{
+    int sampleFreq = 44100;
+    DSP_STATUS status;
+
+    char* dspfilename;
+    char* wavefilename;
+
+    if ( argc < 3 ) {
+       usage();
+    }
+
+    if (argc > 3){
+      sampleFreq = atoi(argv[3]);
+      if (sampleFreq >= 96000) sampleFreq = 96000;
+      else if (sampleFreq >= 88200) sampleFreq = 88200;
+      else if (sampleFreq >= 48000) sampleFreq = 48000;
+      else if (sampleFreq >= 44100) sampleFreq = 44100;
+      else if (sampleFreq >= 32000) sampleFreq = 32000;
+      else if (sampleFreq >= 24000) sampleFreq = 24000;
+	  else if (sampleFreq >= 22050) sampleFreq = 22050;
+      else if (sampleFreq >= 16000) sampleFreq = 16000;
+      else if (sampleFreq >= 8000)  sampleFreq = 8000; // doesn't always work well
+   }else{
+      sampleFreq = 44100;
+  }
+
+    //strcpy(g_path, argv[2]);
+    strcpy(wavefilename, argv[2]);
+    strcpy(dspfilename, argv[1]);
+
+
+    // set up the DSP side.
+    status = setupDSP(sampleFreq,dspfilename,wavefilename) ;
+
+    // start the thread that receives the data from the DSP and writes it to a .wav file.
+    startStreamThread(sampleFreq);
+
+    // The input loop waits for user input and loops infinitely until the user presses 'q' for quit.
+    inputLoop();
+
+    return status ;
+}
+
+/*
+ * The input loop waits for user input and loops
+ * infinitely until the user presses 'q' for quit.
+ * */
+void inputLoop()
+{
+    char inbuf[USERINPUTMAXNUMCHARS];
+    char *ptr;
+    int val;
+
 
     sendControlMsg( MSGNEWVOL, 0, DEFAULT_VOLUME );
     sendControlMsg( MSGNEWVOL, 1, DEFAULT_VOLUME );
-    
+
     printf("\nCommands:\n");
     printf("   Change volume      - v <volume 0-200>  e.g. 'v 100'\n");
     printf("   Quit               - q\n\n");
     printf("> ");
-    
-    printf("\n Thread created\n");
-    
-    while ( flag ) {
+
+
+    while ( running ) {
 
         /* Get a line from standard input */
         if ( fgets( inbuf, USERINPUTMAXNUMCHARS, stdin ) == NULL ) {
@@ -599,32 +684,31 @@ int main(int argc, char *argv[])
                case 'q':
                      printf("Received quit command, exiting...\n");
 		                 sendControlMsg( MSGQUIT, 0, 0 );
-                     flag = 0;
+                     running = 0;
                      break;
 
                default:
                      printf( "Unrecognized command, try again\n> " );
          }
       }
-   }    
+   }
 
    printf( "\n Leaving Reference Framework 6 audio application\n\n" );
    terminateAppl( "Clean-up completed.", APPLSTATE7 );
-  
-   return status ;
+
 }
 
 /*
  *  ======== terminateAppl ========
  *
  */
-  
+
 static void terminateAppl( char *errString, unsigned int runState )
-{ 
-    DSP_STATUS status = DSP_SOK ;  
+{
+    DSP_STATUS status = DSP_SOK ;
     switch ( runState ) {
-        case APPLSTATE7:           
-            flag = 0;
+        case APPLSTATE7:
+            running = 0;
 	          pthread_join( streamThread, NULL );
 	      case APPLSTATE6:
 	          MSGQ_Release ( SampleDspMsgq );
@@ -633,12 +717,12 @@ static void terminateAppl( char *errString, unsigned int runState )
             MSGQ_TransportClose ( ID_PROCESSOR );
             printf("\n MSGQ Transport Closed\n");
         case APPLSTATE4:
-            PROC_Stop( ID_PROCESSOR );  
+            PROC_Stop( ID_PROCESSOR );
             printf("\n DSP PROCESSOR Stopped\n");
         case APPLSTATE3:
             status = POOL_Close (SAMPLE_POOL_ID) ;
 	          if(status == DSP_SOK)
-	              printf("\n POOL Closed\n");	  
+	              printf("\n POOL Closed\n");
         case APPLSTATE2:
 	          PROC_Detach( ID_PROCESSOR );
 	          printf("\n DSP PROCESSOR Detached\n");
@@ -646,15 +730,15 @@ static void terminateAppl( char *errString, unsigned int runState )
             PROC_Destroy();
 	          printf("\n DSP PROCESSOR INSTANCE Deleted\n");
         case APPLSTATE0:
-            close( codecFd ); 
+            close( codecFd );
 	          printf("\n closed the codec\n");
             CloseWaveWrite(fp, TotalWavSize);
-            printf(" Total Wave Size %d\n", TotalWavSize);
-        default:            
+            printf(" Total Wave Size %d \n", (int)TotalWavSize);
+        default:
             fprintf(stderr, "%s\n", errString);
             exit( 0 );
             break;
-    }   
+    }
 }
 
 
@@ -663,11 +747,11 @@ static void terminateAppl( char *errString, unsigned int runState )
  *
  */
 static void terminateThread( char *errString, unsigned int runState )
-{   
+{
     switch ( runState ) {
         case AUDIOSTATE5:
-            CHNL_Idle( ID_PROCESSOR, CHNL_ID_INPUT );  
-	          printf("\n Transferred remaining data to DSP\n");      
+            CHNL_Idle( ID_PROCESSOR, CHNL_ID_INPUT );
+	          printf("\n Transferred remaining data to DSP\n");
         case AUDIOSTATE4:
             CHNL_FreeBuffer( ID_PROCESSOR, CHNL_ID_INPUT,
                      (char **)WAV_Buffers, NUMOUTBUFS );
@@ -678,13 +762,17 @@ static void terminateThread( char *errString, unsigned int runState )
 	          printf("\n Deleted the channel to DSP\n");
         case AUDIOSTATE1:
         case AUDIOSTATE0:
-	      default:            
+	      default:
             fprintf(stderr, "%s\n", errString);
+
+            printf("streamThr: All work done, telling everyone!\n");
+            // Tell the main thread that we are finished!
+        	shutdownongoing = 0;
+
             pthread_exit( NULL );
             break;
-    }   
+    }
 }
-
 
 /*
  *  ======== sendControlMsg ========
@@ -696,12 +784,12 @@ static void sendControlMsg( unsigned short int cmd,
 {
       CtrlMsg * msg;
       DSP_STATUS status = DSP_ENOTFOUND ;
-     
-    
-    
+
+
+
       status = MSGQ_Alloc (SAMPLE_POOL_ID, APP_MSG_SIZE,(MsgqMsg *) &msg) ;
-    
-  
+
+
     if (DSP_SUCCEEDED (status)) {
 #ifdef DDSP_DEBUG
            printf ("MSGQ_Alloc done successfully for Control Message to DSP!!!!!!!!!!!!\n\n") ;
@@ -712,12 +800,12 @@ static void sendControlMsg( unsigned short int cmd,
 
            MSGQ_SetMsgId ((MsgqMsg) msg, CTRL_MSGID) ;
 	         status = MSGQ_Put (SampleDspMsgq, (MsgqMsg) msg) ;
-    
+
            if(status != DSP_SOK){
                    MSGQ_Free( (MsgqMsg)msg );
 		               printf ("MSGQ_Put failed--> Released the message!!!!!!!!!!!!\n\n") ;
            }
-    }      
+    }
     return;
 }
 
@@ -727,32 +815,38 @@ static void sendControlMsg( unsigned short int cmd,
  *  Thread to process the audio data.
  */
 static void *streamThr( void *arg )
-{  
-    
+{
+
     /* Initialize the data streaming channels */
     initDataStreaming();
-         
+
     /* Prime the data streaming channels */
     primeDataStreaming();
-    
+
+    /*
+     * Run the actual loop that receives data from
+     * the DSP and stores it in a .wav file .
+     **/
     runDataStreaming();
-      
+
     /* Terminate this thread */
     terminateThread( "Audio streaming thread terminating.", AUDIOSTATE5 );
-    
+
     return (0);
 }
 
 
 /*
  *  ======== initDataStreaming ========
- *  Code to initialize the input and output data streaming channels
+ *  Code to initialize the input and output data streaming channels.
+ *  "Make a data connection between ARM and DSP sides."
+ *  (Uses CHNL_Create and CHNL_AllocateBuffer)
  */
 static void initDataStreaming( void )
 {
     ChannelAttrs chnlAttrOutput;
     DSP_STATUS status = DSP_SOK;
-    
+
     /*
      *  Create a channel to DSP
      */
@@ -770,7 +864,7 @@ static void initDataStreaming( void )
      /*
      *  Allocate buffer(s) for data transfer to DSP.
      */
-    
+
     if (DSP_SUCCEEDED (status)) {
         printf ("CHNL_Create () success!!!!!!!!!!!!!\n\n");
         status = CHNL_AllocateBuffer (ID_PROCESSOR, CHNL_ID_INPUT, (char **)WAV_Buffers,
@@ -780,18 +874,20 @@ static void initDataStreaming( void )
         }else{
 	          printf("CHNL_AllocateBuffer success\n");
 	      }
-    }  
+    }
 
 }
 
-
+/**
+ * Initializes the buffer variable and calls CHNL_Issue for the first time.
+ */
 static void primeDataStreaming()
 {
 
  DSP_STATUS       status = DSP_SOK;
  ChannelIOInfo    ioReqOutput;
  Uint32           i ;
-     
+
 
       for ( i = 0; i < NUMOUTBUFS; i++ ) {
 
@@ -803,7 +899,7 @@ static void primeDataStreaming()
 
         ioReqOutput.buffer = (char *) WAV_Buffers[i];
         ioReqOutput.size   = WAV_BufferSize;
-   
+
         /*
          *  Send data to DSP.
          *  Issue 'filled' buffer to the channel.
@@ -821,7 +917,10 @@ static void primeDataStreaming()
 
 /*
  *  ======== runDataStreaming ========
- *  Code to loopback the audio data to the DSP
+ * Run the actual loop that receives data from
+ * the DSP and stores it in a .wav file .
+ * The loop ends when the global variable "flag"
+ * becomes zero.
  */
 static void runDataStreaming( void )
 {
@@ -829,14 +928,15 @@ static void runDataStreaming( void )
     DSP_STATUS status;
     int k = 0;                  // counting through each buffer
     char tmp[BUFFERSIZE];       // variable to store the data from the read call
-#ifdef DSP_DEBUG  
+#ifdef DSP_DEBUG
   int d = 0; // counting debug statements
 #endif
-   
-    while( flag == 1 ) {
+
+    while( running == 1 ) {
+
 
         /* Reclaim empty buffer from the output channel */
-	
+
         status = CHNL_Reclaim( ID_PROCESSOR, CHNL_ID_INPUT,WAIT_FOREVER, &ioReqOutput );
 
         if ( !DSP_SUCCEEDED( status ) ) {
@@ -844,6 +944,11 @@ static void runDataStreaming( void )
             break;
         }
 
+        /* Swap left and right channel.
+         * As the audio data is 16bit but the array field are only 8 bit each,
+         * we need to swap two fields at a time.
+         * (LRLR --> RLRL) (16 bit values)
+         */
         for (k=0;k<BUFFERSIZE;k=k+4){
             tmp[k+2] = ioReqOutput.buffer[k]  ;
             tmp[k+3] = ioReqOutput.buffer[k+1];
@@ -851,15 +956,16 @@ static void runDataStreaming( void )
             tmp[k+1] = ioReqOutput.buffer[k+3];
         }
 
+       // Write audio data to wave file.
        TotalWavSize += WriteWaveData( fp, tmp, BUFFERSIZE);
-       
-#ifdef DSP_DEBUG   
-    //print out dots to show the file is being read, and sent to the dsp       
+
+#ifdef DSP_DEBUG
+    //print out dots to show the file is being read, and sent to the dsp
        printf(".");
-       fflush(stdout);       
-       d++; 
+       fflush(stdout);
+       d++;
        if (d == 60){
-          d = 0; 
+          d = 0;
           printf("\n");
        }
 #endif
@@ -880,7 +986,7 @@ static void runDataStreaming( void )
  */
 static void configureCodec( int sampleFreq )
 {
-    int ioctlarg;    
+    int ioctlarg;
 
     /* Open the codec */
     codecFd = open( CODEC_DEV, O_RDONLY );
@@ -890,7 +996,7 @@ static void configureCodec( int sampleFreq )
     }
 
     /* Configure the bits/sample in the driver */
-    ioctlarg = 16; 
+    ioctlarg = 16;
 
     if( ioctl(codecFd, SNDCTL_DSP_SETFMT, &ioctlarg) == -1 ) {
         terminateThread( "Error: cannot set bits", AUDIOSTATE1 );
@@ -907,22 +1013,22 @@ static void configureCodec( int sampleFreq )
     /* Configure the speed of the data stream */
     ioctlarg = sampleFreq;
     printf("configuring codec to %d sampling rate\n",sampleFreq);
-	
+
 
     if( ioctl(codecFd, SNDCTL_DSP_SPEED, &ioctlarg) == -1 ) {
-       
+
 	      terminateThread( "Error: cannot set speed", AUDIOSTATE1 );
     }
-    
+
     ioctlarg = 0;
     if( ioctl(codecFd, SOUND_MIXER_WRITE_MIC, &ioctlarg) == -1 ) {
-        printf("Error: cannot set Mic Mode\n");      
-    }  
+        printf("Error: cannot set Mic Mode\n");
+    }
 
     ioctlarg = 80;
     if( ioctl(codecFd, SOUND_MIXER_WRITE_LINE, &ioctlarg) == -1 ) {
-        printf("Error: cannot set Line-In Mode\n");      
-    }  
+        printf("Error: cannot set Line-In Mode\n");
+    }
 
 }
 

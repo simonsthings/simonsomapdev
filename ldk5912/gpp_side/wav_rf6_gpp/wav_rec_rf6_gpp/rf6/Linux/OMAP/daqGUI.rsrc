@@ -105,7 +105,7 @@ unsigned char s_icon_bitmap[]={
 static BITMAP small_icon={s_icon_width,s_icon_height,s_icon_bitmap};
 
 APP_INFO app_info={
-	"MAIN1",		// application name
+	"ECLIPSE1",		// application name
 	"1.0.0",		// version info
 	"LinuxDA Inc.",		// Owner
 	"LinuxDA Inc.",	// Creator
