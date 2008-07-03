@@ -316,6 +316,10 @@ static int shutdownongoing = 0;
 
 int codecFd = 0;
 
+// this always contains the current snapshot of the data.
+static int snapshotInUseByGUI = 0;
+static char datasnapshot[BUFFERSIZE];
+
 /* wave file pointer, path/filename string*/
 FILE            *fp;
 char            g_path[1024];
@@ -568,6 +572,16 @@ void stopStreamThread()
 //	}
 //	printf("streamThread has finished!\n");
 }
+
+void getDataSnapshot(char* snap)
+{
+	snapshotInUseByGUI = 1;
+	// strcopy...   *snap = datasnapshot;
+	snapshotInUseByGUI = 0;
+	return;
+}
+
+
 
 /*******************Wavplayer data*****************************************************************/
 
@@ -954,6 +968,15 @@ static void runDataStreaming( void )
             tmp[k+3] = ioReqOutput.buffer[k+1];
             tmp[k]   = ioReqOutput.buffer[k+2];
             tmp[k+1] = ioReqOutput.buffer[k+3];
+
+            if (snapshotInUseByGUI==0)
+            {
+                // use only one channel (ignore k+2 and k+3). whatever.
+                datasnapshot[k]=ioReqOutput.buffer[k];
+                datasnapshot[k+1]=ioReqOutput.buffer[k];
+                datasnapshot[k+2]=ioReqOutput.buffer[k+1];
+                datasnapshot[k+3]=ioReqOutput.buffer[k+1];
+            }
         }
 
        // Write audio data to wave file.
