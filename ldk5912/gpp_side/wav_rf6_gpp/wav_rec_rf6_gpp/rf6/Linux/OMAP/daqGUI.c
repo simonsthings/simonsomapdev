@@ -31,163 +31,321 @@
 #include "linux/gui.h"
 #include <pthread.h>
 #include "daqGUI.rsrc"
+#include <stdio.h>
 
 //#include "wave_recorder.h"
 
 
-#define MENU_FILE 		10
-#define MENUITEM_EXIT		12
-#define IDD_TEST		30
-#define IDD_TEST1		40
+#define MENU_FILE 				10
+#define MENUITEM_EXIT			12
+#define IDD_TEST				30
+#define IDD_TEST1				40
 #define START                   50
-#define REC                     60
+#define PLOT                    60
 #define STOP                    70
-#define PLAY                    80
+#define DRAW_ONE_GRAPH          80
 
 static FORMCAPTION frm_caption = { "Sample", NULL };
 
-static FORM frmSample[] = {
-		{ FORM_CAPTION, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TASKBAR_HEIGHT,
-				&frm_caption, FORM_FRAME_CAPTION, 0, 0 }, { FORM_MENU,
-				MENU_FILE, 5, 20, 0, 0, "File", 0, COMPONENT_VISIBLE }, {
-				FORM_MENUITEM, MENUITEM_EXIT, 5, 20, 0, 0, "Exit", 0 }, {
-				FORM_BUTTON, START, 4, 270, 37, 22, "INIT", 0,
-				COMPONENT_VISIBLE, FONT_SMALL }, { FORM_BUTTON, REC, 43, 270,
-				37, 22, "EXE", 0, COMPONENT_VISIBLE, FONT_SMALL }, {
-				FORM_BUTTON, STOP, 82, 270, 37, 22, "STOP", 0,
-				COMPONENT_VISIBLE, FONT_SMALL }, { FORM_BUTTON, PLAY, 199, 270,
-				37, 22, "PLAY", 0, COMPONENT_VISIBLE, FONT_SMALL },
-		{ FORM_END }, };
+static FORM frmSample[] = { { FORM_CAPTION, 0, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TASKBAR_HEIGHT, &frm_caption,
+		FORM_FRAME_CAPTION, 0, 0 }, { FORM_MENU, MENU_FILE, 5, 20, 0, 0, "File", 0, COMPONENT_VISIBLE }, {
+		FORM_MENUITEM, MENUITEM_EXIT, 5, 20, 0, 0, "Exit", 0 }, { FORM_BUTTON, START, 4, 270, 37, 22, "INIT", 0,
+		COMPONENT_VISIBLE, FONT_SMALL },
+		{ FORM_BUTTON, PLOT, 43, 270, 37, 22, "PLOT", 0, COMPONENT_VISIBLE, FONT_SMALL }, { FORM_BUTTON, STOP, 82, 270,
+				37, 22, "STOP", 0, COMPONENT_VISIBLE, FONT_SMALL }, { FORM_BUTTON, DRAW_ONE_GRAPH, 199, 270, 37, 22,
+				"DRAW", 0, COMPONENT_VISIBLE, FONT_SMALL }, { FORM_END }, };
 
 int dumb = 1;
 pthread_t pid;
 
 void ShowSample(void);
 void wait_loop(void);
+// plot function draws a graph of 200x200 resolution
+void plot_200x200(int num);
+void drawAxis();
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	short launch_cmd;
 
 	launch_cmd = GetLaunchCommand(argc, argv);
 	init_screen(launch_cmd);
 
-	switch (launch_cmd) {
-	case CMD_RUN_NORMAL:
-		ShowSample();
-		break;
-	case CMD_RUN_GET_INFO:
-		PutAppInfo(&app_info);
-		break;
-	case CMD_RUN_GET_VERSION:
-		PutVersionInfo(&app_info);
-		break;
+	switch (launch_cmd)
+	{
+		case CMD_RUN_NORMAL:
+			ShowSample();
+			break;
+		case CMD_RUN_GET_INFO:
+			PutAppInfo(&app_info);
+			break;
+		case CMD_RUN_GET_VERSION:
+			PutVersionInfo(&app_info);
+			break;
 	}
 	close_screen();
 	return 0;
 }
 
-void ShowSample(void) {
+void ShowSample(void)
+{
 	ClearMessageQueue();
 	CreateForm(frmSample);
 	wait_loop();
 }
 
-void wait_loop(void) {
+void wait_loop(void)
+{
 	GUI_MSG msg;
 	U8 Flag = 1;
 	//int argc;
 	//char *argv[4];
 	int *gOneData;
 	int gOneDataSize;
-    int sampleFreq = 44100;
+	int sampleFreq = 44100;
+	char datasnap[1024*7];
 
-	while (Flag) {
+	while (Flag)
+	{
 		GetMessage(frmSample, &msg);
-		switch (msg.event) {
-		case EVENT_KEYUP:
-			switch (msg.keycode) {
-			case KEY_RETURN:
-				Flag = 0;
+		switch (msg.event)
+		{
+			case EVENT_KEYUP:
+				switch (msg.keycode)
+				{
+					case KEY_RETURN:
+						Flag = 0;
+						break;
+
+					default:
+						DefaultMessageRoutine(frmSample, &msg);
+				}
+				break;
+
+			case EVENT_CLICK:
+				switch (msg.id)
+				{
+					case MENUITEM_EXIT: //Close dialog and go out
+						Flag = 0;
+						CloseForm(frmSample);
+						break;
+
+					case START:
+						printf("\nINIT button Pressed\n");
+
+						// set up the DSP side.
+						setupDSP(sampleFreq, "/xbin/wav_rec_rf6_dsp.out", "isip-e.wav");
+						printf("\n startDSP(..) function has been completed. \n");
+
+						// start the thread that writes the dsp data to a wav file.
+						startStreamThread(sampleFreq);
+						printf("\n startStreamThread(..) function has been completed. \n");
+
+						break;
+
+					case PLOT:
+						printf("\nPLOT button Pressed\n");
+						//printf("The 1st buffer entry is %d and the data size is %d \n", gOneData[0], gOneDataSize);
+
+						drawAxis();
+						getDataSnap
+
+						shot(&datasnap);
+
+						break;
+
+					case DRAW_ONE_GRAPH:
+						printf("DRAW EEG button Pressed\n");
+						//Draw_Graph();
+						plot_200x200(1);
+						printf("DRAW DONE! \n");
+						break;
+
+					case STOP:
+						printf("\nSTOP button Pressed\n");
+						printf("\n Leaving Reference Framework 6 audio application\n\n");
+
+						stopDSP();
+						stopStreamThread();
+
+						//CallApp("/sound/stop.sh");
+						//printf("RECORDING STOPPED!\n");
+						break;
+
+						/*  case PLAY:
+						 printf("PLAY button Pressed\n");
+						 // copy the background of the screen
+						 //CopyScreen(background,0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+						 //call save data bash file
+						 CallApp("/sound/play.sh");
+						 printf("PLAYING.. \n");
+						 // paste the background screen
+						 //PasteScreen(background,0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+						 break; */
+
+					default:
+						DefaultMessageRoutine(frmSample, &msg);
+
+				} // end of EVENT_CLICK
 				break;
 
 			default:
 				DefaultMessageRoutine(frmSample, &msg);
-			}
-			break;
-
-		case EVENT_CLICK:
-			switch (msg.id) {
-			case MENUITEM_EXIT: //Close dialog and go out
-				Flag = 0;
-				CloseForm(frmSample);
-				break;
-
-			case START:
-				printf("\nINIT button Pressed\n");
-
-			    // set up the DSP side.
-			    setupDSP(sampleFreq,"/xbin/wav_rec_rf6_dsp.out","isip.wav") ;
-				printf("\n startDSP(..) function has been completed. \n");
-
-			    // start the thread that writes the dsp data to a wav file.
-			    startStreamThread(sampleFreq);
-				printf("\n startStreamThread(..) function has been completed. \n");
-
-				break;
-
-			case REC:
-				printf("\nEXE button Pressed\n");
-				// vol_Control_Msg();
-				//LOOP_Execute(gOneData, &gOneDataSize);
-				printf("The 1st buffer entry is %d and the data size is %d \n",
-						gOneData[0], gOneDataSize);
-
-				//sendControlMsg( MSGNEWVOL, 1, val );
-
-				//Draw_Graph();
-				// plot_200x200(1);
-				/* argc = 4;
-				 argv[0] = "wav_rec_rf6_gpp1";
-				 argv[1] = "wav_rec_rf6_dsp.out";
-				 argv[2] = "ISIP.wav";
-				 argv[3] = "44100";*/
-
-				// wave_rec_main();
-				//CallApp("/sound/rec.sh");
-				// printf("RECORDING STARTED! \n");
-				break;
-
-			case STOP:
-				printf("\nSTOP button Pressed\n");
-				printf("\n Leaving Reference Framework 6 audio application\n\n");
-
-				stopDSP();
-				stopStreamThread();
-
-				//CallApp("/sound/stop.sh");
-				//printf("RECORDING STOPPED!\n");
-				break;
-
-				/*  case PLAY:
-				 printf("PLAY button Pressed\n");
-				 // copy the background of the screen
-				 //CopyScreen(background,0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
-				 //call save data bash file
-				 CallApp("/sound/play.sh");
-				 printf("PLAYING.. \n");
-				 // paste the background screen
-				 //PasteScreen(background,0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
-				 break; */
-
-			default:
-				DefaultMessageRoutine(frmSample, &msg);
-
-			} // end of EVENT_CLICK
-			break;
-
-		default:
-			DefaultMessageRoutine(frmSample, &msg);
 		}
 	} /**** end of message loop *****/
 }
 
+// graph attributes for plot function
+struct Graph
+{
+	// y-axis attributes
+	int max_y;
+	int min_y;
+	char label_y[20];
+	//strcpy(label_y,"micro-volt");
+	// x-axis attributes
+	int max_x;
+	int min_x;
+	char label_x[20];
+	// char *ptr;
+	//ptr = strcpy(label_x,"seconds");
+	// eeg is stored here
+	double data[5000];
+	// size of data
+	int data_size;
+};
+
+/**
+ * This function draws the Plot axis for the graph.
+ */
+void drawAxis()
+{
+	// draw the y-axis. The numbers represents pixels
+	// 20 = left margin. 40 = total top margin. 240 = 100 positive + 100 negative + 40 total margin
+	draw_line(20, 40, 20, 240, GUI_BLACK);
+	// draw the x-axis. The numbers represents pixels
+	// 20 = left margin. 140 = 40 total top margin + 100 positive y portion.
+	// 220 = 20 leftmargin + 200 length of x-axis
+	draw_line(20, 140, 220, 140, GUI_BLACK);
+
+	//draw y-axis' notches
+	draw_line(17, 140, 20, 140, GUI_BLACK); // 0 notch could be built within x-axis
+	draw_line(17, 40, 20, 40, GUI_BLACK); // max notch
+	draw_line(17, 240, 20, 240, GUI_BLACK); // min notch
+
+	//draw x-axis' notches
+	draw_line(20, 138, 20, 142, GUI_BLACK); // 0 notch could be built within x-axis
+	draw_line(220, 138, 220, 142, GUI_BLACK); // max notch
+	draw_line(120, 138, 120, 142, GUI_BLACK); // mid notch
+
+}
+
+/**
+ * Takes the data given in "buffer" and plots it on the screen.
+ */
+void plotGraph(struct Graph G1, GraphicsContext gc)
+{
+	int i, j;
+
+	int x_range; // range of the x-axis
+	int y_range; // range of the y-axis
+	int x_factor; // scale factor of pixels to time(=size) of data
+	int y_factor; // scale factor of pixels to amplitude(=value) of data
+
+	// range and factor calculations
+	x_range = G1.max_x - G1.min_x;
+	y_range = G1.max_y - G1.min_y;;
+	x_factor = x_range / 200.0; // 200 = number of pixels in x direction = towards left/right of screen
+	y_factor = y_range / 200.0; // 200 = number of pixels in y direction = towards up/down of screen
+
+	printf("x_range=%d \t", x_range);
+	printf("y_range=%d \t", y_range);
+	printf("x_factor=%d \t", x_factor);
+	printf("y_factor=%d \n", y_factor);
+
+	//set graphic content parameters, i.e. color, mode...
+	//gc.color = GUI_BLACK;
+	gc.mode = Mode_SRC;
+	gc.fill_index = BlackPattern;
+
+	// draw the data. The numbers represents pixels
+	// start from time =100
+	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
+		// 20 = left margin.
+		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
+		draw_line(j + 20, 140 - ((short) G1.data[i] / y_factor), j + 1 + 20, 140 - ((short) G1.data[i + 1] / y_factor),	gc.color);
+
+}
+
+void plot_200x200(int num)
+{
+	int i;
+	struct Graph G1;
+	GraphicsContext gc;
+	FILE * data_file;
+
+	printf("start plot_200x200\n");
+	// open data file... If not successful print error
+
+	switch (num)
+	{
+		case 1: // draw data in ISIP file
+			if ((data_file = fopen("/root/ISIP.txt", "r")) == NULL)
+				printf("Cannot open %s\n", data_file);
+			gc.color = GUI_RED;
+			// initialize graph varriables
+			G1.max_y = 2500;
+			G1.min_y = -2500;
+			break;
+		case 2: // draw A-trous in ISIP file
+			if ((data_file = fopen("/root/d1.csv", "r")) == NULL)
+				printf("Cannot open %s\n", data_file);
+			gc.color = GUI_BLUE;
+			// initialize graph varriables
+			G1.max_y = 700;
+			G1.min_y = -700;
+			break;
+		case 3: // draw A-trous in ISIP file
+			if ((data_file = fopen("/root/d2.csv", "r")) == NULL)
+				printf("Cannot open %s\n", data_file);
+			gc.color = GUI_GREEN;
+			// initialize graph varriables
+			G1.max_y = 700;
+			G1.min_y = -700;
+			break;
+		default:
+			printf("\nNo draw command given!\n");
+	}
+
+	// initialize graph varriables
+	//G1.max_y=2500;
+	//G1.min_y=-2500;
+	strcpy(G1.label_y, "micro-volt");
+	G1.max_x = 500;
+	G1.min_x = 0;
+	strcpy(G1.label_x, "micro-volt");
+	G1.data_size = 500; // = G1.max_x - G1.min_x = x_range
+
+	// read from the data file and store into array.
+	for (i = 0; i < G1.data_size; i++)
+		fscanf(data_file, "%lf", &G1.data[i]);
+	printf("First element in the file is %d\n", G1.data[0]);
+	printf("Last element in the file is %d\n", G1.data[G1.data_size - 1]);
+
+	//      while(!feof(data_file)) {
+	//      // read as long as there is data
+	//      fscanf(data_file, "%d", &numbers[i]);
+	//      i++;
+	//    }
+
+	// close the data file
+	fclose(data_file);
+
+	// draw the Plot axis for the graph.
+	drawAxis();
+
+	// draw the Graph.
+	plotGraph(G1,gc);
+
+	printf("END plot_200x200 \n");
+}
