@@ -63,6 +63,8 @@ void wait_loop(void);
 // plot function draws a graph of 200x200 resolution
 void plot_200x200(int num);
 void drawAxis();
+void plotAudioData();
+//void drawEcgGraph(struct Graph G1, GraphicsContext gc,double *data_1,double *data_2);
 
 int main(int argc, char *argv[])
 {
@@ -103,7 +105,6 @@ void wait_loop(void)
 	int *gOneData;
 	int gOneDataSize;
 	int sampleFreq = 44100;
-	char datasnap[1024*7];
 
 	while (Flag)
 	{
@@ -148,9 +149,7 @@ void wait_loop(void)
 						//printf("The 1st buffer entry is %d and the data size is %d \n", gOneData[0], gOneDataSize);
 
 						drawAxis();
-						getDataSnap
-
-						shot(&datasnap);
+						plotAudioData();
 
 						break;
 
@@ -210,7 +209,7 @@ struct Graph
 	// char *ptr;
 	//ptr = strcpy(label_x,"seconds");
 	// eeg is stored here
-	double data[5000];
+	double data[1024*7];
 	// size of data
 	int data_size;
 };
@@ -220,30 +219,47 @@ struct Graph
  */
 void drawAxis()
 {
+	GraphicsContext gc;
+	RECT r;
+
+	// draw a white rectangle to delete what was previously on the screen.
+	gc.mode = Mode_SRC;
+	gc.fill_index = BlackPattern;
+	gc.color = GUI_YELLOW;
+	r.left=10;
+	r.right = 200;
+	r.top = 50;
+	r.bottom = 260;
+	FillRect(r,&gc);
+
+
 	// draw the y-axis. The numbers represents pixels
-	// 20 = left margin. 40 = total top margin. 240 = 100 positive + 100 negative + 40 total margin
-	draw_line(20, 40, 20, 240, GUI_BLACK);
+	// 20 = left margin. 20 = total top margin. 260 = 240 + 20 total margin
+	draw_line(20, 20, 20, 260, GUI_BLACK);
 	// draw the x-axis. The numbers represents pixels
 	// 20 = left margin. 140 = 40 total top margin + 100 positive y portion.
 	// 220 = 20 leftmargin + 200 length of x-axis
-	draw_line(20, 140, 220, 140, GUI_BLACK);
+	draw_line(20, 80, 220, 80, GUI_BLACK);
+	draw_line(20, 200, 220, 200, GUI_BLACK);
 
 	//draw y-axis' notches
 	draw_line(17, 140, 20, 140, GUI_BLACK); // 0 notch could be built within x-axis
-	draw_line(17, 40, 20, 40, GUI_BLACK); // max notch
-	draw_line(17, 240, 20, 240, GUI_BLACK); // min notch
+	draw_line(17, 20, 20, 20, GUI_BLACK); // max notch
+	draw_line(17, 260, 20, 260, GUI_BLACK); // min notch
 
 	//draw x-axis' notches
-	draw_line(20, 138, 20, 142, GUI_BLACK); // 0 notch could be built within x-axis
-	draw_line(220, 138, 220, 142, GUI_BLACK); // max notch
-	draw_line(120, 138, 120, 142, GUI_BLACK); // mid notch
+	//draw_line(20, 138, 20, 142, GUI_BLACK); // 0 notch could be built within x-axis
+	draw_line(220, 78, 220, 82, GUI_BLACK); // max notch for first axis
+	draw_line(120, 78, 120, 82, GUI_BLACK); //mid notch for first axis
+	draw_line(220, 198, 220, 202, GUI_BLACK); // max notch for second axis
+	draw_line(120, 198, 120, 202, GUI_BLACK); // mid notch
 
 }
 
 /**
  * Takes the data given in "buffer" and plots it on the screen.
  */
-void plotGraph(struct Graph G1, GraphicsContext gc)
+void drawGraph(struct Graph G1, GraphicsContext gc)
 {
 	int i, j;
 
@@ -273,16 +289,83 @@ void plotGraph(struct Graph G1, GraphicsContext gc)
 	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
 		// 20 = left margin.
 		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
-		draw_line(j + 20, 140 - ((short) G1.data[i] / y_factor), j + 1 + 20, 140 - ((short) G1.data[i + 1] / y_factor),	gc.color);
+		draw_line(j + 20, 80 - ((short) G1.data[i] / y_factor), j + 1 + 20, 80 - ((short) G1.data[i + 1] / y_factor),	gc.color);
+
+}
+
+void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_2)
+{
+	int i, j, p;
+	//double data_1[300];
+	//double data_2[300];
+
+	int x_range; // range of the x-axis
+	int y_range; // range of the y-axis
+	int x_factor; // scale factor of pixels to time(=size) of data
+	int y_factor; // scale factor of pixels to amplitude(=value) of data
+
+	// range and factor calculations
+	x_range = G1.max_x - G1.min_x;
+	y_range = G1.max_y - G1.min_y;;
+	x_factor = x_range / 200.0; // 200 = number of pixels in x direction = towards left/right of screen
+	y_factor = y_range / 200.0; // 200 = number of pixels in y direction = towards up/down of screen
+
+	printf("x_range=%d \t", x_range);
+	printf("y_range=%d \t", y_range);
+	printf("x_factor=%d \t", x_factor);
+	printf("y_factor=%d \n", y_factor);
+
+	//set graphic content parameters, i.e. color, mode...
+	//gc.color = GUI_BLACK;
+	gc.mode = Mode_SRC;
+	gc.fill_index = BlackPattern;
+
+	// draw the data. The numbers represents pixels
+	// start from time =100
+	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
+		// 20 = left margin.
+		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
+		draw_line(j + 20, 80 - ((short) data_1[p] / y_factor), j + 1 + 20, 80 - ((short) data_1[p+1] / y_factor),	gc.color);
+	    draw_line(j + 20, 200 - ((short) data_2[p] / y_factor), j + 1 + 20, 200 - ((short) data_2[p+1] / y_factor),	gc.color);
+
+
+}
+void plotAudioData()
+{
+	//double audiodata[1024*7];
+	struct Graph G1;
+	GraphicsContext gc;
+	int i;
+
+	// construct the Graph structure from the data:
+	G1.max_y = 2500;
+	G1.min_y = -2500;
+	G1.max_x = 500;
+	G1.min_x = 0;
+	G1.data_size = 500; // = G1.max_x - G1.min_x = x_range
+
+	// fills the audiodata buffer with content:
+	getDataSnapshot(&G1.data);
+
+
+	// construct the GraphicsContext structure from the data:
+	gc.color = GUI_BLUE;
+
+
+	// draw the graph on the screen:
+	drawGraph(G1, gc);
 
 }
 
 void plot_200x200(int num)
 {
-	int i;
+	int i,p;
 	struct Graph G1;
 	GraphicsContext gc;
 	FILE * data_file;
+	short data_1[300];
+	short data_2[300];
+
 
 	printf("start plot_200x200\n");
 	// open data file... If not successful print error
@@ -329,8 +412,16 @@ void plot_200x200(int num)
 	// read from the data file and store into array.
 	for (i = 0; i < G1.data_size; i++)
 		fscanf(data_file, "%lf", &G1.data[i]);
-	printf("First element in the file is %d\n", G1.data[0]);
-	printf("Last element in the file is %d\n", G1.data[G1.data_size - 1]);
+	for(i=0,p=0; i< 500; i+=1,p++)
+	{
+		data_1[p] = G1.data[i];
+		data_2[p] = G1.data[i+1];
+	}
+
+	//printf("First element in the file is %d\n", G1.data[0]);
+	//printf("Last element in the file is %d\n", G1.data[G1.data_size - 1]);
+
+	printf("Data is being Demultiplexed\n");
 
 	//      while(!feof(data_file)) {
 	//      // read as long as there is data
@@ -345,7 +436,7 @@ void plot_200x200(int num)
 	drawAxis();
 
 	// draw the Graph.
-	plotGraph(G1,gc);
+	drawEcgGraph(G1,gc,&data_1[p],&data_2[p]);
 
 	printf("END plot_200x200 \n");
 }
