@@ -223,14 +223,15 @@ void drawAxis()
 	RECT r;
 
 	// draw a white rectangle to delete what was previously on the screen.
-	gc.mode = Mode_SRC;
-	gc.fill_index = BlackPattern;
-	gc.color = GUI_YELLOW;
-	r.left=10;
-	r.right = 200;
-	r.top = 50;
-	r.bottom = 260;
-	FillRect(r,&gc);
+
+//	gc.mode = Mode_SRC;
+//	gc.fill_index = BlackPattern;
+//	gc.color = GUI_YELLOW;
+//	r.left=10;
+//	r.right = 200;
+//	r.top = 50;
+//	r.bottom = 260;
+//	FillRect(r,&gc);
 
 
 	// draw the y-axis. The numbers represents pixels
@@ -293,11 +294,47 @@ void drawGraph(struct Graph G1, GraphicsContext gc)
 
 }
 
+//void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_2)
+//{
+//	int i, j, p;
+//	//double data_1[300];
+//	//double data_2[300];
+//
+//	int x_range; // range of the x-axis
+//	int y_range; // range of the y-axis
+//	int x_factor; // scale factor of pixels to time(=size) of data
+//	int y_factor; // scale factor of pixels to amplitude(=value) of data
+//
+//	// range and factor calculations
+//	x_range = G1.max_x - G1.min_x;
+//	y_range = G1.max_y - G1.min_y;;
+//	x_factor = x_range / 200.0; // 200 = number of pixels in x direction = towards left/right of screen
+//	y_factor = y_range / 200.0; // 200 = number of pixels in y direction = towards up/down of screen
+//
+//	printf("x_range=%d \t", x_range);
+//	printf("y_range=%d \t", y_range);
+//	printf("x_factor=%d \t", x_factor);
+//	printf("y_factor=%d \n", y_factor);
+//
+//	//set graphic content parameters, i.e. color, mode...
+//	//gc.color = GUI_BLACK;
+//	gc.mode = Mode_SRC;
+//	gc.fill_index = BlackPattern;
+//
+//	// draw the data. The numbers represents pixels
+//	// start from time =100
+//	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
+//		// 20 = left margin.
+//		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
+//		draw_line(j + 20, 80 - ((short) data_1[p] / y_factor), j + 1 + 20, 80 - ((short) data_1[p+1] / y_factor),	gc.color);
+//	    draw_line(j + 20, 200 - ((short) data_2[p] / y_factor), j + 1 + 20, 200 - ((short) data_2[p+1] / y_factor),	gc.color);
+//
+//
+//}
+
 void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_2)
 {
-	int i, j, p;
-	//double data_1[300];
-	//double data_2[300];
+	int i, j;
 
 	int x_range; // range of the x-axis
 	int y_range; // range of the y-axis
@@ -325,11 +362,11 @@ void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_
 	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
 		// 20 = left margin.
 		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
-		draw_line(j + 20, 80 - ((short) data_1[p] / y_factor), j + 1 + 20, 80 - ((short) data_1[p+1] / y_factor),	gc.color);
-	    draw_line(j + 20, 200 - ((short) data_2[p] / y_factor), j + 1 + 20, 200 - ((short) data_2[p+1] / y_factor),	gc.color);
-
-
-}
+	{
+		draw_line(j + 20, 80 - ((short) data_1[i] / y_factor), j + 1 + 20, 80 - ((short) data_1[i + 1] / y_factor),	gc.color);
+	    draw_line(j + 20, 200 - ((short) data_2[i] / y_factor), j + 1 + 20, 200 - ((short) data_2[i + 1] / y_factor),	gc.color);
+    }
+}// end of for loop
 void plotAudioData()
 {
 	//double audiodata[1024*7];
@@ -377,8 +414,8 @@ void plot_200x200(int num)
 				printf("Cannot open %s\n", data_file);
 			gc.color = GUI_RED;
 			// initialize graph varriables
-			G1.max_y = 2500;
-			G1.min_y = -2500;
+			G1.max_y = 250;
+			G1.min_y = -250;
 			break;
 		case 2: // draw A-trous in ISIP file
 			if ((data_file = fopen("/root/d1.csv", "r")) == NULL)
@@ -412,7 +449,9 @@ void plot_200x200(int num)
 	// read from the data file and store into array.
 	for (i = 0; i < G1.data_size; i++)
 		fscanf(data_file, "%lf", &G1.data[i]);
-	for(i=0,p=0; i< 500; i+=1,p++)
+//	for(i=0,p=0; i< 500; i+=2,p++)
+//		This loop is when plotting a single channel graph for 500 elements
+		for(i=0,p=0; i< 250; i+=2,p++)
 	{
 		data_1[p] = G1.data[i];
 		data_2[p] = G1.data[i+1];
@@ -436,7 +475,8 @@ void plot_200x200(int num)
 	drawAxis();
 
 	// draw the Graph.
-	drawEcgGraph(G1,gc,&data_1[p],&data_2[p]);
+	drawEcgGraph(G1,gc,data_1,data_2);
+	//drawEcgGraph(G1,gc);
 
 	printf("END plot_200x200 \n");
 }
