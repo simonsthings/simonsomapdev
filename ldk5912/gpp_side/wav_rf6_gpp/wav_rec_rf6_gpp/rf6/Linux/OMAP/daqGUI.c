@@ -342,7 +342,7 @@ void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_
 	int y_factor; // scale factor of pixels to amplitude(=value) of data
 
 	// range and factor calculations
-	x_range = G1.max_x - G1.min_x;
+	x_range = 250;//G1.max_x - G1.min_x;
 	y_range = G1.max_y - G1.min_y;;
 	x_factor = x_range / 200.0; // 200 = number of pixels in x direction = towards left/right of screen
 	y_factor = y_range / 200.0; // 200 = number of pixels in y direction = towards up/down of screen
@@ -359,12 +359,13 @@ void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_
 
 	// draw the data. The numbers represents pixels
 	// start from time =100
-	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
+	for (i = 0, j = 0; i < 250 && j < 200 - 1; i += x_factor, j++)
 		// 20 = left margin.
 		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
 	{
 		draw_line(j + 20, 80 - ((short) data_1[i] / y_factor), j + 1 + 20, 80 - ((short) data_1[i + 1] / y_factor),	gc.color);
 	    draw_line(j + 20, 200 - ((short) data_2[i] / y_factor), j + 1 + 20, 200 - ((short) data_2[i + 1] / y_factor),	gc.color);
+		//draw_line(j + 20, 200 - ((short) G1.data[i] / y_factor), j + 1 + 20, 200 - ((short) G1.data[i + 1] / y_factor),	gc.color);
     }
 }// end of for loop
 void plotAudioData()
@@ -414,8 +415,8 @@ void plot_200x200(int num)
 				printf("Cannot open %s\n", data_file);
 			gc.color = GUI_RED;
 			// initialize graph varriables
-			G1.max_y = 250;
-			G1.min_y = -250;
+			G1.max_y = 2500; // before it was 2500
+			G1.min_y = -2500; // before it was -2500
 			break;
 		case 2: // draw A-trous in ISIP file
 			if ((data_file = fopen("/root/d1.csv", "r")) == NULL)
