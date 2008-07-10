@@ -224,14 +224,14 @@ void drawAxis()
 
 	// draw a white rectangle to delete what was previously on the screen.
 
-//	gc.mode = Mode_SRC;
-//	gc.fill_index = BlackPattern;
-//	gc.color = GUI_YELLOW;
-//	r.left=10;
-//	r.right = 200;
-//	r.top = 50;
-//	r.bottom = 260;
-//	FillRect(r,&gc);
+	gc.mode = Mode_SRC;
+	gc.fill_index = WhitePattern;
+	gc.color = GUI_YELLOW;
+	r.left=10;
+	r.right = 200;
+	r.top = 50;
+	r.bottom = 260;
+	FillRect(r,&gc);
 
 
 	// draw the y-axis. The numbers represents pixels
@@ -415,8 +415,8 @@ void plot_200x200(int num)
 				printf("Cannot open %s\n", data_file);
 			gc.color = GUI_RED;
 			// initialize graph varriables
-			G1.max_y = 2500; // before it was 2500
-			G1.min_y = -2500; // before it was -2500
+			G1.max_y = 300; // before it was 2500
+			G1.min_y = -300; // before it was -2500
 			break;
 		case 2: // draw A-trous in ISIP file
 			if ((data_file = fopen("/root/d1.csv", "r")) == NULL)
