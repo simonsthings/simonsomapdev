@@ -260,7 +260,7 @@ void drawAxis()
 /**
  * Takes the data given in "buffer" and plots it on the screen.
  */
-void drawGraph(struct Graph G1, GraphicsContext gc)
+void drawGraph(struct Graph G1, GraphicsContext gc, short *aud_data1,short *aud_data2)
 {
 	int i, j;
 
@@ -270,7 +270,7 @@ void drawGraph(struct Graph G1, GraphicsContext gc)
 	int y_factor; // scale factor of pixels to amplitude(=value) of data
 
 	// range and factor calculations
-	x_range = G1.max_x - G1.min_x;
+	x_range =250; // G1.max_x - G1.min_x;
 	y_range = G1.max_y - G1.min_y;;
 	x_factor = x_range / 200.0; // 200 = number of pixels in x direction = towards left/right of screen
 	y_factor = y_range / 200.0; // 200 = number of pixels in y direction = towards up/down of screen
@@ -287,11 +287,14 @@ void drawGraph(struct Graph G1, GraphicsContext gc)
 
 	// draw the data. The numbers represents pixels
 	// start from time =100
-	for (i = 100, j = 0; i < G1.data_size && j < 200 - 1; i += x_factor, j++)
+	for (i = 0, j = 0; i < 250 && j < 200 - 1; i += x_factor, j++)
 		// 20 = left margin.
 		// 140 position of x axis on screen = 100 + 20 (top margin) + 20 (file menu area).
-		draw_line(j + 20, 80 - ((short) G1.data[i] / y_factor), j + 1 + 20, 80 - ((short) G1.data[i + 1] / y_factor),	gc.color);
-
+		//draw_line(j + 20, 80 - ((short) G1.data[i] / y_factor), j + 1 + 20, 80 - ((short) G1.data[i + 1] / y_factor),	gc.color);
+	{
+		draw_line(j + 20, 80 - ((short) aud_data1[i] / y_factor), j + 1 + 20, 80 - ((short) aud_data1[i + 1] / y_factor),gc.color);
+		draw_line(j + 20, 200 - ((short) aud_data2[i] / y_factor), j + 1 + 20, 200 - ((short) aud_data2[i + 1] / y_factor),gc.color);
+    }
 }
 
 //void drawEcgGraph(struct Graph G1, GraphicsContext gc,short *data_1,short *data_2)
@@ -373,7 +376,9 @@ void plotAudioData()
 	//double audiodata[1024*7];
 	struct Graph G1;
 	GraphicsContext gc;
-	int i;
+	int i,q;
+	short aud_data1[300];
+	short aud_data2[300];
 
 	// construct the Graph structure from the data:
 	G1.max_y = 2500;
@@ -385,13 +390,20 @@ void plotAudioData()
 	// fills the audiodata buffer with content:
 	getDataSnapshot(&G1.data);
 
+	  for(i=0,q=0;i<250;i+=2,q++)
+	  {
+		  aud_data1[q] = G1.data[i];
+		  aud_data2[q] = G1.data[i+1];
+	  }
+
+	  printf("\n Audiodata Demultiplexed\n");
 
 	// construct the GraphicsContext structure from the data:
 	gc.color = GUI_BLUE;
 
 
 	// draw the graph on the screen:
-	drawGraph(G1, gc);
+	drawGraph(G1, gc,aud_data1,aud_data2);
 
 }
 
