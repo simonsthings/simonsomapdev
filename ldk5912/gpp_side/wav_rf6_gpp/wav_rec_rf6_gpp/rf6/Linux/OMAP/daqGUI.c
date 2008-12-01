@@ -106,6 +106,7 @@ void wait_loop(void)
 	int *gOneData;
 	int gOneDataSize;
 	int sampleFreq = 44100;
+	char datasnap[1024*7];
 
 	while (Flag)
 	{
@@ -147,6 +148,7 @@ void wait_loop(void)
 
 					case PLOT:
 						printf("\nPLOT button Pressed\n");
+						printf("\n This line is for testing\n");
 						//printf("The 1st buffer entry is %d and the data size is %d \n", gOneData[0], gOneDataSize);
 
 						drawAxis();
@@ -168,7 +170,9 @@ void wait_loop(void)
 						stopDSP();
 						stopStreamThread();
 
-						//CallApp("/sound/stop.sh");
+						//CallApp("/sound/stop.sh");      These method for starting and stopping the system by
+						                               // running the bash files containg execution and kill command
+						                                 // were tried out, but it did not work out.
 						//printf("RECORDING STOPPED!\n");
 						break;
 
@@ -397,7 +401,7 @@ void plotAudioData()
 		  aud_data2[q] = G1.data[i+1];
 	  }
 
-	  printf("\n Audiodata Demultiplexed\n");
+	  printf("\n Audiodata Demultiplexed...\n");
 
 	// construct the GraphicsContext structure from the data:
 	gc.color = GUI_BLUE;
