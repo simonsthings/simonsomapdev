@@ -319,6 +319,8 @@ int codecFd = 0;
 // this always contains the current snapshot of the data.
 static int snapshotInUseByGUI = 0;
 static char datasnapshot[BUFFERSIZE];
+//static int snapshot = 0;
+//static char testshot[BUFFERSIZE];
 
 /* wave file pointer, path/filename string*/
 FILE            *fp;
@@ -580,6 +582,7 @@ void getDataSnapshot(char* snap)
 	snapshotInUseByGUI = 0;
 	return;
 }
+void getTestshot(char *testshot);
 
 
 
@@ -1055,3 +1058,16 @@ static void configureCodec( int sampleFreq )
 
 }
 
+// ****************************New Buffer******************************************
+
+	/**
+	 * This function fills a given buffer with linearly increasing values from 0 the BUFFERSIZE (currently 1024*7).
+	 */
+	void  getTestshot(char *testshot)
+	{
+		int i = 0;
+		for (i=0;i<BUFFERSIZE;i++)
+		{
+			testshot[i] = i*200;
+		}
+	}

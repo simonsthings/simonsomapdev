@@ -6,18 +6,18 @@
 #
 # RF6 root directory with include and lib directories
 #
-#RF_ROOT_DIR     := /home/aritra/Desktop/wav_rf6_gpp-in_subversion
+#RF_ROOT_DIR     := /home/aritra/workspace/daqGUIsubversion
 
 #
 # Include the system configurations
 #
 #include /home/aritra/Desktop/wav_rf6_gpp-in_subversion/Rules.make
 
-#BASE_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall
+#BASE_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/workspace/daqGUIsubversion/include -I/home/aritra/workspace/daqGUIsubversion/include/Linux/OMAP -Wall
 
-#DEB_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall -g -DDSP_DEBUG
+#DEB_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/workspace/daqGUIsubversion/include -I/home/aritra/workspace/daqGUIsubversion/include/Linux/OMAP -Wall -g -DDSP_DEBUG
 
-#REL_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include -I/home/aritra/Desktop/wav_rf6_gpp-in_subversion/include/Linux/OMAP -Wall
+#REL_CC_FLAGS  = -DOS_LINUX -DMSGQ_COMPONENT -DCHNL_COMPONENT -DZCPY_LINK -I. -I/home/aritra/workspace/daqGUIsubversion/include -I/home/aritra/workspace/daqGUIsubversion/include/Linux/OMAP -Wall
 
 #LDFLAGS       = -lc -lpthread
 
@@ -56,5 +56,5 @@ debug:
 
 clean:
 	rm -f */*.o 
-	rm -rf debug release
-	@rm -rf /home/aritra/Desktop/wav_rf6_gpp-in_subversion/bin/rf6/Linux/OMAP/*/daqGUI
+	rm -f debug/daqGUI 
+	@rm -f /home/aritra/workspace/daqGUIsubversion/bin/rf6/Linux/OMAP/*/daqGUI
